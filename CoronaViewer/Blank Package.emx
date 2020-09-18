@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<!--Rational Software Architect Designer 9.7.0-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
+<uml:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xmi:id="_PC7EMPRqEeqGDN67KGohYg" name="Blank Package">
+  <eAnnotations xmi:id="_PC7EMfRqEeqGDN67KGohYg" source="uml2.diagrams" references="_PC7EMvRqEeqGDN67KGohYg">
+    <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_PC7EMvRqEeqGDN67KGohYg" type="Freeform" name="Main"/>
+    <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_TtDRAPRqEeqGDN67KGohYg" type="Usecase" name="UsecaseDiagram1" description="&lt;p>&lt;span style=&quot;color:#000000;background-color:#ffffff;&quot;>&lt;b>&lt;br>&lt;br>&lt;/b>&lt;/span>&lt;p>&lt;table border=&quot;1&quot;>&lt;col width=&quot;176&quot;>&lt;/col>&lt;col width=&quot;424&quot;>&lt;/col>&lt;tr style='height:21ptpx;'>&lt;td>&lt;p style=&quot;text-align: center;&quot;>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:700;&quot;>Gerenciar prontuários médicos:&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Nome&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gerenciar prontuários médicos:&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Descrição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gerência prontuário de um paciente&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Evento iniciador&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário seleciona uma das opções:&lt;/span>&lt;/p>&lt;p>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>- Cadastrar prontuário&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>- Editar prontuário&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>- Deletar prontuário&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>- Detalhar prontuário&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>- Listar prontuários&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Ator(es)&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Médicos e enfermeiros&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Pré-condição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário logado no sistema e na tela inicial&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sequência de eventos&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Cadastrar prontuário”:&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta formulário de preenchimento&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário preenche os dados do formulário&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário aperta botão de submissão&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema valida dados preenchidos&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema adiciona ao banco de dados o prontuário&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta mensagem de sucesso&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Editar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta formulário preenchido com dados do paciente&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário altera campos do formulário&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário aperta botão de submissão&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema valida dados preenchidos&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema adiciona ao banco de dados o prontuário&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta mensagem de sucesso&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Deletar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema solicita documento do paciente&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário digita documento pedido&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta dados do paciente&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema pede confirmação&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário confirma com senha de administrador&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta mensagem de sucesso&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Detalhar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema solicita documento do paciente&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário digita documentos pedidos&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta dados do paciente&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Listar prontuários”&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta filtros de busca&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário seleciona filtros desejados&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema faz busca no banco de dados e retorna prontuários na tela&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;p>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Pós-condição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Cadastrar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema retorna para a tela inicial&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Editar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema retorna para a tela inicial&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Deletar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema retorna para a tela inicial&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Detalhar prontuário”&lt;/span>&lt;/p>&lt;/li>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta detalhamento do prontuário&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Listar prontuários”&lt;/span>&lt;/p>&lt;/li>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta listagem de prontuário na tela&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;/ul>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Extensões&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>(Cadastrar / Editar prontuário Passo 3) Usuário cancela preenchimento:&lt;/span>&lt;/p>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema desconsidera dados previamente preenchidos&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema retorna para a tela inicial&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;p>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>(Cadastrar / Editar prontuário Passo 3) Sistema identifica inconsistẽ̀ncia de dados:&lt;/span>&lt;/p>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema deixa os campos inválidos vermelhos&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário modifica ou preenche campos faltantes / inconsistentes&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;p>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>(Detalhar prontuário Passo 1) Nenhum prontuário para os documentos inseridos&lt;/span>&lt;/p>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta uma página com um ícone que simboliza o vazio&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;p>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>(Listar prontuários Passo 3) Nenhum prontuário com os filtros escolhidos encontrado:&lt;/span>&lt;/p>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta uma página com um ícone que simboliza o vazio&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Inclusões&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Não se aplica&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/p>&lt;span style=&quot;color:#000000;background-color:#ffffff;&quot;>&lt;br>&lt;br>&lt;br>&lt;/span>&lt;p>&lt;table border=&quot;1&quot;>&lt;col width=&quot;176&quot;>&lt;/col>&lt;col width=&quot;424&quot;>&lt;/col>&lt;tr style='height:21ptpx;'>&lt;td>&lt;p style=&quot;text-align: center;&quot;>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:700;&quot;>Gerenciar vagas de UTI:&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Nome&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;color:#000000;background-color:#ffffff;&quot;>&lt;span style=&quot;font-size:12pt;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gerenciar Paciente em&lt;/span>&lt;span style=&quot;font-size:12pt;font-family:Arial;text-decoration:none;font-weight:400;&quot;>vaga de UTI&lt;/span>&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Descrição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gerencia vagas disponíveis conforme a necessidade dos pacientes&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Evento iniciador&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário solicita listagem das vagas de UTI&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Ator(es)&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Médico do Centro de Regulação de Vagas da UTI&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Pré-condição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário logado no sistema e na tela de gerenciamento de vagas&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sequência de eventos&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;ol>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema apresenta filtros de busca&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário seleciona filtros desejados&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema faz busca no banco e lista vagas que correspondem ao filtro escolhido&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Usuário seleciona uma vaga&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sistema solicita uma das seguintes opções:&lt;/span>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Adicionar paciente em vaga de UTI&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Desocupar paciente de vaga de UTI&lt;/span>&lt;/p>&lt;/li>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Detalhar vaga de UTI&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Adicionar paciente em vaga de UTI”&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Caso selecionado “Desocupar paciente de vaga de UTI”&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;/p>&lt;/li>&lt;/ol>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Detalhar vaga de UTI&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;ol>&lt;li>&lt;p>&lt;/p>&lt;/li>&lt;/ol>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Pós-condição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Extensões&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Inclusões&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/p>&lt;span style=&quot;color:#000000;background-color:#ffffff;&quot;>&lt;br>&lt;br>&lt;/span>&lt;ul>&lt;li>&lt;p>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gerar relatórios:&lt;/span>&lt;/p>&lt;/li>&lt;/ul>&lt;span style=&quot;color:#000000;background-color:#ffffff;&quot;>&lt;br>&lt;br>&lt;br>&lt;/span>&lt;p>&lt;table border=&quot;1&quot;>&lt;col width=&quot;176&quot;>&lt;/col>&lt;col width=&quot;424&quot;>&lt;/col>&lt;tr style='height:21ptpx;'>&lt;td>&lt;p style=&quot;text-align: center;&quot;>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:700;&quot;>Gerar relatório sobre os casos de Covid19:&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Nome&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p style=&quot;text-align: center;&quot;>&lt;span style=&quot;font-size:12pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gerar relatórios&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Descrição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Gera um relatório estatístico geral dos casos de Covid no estado de SP&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Evento iniciador&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>O administrador solicita a geração do relatório&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Ator(es)&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Médico (adm responsável)&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Pré-condição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Dados precisam estar no sistema (banco de dados)&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Sequência de eventos&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>1- Pede usuário e senha do administrador&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>2- Valida credenciais&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>3- Puxa do banco de dados todos os dados disponíveis e relevantes para o relatório&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>4- Faz análises estatísticas (detalhada melhor depois)&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>5- Gera gráficos de barra, de pizza e de tendência&lt;/span>&lt;/p>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>6- Mostra ordenadamente na tela as estatśticas gerada&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Pós-condição&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Existe uma nova página no sistema, que contém todas as informações que o sistema conseguiu gerar a partir dos dados disponíveis&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Extensões&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Passo 4: Dar refresh nos dados, caso os gráficos já estejam desatualizados&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;tr style='height:0ptpx;'>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Inclusões&lt;/span>&lt;/p>&lt;/td>&lt;td>&lt;p>&lt;span style=&quot;font-size:11pt;color:#000000;background-color:#ffffff;font-family:Arial;text-decoration:none;font-weight:400;&quot;>Não se aplica&lt;/span>&lt;/p>&lt;/td>&lt;/tr>&lt;/table>&lt;/p>&lt;span style=&quot;color:#000000;background-color:#ffffff;&quot;>&lt;br>&lt;br>&lt;br>&lt;br>&lt;/span>&lt;/p>">
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_WSkhwPRqEeqGDN67KGohYg" element="_WR-E0PRqEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_WSykMPRqEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_WSykMfRqEeqGDN67KGohYg" width="1455" height="2381"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_WSzyUPRqEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_WSzyUfRqEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_WS0ZYPRqEeqGDN67KGohYg" type="Parent"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WSlI0PRqEeqGDN67KGohYg" x="18216" y="1320"/>
+      </children>
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_YPHG8PRqEeqGDN67KGohYg" element="_YO8u4PRqEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_YPIVEPRqEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_YPI8IPRqEeqGDN67KGohYg" width="2216" height="1322"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_YPL_cPRqEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_YPMmgPRqEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_YPMmgfRqEeqGDN67KGohYg" type="Parent"/>
+        <children xmi:type="notation:ListCompartment" xmi:id="_YPStIPRqEeqGDN67KGohYg" visible="false" type="Extension_Points"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_YPHG8fRqEeqGDN67KGohYg" x="8580" y="2112"/>
+      </children>
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_IyS-MPRrEeqGDN67KGohYg" element="_IyPT0PRrEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_IyVacPRrEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_IyVacfRrEeqGDN67KGohYg" width="1455" height="2381"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_IyWBgPRrEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_IyWBgfRrEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_IyWokPRrEeqGDN67KGohYg" type="Parent"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IyS-MfRrEeqGDN67KGohYg" x="1716" y="-528"/>
+      </children>
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_KxhD8PRrEeqGDN67KGohYg" element="_Kxa9UPRrEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_KxiSEPRrEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_KxiSEfRrEeqGDN67KGohYg" width="1455" height="2381"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_Kxi5IPRrEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_Kxi5IfRrEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_KxjgMPRrEeqGDN67KGohYg" type="Parent"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KxhD8fRrEeqGDN67KGohYg" x="924" y="5280"/>
+      </children>
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_N2tTQPRrEeqGDN67KGohYg" element="_N2q3APRrEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_N2uhYPRrEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_N2uhYfRrEeqGDN67KGohYg" width="1455" height="2381"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_N2uhYvRrEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_N2vIcPRrEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_N2vIcfRrEeqGDN67KGohYg" type="Parent"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_N2tTQfRrEeqGDN67KGohYg" x="17688" y="8844"/>
+      </children>
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_Cbb34PRtEeqGDN67KGohYg" element="_CbZboPRtEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_CbdtEPRtEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_CbdtEfRtEeqGDN67KGohYg" width="2216" height="1322"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_CbdtEvRtEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_CbdtE_RtEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_CbeUIPRtEeqGDN67KGohYg" type="Parent"/>
+        <children xmi:type="notation:ListCompartment" xmi:id="_CbeUIfRtEeqGDN67KGohYg" visible="false" type="Extension_Points"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cbb34fRtEeqGDN67KGohYg" x="8580" y="5676"/>
+      </children>
+      <children xmi:type="umlnotation:UMLClassifierShape" xmi:id="_Cyr6QPRtEeqGDN67KGohYg" element="_CyoP4PRtEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Cyu9kPRtEeqGDN67KGohYg" type="ImageCompartment">
+          <layoutConstraint xmi:type="notation:Size" xmi:id="_Cyu9kfRtEeqGDN67KGohYg" width="2216" height="1322"/>
+        </children>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_CyvkoPRtEeqGDN67KGohYg" type="Stereotype"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_CyvkofRtEeqGDN67KGohYg" type="Name"/>
+        <children xmi:type="notation:BasicDecorationNode" xmi:id="_CywLsPRtEeqGDN67KGohYg" type="Parent"/>
+        <children xmi:type="notation:ListCompartment" xmi:id="_CywLsfRtEeqGDN67KGohYg" visible="false" type="Extension_Points"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cyr6QfRtEeqGDN67KGohYg" x="9108" y="10032"/>
+      </children>
+      <element xsi:nil="true"/>
+      <edges xmi:type="umlnotation:UMLConnector" xmi:id="_c53l4PRqEeqGDN67KGohYg" element="_c5RwAPRqEeqGDN67KGohYg" source="_WSkhwPRqEeqGDN67KGohYg" target="_YPHG8PRqEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_c56CIPRqEeqGDN67KGohYg" type="NameLabel">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_c57QQPRqEeqGDN67KGohYg" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_c58eYPRqEeqGDN67KGohYg" type="Name"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_c56CIfRqEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6DMEPRqEeqGDN67KGohYg" visible="false" type="ToMultiplicityLabel" element="_c5cvIPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_c6FBQPRqEeqGDN67KGohYg" type="ToMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6DMEfRqEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6FoUPRqEeqGDN67KGohYg" visible="false" type="ToRoleLabel" element="_c5cvIPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_c6FoUvRqEeqGDN67KGohYg" type="ToRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6FoUfRqEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6GPYPRqEeqGDN67KGohYg" visible="false" type="FromMultiplicityLabel" element="_c5VaYPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_c6G2cPRqEeqGDN67KGohYg" type="FromMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6GPYfRqEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6HdgPRqEeqGDN67KGohYg" visible="false" type="FromRoleLabel" element="_c5VaYPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_c6IEkPRqEeqGDN67KGohYg" type="FromRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6HdgfRqEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6IroPRqEeqGDN67KGohYg" type="ToQualifierLabel" element="_c5cvIPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_c6Lu8PRqEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6IrofRqEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6MWAPRqEeqGDN67KGohYg" type="FromQualifierLabel" element="_c5VaYPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_c6MWAvRqEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6MWAfRqEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6M9EPRqEeqGDN67KGohYg" type="ToConstraintLabel" element="_c5cvIPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_c6NkIPRqEeqGDN67KGohYg" type="ToConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6M9EfRqEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_c6NkIfRqEeqGDN67KGohYg" type="FromConstraintLabel" element="_c5VaYPRqEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_c6NkI_RqEeqGDN67KGohYg" type="FromConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_c6NkIvRqEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_c53l4fRqEeqGDN67KGohYg" points="[9, 9, 9, -33]$[9, 22, 9, -20]"/>
+      </edges>
+      <edges xmi:type="umlnotation:UMLConnector" xmi:id="_ND4dQPRtEeqGDN67KGohYg" element="_NDpzwPRtEeqGDN67KGohYg" source="_IyS-MPRrEeqGDN67KGohYg" target="_YPHG8PRqEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND5rYPRtEeqGDN67KGohYg" type="NameLabel">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ND9VwPRtEeqGDN67KGohYg" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ND9VwfRtEeqGDN67KGohYg" type="Name"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ND5rYfRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND9VwvRtEeqGDN67KGohYg" visible="false" type="ToMultiplicityLabel" element="_NDusQPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ND980PRtEeqGDN67KGohYg" type="ToMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ND9Vw_RtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND980fRtEeqGDN67KGohYg" visible="false" type="ToRoleLabel" element="_NDusQPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ND980_RtEeqGDN67KGohYg" type="ToRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ND980vRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND981PRtEeqGDN67KGohYg" visible="false" type="FromMultiplicityLabel" element="_NDsQAPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ND-j4PRtEeqGDN67KGohYg" type="FromMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ND981fRtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND-j4fRtEeqGDN67KGohYg" visible="false" type="FromRoleLabel" element="_NDsQAPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_ND_K8PRtEeqGDN67KGohYg" type="FromRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ND-j4vRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND_yAPRtEeqGDN67KGohYg" type="ToQualifierLabel" element="_NDusQPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_ND_yAvRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ND_yAfRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_ND_yA_RtEeqGDN67KGohYg" type="FromQualifierLabel" element="_NDsQAPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_NEAZEPRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_ND_yBPRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_NEAZEfRtEeqGDN67KGohYg" type="ToConstraintLabel" element="_NDusQPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_NEAZE_RtEeqGDN67KGohYg" type="ToConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_NEAZEvRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_NEAZFPRtEeqGDN67KGohYg" type="FromConstraintLabel" element="_NDsQAPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_NEBAIPRtEeqGDN67KGohYg" type="FromConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_NEAZFfRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ND4dQfRtEeqGDN67KGohYg" points="[-9, 9, 12, -117]$[27, 132, 48, 6]"/>
+      </edges>
+      <edges xmi:type="umlnotation:UMLConnector" xmi:id="_S9TuwPRtEeqGDN67KGohYg" element="_S9EeMPRtEeqGDN67KGohYg" source="_N2tTQPRrEeqGDN67KGohYg" target="_Cyr6QPRtEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9U84PRtEeqGDN67KGohYg" type="NameLabel">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_S9Vj8PRtEeqGDN67KGohYg" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_S9Vj8fRtEeqGDN67KGohYg" type="Name"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_S9U84fRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9Vj8vRtEeqGDN67KGohYg" visible="false" type="ToMultiplicityLabel" element="_S9JWsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_S9WLAPRtEeqGDN67KGohYg" type="ToMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9Vj8_RtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9WLAfRtEeqGDN67KGohYg" visible="false" type="ToRoleLabel" element="_S9JWsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_S9WLA_RtEeqGDN67KGohYg" type="ToRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9WLAvRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9WLBPRtEeqGDN67KGohYg" visible="false" type="FromMultiplicityLabel" element="_S9FsUPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_S9WyEPRtEeqGDN67KGohYg" type="FromMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9WLBfRtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9WyEfRtEeqGDN67KGohYg" visible="false" type="FromRoleLabel" element="_S9FsUPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_S9WyE_RtEeqGDN67KGohYg" type="FromRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9WyEvRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9WyFPRtEeqGDN67KGohYg" type="ToQualifierLabel" element="_S9JWsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_S9XZIPRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9WyFfRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9XZIfRtEeqGDN67KGohYg" type="FromQualifierLabel" element="_S9FsUPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_S9XZI_RtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9XZIvRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9XZJPRtEeqGDN67KGohYg" type="ToConstraintLabel" element="_S9JWsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_S9XZJvRtEeqGDN67KGohYg" type="ToConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9XZJfRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_S9YAMPRtEeqGDN67KGohYg" type="FromConstraintLabel" element="_S9FsUPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_S9YAMvRtEeqGDN67KGohYg" type="FromConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_S9YAMfRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_S9TuwfRtEeqGDN67KGohYg" points="[64, -15, -140, 50]$[223, -42, 19, 23]"/>
+      </edges>
+      <edges xmi:type="umlnotation:UMLConnector" xmi:id="_Vl4TgPRtEeqGDN67KGohYg" element="_Vln00PRtEeqGDN67KGohYg" source="_KxhD8PRrEeqGDN67KGohYg" target="_Cbb34PRtEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl5hoPRtEeqGDN67KGohYg" type="NameLabel">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vl6IsPRtEeqGDN67KGohYg" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vl6IsfRtEeqGDN67KGohYg" type="Name"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vl5hofRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl6IsvRtEeqGDN67KGohYg" visible="false" type="ToMultiplicityLabel" element="_VltUYPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vl7W0PRtEeqGDN67KGohYg" type="ToMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl6Is_RtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl7W0fRtEeqGDN67KGohYg" visible="false" type="ToRoleLabel" element="_VltUYPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vl7W0_RtEeqGDN67KGohYg" type="ToRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl7W0vRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl794PRtEeqGDN67KGohYg" visible="false" type="FromMultiplicityLabel" element="_Vlq4IPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vl794vRtEeqGDN67KGohYg" type="FromMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl794fRtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl794_RtEeqGDN67KGohYg" visible="false" type="FromRoleLabel" element="_Vlq4IPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vl8k8PRtEeqGDN67KGohYg" type="FromRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl795PRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl9MAPRtEeqGDN67KGohYg" type="ToQualifierLabel" element="_VltUYPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_Vl9zEPRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl9MAfRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl9zEfRtEeqGDN67KGohYg" type="FromQualifierLabel" element="_Vlq4IPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_Vl9zE_RtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl9zEvRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl-aIPRtEeqGDN67KGohYg" type="ToConstraintLabel" element="_VltUYPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_Vl-aIvRtEeqGDN67KGohYg" type="ToConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl-aIfRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_Vl-aI_RtEeqGDN67KGohYg" type="FromConstraintLabel" element="_Vlq4IPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_Vl_oQPRtEeqGDN67KGohYg" type="FromConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_Vl-aJPRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Vl4TgfRtEeqGDN67KGohYg" points="[-26, -15, 167, 105]$[-240, -128, -47, -8]"/>
+      </edges>
+      <edges xmi:type="umlnotation:UMLConnector" xmi:id="_m70EkPRtEeqGDN67KGohYg" element="_m7oeYPRtEeqGDN67KGohYg" source="_KxhD8PRrEeqGDN67KGohYg" target="_YPHG8PRqEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_m70roPRtEeqGDN67KGohYg" type="NameLabel">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_m71SsPRtEeqGDN67KGohYg" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_m71SsfRtEeqGDN67KGohYg" type="Name"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m70rofRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m71SsvRtEeqGDN67KGohYg" visible="false" type="ToMultiplicityLabel" element="_m7rhsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_m715wPRtEeqGDN67KGohYg" type="ToMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m71Ss_RtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m715wfRtEeqGDN67KGohYg" visible="false" type="ToRoleLabel" element="_m7rhsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_m72g0PRtEeqGDN67KGohYg" type="ToRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m715wvRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m72g0fRtEeqGDN67KGohYg" visible="false" type="FromMultiplicityLabel" element="_m7psgPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_m73H4PRtEeqGDN67KGohYg" type="FromMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m72g0vRtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m73H4fRtEeqGDN67KGohYg" visible="false" type="FromRoleLabel" element="_m7psgPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_m73H4_RtEeqGDN67KGohYg" type="FromRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m73H4vRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m73H5PRtEeqGDN67KGohYg" type="ToQualifierLabel" element="_m7rhsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_m73u8PRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m73H5fRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m73u8fRtEeqGDN67KGohYg" type="FromQualifierLabel" element="_m7psgPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_m74WAPRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m73u8vRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m74WAfRtEeqGDN67KGohYg" type="ToConstraintLabel" element="_m7rhsPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_m74WA_RtEeqGDN67KGohYg" type="ToConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m74WAvRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_m749EPRtEeqGDN67KGohYg" type="FromConstraintLabel" element="_m7psgPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_m749EvRtEeqGDN67KGohYg" type="FromConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_m749EfRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_m70EkfRtEeqGDN67KGohYg" points="[21, -15, -265, 170]$[236, -181, -50, 4]"/>
+      </edges>
+      <edges xmi:type="umlnotation:UMLConnector" xmi:id="_r5Z_8PRtEeqGDN67KGohYg" element="_r5RdEPRtEeqGDN67KGohYg" source="_KxhD8PRrEeqGDN67KGohYg" target="_Cyr6QPRtEeqGDN67KGohYg" fontName="Ubuntu" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5anAPRtEeqGDN67KGohYg" type="NameLabel">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_r5bOEPRtEeqGDN67KGohYg" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_r5b1IPRtEeqGDN67KGohYg" type="Name"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_r5anAfRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5b1IfRtEeqGDN67KGohYg" visible="false" type="ToMultiplicityLabel" element="_r5T5UfRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_r5b1I_RtEeqGDN67KGohYg" type="ToMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5b1IvRtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5ccMPRtEeqGDN67KGohYg" visible="false" type="ToRoleLabel" element="_r5T5UfRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_r5ccMvRtEeqGDN67KGohYg" type="ToRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5ccMfRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5ccM_RtEeqGDN67KGohYg" visible="false" type="FromMultiplicityLabel" element="_r5SrMPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_r5dDQPRtEeqGDN67KGohYg" type="FromMultiplicity"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5ccNPRtEeqGDN67KGohYg" y="396"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5dDQfRtEeqGDN67KGohYg" visible="false" type="FromRoleLabel" element="_r5SrMPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_r5dqUPRtEeqGDN67KGohYg" type="FromRole"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5dDQvRtEeqGDN67KGohYg" y="-397"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5dqUfRtEeqGDN67KGohYg" type="ToQualifierLabel" element="_r5T5UfRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_r5eRYPRtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5dqUvRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5eRYfRtEeqGDN67KGohYg" type="FromQualifierLabel" element="_r5SrMPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_r5eRY_RtEeqGDN67KGohYg" type="QualifierCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5eRYvRtEeqGDN67KGohYg" y="-186"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5eRZPRtEeqGDN67KGohYg" type="ToConstraintLabel" element="_r5T5UfRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_r5e4cfRtEeqGDN67KGohYg" type="ToConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5e4cPRtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <children xmi:type="notation:DecorationNode" xmi:id="_r5e4cvRtEeqGDN67KGohYg" type="FromConstraintLabel" element="_r5SrMPRtEeqGDN67KGohYg">
+          <children xmi:type="notation:ListCompartment" xmi:id="_r5ffgPRtEeqGDN67KGohYg" type="FromConstraintCompartment"/>
+          <layoutConstraint xmi:type="notation:Location" xmi:id="_r5e4c_RtEeqGDN67KGohYg" y="1058"/>
+        </children>
+        <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_r5Z_8fRtEeqGDN67KGohYg" points="[-64, 11, 311, -44]$[-327, 62, 48, 7]"/>
+      </edges>
+    </contents>
+  </eAnnotations>
+  <eAnnotations xmi:id="_PC7EM_RqEeqGDN67KGohYg" source="com.ibm.xtools.common.ui.reduction.editingCapabilities">
+    <details xmi:id="_PC7ENPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStateMachine2" value="1"/>
+    <details xmi:id="_PC7ENfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSpecificInstanceType2" value="1"/>
+    <details xmi:id="_PC7ENvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStateMachine1" value="1"/>
+    <details xmi:id="_PC7EN_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSpecificInstanceType1" value="1"/>
+    <details xmi:id="_PC7EOPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBPackageTemplateParameter" value="1"/>
+    <details xmi:id="_PC7EOfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTemplate" value="1"/>
+    <details xmi:id="_PC7EOvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBEvent2" value="1"/>
+    <details xmi:id="_PC7EO_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBEvent1" value="1"/>
+    <details xmi:id="_PC7EPPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBRelationship3" value="1"/>
+    <details xmi:id="_PC7EPfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInterfaceTemplateParameter" value="1"/>
+    <details xmi:id="_PC7EPvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBRelationship1" value="1"/>
+    <details xmi:id="_PC7EP_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBRelationship2" value="1"/>
+    <details xmi:id="_PC7EQPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInformationFlow" value="1"/>
+    <details xmi:id="_PC7EQfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBCommunicationDiagram" value="1"/>
+    <details xmi:id="_PC7EQvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBActivity1" value="1"/>
+    <details xmi:id="_PC7EQ_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBComponentTemplateParameter" value="1"/>
+    <details xmi:id="_PC7ERPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBActivity2" value="1"/>
+    <details xmi:id="_PC7ERfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBCompositeStructure1" value="1"/>
+    <details xmi:id="_PC7ERvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBDeploymentDiagram" value="1"/>
+    <details xmi:id="_PC7ER_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBActivity3" value="1"/>
+    <details xmi:id="_PC7ESPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBCompositeStructure2" value="1"/>
+    <details xmi:id="_PC7ESfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSubsystem" value="1"/>
+    <details xmi:id="_PC7ESvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBActivity4" value="1"/>
+    <details xmi:id="_PC7ES_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBFragment" value="1"/>
+    <details xmi:id="_PC7ETPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInteraction" value="1"/>
+    <details xmi:id="_PC7ETfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInterface" value="1"/>
+    <details xmi:id="_PC7ETvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBClassDiagram" value="1"/>
+    <details xmi:id="_PC7ET_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBFreeFormDiagram" value="1"/>
+    <details xmi:id="_PC7EUPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBCommunication" value="1"/>
+    <details xmi:id="_PC7EUfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStateChartDiagram" value="1"/>
+    <details xmi:id="_PC7EUvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStereotypedComponent" value="1"/>
+    <details xmi:id="_PC7EU_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBDependancy" value="1"/>
+    <details xmi:id="_PC7EVPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBPackage" value="1"/>
+    <details xmi:id="_PC7EVfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStereotypedArtifact" value="1"/>
+    <details xmi:id="_PC7EVvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBClass" value="1"/>
+    <details xmi:id="_PC7EV_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBRealization" value="1"/>
+    <details xmi:id="_PC7EWPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBFunction" value="1"/>
+    <details xmi:id="_PC7EWfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBComponentDiagram" value="1"/>
+    <details xmi:id="_PC7EWvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBComponent" value="1"/>
+    <details xmi:id="_PC7EW_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTypes1" value="1"/>
+    <details xmi:id="_PC7EXPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBAction" value="1"/>
+    <details xmi:id="_PC7EXfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBArtifact" value="1"/>
+    <details xmi:id="_PC7EXvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSequence1" value="1"/>
+    <details xmi:id="_PC7EX_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStructureDiagram" value="1"/>
+    <details xmi:id="_PC7EYPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSequence2" value="1"/>
+    <details xmi:id="_PC7EYfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBClassTemplateParameter" value="1"/>
+    <details xmi:id="_PC7EYvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBDeployment1" value="1"/>
+    <details xmi:id="_PC7EY_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBDeployment2" value="1"/>
+    <details xmi:id="_PC7EZPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBCollaboration" value="1"/>
+    <details xmi:id="_PC7EZfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBAbstractionRelation" value="1"/>
+    <details xmi:id="_PC7EZvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBElementImport2" value="1"/>
+    <details xmi:id="_PC7EZ_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBUsage" value="1"/>
+    <details xmi:id="_PC7EaPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSequenceDiagram" value="1"/>
+    <details xmi:id="_PC7EafRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInstance" value="1"/>
+    <details xmi:id="_PC7EavRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTypes4" value="1"/>
+    <details xmi:id="_PC7Ea_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBCollaborationUse" value="1"/>
+    <details xmi:id="_PC7EbPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBElementImport1" value="1"/>
+    <details xmi:id="_PC7EbfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBProfile" value="1"/>
+    <details xmi:id="_PC7EbvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTypes3" value="1"/>
+    <details xmi:id="_PC7Eb_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTypes2" value="1"/>
+    <details xmi:id="_PC7EcPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBObjectDiagram" value="1"/>
+    <details xmi:id="_PC7EcfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInteractionOverviewDiagram" value="1"/>
+    <details xmi:id="_PC7EcvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBProfileApplication" value="1"/>
+    <details xmi:id="_PC7Ec_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStereotypedClass" value="1"/>
+    <details xmi:id="_PC7EdPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBPrimitiveTypeTemplateParameter" value="1"/>
+    <details xmi:id="_PC7EdfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTiming" value="1"/>
+    <details xmi:id="_PC7EdvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBLifeLine" value="1"/>
+    <details xmi:id="_PC7Ed_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBFunctionTemplateParameter" value="1"/>
+    <details xmi:id="_PC7EePRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBUseCaseDiagram" value="1"/>
+    <details xmi:id="_PC7EefRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBSignal" value="1"/>
+    <details xmi:id="_PC7EevRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBStereotypedDeployment1" value="1"/>
+    <details xmi:id="_PC7Ee_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBTimingDiagram" value="1"/>
+    <details xmi:id="_PC7EfPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBConstraint" value="1"/>
+    <details xmi:id="_PC7EffRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBComment2" value="1"/>
+    <details xmi:id="_PC7EfvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBComment3" value="1"/>
+    <details xmi:id="_PC7Ef_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBUseCase1" value="1"/>
+    <details xmi:id="_PC7EgPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBInteractionOverview" value="1"/>
+    <details xmi:id="_PC7EgfRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBUseCase2" value="1"/>
+    <details xmi:id="_PC7EgvRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBActivityDiagram" value="1"/>
+    <details xmi:id="_PC7Eg_RqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBComment1" value="1"/>
+    <details xmi:id="_PC7EhPRqEeqGDN67KGohYg" key="com.ibm.xtools.activities.umlBBDeploymentSpecification" value="1"/>
+  </eAnnotations>
+  <packageImport xmi:id="_PC7EhfRqEeqGDN67KGohYg">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_WR-E0PRqEeqGDN67KGohYg" name="Médico"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_YO8u4PRqEeqGDN67KGohYg" name="Gerenciar prontuários &#xA;médicos"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_c5RwAPRqEeqGDN67KGohYg" memberEnd="_c5VaYPRqEeqGDN67KGohYg _c5cvIPRqEeqGDN67KGohYg" navigableOwnedEnd="_c5VaYPRqEeqGDN67KGohYg _c5cvIPRqEeqGDN67KGohYg">
+    <ownedEnd xmi:id="_c5VaYPRqEeqGDN67KGohYg" name="useCase1" visibility="private" type="_YO8u4PRqEeqGDN67KGohYg" association="_c5RwAPRqEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c5bhAPRqEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c5aS4PRqEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_c5cvIPRqEeqGDN67KGohYg" name="médico" visibility="private" type="_WR-E0PRqEeqGDN67KGohYg" association="_c5RwAPRqEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_c5ekUPRqEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_c5d9QPRqEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_IyPT0PRrEeqGDN67KGohYg" name="Enfermeiro"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Kxa9UPRrEeqGDN67KGohYg" name="Médico Secretaria de &#xA;Saúde de São Paulo"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_N2q3APRrEeqGDN67KGohYg" name="Médico do Centro de &#xA;Regulação de Vagas da UTI"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_CbZboPRtEeqGDN67KGohYg" name="Gerar relatório sobre os &#xA;casos de Covid19"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_CyoP4PRtEeqGDN67KGohYg" name="Gerenciar vagas de UTI"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NDpzwPRtEeqGDN67KGohYg" memberEnd="_NDsQAPRtEeqGDN67KGohYg _NDusQPRtEeqGDN67KGohYg" navigableOwnedEnd="_NDsQAPRtEeqGDN67KGohYg _NDusQPRtEeqGDN67KGohYg">
+    <ownedEnd xmi:id="_NDsQAPRtEeqGDN67KGohYg" name="gerenciar prontuários &#xA;médicos" visibility="private" type="_YO8u4PRqEeqGDN67KGohYg" association="_NDpzwPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NDuFMPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NDteIPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_NDusQPRtEeqGDN67KGohYg" name="enfermeiro" visibility="private" type="_IyPT0PRrEeqGDN67KGohYg" association="_NDpzwPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_NDwhcPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_NDv6YPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_S9EeMPRtEeqGDN67KGohYg" memberEnd="_S9FsUPRtEeqGDN67KGohYg _S9JWsPRtEeqGDN67KGohYg" navigableOwnedEnd="_S9FsUPRtEeqGDN67KGohYg _S9JWsPRtEeqGDN67KGohYg">
+    <ownedEnd xmi:id="_S9FsUPRtEeqGDN67KGohYg" name="gerenciar vagas de UTI" visibility="private" type="_CyoP4PRtEeqGDN67KGohYg" association="_S9EeMPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_S9HhgfRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S9HhgPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_S9JWsPRtEeqGDN67KGohYg" name="médico do Centro de &#xA;Regulação de Vagas da UTI" visibility="private" type="_N2q3APRrEeqGDN67KGohYg" association="_S9EeMPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_S9Kk0fRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_S9Kk0PRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Vln00PRtEeqGDN67KGohYg" memberEnd="_Vlq4IPRtEeqGDN67KGohYg _VltUYPRtEeqGDN67KGohYg" navigableOwnedEnd="_Vlq4IPRtEeqGDN67KGohYg _VltUYPRtEeqGDN67KGohYg">
+    <ownedEnd xmi:id="_Vlq4IPRtEeqGDN67KGohYg" name="gerar relatório sobre os &#xA;casos de Covid19" visibility="private" type="_CbZboPRtEeqGDN67KGohYg" association="_Vln00PRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VlsGQPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VlrfMPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_VltUYPRtEeqGDN67KGohYg" name="médico Secretaria de &#xA;Saúde de São Paulo" visibility="private" type="_Kxa9UPRrEeqGDN67KGohYg" association="_Vln00PRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VlwXsPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VlvJkPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_m7oeYPRtEeqGDN67KGohYg" memberEnd="_m7psgPRtEeqGDN67KGohYg _m7rhsPRtEeqGDN67KGohYg" navigableOwnedEnd="_m7psgPRtEeqGDN67KGohYg _m7rhsPRtEeqGDN67KGohYg">
+    <ownedEnd xmi:id="_m7psgPRtEeqGDN67KGohYg" name="gerenciar prontuários &#xA;médicos" visibility="private" type="_YO8u4PRqEeqGDN67KGohYg" association="_m7oeYPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m7q6oPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m7qTkPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_m7rhsPRtEeqGDN67KGohYg" name="médico Secretaria de &#xA;Saúde de São Paulo" visibility="private" type="_Kxa9UPRrEeqGDN67KGohYg" association="_m7oeYPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_m7sv0PRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_m7sIwPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_r5RdEPRtEeqGDN67KGohYg" name="Consultar" memberEnd="_r5SrMPRtEeqGDN67KGohYg _r5T5UfRtEeqGDN67KGohYg" navigableOwnedEnd="_r5SrMPRtEeqGDN67KGohYg _r5T5UfRtEeqGDN67KGohYg">
+    <ownedEnd xmi:id="_r5SrMPRtEeqGDN67KGohYg" name="gerenciar vagas de UTI" visibility="private" type="_CyoP4PRtEeqGDN67KGohYg" association="_r5RdEPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r5T5UPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r5TSQPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_r5T5UfRtEeqGDN67KGohYg" name="médico Secretaria de &#xA;Saúde de São Paulo" visibility="private" type="_Kxa9UPRrEeqGDN67KGohYg" association="_r5RdEPRtEeqGDN67KGohYg">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_r5VHcPRtEeqGDN67KGohYg" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_r5UgYPRtEeqGDN67KGohYg" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <profileApplication xmi:id="_PC7EhvRqEeqGDN67KGohYg">
+    <eAnnotations xmi:id="_PC7Eh_RqEeqGDN67KGohYg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+  <profileApplication xmi:id="_PC7EiPRqEeqGDN67KGohYg">
+    <eAnnotations xmi:id="_PC7EifRqEeqGDN67KGohYg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default?"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML2_MSL_PROFILES/Default.epx#_a_S3wNWLEdiy4IqP8whjFA?Default?"/>
+  </profileApplication>
+  <profileApplication xmi:id="_PC7EivRqEeqGDN67KGohYg">
+    <eAnnotations xmi:id="_PC7Ei_RqEeqGDN67KGohYg" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_4OVBUD0TEeKt-L0gyEptgQ?Deployment/Deployment?"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML2_MSL_PROFILES/Deployment.epx#_vjbuwOvHEdiDX5bji0iVSA?Deployment?"/>
+  </profileApplication>
+</uml:Package>
