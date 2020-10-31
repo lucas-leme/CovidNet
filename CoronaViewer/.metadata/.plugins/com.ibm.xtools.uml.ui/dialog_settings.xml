@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="OPEN_TYPE_DIALOG_SETTINGS">
+		<item value="50" key="SEARCH_RESULTS_SIZE"/>
+		<item value="50" key="&amp;Limit number of matches to:"/>
+		<item value="true" key="Limit Search Results"/>
+		<item value="true" key="RESTRICT_SEARCH_RESULTS"/>
+		<section name="DialogBoundsSettings">
+			<item value="430" key="DIALOG_WIDTH"/>
+			<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+			<item value="690" key="DIALOG_HEIGHT"/>
+			<item value="709" key="DIALOG_X_ORIGIN"/>
+			<item value="64" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

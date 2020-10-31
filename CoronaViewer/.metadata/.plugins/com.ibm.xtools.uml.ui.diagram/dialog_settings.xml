@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CopyToImageDialog">
+		<item value="/home/arthur/Documents/Poli/2o_Quadri/EngSoft/Aula6" key="CopyToImageDialog.folder"/>
+		<item value="false" key="CopyToImageDialog.overwriteExisting"/>
+		<item value="svg" key="CopyToImageDialog.imageFormat"/>
+		<item value="false" key="CopyToImageDialog.exportToHTML"/>
+	</section>
+</section>
