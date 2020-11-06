@@ -9,9 +9,9 @@
 	<center>
 		<h1>Pacientes Management</h1>
         <h2>
-        	<a href="new">Adicionar Paciente</a>
+        	<a href="pacientes/new">Adicionar Paciente</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="list">Lista de Pacientes</a>
+        	<a href="pacientes/list">Lista de Pacientes</a>
         	
         </h2>
 	</center>
@@ -34,9 +34,9 @@
                     <td><c:out value="${paciente.prontuario}" /></td>
                     <td><c:out value="${paciente.dataDeEntrada}" /></td>
                     <td>
-                    	<a href="edit?id=<c:out value='${paciente.id}' />">Editar</a>
+                    	<a href="pacientes/edit?id=<c:out value='${paciente.id}' />">Editar</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="delete?id=<c:out value='${paciente.id}' />">Apagar</a>                    	
+                    	<a href="pacientes/delete?id=<c:out value='${paciente.id}' />">Apagar</a>                    	
                     </td>
                 </tr>
             </c:forEach>
