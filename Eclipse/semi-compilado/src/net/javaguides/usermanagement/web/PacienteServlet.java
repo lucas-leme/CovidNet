@@ -40,20 +40,23 @@ public class PacienteServlet extends HttpServlet {
 		String action = request.getServletPath();
 
 		try {
+			
+			System.out.println("acao\n" + action);
+			
 			switch (action) {
-			case "/new":
+			case "/pacientes/new":
 				showNewForm(request, response);
 				break;
-			case "/insert":
+			case "/pacientes/insert":
 				insertPaciente(request, response);
 				break;
-			case "/delete":
+			case "/pacientes/delete":
 				deletePaciente(request, response);
 				break;
-			case "/edit":
+			case "/pacientes/edit":
 				showEditForm(request, response);
 				break;
-			case "/update":
+			case "/pacientes/update":
 				updatePaciente(request, response);
 				break;
 			default:
@@ -96,7 +99,7 @@ public class PacienteServlet extends HttpServlet {
 		String dataDeEntrada = request.getParameter("dataDeEntrada");
 		Paciente newPaciente = new Paciente(cpf, nome, prontuario , dataDeEntrada);
 		pacienteDAO.insertPaciente(newPaciente);
-		response.sendRedirect("list");
+		response.sendRedirect("pacientes");
 	}
 
 	private void updatePaciente(HttpServletRequest request, HttpServletResponse response) 
@@ -109,13 +112,16 @@ public class PacienteServlet extends HttpServlet {
 
 		Paciente book = new Paciente(id, cpf, nome, prontuario , dataDeEntrada);
 		pacienteDAO.updatePaciente(book);
-		response.sendRedirect("list");
+		response.sendRedirect("pacientes");
 	}
 
 	private void deletePaciente(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
+		
+		System.out.println("id\n" + id);
+		
 		pacienteDAO.deletePaciente(id);
-		response.sendRedirect("list");
+		response.sendRedirect("pacientes");
 	}
 }
