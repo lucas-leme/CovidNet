@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+table{
+	border-radius: 15px;
+	padding: 5px;
+	background-color: #0099ff;
+	border-spacing: 10px;
+	/*column-gap: 100px;*/
+}
+
+td, th{
+	border-radius: 10px;
+	background-color: #006600;
+}
