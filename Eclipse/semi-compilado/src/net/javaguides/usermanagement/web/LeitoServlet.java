@@ -66,6 +66,9 @@ public class LeitoServlet extends HttpServlet {
 		request.setAttribute("listLeito", listLeito);
 		
 		System.out.println("\nPROBLEMA AQUI");
+		System.out.println("\nPath: " + request.getContextPath());
+		System.out.println("\nQuery: " + request.getQueryString());
+		System.out.println("\nURI: " + request.getRequestURI());
 		System.out.println("Procurando o JSP do leito (Servlet:listleito)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-list.jsp");
 		dispatcher.forward(request, response);
@@ -119,9 +122,13 @@ public class LeitoServlet extends HttpServlet {
 			System.out.println("Liberar");
 			medico = enfermeiro = paciente = "-";
 		}
+		
+		System.out.println("AGora liberou / salvou");
 
 		Leito book = new Leito(id, medico, enfermeiro, paciente);
 		leitoDAO.updateLeito(book);
+		
+		System.out.println("Redirecionando para a lista");
 		response.sendRedirect("list");
 	}
 
