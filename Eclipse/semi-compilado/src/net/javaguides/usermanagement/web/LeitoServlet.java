@@ -15,7 +15,7 @@ import net.javaguides.usermanagement.dao.LeitoDAO;
 import net.javaguides.usermanagement.model.Leito;
 
 
-@WebServlet("/leitos")
+@WebServlet("/")//leitos")
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LeitoDAO leitoDAO;
@@ -35,19 +35,19 @@ public class LeitoServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/leitos/new":
+			case "/new":
 				showNewForm(request, response);
 				break;
-			case "/leitos/insert":
+			case "/insert":
 				insertLeito(request, response);
 				break;
-			case "/leitos/delete":
+			case "/delete":
 				deleteLeito(request, response);
 				break;
-			case "/leitos/edit":
+			case "/edit":
 				showEditForm(request, response);
 				break;
-			case "/leitos/update":
+			case "/update":
 				System.out.println("\nPedindo GET update");
 				updateLeito(request, response);
 				break;
@@ -64,12 +64,17 @@ public class LeitoServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		List<Leito> listLeito = leitoDAO.selectAllLeitos();
 		request.setAttribute("listLeito", listLeito);
+		
+		System.out.println("PROBLEMA AQUI");
+		System.out.println("Procurando o JSP do leito (Servlet:listleito)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		System.out.println("Procurando o JSP do leito (Servlet:shownewform)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-form.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -78,6 +83,8 @@ public class LeitoServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Leito existingLeito = leitoDAO.selectLeito(id);
+		
+		System.out.println("Procurando o JSP do leito (Servlet:showeditform)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-form.jsp");
 		request.setAttribute("leito", existingLeito);
 		dispatcher.forward(request, response);

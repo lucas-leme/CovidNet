@@ -23,7 +23,7 @@
         <c:if test="${leito == null}">
 			<form action="leitos/insert" method="post">
         </c:if>
-        <table border="1" cellpadding="5">
+        <table>
             <caption>
             	<h2>
             		<c:if test="${leito != null}">
@@ -68,7 +68,6 @@
             	</td>
             </tr>
         </table>
-        </form>
     </div>	
 </body>
 </html>
