@@ -65,7 +65,7 @@ public class LeitoServlet extends HttpServlet {
 		List<Leito> listLeito = leitoDAO.selectAllLeitos();
 		request.setAttribute("listLeito", listLeito);
 		
-		System.out.println("PROBLEMA AQUI");
+		System.out.println("\nPROBLEMA AQUI");
 		System.out.println("Procurando o JSP do leito (Servlet:listleito)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-list.jsp");
 		dispatcher.forward(request, response);
