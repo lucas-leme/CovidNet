@@ -97,7 +97,7 @@ public class LeitoDAO {
 
 	public List<Leito> selectAllLeitos() {
 		
-		System.out.println("selecting all leitos (DAO)");
+		System.out.println("\nselecting all leitos (DAO)");
 
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Leito> leitos = new ArrayList<>();
