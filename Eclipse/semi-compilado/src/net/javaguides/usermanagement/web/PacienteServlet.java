@@ -32,6 +32,7 @@ public class PacienteServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Doing 'post'");
 		doGet(request, response);
 	}
 
@@ -41,27 +42,28 @@ public class PacienteServlet extends HttpServlet {
 
 		try {
 			
-			System.out.println("acao\n" + action);
+			System.out.println("acao: " + action);
 			
 			switch (action) {
-			case "/pacientes/new":
-				showNewForm(request, response);
-				break;
-			case "/pacientes/insert":
-				insertPaciente(request, response);
-				break;
-			case "/pacientes/delete":
-				deletePaciente(request, response);
-				break;
-			case "/pacientes/edit":
-				showEditForm(request, response);
-				break;
-			case "/pacientes/update":
-				updatePaciente(request, response);
-				break;
-			default:
-				listPacientes(request, response);
-				break;
+				case "/pacientes/new":
+					showNewForm(request, response);
+					break;
+				case "/pacientes/insert":
+					insertPaciente(request, response);
+					break;
+				case "/pacientes/delete":
+					deletePaciente(request, response);
+					break;
+				case "/pacientes/edit":
+					showEditForm(request, response);
+					break;
+				case "/pacientes/update":
+					updatePaciente(request, response);
+					break;
+				default:
+					System.out.println("\nDEFAULT");
+					listPacientes(request, response);
+					break;
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
@@ -70,6 +72,8 @@ public class PacienteServlet extends HttpServlet {
 
 	private void listPacientes(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
+		System.out.println("Listing pacientes");
+		
 		List<Paciente> listPacientes = pacienteDAO.selectAllPacientes();
 		request.setAttribute("listPacientes", listPacientes);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("paciente-list.jsp");
@@ -78,12 +82,16 @@ public class PacienteServlet extends HttpServlet {
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("New form");
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("paciente-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
+		System.out.println("editing form");
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		Paciente existingPaciente = pacienteDAO.selectPaciente(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("paciente-form.jsp");
@@ -93,6 +101,8 @@ public class PacienteServlet extends HttpServlet {
 
 	private void insertPaciente(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
+		System.out.println("inseting paciente");
+		
 		String cpf = request.getParameter("cpf");
 		String nome = request.getParameter("nome");
 		String prontuario = request.getParameter("prontuario");
@@ -104,6 +114,8 @@ public class PacienteServlet extends HttpServlet {
 
 	private void updatePaciente(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
+		System.out.println("updating paciente");
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		String cpf = request.getParameter("cpf");
 		String nome = request.getParameter("nome");
@@ -117,6 +129,8 @@ public class PacienteServlet extends HttpServlet {
 
 	private void deletePaciente(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
+		System.out.println("deleting paciente");
+		
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		System.out.println("id\n" + id);

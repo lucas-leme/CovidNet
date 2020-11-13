@@ -22,7 +22,7 @@ import net.javaguides.usermanagement.model.Paciente;*/
  * @email Hugo Martins
  */
 
-@WebServlet("/")
+@WebServlet("/bla")
 public class MainPageServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
