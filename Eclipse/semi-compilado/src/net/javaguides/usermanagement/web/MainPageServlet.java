@@ -50,8 +50,15 @@ public class MainPageServlet extends HttpServlet
 			throws SQLException, IOException, ServletException {
 
 		System.out.println("Showing main page");
+		
+		System.out.println("\nPath: " + request.getContextPath());
+		System.out.println("\nURI: " + request.getRequestURI());
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("homePage.jsp");
+		
 		dispatcher.forward(request, response);
+		
+		//System.out.println("Sera que o bug e na linha de cima?"); spoilers: nao e
 		
 	}
 	

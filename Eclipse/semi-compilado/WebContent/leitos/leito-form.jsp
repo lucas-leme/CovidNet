@@ -19,10 +19,10 @@
 	</center>
     <div align="center">
 		<c:if test="${leito != null}">
-			<form action="leitos/update" method="post">
+			<form action="update" method="post">
         </c:if>
         <c:if test="${leito == null}">
-			<form action="leitos/insert" method="post">
+			<form action="insert" method="post">
         </c:if>
         <table>
             <caption>

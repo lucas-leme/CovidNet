@@ -16,7 +16,8 @@ import net.javaguides.usermanagement.model.Leito;
 
 
 @WebServlet(
-		urlPatterns = {"leitos"}
+	urlPatterns = {"/leitos", "/leitos/edit/*", "/leitos/new/*", "/leitos/insert/*", 
+			"/leitos/delete/*",  "/leitos/update/*"}
 )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,19 +38,19 @@ public class LeitoServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "leitos/new":
+			case "/leitos/new":
 				showNewForm(request, response);
 				break;
-			case "leitos/insert":
+			case "/leitos/insert":
 				insertLeito(request, response);
 				break;
-			case "leitos/delete":
+			case "/leitos/delete":
 				deleteLeito(request, response);
 				break;
-			case "leitos/edit":
+			case "/leitos/edit":
 				showEditForm(request, response);
 				break;
-			case "leitos/update":
+			case "/leitos/update":
 				System.out.println("\nPedindo GET update");
 				updateLeito(request, response);
 				break;
