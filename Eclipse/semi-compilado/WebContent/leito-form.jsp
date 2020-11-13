@@ -11,9 +11,9 @@
 	<center>
 		<h1>Administracao dos leitos</h1>
         <h2>
-        	<a href="new">Adicionar leito</a>
+        	<a href="leitos/new">Adicionar leito</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="list">Listar leitos</a>
+        	<a href="leitos/list">Listar leitos</a>
         	
         </h2>
 	</center>
