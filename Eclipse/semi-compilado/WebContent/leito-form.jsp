@@ -4,7 +4,8 @@
 <html>
 <head>
 	<title>Administrador de leitos</title>
-	<style><%@include file="/WEB-INF/css/style.css"%></style>
+	<style><%@include file="/WEB-INF/css/main.css"%></style>
+	<style><%@include file="/WEB-INF/css/util.css"%></style>
 </head>
 <body>
 	<center>
@@ -23,7 +24,7 @@
         <c:if test="${leito == null}">
 			<form action="leitos/insert" method="post">
         </c:if>
-        <table border="1" cellpadding="5">
+        <table>
             <caption>
             	<h2>
             		<c:if test="${leito != null}">
@@ -68,7 +69,6 @@
             	</td>
             </tr>
         </table>
-        </form>
     </div>	
 </body>
 </html>

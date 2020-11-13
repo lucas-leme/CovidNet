@@ -36,6 +36,8 @@ public class LeitoDAO {
 
 	protected Connection getConnection() {
 		Connection connection = null;
+		
+		System.out.println("getting connection (DAO)");
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
 			//Class.forName("com.mysql.jdbc.Driver");
@@ -51,6 +53,8 @@ public class LeitoDAO {
 	}
 
 	public void insertLeito(Leito leito) throws SQLException {
+		
+		System.out.println("inserting in leito (DAO)");
 		System.out.println(INSERT_LEITOS_SQL);
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = getConnection();
@@ -66,6 +70,8 @@ public class LeitoDAO {
 	}
 
 	public Leito selectLeito(int id) {
+		
+		System.out.println("selecting leito (DAO)");
 		Leito leito = null;
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
@@ -90,33 +96,43 @@ public class LeitoDAO {
 	}
 
 	public List<Leito> selectAllLeitos() {
+		
+		System.out.println("\nselecting all leitos (DAO)");
 
 		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Leito> leitos = new ArrayList<>();
 		// Step 1: Establishing a Connection
-		try (Connection connection = getConnection();
+		try (
+			Connection connection = getConnection();
 
-				// Step 2:Create a statement using connection object
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_LEITOS);) {
-			System.out.println(preparedStatement);
-			// Step 3: Execute the query or update query
-			ResultSet rs = preparedStatement.executeQuery();
-
-			// Step 4: Process the ResultSet object.
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String medico = rs.getString("medico");
-				String enfermeiro = rs.getString("enfermeiro");
-				String paciente = rs.getString("paciente");
-				leitos.add(new Leito(id, medico, enfermeiro, paciente));
-			}
+			// Step 2:Create a statement using connection object
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_LEITOS);) 
+		{
+				System.out.println(preparedStatement);
+				// Step 3: Execute the query or update query
+				ResultSet rs = preparedStatement.executeQuery();
+	
+				// Step 4: Process the ResultSet object.
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					String medico = rs.getString("medico");
+					String enfermeiro = rs.getString("enfermeiro");
+					String paciente = rs.getString("paciente");
+					leitos.add(new Leito(id, medico, enfermeiro, paciente));
+				}
 		} catch (SQLException e) {
+			System.out.println("SQL exception");
 			printSQLException(e);
 		}
+		System.out.println("Leitos pegos: " + leitos.toString());
+		
 		return leitos;
 	}
 
 	public boolean deleteLeito(int id) throws SQLException {
+		
+		System.out.println("deleting leito (DAO)");
+		
 		boolean rowDeleted;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_LEITOS_SQL);) {
@@ -127,6 +143,9 @@ public class LeitoDAO {
 	}
 
 	public boolean updateLeito(Leito leito) throws SQLException {
+		
+		System.out.println("updating leito (DAO)");
+		
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_LEITOS_SQL);) {
@@ -141,6 +160,9 @@ public class LeitoDAO {
 	}
 
 	private void printSQLException(SQLException ex) {
+		
+		System.out.println("printing sql exception (DAO)");
+		
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {
 				e.printStackTrace(System.err);
