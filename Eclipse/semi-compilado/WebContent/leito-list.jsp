@@ -11,9 +11,9 @@
 	<center>
 		<h1>Gerenciamento de leitos</h1>
         <h2>
-        	<a href="new">Adicionar leito</a>
+        	<a href="leitos/new">Adicionar leito</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="list">Listar leitos</a>
+        	<a href="leitos/list">Listar leitos</a>
         	
         </h2>
 	</center>
@@ -34,7 +34,7 @@
                     <td><c:out value="${leito.enfermeiro}" /></td>
                     <td><c:out value="${leito.paciente}" /></td>
                     <td>
-                    	<a href="edit?id=<c:out value='${leito.id}' />">Editar</a>
+                    	<a href="leitos/edit?id=<c:out value='${leito.id}' />">Editar</a>
                     	<!--&nbsp;&nbsp;&nbsp;&nbsp;
                     	<!--a href="delete?id=<c:out value='${leito.id}' />">Deletar</a-->                    	
                     </td>
