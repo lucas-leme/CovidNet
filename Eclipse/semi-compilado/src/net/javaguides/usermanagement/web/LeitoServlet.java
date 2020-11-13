@@ -15,7 +15,9 @@ import net.javaguides.usermanagement.dao.LeitoDAO;
 import net.javaguides.usermanagement.model.Leito;
 
 
-@WebServlet("/")//leitos")
+@WebServlet(
+		urlPatterns = {"/leitos","/leitos/edit/*","/leitos/update/*"}
+		)
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LeitoDAO leitoDAO;
@@ -35,19 +37,19 @@ public class LeitoServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/new":
+			case "/leitos/new":
 				showNewForm(request, response);
 				break;
-			case "/insert":
+			case "/leitos/insert":
 				insertLeito(request, response);
 				break;
-			case "/delete":
+			case "/leitos/delete":
 				deleteLeito(request, response);
 				break;
-			case "/edit":
+			case "/leitos/edit":
 				showEditForm(request, response);
 				break;
-			case "/update":
+			case "/leitos/update":
 				System.out.println("\nPedindo GET update");
 				updateLeito(request, response);
 				break;
@@ -78,7 +80,7 @@ public class LeitoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("Procurando o JSP do leito (Servlet:shownewform)");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
