@@ -15,7 +15,7 @@ import net.javaguides.usermanagement.dao.LeitoDAO;
 import net.javaguides.usermanagement.model.Leito;
 
 
-@WebServlet("/")//leitos")
+@WebServlet("/leitos")
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LeitoDAO leitoDAO;
