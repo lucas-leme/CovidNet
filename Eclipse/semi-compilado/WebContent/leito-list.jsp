@@ -8,6 +8,7 @@
 	<style><%@include file="/WEB-INF/css/util.css"%></style>
 </head>
 <body>
+  <img src="images/bla.png" />
 	<center>
 		<h1>Gerenciamento de leitos</h1>
         <h2>

@@ -38,7 +38,7 @@
 </div>
 
 <div class="center">
-  <img src="${pageContext.request.contextPath}/Images/cVimage.png" alt=""/>
+  <img src="images/cVimage.png" /> 
   <img src="${pageContext.request.contextPath}/bla.png" alt="" />
 </div>
 
@@ -55,7 +55,7 @@
 <div class="center table_margin">
   <table class="table_margin">
     <td class="frame">
-      <img class="img_cols" src="${pageContext.request.contextPath}/relatorio.png" alt="" />
+      <img class="img_cols" src="images/relatorio.png" alt="" />
 
       <h3 class="text_cols">Relatórios</h3>
       <p class="text_cols">
@@ -67,7 +67,7 @@
     <td class="frame center">
     
       <a href="${pageContext.request.contextPath}/leitos">
-	      <img class="img_cols" src="${pageContext.request.contextPath}/vagas.png" alt="" />
+	      <img class="img_cols" src="images/vagas.png" alt="" />
 	
 	      <h3 class="text_cols">Vagas</h3>
 	      <p class="text_cols">
@@ -80,7 +80,7 @@
     <td class="frame">
       <a href="${pageContext.request.contextPath}/pacientes">
       
-	      <img class="img_cols" src="${pageContext.request.contextPath}/prontuario.png" alt="" />
+	      <img class="img_cols" src="images/prontuario.png" alt="" />
 	
 	      <h3 class="text_cols">Prontuários</h3>
 	      <p class="text_cols">Gerencia (lista, edita, exibe e cadastra) prontuário de um paciente</p>

@@ -17,7 +17,7 @@ import net.javaguides.usermanagement.model.Leito;
 
 @WebServlet(
 	urlPatterns = {"/leitos", "/leitos/edit/*", "/leitos/new/*", "/leitos/insert/*", 
-			"/leitos/delete/*",  "/leitos/update/*"}
+			"/leitos/delete/*",  "/leitos/update/*", "/leitos/list/*"}
 )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
