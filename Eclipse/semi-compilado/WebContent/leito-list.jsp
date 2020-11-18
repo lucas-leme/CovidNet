@@ -34,7 +34,7 @@
                     <td><c:out value="${leito.enfermeiro}" /></td>
                     <td><c:out value="${leito.paciente}" /></td>
                     <td>
-                    	<a href="/leitos/edit?id=<c:out value='${leito.id}' />">Editar</a>
+                    	<a href="${pageContext.request.contextPath}/leitos/edit?id=<c:out value='${leito.id}' />">Editar</a>
                     	<!--&nbsp;&nbsp;&nbsp;&nbsp;
                     	<!--a href="delete?id=<c:out value='${leito.id}' />">Deletar</a-->                    	
                     </td>

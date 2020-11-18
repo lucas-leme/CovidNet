@@ -32,7 +32,7 @@ import net.javaguides.usermanagement.model.Paciente;*/
  * @email Hugo Martins
  */
 
-@WebFilter("/*")
+@WebFilter("/semi-compilado")
 public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
@@ -82,6 +82,8 @@ public class FiltroGeral extends HttpServlet implements Filter
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request = (HttpServletRequest) req;
         String requestURI = request.getRequestURI();
+        
+        System.out.println("doFilter(filtrogeral): requestURI: " + requestURI);
 
         if (requestURI.startsWith("/leitos")) {
             //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
@@ -100,6 +102,13 @@ public class FiltroGeral extends HttpServlet implements Filter
             //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
         	System.out.println("filtrando o /relatorios");
             req.getRequestDispatcher("/relatorios").forward(req, res);
+   
+        }
+        else if (requestURI.startsWith("/semi-compilado")) {
+            //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
+            //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
+        	System.out.println("filtrando o projeto todo\n\n\n\n\n");
+            req.getRequestDispatcher("/").forward(req, res);
    
         } else {
             chain.doFilter(req, res);
