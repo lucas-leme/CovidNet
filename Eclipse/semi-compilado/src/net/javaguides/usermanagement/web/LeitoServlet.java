@@ -16,7 +16,7 @@ import net.javaguides.usermanagement.model.Leito;
 
 
 @WebServlet(
-  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*"}
+  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", "/leitos/insert"}
   )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -86,7 +86,7 @@ public class LeitoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("Procurando o JSP do leito (Servlet:shownewform)");
-		RequestDispatcher dispatcher = request.getRequestDispatcher(root + "/leito-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-form.jsp");
 
 		//response.sendRedirect("../");
 		dispatcher.forward(request, response);
