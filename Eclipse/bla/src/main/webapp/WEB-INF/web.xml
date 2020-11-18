@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee        http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+   <display-name>Servlet Application Login Example</display-name>
+   <servlet>
+      <servlet-name>Admin</servlet-name>
+      <servlet-class>com.jcg.filter.Admin</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>Admin</servlet-name>
+      <url-pattern>/servlet1</url-pattern>
+   </servlet-mapping>
+   <filter>
+      <filter-name>Login</filter-name>
+      <filter-class>com.jcg.filter.Login</filter-class>
+   </filter>
+   <filter-mapping>
+      <filter-name>Login</filter-name>
+      <url-pattern>/servlet1</url-pattern>
+   </filter-mapping>
+</web-app>

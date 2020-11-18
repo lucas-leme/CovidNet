@@ -16,7 +16,7 @@ import net.javaguides.usermanagement.model.Leito;
 
 
 @WebServlet(
-  urlPatterns = {"/leitos","/leitos/edit/*","/leitos/update/*"}
+  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*"}
   )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -74,7 +74,7 @@ public class LeitoServlet extends HttpServlet {
 		System.out.println("\nURI: " + request.getRequestURI());
 		System.out.println("Procurando o JSP do leito (Servlet:listleito)");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -105,7 +105,7 @@ public class LeitoServlet extends HttpServlet {
 		String paciente = request.getParameter("paciente");
 		Leito newLeito = new Leito(medico, enfermeiro, paciente);
 		leitoDAO.insertLeito(newLeito);
-		response.sendRedirect("list");
+		response.sendRedirect(".."); //list");
 	}
 
 	private void updateLeito(HttpServletRequest request, HttpServletResponse response) 
@@ -133,14 +133,15 @@ public class LeitoServlet extends HttpServlet {
 		leitoDAO.updateLeito(book);
 		
 		System.out.println("Redirecionando para a lista");
-		response.sendRedirect("list");
+		response.sendRedirect("..");
+		//response.forward();
 	}
 
 	private void deleteLeito(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		leitoDAO.deleteLeito(id);
-		response.sendRedirect("list");
+		response.sendRedirect("..");//list");
 
 	}
 
