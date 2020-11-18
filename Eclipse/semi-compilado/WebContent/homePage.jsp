@@ -20,7 +20,7 @@
       fill="white" />
   </svg>
 
-  <a>CoronaViewer</a>
+  <a href="${pageContext.request.contextPath}">CoronaViewer</a>
   <div class="right">
     <a>Tela Inicial</a>
     <a>Relatórios</a>

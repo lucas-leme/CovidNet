@@ -113,7 +113,7 @@ public class LeitoServlet extends HttpServlet {
 		String paciente = request.getParameter("paciente");
 		Leito newLeito = new Leito(medico, enfermeiro, paciente);
 		leitoDAO.insertLeito(newLeito);
-		response.sendRedirect(".."); //list");
+		response.sendRedirect(root + "/leitos"); //list");
 	}
 
 	private void updateLeito(HttpServletRequest request, HttpServletResponse response) 

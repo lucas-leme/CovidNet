@@ -9,6 +9,9 @@
 </head>
 <body>
 	<center>
+        <h1>
+        	<a href="${pageContext.request.contextPath}">Pagina inicial</a>
+        </h1>
 		<h1>Administracao dos leitos</h1>
         <h2>
         	<a href="${pageContext.request.contextPath}/new">Adicionar leito</a>
