@@ -52,7 +52,7 @@ public class LeitoServlet extends HttpServlet {
 				break;
 			case "/leitos/update":
 
-				System.out.println("\nPedindo GET update");
+				//System.out.println("\nPedindo GET update");
 				updateLeito(request, response);
 				break;
 			default:
@@ -69,11 +69,11 @@ public class LeitoServlet extends HttpServlet {
 		List<Leito> listLeito = leitoDAO.selectAllLeitos();
 		request.setAttribute("listLeito", listLeito);
 		
-		System.out.println("\nPROBLEMA AQUI");
-		System.out.println("\nPath: " + request.getContextPath());
-		System.out.println("\nQuery: " + request.getQueryString());
-		System.out.println("\nURI: " + request.getRequestURI());
-		System.out.println("Procurando o JSP do leito (Servlet:listleito)");
+		//System.out.println("\nPROBLEMA AQUI");
+		//System.out.println("\nPath: " + request.getContextPath());
+		//System.out.println("\nQuery: " + request.getQueryString());
+		//System.out.println("\nURI: " + request.getRequestURI());
+		//System.out.println("Procurando o JSP do leito (Servlet:listleito)");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-list.jsp");
 
@@ -119,7 +119,7 @@ public class LeitoServlet extends HttpServlet {
 	private void updateLeito(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException, ServletException {
 		
-		System.out.println("\nUPDATE LEITO");
+		//System.out.println("\nUPDATE LEITO");
 		//System.out.println(request.getParameterValues(""));
 		//System.out.println(request.getParameter("salvar"));
 		//System.out.println(request.getParameter("liberar"));
@@ -127,21 +127,21 @@ public class LeitoServlet extends HttpServlet {
 		String medico, enfermeiro, paciente;
 		
 		if(request.getParameter("liberar") == null) {
-			System.out.println("Nao liberar");
+			//System.out.println("Nao liberar");
 			medico = request.getParameter("medico");
 			enfermeiro = request.getParameter("enfermeiro");
 			paciente = request.getParameter("paciente");
 		}else {
-			System.out.println("Liberar");
+			//System.out.println("Liberar");
 			medico = enfermeiro = paciente = "-";
 		}
 		
-		System.out.println("AGora liberou / salvou");
+		//System.out.println("AGora liberou / salvou");
 
 		Leito book = new Leito(id, medico, enfermeiro, paciente);
 		leitoDAO.updateLeito(book);
 		
-		System.out.println("Redirecionando para a lista");
+		//System.out.println("Redirecionando para a lista");
 		response.sendRedirect(root + "/leitos");
 		//response.forward();
 		//RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-list.jsp");
