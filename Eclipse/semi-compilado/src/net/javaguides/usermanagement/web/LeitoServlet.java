@@ -116,7 +116,7 @@ public class LeitoServlet extends HttpServlet {
 	}
 
 	private void updateLeito(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 		
 		System.out.println("\nUPDATE LEITO");
 		//System.out.println(request.getParameterValues(""));
@@ -141,8 +141,11 @@ public class LeitoServlet extends HttpServlet {
 		leitoDAO.updateLeito(book);
 		
 		System.out.println("Redirecionando para a lista");
-		response.sendRedirect("..");
+		response.sendRedirect("/semi-compilado/leitos");
 		//response.forward();
+		//RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-list.jsp");
+		//response.sendRedirect("..");
+		//dispatcher.forward(request, response);
 	}
 
 	private void deleteLeito(HttpServletRequest request, HttpServletResponse response) 
