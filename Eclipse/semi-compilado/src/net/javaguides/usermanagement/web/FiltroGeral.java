@@ -32,7 +32,7 @@ import net.javaguides.usermanagement.model.Paciente;*/
  * @email Hugo Martins
  */
 
-@WebFilter("/semi-compilado")
+@WebFilter("/semi-compilado/*")
 public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
@@ -49,8 +49,8 @@ public class FiltroGeral extends HttpServlet implements Filter
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 
-		System.out.println("Showing main page");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("homePage.jsp");
+		System.out.println("Showing main page (filtrogeral)");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
 		dispatcher.forward(request, response);
 		
 	}

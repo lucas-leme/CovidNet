@@ -11,9 +11,9 @@
 	<center>
 		<h1>Administracao dos leitos</h1>
         <h2>
-        	<a href="leitos/new">Adicionar leito</a>
+        	<a href="${pageContext.request.contextPath}/new">Adicionar leito</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="leitos/list">Listar leitos</a>
+        	<a href="${pageContext.request.contextPath}/leitos">Listar leitos</a>
         	
         </h2>
 	</center>
@@ -47,6 +47,7 @@
                 	/>
                 </td>
             </tr>
+            <tr>
                 <th>Enfermeiro: </th>
                 <td>
                 	<input type="text" name="enfermeiro" size="45"

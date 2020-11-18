@@ -75,6 +75,9 @@ public class LeitoServlet extends HttpServlet {
 		System.out.println("Procurando o JSP do leito (Servlet:listleito)");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-list.jsp");
+
+		
+		//response.sendRedirect("..");
 		dispatcher.forward(request, response);
 	}
 
@@ -83,6 +86,8 @@ public class LeitoServlet extends HttpServlet {
 		
 		System.out.println("Procurando o JSP do leito (Servlet:shownewform)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-form.jsp");
+
+		//response.sendRedirect("../");
 		dispatcher.forward(request, response);
 	}
 
@@ -92,8 +97,10 @@ public class LeitoServlet extends HttpServlet {
 		Leito existingLeito = leitoDAO.selectLeito(id);
 		
 		System.out.println("Procurando o JSP do leito (Servlet:showeditform)");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("leito-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-form.jsp");
 		request.setAttribute("leito", existingLeito);
+		
+		//response.sendRedirect("..");
 		dispatcher.forward(request, response);
 
 	}
@@ -119,6 +126,7 @@ public class LeitoServlet extends HttpServlet {
 		String medico, enfermeiro, paciente;
 		
 		if(request.getParameter("liberar") == null) {
+			System.out.println("Nao liberar");
 			medico = request.getParameter("medico");
 			enfermeiro = request.getParameter("enfermeiro");
 			paciente = request.getParameter("paciente");
