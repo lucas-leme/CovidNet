@@ -9,11 +9,14 @@
 </head>
 <body>
 	<center>
+        <h1>
+        	<a href="${pageContext.request.contextPath}">Pagina inicial</a>
+        </h1>
 		<h1>Gerenciamento de leitos</h1>
         <h2>
-        	<a href="leitos/new">Adicionar leito</a>
+        	<a href="${pageContext.request.contextPath}/leitos/new">Adicionar leito</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="leitos/list">Listar leitos</a>
+        	<a href="${pageContext.request.contextPath}/leitos">Listar leitos</a>
         	
         </h2>
 	</center>
@@ -34,7 +37,7 @@
                     <td><c:out value="${leito.enfermeiro}" /></td>
                     <td><c:out value="${leito.paciente}" /></td>
                     <td>
-                    	<a href="leitos/edit?id=<c:out value='${leito.id}' />">Editar</a>
+                    	<a href="${pageContext.request.contextPath}/leitos/edit?id=<c:out value='${leito.id}' />">Editar</a>
                     	<!--&nbsp;&nbsp;&nbsp;&nbsp;
                     	<!--a href="delete?id=<c:out value='${leito.id}' />">Deletar</a-->                    	
                     </td>

@@ -9,20 +9,23 @@
 </head>
 <body>
 	<center>
+        <h1>
+        	<a href="${pageContext.request.contextPath}">Pagina inicial</a>
+        </h1>
 		<h1>Administracao dos leitos</h1>
         <h2>
-        	<a href="leitos/new">Adicionar leito</a>
+        	<a href="${pageContext.request.contextPath}/new">Adicionar leito</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="leitos/list">Listar leitos</a>
+        	<a href="${pageContext.request.contextPath}/leitos">Listar leitos</a>
         	
         </h2>
 	</center>
     <div align="center">
 		<c:if test="${leito != null}">
-			<form action="leitos/update" method="post">
+			<form action="${pageContext.request.contextPath}/leitos/update" method="post">
         </c:if>
         <c:if test="${leito == null}">
-			<form action="leitos/insert" method="post">
+			<form action="${pageContext.request.contextPath}/leitos/insert" method="post">
         </c:if>
         <table>
             <caption>
@@ -47,6 +50,7 @@
                 	/>
                 </td>
             </tr>
+            <tr>
                 <th>Enfermeiro: </th>
                 <td>
                 	<input type="text" name="enfermeiro" size="45"
