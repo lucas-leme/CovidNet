@@ -10,8 +10,8 @@ public class RelatorioHospitalar extends Relatorio {
 
 	protected String nomeHospital;
 
-	public RelatorioHospitalar(String nomeHospital) {
-		super("Hospitalar", new Date(), 0);
+	public RelatorioHospitalar(int id, String nomeHospital) {
+		super("Hospitalar", new Date(), id);
 		
 		this.tipo = "Hospitalar";
 
