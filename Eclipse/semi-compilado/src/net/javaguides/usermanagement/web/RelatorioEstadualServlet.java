@@ -47,19 +47,19 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/relatorioEstadual/new":
+			case "/new":
 				showNewForm(request, response);
 				break;
-			case "/relatorioEstadual/insert":
+			case "/insert":
 				insertRelatorioEstadual(request, response);
 				break;
-			case "/relatorioEstadual/delete":
+			case "/delete":
 				deleteRelatorioEstadual(request, response);
 				break;
-			case "/relatorioEstadual/edit":
+			case "/edit":
 				showEditForm(request, response);
 				break;
-			case "/relatorioEstadual/update":
+			case "/update":
 				updateRelatorioEstadual(request, response);
 				break;
 			default:
@@ -88,7 +88,7 @@ public class RelatorioEstadualServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("relatorio_id"));
 		RelatorioEstadual existingRelatorioEstadual = relatorioEstadualDAO.selectRelatorio(id);
 		System.out.println("Rel: ");
 		System.out.println(existingRelatorioEstadual);
@@ -102,9 +102,9 @@ public class RelatorioEstadualServlet extends HttpServlet {
 			throws SQLException, IOException {
 		
 //		int id = Integer.parseInt(request.getParameter("id"));
-		String nomeEstado = request.getParameter("nomeEstado");
-		int numeroMunicipios = Integer.parseInt(request.getParameter("numeroMunicipios"));
-		int numeroHospitais = Integer.parseInt(request.getParameter("numeroHospitais"));
+		String nomeEstado = request.getParameter("nome_estado");
+		int numeroMunicipios = Integer.parseInt(request.getParameter("num_unicipios"));
+		int numeroHospitais = Integer.parseInt(request.getParameter("num_hospitais"));
 		
 		RelatorioEstadual newRelatorio = new RelatorioEstadual(0, nomeEstado, numeroMunicipios, numeroHospitais);
 		relatorioEstadualDAO.insertRelatorio(newRelatorio);
@@ -114,10 +114,10 @@ public class RelatorioEstadualServlet extends HttpServlet {
 	private void updateRelatorioEstadual(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("id"));
-		String nomeEstado = request.getParameter("nomeEstado");
-		int numeroMunicipios = Integer.parseInt(request.getParameter("numeroMunicipios"));
-		int numeroHospitais = Integer.parseInt(request.getParameter("numeroHospitais"));
+		int id = Integer.parseInt(request.getParameter("relatorio_id"));
+		String nomeEstado = request.getParameter("nome_estado");
+		int numeroMunicipios = Integer.parseInt(request.getParameter("num_municipios"));
+		int numeroHospitais = Integer.parseInt(request.getParameter("num_hospitais"));
 
 		RelatorioEstadual book = new RelatorioEstadual(id, nomeEstado, numeroMunicipios, numeroHospitais);
 
@@ -127,7 +127,7 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 	private void deleteRelatorioEstadual(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("relatorio_id"));
 		relatorioEstadualDAO.deleteRelatorio(id);
 		response.sendRedirect("list");
 
