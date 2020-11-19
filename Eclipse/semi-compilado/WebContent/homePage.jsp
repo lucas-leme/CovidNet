@@ -38,8 +38,16 @@
 </div>
 
 <div class="center">
-  <img src="${pageContext.request.contextPath}/Images/cVimage.png" alt=""/>
+	<p>Sera que a gora vai?</p>
+  <!-- img src="${pageContext.request.contextPath}/Images/cVimage.png" alt=""/-->
   <img src="${pageContext.request.contextPath}/bla.png" alt="" />
+  <img src="<c:url value='/images/bla.png'/>" alt="" />
+  <img src="<c:url value='images/bla.png'/>" alt="" />
+  <img src="<c:url value='bla.png'/>" alt="" />
+  <img src="<c:url value='/bla.png'/>" alt="" />
+  <img src="${pageContext.request.contextPath}/images/bla.png" alt="" />
+  <img src="<c:url value='/bla.png'/>" alt="" />
+  <img src="<c:url value='/static/bla.png'/>" alt="" />
 </div>
 
 <div class="center" style="width: 50%; margin: 0 auto; max-width: 500px">
