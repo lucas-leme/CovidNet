@@ -9,10 +9,10 @@ import java.util.Date;
 public class RelatorioMunicipal extends Relatorio {
 
 	protected String nomeMunicipio;
-	protected String numeroHospitais;
+	protected int numeroHospitais;
 	
-	public RelatorioMunicipal(String nomeMunicipio, String numeroHospitais) {
-		super("Municipal", new Date(), 0);
+	public RelatorioMunicipal(int id, String nomeMunicipio, int numeroHospitais) {
+		super("Municipal", new Date(), id);
 
 		this.nomeMunicipio = nomeMunicipio;
 		this.numeroHospitais = numeroHospitais;
@@ -28,11 +28,11 @@ public class RelatorioMunicipal extends Relatorio {
 	}
 	
 	
-	public void setNumeroHospitais (String numeroHospitais) {
+	public void setNumeroHospitais (int numeroHospitais) {
 		this.numeroHospitais = numeroHospitais;
 	}
 	
-	public String getNumeroHospitais() {
+	public int getNumeroHospitais() {
 		return numeroHospitais;
 	}
 }

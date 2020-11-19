@@ -47,19 +47,19 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/new":
+			case "/relatorioEstadual/new":
 				showNewForm(request, response);
 				break;
-			case "/insert":
+			case "/relatorioEstadual/insert":
 				insertRelatorioEstadual(request, response);
 				break;
-			case "/delete":
+			case "/relatorioEstadual/delete":
 				deleteRelatorioEstadual(request, response);
 				break;
-			case "/edit":
+			case "/relatorioEstadual/edit":
 				showEditForm(request, response);
 				break;
-			case "/update":
+			case "/relatorioEstadual/update":
 				updateRelatorioEstadual(request, response);
 				break;
 			default:
@@ -75,7 +75,7 @@ public class RelatorioEstadualServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		List<RelatorioEstadual> listRelatorioEstadual = relatorioEstadualDAO.selectAllRelatorios();
 		request.setAttribute("listRelatorioEstadual", listRelatorioEstadual);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-estadual-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
