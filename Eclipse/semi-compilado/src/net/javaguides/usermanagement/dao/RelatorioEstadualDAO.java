@@ -139,6 +139,8 @@ public class RelatorioEstadualDAO {
 			statement.setInt(3, relatorio.getNumeroHospitais());
 			statement.setInt(4, relatorio.getId());
 			
+			System.out.println("ID: " + relatorio.getId());
+			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;

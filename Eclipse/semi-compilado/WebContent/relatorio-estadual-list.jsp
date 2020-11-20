@@ -33,7 +33,7 @@
                     <td><c:out value="${relatorio.numeroMunicipios}" /></td>
                     <td><c:out value="${relatorio.numeroHospitais}" /></td>
                     <td>
-                    	<a href="edit?id=<c:out value='${relatorio.id}' />">Edit</a>
+                    	<a href="${pageContext.request.contextPath}/relatorioEstadual/edit?id=<c:out value='${relatorio.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;
                     	<a href="delete?id=<c:out value='${relatorio.id}' />">Delete</a>                    	
                     </td>

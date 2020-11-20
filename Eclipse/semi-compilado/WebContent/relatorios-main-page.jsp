@@ -8,5 +8,8 @@
 </head>
 <body>
 	<h1>Relatorios aqui</h1>
+	<a href="${pageContext.request.contextPath}/relatorioEstadual">Estadual</a>
+	<a href="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</a>
+	<a href="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</a>
 </body>
 </html>
