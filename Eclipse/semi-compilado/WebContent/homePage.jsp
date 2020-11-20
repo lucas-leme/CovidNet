@@ -63,13 +63,15 @@
 <div class="center table_margin">
   <table class="table_margin">
     <td class="frame">
-      <img class="img_cols" src="${pageContext.request.contextPath}/relatorio.png" alt="" />
-
-      <h3 class="text_cols">Relatórios</h3>
-      <p class="text_cols">
-        Geração de relatórios estatí­sticos geral dos casos de Covid no estado de
-        SP
-      </p>
+    	<a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">
+	      <img class="img_cols" src="${pageContext.request.contextPath}/relatorio.png" alt="" />
+	
+	      <h3 class="text_cols">Relatórios</h3>
+	      <p class="text_cols">
+	        Geração de relatórios estatí­sticos geral dos casos de Covid no estado de
+	        SP
+	      </p>
+	    </a>
     </td>
 
     <td class="frame center">
