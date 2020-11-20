@@ -73,6 +73,7 @@ public class RelatorioEstadualServlet extends HttpServlet {
 				break;
 			}
 		} catch (SQLException ex) {
+			System.out.println("SQL excpetion : vc errou alguma coisa");
 			throw new ServletException(ex);
 		}
 	}
@@ -96,8 +97,11 @@ public class RelatorioEstadualServlet extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		RelatorioEstadual existingRelatorioEstadual = relatorioEstadualDAO.selectRelatorio(id);
-		System.out.println("Rel: ");
+		
+		System.out.println("Rel (showeditform): ");
 		System.out.println(existingRelatorioEstadual);
+		System.out.println("id: " + id);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-form.jsp");
 		request.setAttribute("relatorio", existingRelatorioEstadual);
 		dispatcher.forward(request, response);
@@ -136,9 +140,10 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 	private void deleteRelatorioEstadual(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		int id = Integer.parseInt(request.getParameter("relatorio_id"));
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println("Deleting relatorio estadual");
 		relatorioEstadualDAO.deleteRelatorio(id);
-		response.sendRedirect("list");
+		response.sendRedirect(root + "/relatorioEstadual");
 
 	}
 
