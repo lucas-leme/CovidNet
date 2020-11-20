@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.javaguides.usermanagement.dao.RelatorioEstadualDAO;
+import net.javaguides.usermanagement.dao.RelatorioMunicipalDAO;
 //import net.javaguides.usermanagement.dao.RelatorioHospitalarDAO;
 //import net.javaguides.usermanagement.dao.RelatorioMunicipalDAO;
-import net.javaguides.usermanagement.model.RelatorioEstadual;
+import net.javaguides.usermanagement.model.RelatorioMunicipal;
 
 /**
  * ControllerServlet.java
@@ -23,15 +23,15 @@ import net.javaguides.usermanagement.model.RelatorioEstadual;
  * @email Ramesh Fadatare
  */
 
-@WebServlet("/relatorioEstadual")
-public class RelatorioEstadualServlet extends HttpServlet {
+@WebServlet("/relatorioMunicipal")
+public class RelatorioMunicipalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private RelatorioEstadualDAO relatorioEstadualDAO;
+	private RelatorioMunicipalDAO RelatorioMunicipalDAO;
 //	private RelatorioMunicipalDAO relatorioMunicipalDAO;
 //	private RelatorioHospitalarDAO relatorioHospitalarDAO;
 	
 	public void init() {
-		relatorioEstadualDAO = new RelatorioEstadualDAO();
+		RelatorioMunicipalDAO = new RelatorioMunicipalDAO();
 //		relatorioMunicipalDAO = new RelatorioMunicipalDAO();
 //		relatorioHospitalarDAO = new RelatorioHospitalarDAO();
 	}
@@ -47,23 +47,23 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 		try {
 			switch (action) {
-			case "/relatorioEstadual/new":
+			case "/relatorioMunicipal/new":
 				showNewForm(request, response);
 				break;
-			case "/relatorioEstadual/insert":
-				insertRelatorioEstadual(request, response);
+			case "/relatorioMunicipal/insert":
+				insertRelatorioMunicipal(request, response);
 				break;
-			case "/relatorioEstadual/delete":
-				deleteRelatorioEstadual(request, response);
+			case "/relatorioMunicipal/delete":
+				deleteRelatorioMunicipal(request, response);
 				break;
-			case "/relatorioEstadual/edit":
+			case "/relatorioMunicipal/edit":
 				showEditForm(request, response);
 				break;
-			case "/relatorioEstadual/update":
-				updateRelatorioEstadual(request, response);
+			case "/relatorioMunicipal/update":
+				updateRelatorioMunicipal(request, response);
 				break;
 			default:
-				listRelatorioEstadual(request, response);
+				listRelatorioMunicipal(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -71,17 +71,17 @@ public class RelatorioEstadualServlet extends HttpServlet {
 		}
 	}
 
-	private void listRelatorioEstadual(HttpServletRequest request, HttpServletResponse response)
+	private void listRelatorioMunicipal(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		List<RelatorioEstadual> listRelatorioEstadual = relatorioEstadualDAO.selectAllRelatorios();
-		request.setAttribute("listRelatorioEstadual", listRelatorioEstadual);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-estadual-list.jsp");
+		List<RelatorioMunicipal> listRelatorioMunicipal = RelatorioMunicipalDAO.selectAllRelatorios();
+		request.setAttribute("listRelatorioMunicipal", listRelatorioMunicipal);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-municipal-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-estadual-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-municipal-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -89,46 +89,44 @@ public class RelatorioEstadualServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("relatorio_id"));
-		RelatorioEstadual existingRelatorioEstadual = relatorioEstadualDAO.selectRelatorio(id);
+		RelatorioMunicipal existingRelatorioMunicipal = RelatorioMunicipalDAO.selectRelatorio(id);
 		System.out.println("Rel: ");
-		System.out.println(existingRelatorioEstadual);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-estadual-form.jsp");
-		request.setAttribute("relatorio", existingRelatorioEstadual);
+		System.out.println(existingRelatorioMunicipal);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("relatorio-municipal-form.jsp");
+		request.setAttribute("relatorio", existingRelatorioMunicipal);
 		dispatcher.forward(request, response);
 
 	}
 
-	private void insertRelatorioEstadual(HttpServletRequest request, HttpServletResponse response) 
+	private void insertRelatorioMunicipal(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
 //		int id = Integer.parseInt(request.getParameter("id"));
-		String nomeEstado = request.getParameter("nome_estado");
-		int numeroMunicipios = Integer.parseInt(request.getParameter("num_unicipios"));
-		int numeroHospitais = Integer.parseInt(request.getParameter("num_hospitais"));
+		String nomeMunicipio = request.getParameter("nome_municipio");
+		int numeroHospitais = Integer.parseInt(request.getParameter("numero_hospitais"));
 		
-		RelatorioEstadual newRelatorio = new RelatorioEstadual(0, nomeEstado, numeroMunicipios, numeroHospitais);
-		relatorioEstadualDAO.insertRelatorio(newRelatorio);
+		RelatorioMunicipal newRelatorio = new RelatorioMunicipal(0, nomeMunicipio, numeroHospitais);
+		RelatorioMunicipalDAO.insertRelatorio(newRelatorio);
 		response.sendRedirect("list");
 	}
 
-	private void updateRelatorioEstadual(HttpServletRequest request, HttpServletResponse response) 
+	private void updateRelatorioMunicipal(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("relatorio_id"));
-		String nomeEstado = request.getParameter("nome_estado");
-		int numeroMunicipios = Integer.parseInt(request.getParameter("num_municipios"));
-		int numeroHospitais = Integer.parseInt(request.getParameter("num_hospitais"));
+		String nomeMunicipio = request.getParameter("nome_municipio");
+		int numeroHospitais = Integer.parseInt(request.getParameter("numero_hospitais"));
 
-		RelatorioEstadual book = new RelatorioEstadual(id, nomeEstado, numeroMunicipios, numeroHospitais);
+		RelatorioMunicipal book = new RelatorioMunicipal(id, nomeMunicipio, numeroHospitais);
 
-		relatorioEstadualDAO.updateRelatorio(book);
+		RelatorioMunicipalDAO.updateRelatorio(book);
 		response.sendRedirect("list");
 	}
 
-	private void deleteRelatorioEstadual(HttpServletRequest request, HttpServletResponse response) 
+	private void deleteRelatorioMunicipal(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("relatorio_id"));
-		relatorioEstadualDAO.deleteRelatorio(id);
+		RelatorioMunicipalDAO.deleteRelatorio(id);
 		response.sendRedirect("list");
 
 	}

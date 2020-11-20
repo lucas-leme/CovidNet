@@ -9,11 +9,11 @@ import java.util.Date;
 public class RelatorioEstadual extends Relatorio {
 
 	protected String nomeEstado;
-	protected String numeroMunicipios;
-	protected String numeroHospitais;
+	protected int numeroMunicipios;
+	protected int numeroHospitais;
 	
-	public RelatorioEstadual(String nomeEstado, String numeroMunicipios, String numeroHospitais) {
-		super("Estadual", new Date(), 0);
+	public RelatorioEstadual(int id, String nomeEstado, int numeroMunicipios, int numeroHospitais) {
+		super("Estadual", new Date(), id);
 
 		this.nomeEstado = nomeEstado;
 		this.numeroMunicipios = numeroMunicipios;
@@ -29,19 +29,19 @@ public class RelatorioEstadual extends Relatorio {
 		return nomeEstado;
 	}
 	
-	public void setNumeroMunicipios (String numeroMunicipios) {
+	public void setNumeroMunicipios (int numeroMunicipios) {
 		this.numeroMunicipios = numeroMunicipios;
 	}
 	
-	public String getNumeroMunicipios() {
+	public int getNumeroMunicipios() {
 		return numeroMunicipios;
 	}
 	
-	public void setNumeroHospitais (String numeroHospitais) {
+	public void setNumeroHospitais (int numeroHospitais) {
 		this.numeroHospitais = numeroHospitais;
 	}
 	
-	public String getNumeroHospitais() {
+	public int getNumeroHospitais() {
 		return numeroHospitais;
 	}
 }

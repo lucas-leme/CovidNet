@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.javaguides.usermanagement.model.RelatorioEstadual;
+import net.javaguides.usermanagement.model.RelatorioHospitalar;
 
 /**
  * AbstractDAO.java This DAO class provides CRUD database operations for the
@@ -17,19 +17,19 @@ import net.javaguides.usermanagement.model.RelatorioEstadual;
  * @author Ramesh Fadatare
  *
  */
-public class RelatorioEstadualDAO {
+public class RelatorioHospitalarDAO {
 	private String jdbcURL = "jdbc:mariadb://server3643.ml:3306/db1?useSSL=false";
 	//private String jdbcURL = "jdbc:mysql://localhost:3306/test?useSSL=false";
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_RELATORIOS_SQL = "INSERT INTO estaduais" + " (nome_estado, num_municipios, num_hospitais) VALUES " + " (?, ?, ?);";
-	private static final String SELECT_RELATORIO_BY_ID = "select relatorio_id, nome_estado, num_municipios, num_hospitais from estaduais where relatorio_id =?";
-	private static final String SELECT_ALL_RELATORIOS = "select * from estaduais";
-	private static final String DELETE_RELATORIO_SQL = "delete from estaduais where relatorio_id = ?;";
-	private static final String UPDATE_RELATORIO_SQL = "update estaduais set nome_estado = ?, num_municipios = ?, num_hospitais = ? where relatorio_id = ?;";
+	private static final String INSERT_RELATORIOS_SQL = "INSERT INTO hospitalares" + " (nome_hospitais) VALUES " + " (?);";
+	private static final String SELECT_RELATORIO_BY_ID = "select relatorio_id, nome_hospitais from hospitalares where relatorio_id =?";
+	private static final String SELECT_ALL_RELATORIOS = "select * from hospitalares";
+	private static final String DELETE_RELATORIO_SQL = "delete from hospitalares where relatorio_id = ?;";
+	private static final String UPDATE_RELATORIO_SQL = "update municipais set nome_hospitais = ? where relatorio_id = ?;";
 
-	public RelatorioEstadualDAO() {
+	public RelatorioHospitalarDAO() {
 	}
 
 	protected Connection getConnection() {
@@ -48,14 +48,12 @@ public class RelatorioEstadualDAO {
 		return connection;
 	}
 
-	public void insertRelatorio(RelatorioEstadual relatorio) throws SQLException {
+	public void insertRelatorio(RelatorioHospitalar relatorio) throws SQLException {
 		System.out.println(INSERT_RELATORIOS_SQL);
 		// try-with-resource statement will auto close the connection.
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_RELATORIOS_SQL)) {
-			preparedStatement.setString(1, relatorio.getNomeEstado());
-			preparedStatement.setFloat(2, relatorio.getNumeroMunicipios());
-			preparedStatement.setFloat(3, relatorio.getNumeroHospitais());
+			preparedStatement.setString(1, relatorio.getNomeHospital());
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
@@ -63,8 +61,8 @@ public class RelatorioEstadualDAO {
 		}
 	}
 
-	public RelatorioEstadual selectRelatorio(int id) {
-		RelatorioEstadual relatorio = null;
+	public RelatorioHospitalar selectRelatorio(int id) {
+		RelatorioHospitalar relatorio = null;
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
 				// Step 2:Create a statement using connection object
@@ -79,10 +77,8 @@ public class RelatorioEstadualDAO {
 
 			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
-				String nomeEstado = rs.getString("nome_estado");
-				int numeroMunicipios = rs.getInt("num_municipios");
-				int numeroHospitais = rs.getInt("num_hospitais");
-				relatorio = new RelatorioEstadual(id, nomeEstado, numeroMunicipios, numeroHospitais);
+				String nomeHospital= rs.getString("nome_hospital");
+				relatorio = new RelatorioHospitalar(id, nomeHospital);
 				System.out.println("AQUI");
 			}
 		} catch (SQLException e) {
@@ -91,10 +87,10 @@ public class RelatorioEstadualDAO {
 		return relatorio;
 	}
 
-	public List<RelatorioEstadual> selectAllRelatorios() {
+	public List<RelatorioHospitalar> selectAllRelatorios() {
 
 		// using try-with-resources to avoid closing resources (boiler plate code)
-		List<RelatorioEstadual> relatorios = new ArrayList<>();
+		List<RelatorioHospitalar> relatorios = new ArrayList<>();
 		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
 
@@ -108,10 +104,8 @@ public class RelatorioEstadualDAO {
 			while (rs.next()) {
 				
 				int id = rs.getInt("relatorio_id");
-				String nomeEstado = rs.getString("nome_estado");
-				int numeroMunicipios = rs.getInt("num_municipios");
-				int numeroHospitais = rs.getInt("num_hospitais");
-				relatorios.add(new RelatorioEstadual(id, nomeEstado, numeroMunicipios, numeroHospitais));
+				String nomeHospital = rs.getString("nome_hospital");
+				relatorios.add(new RelatorioHospitalar(id, nomeHospital));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -129,15 +123,13 @@ public class RelatorioEstadualDAO {
 		return rowDeleted;
 	}
 
-	public boolean updateRelatorio(RelatorioEstadual relatorio) throws SQLException {
+	public boolean updateRelatorio(RelatorioHospitalar relatorio) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(UPDATE_RELATORIO_SQL);) {
 
-			statement.setString(1, relatorio.getNomeEstado());
-			statement.setInt(2, relatorio.getNumeroMunicipios());
-			statement.setInt(3, relatorio.getNumeroHospitais());
-			statement.setInt(4, relatorio.getId());
+			statement.setString(1, relatorio.getNomeHospital());
+			statement.setInt(2, relatorio.getId());
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
