@@ -97,7 +97,7 @@ public class FiltroGeral extends HttpServlet implements Filter
         	System.out.println("filtrando o /pacientes");
             req.getRequestDispatcher("/leito").forward(req, res);
         }
-        else if (requestURI.startsWith("/pacientes")) {
+        else if (requestURI.startsWith("/relatorios")) {
             //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
             //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
         	System.out.println("filtrando o /relatorios");
