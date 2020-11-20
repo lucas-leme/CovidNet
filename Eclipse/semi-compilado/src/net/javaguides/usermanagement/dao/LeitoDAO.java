@@ -23,10 +23,14 @@ public class LeitoDAO {
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos" + "  (medico, enfermeiro, paciente) VALUES "
-			+ " (?, ?, ?);";
+	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos2" + 
+			"  (ocupa, medico_id, enfermeiro_id, paciente_id, hospital_id) VALUES " + " (?, ?, ?, ?);";
 
-	private static final String SELECT_LEITO_BY_ID = "select id,medico,enfermeiro,paciente from leitos where id =?";
+	private static final String SELECT_LEITO_BY_ID = "select l.id, m"
+			+ "from funcionarios f, "
+			+ "() as m, "
+			+ "enfermeiros e, pacientes p, hospitais h, leitos2 l"
+			//"select id,medico,enfermeiro,paciente from leitos2 where id =?";
 	private static final String SELECT_ALL_LEITOS = "select * from leitos";
 	private static final String DELETE_LEITOS_SQL = "delete from leitos where id = ?;";
 	private static final String UPDATE_LEITOS_SQL = "update leitos set medico = ?,enfermeiro= ?, paciente =? where id = ?;";
