@@ -1,17 +1,41 @@
-select l.id, m.nome, e.nome, p.nome
-from funcionarios f, 
-	(	
-		select f.nome 
+select * from medicos;
+
+select * from enfermeiros;
+
+select * from funcionarios;
+
+select f.nome 
+from medicos m
+inner join funcionarios f
+on f.id = m.funcionario_id
+
+select * 
+from enfermeiros e
+inner join funcionarios f
+on f.id = e.funcionario_id
+
+select * from pacientes;
+
+select * from leitos2;
+
+select l.id id, m.nome medico, e.nome enfermeiro, p.nome paciente
+from
+	leitos2 l
+	inner join (	
+		select f.nome, m.id 
 		from medicos m
 		inner join funcionarios f
 		on f.id = m.funcionario_id
-	) as m, 
-	(
-		select f.nome 
+	) as m
+	on m.id = l.medico_id 
+	inner join (
+		select f.nome, e.id
 		from enfermeiros e
 		inner join funcionarios f
 		on f.id = e.funcionario_id
-	) as e, 
-	pacientes p, hospitais h, leitos2 l
-	
-select * from medicos;
+	) as e
+	on e.id = l.enfermeiro_id
+	inner join pacientes p
+	on p.id = l.paciente_id 
+	where l.id = ?
+
