@@ -9,9 +9,9 @@
 	<center>
 		<h1>Pacientes Management</h1>
         <h2>
-        	<a href="pacientes/new">Adicionar Paciente</a>
+        	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar Paciente</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="pacientes/list">Lista de Pacientes</a>
+        	<a href="${pageContext.request.contextPath}/pacientes/list">Lista de Pacientes</a>
         	
         </h2>
 	</center>
@@ -22,7 +22,7 @@
             	<th>ID</th>
                 <th>CPF</th>
                 <th>Nome</th>
-                <th>Prontuario</th>
+                <th>Data de Nascimento</th>
                 <th>Data de Entrada</th>
                 <th>Ação</th>
             </tr>
@@ -31,12 +31,12 @@
                 	<td><c:out value="${paciente.id}" /></td>
                     <td><c:out value="${paciente.cpf}" /></td>
                     <td><c:out value="${paciente.nome}" /></td>
-                    <td><c:out value="${paciente.prontuario}" /></td>
+                    <td><c:out value="${paciente.dataDeNascimento}" /></td>
                     <td><c:out value="${paciente.dataDeEntrada}" /></td>
                     <td>
-                    	<a href="pacientes/edit?id=<c:out value='${paciente.id}' />">Editar</a>
-                    	&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="pacientes/delete?id=<c:out value='${paciente.id}' />">Apagar</a>                    	
+                    	<a href="${pageContext.request.contextPath}/pacientes/edit?id=<c:out value='${paciente.id}' />">Editar</a>
+                
+                    	<a href="${pageContext.request.contextPath}/pacientes/delete?id=<c:out value='${paciente.id}' />">Apagar</a>                    	
                     </td>
                 </tr>
             </c:forEach>

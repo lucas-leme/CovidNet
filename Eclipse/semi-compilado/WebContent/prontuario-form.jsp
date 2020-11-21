@@ -3,24 +3,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Paciente Management Application</title>
+	<title>Lista de Pacientes</title>
 </head>
 <body>
 	<center>
-		<h1>Paciente Management</h1>
+		<h1>Gerenciamento de Pacientes</h1>
         <h2>
-        	<a href="new">Adiciona Paciente</a>
+        	<a href="${pageContext.request.contextPath}/new">Adicionar paciente</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="list">Lista Pacientes</a>
+        	<a href="${pageContext.request.contextPath}/pacientes">Listar pacientes</a>
         	
         </h2>
 	</center>
     <div align="center">
 		<c:if test="${paciente != null}">
-			<form action="update" method="post">
+			<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
         </c:if>
         <c:if test="${paciente == null}">
-			<form action="insert" method="post">
+			<form action="${pageContext.request.contextPath}/pacientes/insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
@@ -52,16 +52,7 @@
                 		/>
                 </td>
             </tr>
-            <tr>
-                <th>Prontuário: </th>
-                <td>
-                	<input type="text" name="prontuario" size="45"
-                			value="<c:out value='${paciente.prontuario}' />"
-                	/>
-                </td>
-            </tr>
-            
-            
+
             <tr>
             <c:if test="${paciente != null}">
         		<th>Data de Entrada: </th>
