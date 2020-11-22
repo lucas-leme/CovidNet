@@ -3,44 +3,44 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Lista de Pacientes</title>
+	<title>Lista de Prontuários</title>
 </head>
 <body>
 	<center>
-		<h1>Gerenciamento de Pacientes</h1>
+		<h1>Gerenciamento de Prontuários</h1>
         <h2>
-        	<a href="${pageContext.request.contextPath}/new">Adicionar paciente</a>
+        	<a href="${pageContext.request.contextPath}/new">Adicionar prontuário</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/pacientes">Listar pacientes</a>
+        	<a href="${pageContext.request.contextPath}/prontuarios">Listar prontuário</a>
         	
         </h2>
 	</center>
     <div align="center">
-		<c:if test="${paciente != null}">
-			<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
+		<c:if test="${prontuario != null}">
+			<form action="${pageContext.request.contextPath}/${pageContext.request.contextPath}/prontuarios/update" method="post">
         </c:if>
-        <c:if test="${paciente == null}">
-			<form action="${pageContext.request.contextPath}/pacientes/insert" method="post">
+        <c:if test="${prontuario == null}">
+			<form action="${pageContext.request.contextPath}/${pageContext.request.contextPath}/prontuarios/insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
             	<h2>
-            		<c:if test="${paciente != null}">
-            			Editar Paciente
+            		<c:if test="${prontuario != null}">
+            			Editar prontuário
             		</c:if>
-            		<c:if test="${paciente == null}">
-            			Adicionar Paciente
+            		<c:if test="${prontuario == null}">
+            			Adicionar prontuário
             		</c:if>
             	</h2>
             </caption>
-        		<c:if test="${paciente != null}">
-        			<input type="hidden" name="id" value="<c:out value='${paciente.id}' />" />
+        		<c:if test="${prontuario != null}">
+        			<input type="hidden" name="id" value="<c:out value='${prontuario.id}' />" />
         		</c:if> 
         		<tr>
                 <th>CPF: </th>
                 <td>
                 	<input type="text" name="cpf" size="45"
-                			value="<c:out value='${paciente.cpf}' />"
+                			value="<c:out value='${prontuario.cpf}' />"
                 		/>
                 </td>
             </tr>           
@@ -48,20 +48,59 @@
                 <th>Nome: </th>
                 <td>
                 	<input type="text" name="nome" size="45"
-                			value="<c:out value='${paciente.nome}' />"
+                			value="<c:out value='${prontuario.nome}' />"
                 		/>
                 </td>
             </tr>
-
             <tr>
-            <c:if test="${paciente != null}">
+                <th>Data de Nascimento: </th>
+                <td>
+                	<input type="text" name="nome" size="45"
+                			value="<c:out value='${prontuario.dataDeNascimento}' />"
+                		/>
+                </td>
+            </tr>
+            <tr>
+            <c:if test="${prontuario != null}">
         		<th>Data de Entrada: </th>
                 <td>
                 	<input type="text" name="dataDeEntrada" size="15"
-                			value="<c:out value='${paciente.dataDeEntrada}' />"
+                			value="<c:out value='${prontuario.dataDeEntrada}' />"
                 	/>
                 </td>
         	</c:if>
+            </tr>
+            <tr>
+                <th>Exame: </th>
+                <td>
+                	<input type="text" name="nome" size="45"
+                			value="<c:out value='${prontuario.nomeDoExame}' />"
+                		/>
+                </td>
+            </tr>
+            <tr>
+                <th>Descrição: </th>
+                <td>
+                	<input type="text" name="nome" size="45"
+                			value="<c:out value='${prontuario.descricaoExame}' />"
+                		/>
+                </td>
+            </tr>
+            <tr>
+                <th>Data: </th>
+                <td>
+                	<input type="text" name="nome" size="45"
+                			value="<c:out value='${prontuario.dataExame}' />"
+                		/>
+                </td>
+            </tr>
+                     <tr>
+            <th>Resultado: </th>
+                <td>
+                	<input type="text" name="nome" size="45"
+                			value="<c:out value='${prontuario.resultadoExame}' />"
+                		/>
+                </td>
             </tr>
             <tr>
             	<td colspan="2" align="center">

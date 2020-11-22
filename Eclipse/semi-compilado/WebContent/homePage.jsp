@@ -88,7 +88,7 @@
     </td>
 
     <td class="frame">
-      <a href="${pageContext.request.contextPath}/pacientes">
+      <a href="${pageContext.request.contextPath}/prontuarios">
       
 	      <img class="img_cols" src="${pageContext.request.contextPath}/prontuario.png" alt="" />
 	

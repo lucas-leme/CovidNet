@@ -3,40 +3,46 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Pacientes Management Application</title>
+	<title>Prontuarios Management Application</title>
 </head>
 <body>
 	<center>
-		<h1>Pacientes Management</h1>
+		<h1>Prontuarios Management</h1>
         <h2>
-        	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar Paciente</a>
+        	<a href="${pageContext.request.contextPath}/prontuarios/new">Adicionar prontuario</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/pacientes/list">Lista de Pacientes</a>
+        	<a href="${pageContext.request.contextPath}/prontuarios/list">Lista de prontuarios</a>
         	
         </h2>
 	</center>
     <div align="center">
         <table border="1" cellpadding="5">
-            <caption><h2>Lista de Pacientes</h2></caption>
+            <caption><h2>Lista de prontuarios</h2></caption>
             <tr>
             	<th>ID</th>
                 <th>CPF</th>
                 <th>Nome</th>
                 <th>Data de Nascimento</th>
                 <th>Data de Entrada</th>
+                <th>Exame</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Resultado</th>
                 <th>Ação</th>
             </tr>
-            <c:forEach var="paciente" items="${listPacientes}">
+            <c:forEach var="prontuario" items="${listProntuarios}">
                 <tr>
-                	<td><c:out value="${paciente.id}" /></td>
-                    <td><c:out value="${paciente.cpf}" /></td>
-                    <td><c:out value="${paciente.nome}" /></td>
-                    <td><c:out value="${paciente.dataDeNascimento}" /></td>
-                    <td><c:out value="${paciente.dataDeEntrada}" /></td>
+                	<td><c:out value="${prontuario.id}" /></td>
+                    <td><c:out value="${prontuario.cpf}" /></td>
+                    <td><c:out value="${prontuario.nome}" /></td>
+                    <td><c:out value="${prontuario.dataDeNascimento}" /></td>
+                    <td><c:out value="${prontuario.dataDeEntrada}" /></td>
+                    <td><c:out value="${prontuario.nomeDoExame}" /></td>
+                    <td><c:out value="${prontuario.descricaoExame}" /></td>
+                    <td><c:out value="${prontuario.dataExame}" /></td>
+                    <td><c:out value="${prontuario.resultadoExame}" /></td>
                     <td>
-                    	<a href="${pageContext.request.contextPath}/pacientes/edit?id=<c:out value='${paciente.id}' />">Editar</a>
-                
-                    	<a href="${pageContext.request.contextPath}/pacientes/delete?id=<c:out value='${paciente.id}' />">Apagar</a>                    	
+                    	<a href="${pageContext.request.contextPath}/prontuarios/edit?id=<c:out value='${prontuario.id}' />">Editar</a>                   	
                     </td>
                 </tr>
             </c:forEach>

@@ -19,9 +19,20 @@ public class ProntuarioDAO {
 
 	private static final String INSERT_PRONTUARIO_SQL = "INSERT INTO pacientes" + "  (cpf, nome, data_de_nascimento) VALUES "
 			+ " (?, ?, ?, ?);";
-	private static final String SELECT_PRONTUARIO_BY_ID = "select id,cpf,nome,data_de_nascimento,data_de_entrada from pacientes where id =?";
-	private static final String SELECT_ALL_PRONTUARIOS = "select * from pacientes";
-	private static final String DELETE_PRONTUARIO_SQL = "delete from pacientes where id = ?;";
+	
+	private static final String SELECT_ALL_PRONTUARIOS = 
+			"select pac.id, pac.cpf, pac.nome, pac.data_de_nascimento, pac.data_de_entrada, pro.nome_exame, pro.descricao_exame, pro.data, pro.resultado"
+			+ "		from pacientes pac"
+			+ "			inner join "
+			+ "				prontuarios pro on pro.paciente_id = pac.id";
+	
+	private static final String SELECT_PRONTUARIO_BY_ID =
+			"select pac.id, pac.cpf, pac.nome, pac.data_de_nascimento, pac.data_de_entrada, pro.nome_exame, pro.descricao_exame, pro.data, pro.resultado"
+			+ "		from pacientes pac"
+			+ "			inner join "
+			+ "				prontuarios pro on pro.paciente_id = pac.id"
+			+ "				where pac.id = ?";
+	
 	private static final String UPDATE_PRONTUARIO_SQL = "update pacientes set cpf = ?,nome = ?, data_de_nascimento =?,data_de_entrada=? where id = ?;";
 
 	public ProntuarioDAO() {
@@ -79,12 +90,12 @@ public class ProntuarioDAO {
 				String nome = rs.getString("nome");
 				String data_de_nascimento = rs.getString("data_de_nascimento");
 				String data_de_entrada = rs.getString("data_de_entrada");
-				String nome_do_exame = rs.getString("nome_do_exame");
+				String nome_exame = rs.getString("nome_exame");
 				String descricao_exame = rs.getString("descricao_exame");
-				String data_exame = rs.getString("data_exame");
-				String resultado_exame = rs.getString("resultado_exame");
+				String data = rs.getString("data");
+				String resultado = rs.getString("resultado");
 				
-				prontuario = new Prontuario(id, cpf, nome, data_de_nascimento, data_de_entrada, nome_do_exame, descricao_exame, data_exame, resultado_exame);
+				prontuario = new Prontuario(id, cpf, nome, data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data, resultado);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -112,28 +123,18 @@ public class ProntuarioDAO {
 				String nome = rs.getString("nome");
 				String data_de_nascimento = rs.getString("data_de_nascimento");
 				String data_de_entrada = rs.getString("data_de_entrada");
-				String nome_do_exame = rs.getString("nome_do_exame");
+				String nome_exame = rs.getString("nome_exame");
 				String descricao_exame = rs.getString("descricao_exame");
-				String data_exame = rs.getString("data_exame");
-				String resultado_exame = rs.getString("resultado_exame");
-				prontuarios.add(new Prontuario(id, cpf, nome, data_de_nascimento, data_de_entrada, nome_do_exame, descricao_exame, data_exame, resultado_exame));
+				String data = rs.getString("data");
+				String resultado = rs.getString("resultado");
+				prontuarios.add(new Prontuario(id, cpf, nome, data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data, resultado));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		return prontuarios;
 	}
-	
-	public boolean deleteProntuario(int id) throws SQLException {
-		boolean rowDeleted;
-		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(DELETE_PRONTUARIO_SQL);) {
-			statement.setInt(1, id);
-			rowDeleted = statement.executeUpdate() > 0;
-		}
-		return rowDeleted;
-	}
-	
+
 	public boolean updateProntuario(Prontuario prontuario) throws SQLException {
 		boolean rowUpdated;
 		try (Connection connection = getConnection();

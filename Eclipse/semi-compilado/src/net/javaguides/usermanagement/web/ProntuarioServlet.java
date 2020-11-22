@@ -54,9 +54,6 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/insert":
 					insertProntuario(request, response);
 					break;
-				case "/prontuarios/delete":
-					deleteProntuario(request, response);
-					break;
 				case "/prontuarios/edit":
 					showEditForm(request, response);
 					break;
@@ -128,24 +125,12 @@ public class ProntuarioServlet extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String data_de_nascimento = request.getParameter("data_de_nascimento");  
 		String data_de_entrada = request.getParameter("data_de_entrada"); 
-		String nome_do_exame = request.getParameter("data_de_entrada"); 
-		String descricao_exame = request.getParameter("data_de_entrada"); 
-		String data_exame = request.getParameter("data_de_entrada"); 
-		String resultado_exame = request.getParameter("data_de_entrada"); 
+		String nome_do_exame = request.getParameter("nome_do_exame"); 
+		String descricao_exame = request.getParameter("descricao_exame"); 
+		String data_exame = request.getParameter("data_exame"); 
+		String resultado_exame = request.getParameter("resultado_exame"); 
 		Prontuario book = new Prontuario(id, cpf, nome ,data_de_nascimento, data_de_entrada, nome_do_exame, descricao_exame, data_exame, resultado_exame);
 		prontuarioDAO.updateProntuario(book);
-		response.sendRedirect(root + "/prontuarios");
-	}
-
-	private void deleteProntuario(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		System.out.println("deleting prontuario");
-		
-		int id = Integer.parseInt(request.getParameter("id"));
-		
-		System.out.println("id\n" + id);
-		
-		prontuarioDAO.deleteProntuario(id);
 		response.sendRedirect(root + "/prontuarios");
 	}
 }
