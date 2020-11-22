@@ -11,7 +11,7 @@
         <h2>
         	<a href="${pageContext.request.contextPath}/prontuarios/new">Adicionar prontuario</a>
         	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/prontuarios/list">Lista de prontuarios</a>
+        	<a href="${pageContext.request.contextPath}">Página inicial</a>
         	
         </h2>
 	</center>

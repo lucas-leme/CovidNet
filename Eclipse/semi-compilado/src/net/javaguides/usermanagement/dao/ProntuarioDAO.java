@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.javaguides.usermanagement.model.Prontuario;
-//import net.javaguides.usermanagement.model.User;
 
 public class ProntuarioDAO {
 
@@ -17,8 +16,11 @@ public class ProntuarioDAO {
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_PRONTUARIO_SQL = "INSERT INTO pacientes" + "  (cpf, nome, data_de_nascimento) VALUES "
-			+ " (?, ?, ?, ?);";
+	private static final String INSERT_PACIENTE_SQL = "INSERT INTO pacientes (cpf, nome, data_de_nascimento) VALUES  (?, ?, ?)";
+	
+	private static final String SELECT_PACIENTE_BY_CPF = "SELECT id from pacientes where cpf = ?";
+	
+	private static final String INSERT_PRONTUARIO_SQL =	 "INSERT INTO prontuarios (nome_exame, descricao_exame, data, resultado, paciente_id) VALUES  (?, ?, ?, ?, ?);";
 	
 	private static final String SELECT_ALL_PRONTUARIOS = 
 			"select pac.id, pac.cpf, pac.nome, pac.data_de_nascimento, pac.data_de_entrada, pro.nome_exame, pro.descricao_exame, pro.data, pro.resultado"
@@ -33,7 +35,9 @@ public class ProntuarioDAO {
 			+ "				prontuarios pro on pro.paciente_id = pac.id"
 			+ "				where pac.id = ?";
 	
-	private static final String UPDATE_PRONTUARIO_SQL = "update pacientes set cpf = ?,nome = ?, data_de_nascimento =?,data_de_entrada=? where id = ?;";
+	private static final String UPDATE_PACIENTE_SQL = "update pacientes set cpf = ?,nome = ?, data_de_nascimento =?,data_de_entrada=? where id = ?";		
+	
+	private static final String UPDATE_PRONTUARIO_SQL = "update prontuarios set nome_exame = ?, descricao_exame = ?, data = ?, resultado = ? where paciente_id = ?";									
 
 	public ProntuarioDAO() {
 	}
@@ -55,22 +59,48 @@ public class ProntuarioDAO {
 	}
 	
 	public void insertProntuario(Prontuario prontuario) throws SQLException {
-		System.out.println(INSERT_PRONTUARIO_SQL);
-		// try-with-resource statement will auto close the connection.
+		
+		int paciente_id = 0;
+
+		System.out.println(INSERT_PACIENTE_SQL);
 		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRONTUARIO_SQL)) {
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_SQL)) {
 			preparedStatement.setString(1, prontuario.getCpf());
 			preparedStatement.setString(2, prontuario.getNome());
 			preparedStatement.setString(3, prontuario.getDataDeNascimento());
-			preparedStatement.setString(4, prontuario.getNomeDoExame());
-			preparedStatement.setString(5, prontuario.getDescricaoExame());
-			preparedStatement.setString(6, prontuario.getDataExame());
-			preparedStatement.setString(7, prontuario.getResultadoExame());
-			System.out.println(preparedStatement);
+			
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+		
+		System.out.println(SELECT_PACIENTE_BY_CPF);
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PACIENTE_BY_CPF);) {
+			preparedStatement.setString(1, prontuario.getCpf());
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				paciente_id = rs.getInt("id");
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		
+		System.out.println(INSERT_PRONTUARIO_SQL);
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRONTUARIO_SQL)) {
+			
+			preparedStatement.setString(1, prontuario.getNomeDoExame());
+			preparedStatement.setString(2, prontuario.getDescricaoExame());
+			preparedStatement.setString(3, prontuario.getDataExame());
+			preparedStatement.setString(4, prontuario.getResultadoExame());
+			preparedStatement.setInt(5, paciente_id);
+			
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			printSQLException(e);
+		}	
 	}
 	
 	public Prontuario selectProntuario(int id) {
@@ -137,18 +167,29 @@ public class ProntuarioDAO {
 
 	public boolean updateProntuario(Prontuario prontuario) throws SQLException {
 		boolean rowUpdated;
+		
+		System.out.println(UPDATE_PACIENTE_SQL);
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_PRONTUARIO_SQL);) {
+				PreparedStatement statement = connection.prepareStatement(UPDATE_PACIENTE_SQL);) {
 			
 			statement.setString(1, prontuario.getCpf());
 			statement.setString(2, prontuario.getNome());
 			statement.setString(3, prontuario.getDataDeNascimento());
 			statement.setString(4, prontuario.getDataDeEntrada());
-			statement.setString(5, prontuario.getNomeDoExame());
-			statement.setString(6, prontuario.getDescricaoExame());
-			statement.setString(7, prontuario.getDataExame());
-			statement.setString(8, prontuario.getResultadoExame());
-			statement.setInt(9, prontuario.getId());
+			statement.setInt(5, prontuario.getId());
+			
+			statement.executeUpdate();
+		}
+		
+		System.out.println(UPDATE_PRONTUARIO_SQL);
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_PRONTUARIO_SQL);) {
+			
+			statement.setString(1, prontuario.getNomeDoExame());
+			statement.setString(2, prontuario.getDescricaoExame());
+			statement.setString(3, prontuario.getDataExame());
+			statement.setString(4, prontuario.getResultadoExame());
+			statement.setInt(5, prontuario.getId());
 	
 			rowUpdated = statement.executeUpdate() > 0;
 		}

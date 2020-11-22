@@ -9,18 +9,16 @@
 	<center>
 		<h1>Gerenciamento de Prontuários</h1>
         <h2>
-        	<a href="${pageContext.request.contextPath}/new">Adicionar prontuário</a>
-        	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/prontuarios">Listar prontuário</a>
+        	<a href="${pageContext.request.contextPath}/prontuarios">VOLTAR</a>
         	
         </h2>
 	</center>
     <div align="center">
 		<c:if test="${prontuario != null}">
-			<form action="${pageContext.request.contextPath}/${pageContext.request.contextPath}/prontuarios/update" method="post">
+			<form action="${pageContext.request.contextPath}/prontuarios/update" method="post">
         </c:if>
         <c:if test="${prontuario == null}">
-			<form action="${pageContext.request.contextPath}/${pageContext.request.contextPath}/prontuarios/insert" method="post">
+			<form action="${pageContext.request.contextPath}/prontuarios/insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
@@ -55,7 +53,7 @@
             <tr>
                 <th>Data de Nascimento: </th>
                 <td>
-                	<input type="text" name="nome" size="45"
+                	<input type="text" name="data_de_nascimento" size="45"
                 			value="<c:out value='${prontuario.dataDeNascimento}' />"
                 		/>
                 </td>
@@ -64,7 +62,7 @@
             <c:if test="${prontuario != null}">
         		<th>Data de Entrada: </th>
                 <td>
-                	<input type="text" name="dataDeEntrada" size="15"
+                	<input type="text" name="data_de_entrada" size="15"
                 			value="<c:out value='${prontuario.dataDeEntrada}' />"
                 	/>
                 </td>
@@ -73,7 +71,7 @@
             <tr>
                 <th>Exame: </th>
                 <td>
-                	<input type="text" name="nome" size="45"
+                	<input type="text" name="nome_exame" size="45"
                 			value="<c:out value='${prontuario.nomeDoExame}' />"
                 		/>
                 </td>
@@ -81,7 +79,7 @@
             <tr>
                 <th>Descrição: </th>
                 <td>
-                	<input type="text" name="nome" size="45"
+                	<input type="text" name="descricao_exame" size="45"
                 			value="<c:out value='${prontuario.descricaoExame}' />"
                 		/>
                 </td>
@@ -89,7 +87,7 @@
             <tr>
                 <th>Data: </th>
                 <td>
-                	<input type="text" name="nome" size="45"
+                	<input type="text" name="data_exame" size="45"
                 			value="<c:out value='${prontuario.dataExame}' />"
                 		/>
                 </td>
@@ -97,7 +95,7 @@
                      <tr>
             <th>Resultado: </th>
                 <td>
-                	<input type="text" name="nome" size="45"
+                	<input type="text" name="resultado_exame" size="45"
                 			value="<c:out value='${prontuario.resultadoExame}' />"
                 		/>
                 </td>

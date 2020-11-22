@@ -105,13 +105,14 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		String cpf = request.getParameter("cpf");
 		String nome = request.getParameter("nome");
-		String data_de_nascimento = request.getParameter("data_de_nascimento");
+		String data_de_nascimento = request.getParameter("data_de_nascimento");  
 		String data_de_entrada = request.getParameter("data_de_entrada");
-		String nome_do_exame = request.getParameter("nome_do_exame"); 
+		String nome_exame = request.getParameter("nome_exame"); 
 		String descricao_exame = request.getParameter("descricao_exame"); 
 		String data_exame = request.getParameter("data_exame"); 
 		String resultado_exame = request.getParameter("resultado_exame");
-		Prontuario newProntuario = new Prontuario(cpf, nome , data_de_nascimento, data_de_entrada, nome_do_exame, descricao_exame, data_exame, resultado_exame);
+		
+		Prontuario newProntuario = new Prontuario(cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame);
 		prontuarioDAO.insertProntuario(newProntuario);
 		response.sendRedirect(root + "/prontuarios");
 	}
@@ -125,11 +126,11 @@ public class ProntuarioServlet extends HttpServlet {
 		String nome = request.getParameter("nome");
 		String data_de_nascimento = request.getParameter("data_de_nascimento");  
 		String data_de_entrada = request.getParameter("data_de_entrada"); 
-		String nome_do_exame = request.getParameter("nome_do_exame"); 
+		String nome_exame = request.getParameter("nome_exame"); 
 		String descricao_exame = request.getParameter("descricao_exame"); 
 		String data_exame = request.getParameter("data_exame"); 
 		String resultado_exame = request.getParameter("resultado_exame"); 
-		Prontuario book = new Prontuario(id, cpf, nome ,data_de_nascimento, data_de_entrada, nome_do_exame, descricao_exame, data_exame, resultado_exame);
+		Prontuario book = new Prontuario(id, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame);
 		prontuarioDAO.updateProntuario(book);
 		response.sendRedirect(root + "/prontuarios");
 	}
