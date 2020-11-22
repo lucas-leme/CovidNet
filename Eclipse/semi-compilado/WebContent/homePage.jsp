@@ -39,15 +39,8 @@
 
 <div class="center">
 	<p>Sera que a gora vai?</p>
-  <!-- img src="${pageContext.request.contextPath}/Images/cVimage.png" alt=""/-->
-  <img src="${pageContext.request.contextPath}/bla.png" alt="" />
-  <img src="<c:url value='/images/bla.png'/>" alt="" />
-  <img src="<c:url value='images/bla.png'/>" alt="" />
-  <img src="<c:url value='bla.png'/>" alt="" />
-  <img src="<c:url value='/bla.png'/>" alt="" />
-  <img src="${pageContext.request.contextPath}/images/bla.png" alt="" />
-  <img src="<c:url value='/bla.png'/>" alt="" />
-  <img src="<c:url value='/static/bla.png'/>" alt="" />
+  
+  <img src="https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2020/06/14/863689/20200614172344185476a.jpg" />
 </div>
 
 <div class="center" style="width: 50%; margin: 0 auto; max-width: 500px">
