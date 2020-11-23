@@ -11,12 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*import net.javaguides.usermanagement.dao.PacienteDAO;
+/*import net.javaguides.usermanagement.dao.ProntuarioDAO;
 import net.javaguides.usermanagement.model.Leito;
-import net.javaguides.usermanagement.model.Paciente;*/
+import net.javaguides.usermanagement.model.Prontuario;*/
 
 /**
- * pacienteServlet.java
+ * rontuarioServlet.java
  * This servlet acts as a page controller for the application, handling all
  * requests from the user.
  * @email Hugo Martins
@@ -26,11 +26,11 @@ import net.javaguides.usermanagement.model.Paciente;*/
 public class MainPageServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	//private PacienteDAO pacienteDAO;
+	//private ProntuarioDAO prontuarioDAO;
 	
 	public void init() 
 	{
-		//pacienteDAO = new PacienteDAO();
+		//prontuarioDAO = new ProntuarioDAO();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

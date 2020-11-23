@@ -136,7 +136,7 @@ INSERT INTO `pacientes` (`id`, `nome`, `cpf`, `data_de_nascimento`, `funcionario
 
 INSERT INTO `prontuarios` (`id`, `nome_exame`, `descricao_exame`, `resultado`, `paciente_id`) VALUES
 (1, 'Exame de sangue', 'tira o sangue', 'ta bom', 1),
-(2, 'Exame de fezes', 'cagar no pote', 'ta bom', 1);
+(2, 'Exame de fezes', 'cagar no pote', 'ta bom', 2);
 
 INSERT INTO `leitos2` (`id`, `ocupa`, `medico_id`, `enfermeiro_id`, `paciente_id`, `hospital_id`) VALUES
 (1, 1, 1, 1, 1, 1),

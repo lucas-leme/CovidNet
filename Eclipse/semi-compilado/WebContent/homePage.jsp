@@ -39,15 +39,8 @@
 
 <div class="center">
 	<p>Sera que a gora vai?</p>
-  <!-- img src="${pageContext.request.contextPath}/Images/cVimage.png" alt=""/-->
-  <img src="${pageContext.request.contextPath}/bla.png" alt="" />
-  <img src="<c:url value='/images/bla.png'/>" alt="" />
-  <img src="<c:url value='images/bla.png'/>" alt="" />
-  <img src="<c:url value='bla.png'/>" alt="" />
-  <img src="<c:url value='/bla.png'/>" alt="" />
-  <img src="${pageContext.request.contextPath}/images/bla.png" alt="" />
-  <img src="<c:url value='/bla.png'/>" alt="" />
-  <img src="<c:url value='/static/bla.png'/>" alt="" />
+  
+  <img src="https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2020/06/14/863689/20200614172344185476a.jpg" />
 </div>
 
 <div class="center" style="width: 50%; margin: 0 auto; max-width: 500px">
@@ -63,13 +56,15 @@
 <div class="center table_margin">
   <table class="table_margin">
     <td class="frame">
-      <img class="img_cols" src="${pageContext.request.contextPath}/relatorio.png" alt="" />
-
-      <h3 class="text_cols">Relatórios</h3>
-      <p class="text_cols">
-        Geração de relatórios estatí­sticos geral dos casos de Covid no estado de
-        SP
-      </p>
+    	<a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">
+	      <img class="img_cols" src="${pageContext.request.contextPath}/relatorio.png" alt="" />
+	
+	      <h3 class="text_cols">Relatórios</h3>
+	      <p class="text_cols">
+	        Geração de relatórios estatí­sticos geral dos casos de Covid no estado de
+	        SP
+	      </p>
+	    </a>
     </td>
 
     <td class="frame center">
@@ -86,7 +81,7 @@
     </td>
 
     <td class="frame">
-      <a href="${pageContext.request.contextPath}/pacientes">
+      <a href="${pageContext.request.contextPath}/prontuarios">
       
 	      <img class="img_cols" src="${pageContext.request.contextPath}/prontuario.png" alt="" />
 	

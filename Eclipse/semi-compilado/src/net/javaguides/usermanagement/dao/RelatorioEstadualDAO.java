@@ -24,10 +24,10 @@ public class RelatorioEstadualDAO {
 	private String jdbcPassword = "1HMUgvW";
 
 	private static final String INSERT_RELATORIOS_SQL = "INSERT INTO estaduais" + " (nome_estado, num_municipios, num_hospitais) VALUES " + " (?, ?, ?);";
-	private static final String SELECT_RELATORIO_BY_ID = "select relatorio_id, nome_estado, num_municipios, num_hospitais from estaduais where relatorio_id =?";
+	private static final String SELECT_RELATORIO_BY_ID = "select relatorio_id, nome_estado, num_municipios, num_hospitais from estaduais where id =?";
 	private static final String SELECT_ALL_RELATORIOS = "select * from estaduais";
-	private static final String DELETE_RELATORIO_SQL = "delete from estaduais where relatorio_id = ?;";
-	private static final String UPDATE_RELATORIO_SQL = "update estaduais set nome_estado = ?, num_municipios = ?, num_hospitais = ? where relatorio_id = ?;";
+	private static final String DELETE_RELATORIO_SQL = "delete from estaduais where id = ?;";
+	private static final String UPDATE_RELATORIO_SQL = "update estaduais set nome_estado = ?, num_municipios = ?, num_hospitais = ? where id = ?;";
 
 	public RelatorioEstadualDAO() {
 	}
@@ -59,6 +59,7 @@ public class RelatorioEstadualDAO {
 			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
+			System.out.println("Deu problema na insercao do relatorio");
 			printSQLException(e);
 		}
 	}
@@ -107,7 +108,7 @@ public class RelatorioEstadualDAO {
 			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
 				
-				int id = rs.getInt("relatorio_id");
+				int id = rs.getInt("id");
 				String nomeEstado = rs.getString("nome_estado");
 				int numeroMunicipios = rs.getInt("num_municipios");
 				int numeroHospitais = rs.getInt("num_hospitais");
@@ -120,12 +121,16 @@ public class RelatorioEstadualDAO {
 	}
 
 	public boolean deleteRelatorio(int id) throws SQLException {
-		boolean rowDeleted;
+		boolean rowDeleted = false;
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(DELETE_RELATORIO_SQL);) {
 			statement.setInt(1, id);
 			rowDeleted = statement.executeUpdate() > 0;
+		}catch (SQLException e) {
+			System.out.println("EXCEPTION DELETE RELATORIO");
+			printSQLException(e);
 		}
+		
 		return rowDeleted;
 	}
 
@@ -138,6 +143,8 @@ public class RelatorioEstadualDAO {
 			statement.setInt(2, relatorio.getNumeroMunicipios());
 			statement.setInt(3, relatorio.getNumeroHospitais());
 			statement.setInt(4, relatorio.getId());
+			
+			System.out.println("ID: " + relatorio.getId());
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
