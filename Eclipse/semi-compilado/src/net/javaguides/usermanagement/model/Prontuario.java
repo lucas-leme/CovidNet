@@ -13,5 +13,4 @@ public class Prontuario {
 	void gerarFormulario() {}
 	void getProntuario() {}
 	void setProntuario() {}
-	
 }
