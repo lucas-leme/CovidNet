@@ -13,10 +13,10 @@
 	       </h2>
 	</center>
     <div align="center">
-		<c:if test="${user != null}">
+		<c:if test="${relatorio != null}">
 			<form action="update" method="post">
         </c:if>
-        <c:if test="${user == null}">
+        <c:if test="${relatorio == null}">
 			<form action="insert" method="post">
         </c:if>
         <table border="1">
@@ -37,7 +37,7 @@
                 <th>Nome Estado: </th>
                 <td>
                 	<input type="text" name="nomeEstado" size="45"
-                			value="<c:out value='${relatorioEstadual.nomeEstado}' />"
+                			value="<c:out value='${relatorio.nomeEstado}' />"
                 		/>
                 </td>
             </tr>
@@ -45,7 +45,7 @@
                 <th>Número de Municipios: </th>
                 <td>
                 	<input type="text" name="numeroMunicipios" size="45"
-                			value="<c:out value='${relatorioEstadual.numeroMunicipios}' />"
+                			value="<c:out value='${relatorio.numeroMunicipios}' />"
                 	/>
                 </td>
             </tr>

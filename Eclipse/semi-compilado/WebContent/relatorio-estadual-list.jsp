@@ -9,11 +9,11 @@
 	<center>
 		<h1>Relatórios</h1>
         <h2>
-        	<a href="new">Adicionar relatório estadual</a>
+        	<a href="${pageContext.request.contextPath}/relatorioEstadual/new">Adicionar relatório estadual</a>
         	&nbsp;&nbsp;&nbsp;
         </h2>
         <h3>
-        	<a href="list">Lista de relatórios</a>
+        	<a href="${pageContext.request.contextPath}/relatorioEstadual/list">Lista de relatórios</a>
         </h3>
 	</center>
     <div align="center">
@@ -33,9 +33,9 @@
                     <td><c:out value="${relatorio.numeroMunicipios}" /></td>
                     <td><c:out value="${relatorio.numeroHospitais}" /></td>
                     <td>
-                    	<a href="edit?id=<c:out value='${relatorio.id}' />">Edit</a>
+                    	<a href="${pageContext.request.contextPath}/relatorioEstadual/edit?id=<c:out value='${relatorio.id}' />">Edit</a>
                     	&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="delete?id=<c:out value='${relatorio.id}' />">Delete</a>                    	
+                    	<a href="${pageContext.request.contextPath}/relatorioEstadual/delete?id=<c:out value='${relatorio.id}' />">Delete</a>                    	
                     </td>
                 </tr>
             </c:forEach>

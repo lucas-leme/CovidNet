@@ -21,12 +21,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/*import net.javaguides.usermanagement.dao.PacienteDAO;
+/*import net.javaguides.usermanagement.dao.ProntuarioDAO;
 import net.javaguides.usermanagement.model.Leito;
-import net.javaguides.usermanagement.model.Paciente;*/
+import net.javaguides.usermanagement.model.Prontuario;*/
 
 /**
- * pacienteServlet.java
+ * prontuarioServlet.java
  * This servlet acts as a page controller for the application, handling all
  * requests from the user.
  * @email Hugo Martins
@@ -36,14 +36,14 @@ import net.javaguides.usermanagement.model.Paciente;*/
 public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
-	//private PacienteDAO pacienteDAO;
+	//private ProntuarioDAO prontuarioDAO;
 	
 	private ServletContext context;
 	
 	
 	/*public void init() 
 	{
-		//pacienteDAO = new PacienteDAO();
+		//prontuarioDAO = new ProntuarioDAO();
 		System.out.println("init(void) (filtrogeral)");
 	}*/
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
@@ -91,13 +91,13 @@ public class FiltroGeral extends HttpServlet implements Filter
         	System.out.println("filtrando o /leitos");
             req.getRequestDispatcher("/leito").forward(req, res);
         }
-        else if (requestURI.startsWith("/pacientes")) {
+        else if (requestURI.startsWith("/prontuarios")) {
             //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
             //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
-        	System.out.println("filtrando o /pacientes");
-            req.getRequestDispatcher("/leito").forward(req, res);
+        	System.out.println("filtrando o /prontuarios");
+            req.getRequestDispatcher("/prontuarios").forward(req, res);
         }
-        else if (requestURI.startsWith("/pacientes")) {
+        else if (requestURI.startsWith("/relatorios")) {
             //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
             //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
         	System.out.println("filtrando o /relatorios");

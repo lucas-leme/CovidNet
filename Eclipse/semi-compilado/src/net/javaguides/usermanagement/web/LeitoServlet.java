@@ -16,7 +16,7 @@ import net.javaguides.usermanagement.model.Leito;
 
 
 @WebServlet(
-  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", "/leitos/insert"}
+  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", "/leitos/insert", "/leitos/list_hospitais"}
   )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,8 +55,12 @@ public class LeitoServlet extends HttpServlet {
 				//System.out.println("\nPedindo GET update");
 				updateLeito(request, response);
 				break;
+			case "/leitos/list_hospitais":
+				mostrarHospitais(request, response);
+				break;
 			default:
-				listLeito(request, response);
+				//listLeito(request, response);
+				mostrarFiltros(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -79,6 +83,26 @@ public class LeitoServlet extends HttpServlet {
 
 		
 		//response.sendRedirect("..");
+		dispatcher.forward(request, response);
+	}
+	
+	private void mostrarFiltros(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<Leito> listLeito = leitoDAO.selectAllLeitos();
+		request.setAttribute("listLeito", listLeito);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-filtros.jsp");
+
+		dispatcher.forward(request, response);
+	}
+	
+	private void mostrarHospitais(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<Leito> listLeito = leitoDAO.selectAllLeitos();
+		request.setAttribute("listLeito", listLeito);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-hospitais.jsp");
+
 		dispatcher.forward(request, response);
 	}
 

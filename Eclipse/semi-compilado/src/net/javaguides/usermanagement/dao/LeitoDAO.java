@@ -23,11 +23,33 @@ public class LeitoDAO {
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos" + "  (medico, enfermeiro, paciente) VALUES "
-			+ " (?, ?, ?);";
+	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos2" + 
+			"  (ocupa, medico_id, enfermeiro_id, paciente_id, hospital_id) VALUES " + " (?, ?, ?, ?);";
 
-	private static final String SELECT_LEITO_BY_ID = "select id,medico,enfermeiro,paciente from leitos where id =?";
-	private static final String SELECT_ALL_LEITOS = "select * from leitos";
+	private static final String SELECT_ALL_LEITOS =
+			"select l.id id, m.nome medico, e.nome enfermeiro, p.nome paciente\n"
+			+ "from\n"
+			+ "	leitos2 l\n"
+			+ "	inner join (	\n"
+			+ "		select f.nome, m.id \n"
+			+ "		from medicos m\n"
+			+ "		inner join funcionarios f\n"
+			+ "		on f.id = m.funcionario_id\n"
+			+ "	) as m\n"
+			+ "	on m.id = l.medico_id \n"
+			+ "	inner join (\n"
+			+ "		select f.nome, e.id\n"
+			+ "		from enfermeiros e\n"
+			+ "		inner join funcionarios f\n"
+			+ "		on f.id = e.funcionario_id\n"
+			+ "	) as e\n"
+			+ "	on e.id = l.enfermeiro_id\n"
+			+ "	inner join pacientes p\n"
+			+ "	on p.id = l.paciente_id";
+			//"select id,medico,enfermeiro,paciente from leitos2 where id =?";
+
+	private static final String SELECT_LEITO_BY_ID = SELECT_ALL_LEITOS + "	where l.id = ?;";
+			
 	private static final String DELETE_LEITOS_SQL = "delete from leitos where id = ?;";
 	private static final String UPDATE_LEITOS_SQL = "update leitos set medico = ?,enfermeiro= ?, paciente =? where id = ?;";
 
