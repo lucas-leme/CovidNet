@@ -16,43 +16,102 @@ public class ProntuarioDAO {
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_PACIENTE_SQL = "INSERT INTO pacientes (cpf, nome, data_de_nascimento) VALUES  (?, ?, ?)";
+	private static final String INSERT_PRONTUARIO =	 
+			"INSERT INTO prontuarios ("
+			+ "		estado_do_paciente,"
+			+ "		diagnostico,"
+			+ "		teste_covid,"
+			+ "		doenca_respiratoria,"
+			+ "		batimento_cardiaco,"
+			+ "		hipertensao,"
+			+ "		oximetria,"
+			+ "		radiometria_torax_normal,"
+			+ "		tomografia_torax_normal,"
+			+ "		ventilacao_mecanica,"
+			+ "		diabetes,"
+			+ "		obesidade,"
+			+ "		ativo,"
+			+ "		hospital_id,"
+			+ "		hospital_destino_id,"
+			+ "		paciente_id"
+			+ ") "
+			+ "VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+		
+	private static final String SELECT_PRONTUARIO_BY_PACIENTE_CPF =
+			"SELECT"
+			+ "		pro.id,"
+			+ "		pro.data,"
+			+ "		pro.estado_do_paciente,"
+			+ "		pro.diagnostico,"
+			+ "		pro.teste_covid,"
+			+ "		pro.doenca_respiratoria,"
+			+ "		pro.batimento_cardiaco,"
+			+ "		pro.hipertensao,"
+			+ "		pro.oximetria,"
+			+ "		pro.radiometria_torax_normal,"
+			+ "		pro.tomografia_torax_normal,"
+			+ "		pro.ventilacao_mecanica,"
+			+ "		pro.diabetes,"
+			+ "		pro.obesidade,"
+			+ "		pro.ativo,"
+			+ "		pro.hospital_id,"
+			+ "		pro.hospital_destino_id,"
+			+ "		pro.paciente_id"
+			+ "	FROM prontuarios pro"
+			+ "	INNER JOIN pacientes pac ON pac.id = pro.paciente_id"
+			+ "	WHERE pac.cpf = ?";
 	
-	private static final String SELECT_PACIENTE_BY_CPF = "SELECT id from pacientes where cpf = ?";
+	private static final String SELECT_PRONTUARIOS_BY_HOSPITAL =
+			"SELECT"
+			+ "		pro.id,"
+			+ "		pro.data,"
+			+ "		estado_do_paciente,"
+			+ "		diagnostico,"
+			+ "		teste_covid,"
+			+ "		doenca_respiratoria,"
+			+ "		batimento_cardiaco,"
+			+ "		hipertensao,"
+			+ "		oximetria,"
+			+ "		radiometria_torax_normal,"
+			+ "		tomografia_torax_normal,"
+			+ "		ventilacao_mecanica,"
+			+ "		diabetes,"
+			+ "		obesidade,"
+			+ "		ativo,"
+			+ "		hospital_id,"
+			+ "		hospital_destino_id,"
+			+ "		paciente_id"
+			+ "	WHERE hospital_id = ?";
 	
-	private static final String INSERT_PRONTUARIO_SQL =	 "INSERT INTO prontuarios (nome_exame, descricao_exame, data, resultado, paciente_id) VALUES  (?, ?, ?, ?, ?);";
+	private static final String UPDATE_PRONTUARIO =
+			"UPDATE prontuarios SET"
+			+ "		data = ?,"
+			+ "		estado_do_paciente = ?,"
+			+ "		diagnostico = ?,"
+			+ "		teste_covid = ?,"
+			+ "		doenca_respiratoria = ?,"
+			+ "		batimento_cardiaco = ?,"
+			+ "		hipertensao = ?,"
+			+ "		oximetria = ?,"
+			+ "		radiometria_torax_normal = ?,"
+			+ "		tomografia_torax_normal = ?,"
+			+ "		ventilacao_mecanica = ?,"
+			+ "		diabetes = ?,"
+			+ "		obesidade = ?,"
+			+ "		ativo = ?,"
+			+ "		hospital_id = ?,"
+			+ "		hospital_destino_id = ?,"
+			+ "		paciente_id = ?"
+			+ "	WHERE id = ?";
 	
-	private static final String SELECT_ALL_PRONTUARIOS = 
-			"select pac.id, pac.cpf, pac.nome, pac.data_de_nascimento, pac.data_de_entrada, pro.nome_exame, pro.descricao_exame, pro.data, pro.resultado"
-			+ "		from pacientes pac"
-			+ "			inner join "
-			+ "				prontuarios pro on pro.paciente_id = pac.id";
-	
-	private static final String SELECT_PRONTUARIO_BY_ID =
-			"select pac.id, pac.cpf, pac.nome, pac.data_de_nascimento, pac.data_de_entrada, pro.nome_exame, pro.descricao_exame, pro.data, pro.resultado"
-			+ "		from pacientes pac"
-			+ "			inner join "
-			+ "				prontuarios pro on pro.paciente_id = pac.id"
-			+ "				where pac.id = ?";
-	
-	private static final String UPDATE_PACIENTE_SQL = "update pacientes set cpf = ?,nome = ?, data_de_nascimento =?,data_de_entrada=? where id = ?";		
-	
-	private static final String UPDATE_PRONTUARIO_SQL = "update prontuarios set nome_exame = ?, descricao_exame = ?, data = ?, resultado = ? where paciente_id = ?";									
-
-	public ProntuarioDAO() {
-	}
-
 	protected Connection getConnection() {
 		Connection connection = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			//Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;
@@ -60,72 +119,81 @@ public class ProntuarioDAO {
 	
 	public void insertProntuario(Prontuario prontuario) throws SQLException {
 		
-		int paciente_id = 0;
-
-		System.out.println(INSERT_PACIENTE_SQL);
+		System.out.println(INSERT_PRONTUARIO);
 		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_SQL)) {
-			preparedStatement.setString(1, prontuario.getCpf());
-			preparedStatement.setString(2, prontuario.getNome());
-			preparedStatement.setString(3, prontuario.getDataDeNascimento());
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRONTUARIO)) {
+			preparedStatement.setString(1, prontuario.getEstadoDoPaciente());
+			preparedStatement.setString(2, prontuario.getDiagnostico());
+			preparedStatement.setString(3, prontuario.getTesteCovid());
+			preparedStatement.setString(4, prontuario.getDoencaRespiratoria());
+			preparedStatement.setString(5, prontuario.getBatimentoCardiaco());
+			preparedStatement.setString(6, prontuario.getHipertensao());
+			preparedStatement.setString(7, prontuario.getOximetria());
+			preparedStatement.setBoolean(8, prontuario.getRadiometriaToraxNormal());
+			preparedStatement.setBoolean(9, prontuario.getTomografiaToraxNormal());
+			preparedStatement.setBoolean(10, prontuario.getVentilacaoMecanica());
+			preparedStatement.setBoolean(11, prontuario.getDiabetes());
+			preparedStatement.setBoolean(12, prontuario.getObesidade());
+			preparedStatement.setBoolean(13, prontuario.getAtivo());
+			preparedStatement.setInt(14, prontuario.getHospitalId());
+			preparedStatement.setInt(15, prontuario.getHospitalDestinoId());
+			preparedStatement.setInt(16, prontuario.getPacienteId());
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
-		
-		System.out.println(SELECT_PACIENTE_BY_CPF);
-		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PACIENTE_BY_CPF);) {
-			preparedStatement.setString(1, prontuario.getCpf());
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (rs.next()) {
-				paciente_id = rs.getInt("id");
-			}
-		} catch (SQLException e) {
-			printSQLException(e);
-		}
-		
-		System.out.println(INSERT_PRONTUARIO_SQL);
-		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRONTUARIO_SQL)) {
-			
-			preparedStatement.setString(1, prontuario.getNomeDoExame());
-			preparedStatement.setString(2, prontuario.getDescricaoExame());
-			preparedStatement.setString(3, prontuario.getDataExame());
-			preparedStatement.setString(4, prontuario.getResultadoExame());
-			preparedStatement.setInt(5, paciente_id);
-			
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			printSQLException(e);
-		}	
 	}
 	
-	public Prontuario selectProntuario(int id) {
+	public Prontuario selectProntuarioByPacienteCpf(String cpf) {
 		Prontuario prontuario = null;
-		// Step 1: Establishing a Connection
+		
 		try (Connection connection = getConnection();
-				// Step 2:Create a statement using connection object
-				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRONTUARIO_BY_ID);) {
-			preparedStatement.setInt(1, id);
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRONTUARIO_BY_PACIENTE_CPF);) {
+			preparedStatement.setString(1, cpf);
 			System.out.println(preparedStatement);
-			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
 
-			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
-				String cpf = rs.getString("cpf");
-				String nome = rs.getString("nome");
-				String data_de_nascimento = rs.getString("data_de_nascimento");
-				String data_de_entrada = rs.getString("data_de_entrada");
-				String nome_exame = rs.getString("nome_exame");
-				String descricao_exame = rs.getString("descricao_exame");
+				int id = rs.getInt("id");
 				String data = rs.getString("data");
-				String resultado = rs.getString("resultado");
+				String estado_do_paciente = rs.getString("estado_do_paciente");
+				String diagnostico = rs.getString("diagnostico");
+				String teste_covid = rs.getString("teste_covid");
+				String doenca_respiratoria = rs.getString("doenca_respiratoria");
+				String batimento_cardiaco = rs.getString("batimento_cardiaco");
+				String hipertensao = rs.getString("hipertensao");
+				String oximetria = rs.getString("oximetria");
+				boolean radiometria_torax_normal = rs.getBoolean("radiometria_torax_normal");
+				boolean tomografia_torax_normal = rs.getBoolean("tomografia_torax_normal");
+				boolean ventilacao_mecanica = rs.getBoolean("ventilacao_mecanica");
+				boolean diabetes = rs.getBoolean("diabetes");
+				boolean obesidade = rs.getBoolean("obesidade");
+				boolean ativo = rs.getBoolean("ativo");
+				int hospital_id = rs.getInt("hospital_id");
+				int hospital_destino_id = rs.getInt("hospital_destino_id");
+				int paciente_id = rs.getInt("paciente_id");
 				
-				prontuario = new Prontuario(id, cpf, nome, data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data, resultado);
+				prontuario = new Prontuario(
+					id,
+					data,
+					estado_do_paciente,
+					diagnostico,
+					teste_covid,
+					doenca_respiratoria,
+					batimento_cardiaco,
+					hipertensao,
+					oximetria,
+					radiometria_torax_normal,
+					tomografia_torax_normal,
+					ventilacao_mecanica,
+					diabetes,
+					obesidade,
+					ativo,
+					hospital_id,
+					hospital_destino_id,
+					paciente_id
+				);
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -133,31 +201,55 @@ public class ProntuarioDAO {
 		return prontuario;
 	}
 
-	public List<Prontuario> selectAllProntuarios() {
+	public List<Prontuario> selectProntuariosByHospital() {
 
-		// using try-with-resources to avoid closing resources (boiler plate code)
 		List<Prontuario> prontuarios = new ArrayList<>();
-		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
 
-				// Step 2:Create a statement using connection object
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_PRONTUARIOS);) {
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRONTUARIOS_BY_HOSPITAL);) {
 			System.out.println(preparedStatement);
-			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
 
-			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
 				int id = rs.getInt("id");
-				String cpf = rs.getString("cpf");
-				String nome = rs.getString("nome");
-				String data_de_nascimento = rs.getString("data_de_nascimento");
-				String data_de_entrada = rs.getString("data_de_entrada");
-				String nome_exame = rs.getString("nome_exame");
-				String descricao_exame = rs.getString("descricao_exame");
 				String data = rs.getString("data");
-				String resultado = rs.getString("resultado");
-				prontuarios.add(new Prontuario(id, cpf, nome, data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data, resultado));
+				String estado_do_paciente = rs.getString("estado_do_paciente");
+				String diagnostico = rs.getString("diagnostico");
+				String teste_covid = rs.getString("teste_covid");
+				String doenca_respiratoria = rs.getString("doenca_respiratoria");
+				String batimento_cardiaco = rs.getString("batimento_cardiaco");
+				String hipertensao = rs.getString("hipertensao");
+				String oximetria = rs.getString("oximetria");
+				boolean radiometria_torax_normal = rs.getBoolean("radiometria_torax_normal");
+				boolean tomografia_torax_normal = rs.getBoolean("tomografia_torax_normal");
+				boolean ventilacao_mecanica = rs.getBoolean("ventilacao_mecanica");
+				boolean diabetes = rs.getBoolean("diabetes");
+				boolean obesidade = rs.getBoolean("obesidade");
+				boolean ativo = rs.getBoolean("ativo");
+				int hospital_id = rs.getInt("hospital_id");
+				int hospital_destino_id = rs.getInt("hospital_destino_id");
+				int paciente_id = rs.getInt("paciente_id");
+				
+				prontuarios.add(new Prontuario(
+					id,
+					data,
+					estado_do_paciente,
+					diagnostico,
+					teste_covid,
+					doenca_respiratoria,
+					batimento_cardiaco,
+					hipertensao,
+					oximetria,
+					radiometria_torax_normal,
+					tomografia_torax_normal,
+					ventilacao_mecanica,
+					diabetes,
+					obesidade,
+					ativo,
+					hospital_id,
+					hospital_destino_id,
+					paciente_id
+				));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -167,30 +259,29 @@ public class ProntuarioDAO {
 
 	public boolean updateProntuario(Prontuario prontuario) throws SQLException {
 		boolean rowUpdated;
-		
-		System.out.println(UPDATE_PACIENTE_SQL);
+			
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_PACIENTE_SQL);) {
+				PreparedStatement statement = connection.prepareStatement(UPDATE_PRONTUARIO);) {
 			
-			statement.setString(1, prontuario.getCpf());
-			statement.setString(2, prontuario.getNome());
-			statement.setString(3, prontuario.getDataDeNascimento());
-			statement.setString(4, prontuario.getDataDeEntrada());
-			statement.setInt(5, prontuario.getId());
+			statement.setString(1, prontuario.getData());
+			statement.setString(2, prontuario.getEstadoDoPaciente());
+			statement.setString(3, prontuario.getDiagnostico());
+			statement.setString(4, prontuario.getTesteCovid());
+			statement.setString(5, prontuario.getDoencaRespiratoria());
+			statement.setString(6, prontuario.getBatimentoCardiaco());
+			statement.setString(7, prontuario.getHipertensao());
+			statement.setString(8, prontuario.getOximetria());
+			statement.setBoolean(9, prontuario.getRadiometriaToraxNormal());
+			statement.setBoolean(10, prontuario.getTomografiaToraxNormal());
+			statement.setBoolean(11, prontuario.getVentilacaoMecanica());
+			statement.setBoolean(12, prontuario.getDiabetes());
+			statement.setBoolean(13, prontuario.getObesidade());
+			statement.setBoolean(14, prontuario.getAtivo());
+			statement.setInt(15, prontuario.getHospitalId());
+			statement.setInt(16, prontuario.getHospitalDestinoId());
+			statement.setInt(17, prontuario.getPacienteId());
+			statement.setInt(18, prontuario.getId());
 			
-			statement.executeUpdate();
-		}
-		
-		System.out.println(UPDATE_PRONTUARIO_SQL);
-		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_PRONTUARIO_SQL);) {
-			
-			statement.setString(1, prontuario.getNomeDoExame());
-			statement.setString(2, prontuario.getDescricaoExame());
-			statement.setString(3, prontuario.getDataExame());
-			statement.setString(4, prontuario.getResultadoExame());
-			statement.setInt(5, prontuario.getId());
-	
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;
