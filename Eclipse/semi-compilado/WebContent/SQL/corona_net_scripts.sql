@@ -35,13 +35,18 @@ CREATE TABLE IF NOT EXISTS `exames` (
   `prontuario_id` INT NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `municipios` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `nome` VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS `hospitais` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nome` VARCHAR(100) NOT NULL,
   `telefone` VARCHAR(10) NOT NULL,
   `endereco` VARCHAR(255) NOT NULL,
   `estado` VARCHAR(100) NOT NULL,
-  `municipio` VARCHAR(100) NOT NULL
+  `municipio_id` INT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `funcionarios` (
@@ -118,6 +123,8 @@ ALTER TABLE `prontuarios` ADD FOREIGN KEY (`hospital_destino_id`) REFERENCES `ho
 
 ALTER TABLE `exames` ADD FOREIGN KEY (`prontuario_id`) REFERENCES `prontuarios` (`id`);
 
+ALTER TABLE `hospitais` ADD FOREIGN KEY (`municipio_id`) REFERENCES `municipios` (`id`);
+
 ALTER TABLE `funcionarios` ADD FOREIGN KEY (`hospital_id`) REFERENCES `hospitais` (`id`);
 
 ALTER TABLE `enfermeiros` ADD FOREIGN KEY (`funcionario_id`) REFERENCES `funcionarios` (`id`);
@@ -142,3 +149,84 @@ ALTER TABLE `hospitalares` ADD FOREIGN KEY (`relatorio_id`) REFERENCES `relatori
 
 ALTER TABLE `estaduais` ADD FOREIGN KEY (`relatorio_id`) REFERENCES `relatorios` (`id`);
 
+INSERT INTO `municipios` (`id`, `nome`)
+VALUES 
+(1, 'Jandira'),
+(2, 'Barueri'),
+(3, 'Osasco'),
+(4, 'São Paulo');
+
+INSERT INTO `hospitais` (`id`, `nome`, `telefone`, `endereco`, `estado`, `municipio_id`)
+VALUES
+(1, 'Hospital Municipal de Jandira', '1234-1234', 'Rua do Pedro', 'SP', 1),
+(2, 'Hospital Santa Maria', '1234-1234', 'Rua da Maria', 'SP', 2),
+(3, 'Hospital Feliz', '1234-1234', 'Rua do Jamelao', 'SP', 2),
+(4, 'Hospital Muito Bom', '1234-1234', 'Rua do Cardoso', 'SP', 3),
+(5, 'Hospital Mais ou Menos', '1234-1234', 'Rua do Samba', 'SP', 3),
+(6, 'Hospital Caro', '1234-1234', 'Rua da Carambola', 'SP', 4),
+(7, 'Hospital Barato', '1234-1234', 'Rua do Melao', 'SP', 4),
+(8, 'Hospital Santa Casa', '1234-1234', 'Rua do Japa', 'SP', 4),
+(9, 'Hospital Alberto Aleonor', '1234-1234', 'Rua da Senhora', 'SP', 4);
+
+INSERT INTO `leitos` (`ocupado`, `hospital_id`)
+VALUES
+(1, 1),
+(0, 1),
+(0, 1),
+(0, 1),
+(1, 1),
+(1, 2),
+(1, 2),
+(1, 2),
+(1, 2),
+(1, 2),
+(0, 3),
+(0, 3),
+(0, 3),
+(0, 4),
+(1, 4),
+(0, 5),
+(1, 5),
+(0, 6),
+(1, 6),
+(0, 7),
+(1, 7),
+(0, 8),
+(1, 8),
+(0, 9),
+(1, 9);
+
+INSERT INTO pacientes (id, nome, cpf, data_de_nascimento, endereco)
+VALUES
+(1, 'Xuxa Meneguel', '1234567890', '1980-01-01', 'Rua dos baixinhos'),
+(2, 'Felipe Smith', '1234567890', '1980-01-01', 'Rua Americana'),
+(3, 'Boulos', '1234567890', '1980-01-01', 'Sem teto'),
+(4, 'Covas', '1234567890', '1980-01-01', 'Jaburu'),
+(5, 'Erundina', '1234567890', '1980-01-01', 'Rua 1'),
+(6, 'Arthur do Val', '1234567890', '1980-01-01', 'Youtube');
+
+INSERT INTO prontuarios (
+		estado_do_paciente,
+		diagnostico,
+		teste_covid,
+		doenca_respiratoria,
+		batimento_cardiaco,
+		hipertensao,
+		oximetria,
+		radiometria_torax_normal,
+		tomografia_torax_normal,
+		ventilacao_mecanica,
+		diabetes,
+		obesidade,
+		ativo,
+		hospital_id,
+		hospital_destino_id,
+		paciente_id
+) 
+VALUES  
+('bom', 'bom', 'positivo', 'nao', 'ruim', 'nao', 'boa', 1, 1, 1, 1, 1, 1, 1, 2, 1),
+('bom', 'ruim', 'negativo', 'sim', 'bom', 'sim', 'ruim', 1, 1, 1, 1, 1, 1, 3, 4, 2),
+('ruim', 'bom', 'positivo', 'nao', 'bom', 'nao', 'boa', 1, 1, 1, 1, 1, 1, 5, 6, 3),
+('ruim', 'ruim', 'negativo', 'nao', 'ruim', 'nao', 'boa', 1, 1, 1, 1, 1, 7, 8, 2, 4),
+('bom', 'bom', 'positivo', 'sim', 'bom', 'sim', 'ruim', 1, 1, 1, 1, 1, 1, 1, 2, 5),
+('bom', 'ruim', 'negativo', 'nao', 'bom', 'nao', 'boa', 1, 1, 1, 1, 1, 1, 1, 2, 6);

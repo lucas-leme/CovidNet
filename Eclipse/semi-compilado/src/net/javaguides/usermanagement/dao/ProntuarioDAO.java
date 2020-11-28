@@ -63,8 +63,8 @@ public class ProntuarioDAO {
 	
 	private static final String SELECT_PRONTUARIOS_BY_HOSPITAL =
 			"SELECT"
-			+ "		pro.id,"
-			+ "		pro.data,"
+			+ "		id,"
+			+ "		data,"
 			+ "		estado_do_paciente,"
 			+ "		diagnostico,"
 			+ "		teste_covid,"
@@ -81,10 +81,12 @@ public class ProntuarioDAO {
 			+ "		hospital_id,"
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
-			+ "	WHERE hospital_id = ? AND ativo = 1";
+			+ "FROM prontuarios"
+			+ "WHERE hospital_id = ? AND ativo = 1";
 	
 	private static final String UPDATE_PRONTUARIO =
-			"UPDATE prontuarios SET"
+			"UPDATE prontuarios "
+			+ "SET"
 			+ "		data = ?,"
 			+ "		estado_do_paciente = ?,"
 			+ "		diagnostico = ?,"
@@ -105,8 +107,8 @@ public class ProntuarioDAO {
 			+ "	WHERE id = ?";
 	
 	private static final String CLOSE_PRONTUARIO =
-			"UPDATE prontuarios SET"
-			+ "		ativo = 0"
+			"UPDATE prontuarios "
+			+ "	SET	ativo = 0"
 			+ "	WHERE id = ?";
 	
 	protected Connection getConnection() {
