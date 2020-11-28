@@ -74,7 +74,7 @@ public class ProntuarioServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		System.out.println("Listing prontuarios");
 		
-		List<Prontuario> listProntuarios = prontuarioDAO.selectAllProntuarios();
+		List<Prontuario> listProntuarios = null;//prontuarioDAO.selectAllProntuarios();
 		request.setAttribute("listProntuarios", listProntuarios);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);
@@ -92,8 +92,8 @@ public class ProntuarioServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		System.out.println("editing form");
 		
-		int id = Integer.parseInt(request.getParameter("id"));
-		Prontuario existingProntuario = prontuarioDAO.selectProntuario(id);
+		//int id = Integer.parseInt(request.getParameter("id"));
+		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf("111.111.111-11");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 		request.setAttribute("prontuario", existingProntuario);
 		dispatcher.forward(request, response);

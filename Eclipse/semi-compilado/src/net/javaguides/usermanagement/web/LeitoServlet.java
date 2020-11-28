@@ -116,6 +116,7 @@ public class LeitoServlet extends HttpServlet {
 		}
 			
 		List<Hospital> hospitais = hospitalDAO.selectHospitais(cidade);
+
 		request.setAttribute("hospitais", hospitais);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-hospitais.jsp");
