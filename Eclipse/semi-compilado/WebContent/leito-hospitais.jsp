@@ -10,7 +10,7 @@
 <body>
 
     <div align="center">
-		Hospitais pedidos
+		Hospitais pedidos :
 	  
         <c:forEach var="hospital" items="${hospitais}">
                <c:out value="${hospital}"/>
