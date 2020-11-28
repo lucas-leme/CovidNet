@@ -1,14 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!-- DOCTYPE html-->
+<!DOCTYPE html>
 <html>
 
 <head>
   <title>CoronaViewer</title>
-  <meta http-equiv="Content-Language" content="pt-br" 
-  	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
-	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
+  <link rel="stylesheet" href="Styles/homePage.css">
 </head>
 
 </body>
@@ -20,17 +15,17 @@
       fill="white" />
   </svg>
 
-  <a href="${pageContext.request.contextPath}">CoronaViewer</a>
+  <a>CoronaViewer</a>
   <div class="right">
-    <a href="${pageContext.request.contextPath}">Tela Inicial</a>
-    <a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">Relatórios</a>
-    <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
-    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
+    <a>Tela Inicial</a>
+    <a>Relatórios</a>
+    <a>Vagas</a>
+    <a>Prontuários</a>
   </div>
 </header>
 
 <div class="center">
-  <h1>Servicos completos para COVID19</h1>
+  <h1>Serviços completos para COVID19</h1>
   <p>
     CoronaViewer é uma plataorma de informação sobre os casos de COVID19 no
     estado de São Paulo
@@ -38,9 +33,7 @@
 </div>
 
 <div class="center">
-  
-  <img src="https://i.imgur.com/gX1oink.png" />
-
+  <img src="Images/cVimage.png" alt="" />
 </div>
 
 <div class="center" style="width: 50%; margin: 0 auto; max-width: 500px">
@@ -55,46 +48,41 @@
 
 <div class="center table_margin">
   <table class="table_margin">
-    <td class="frame center">
-    	<a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">
-	      <img class="img_cols" src="https://i.imgur.com/xEVDzdk.png" alt="" />
-	
-	      <h3 class="text_cols">Relatórios</h3>
-	      <p class="text_cols">
-	        Geração de relatórios estatí­sticos geral dos casos de Covid no estado de
-	        SP
-	      </p>
-	    </a>
+    <td class="frame">
+      <img class="img_cols" src="Images/relatorio.png" alt="" />
+
+      <h3 class="text_cols">Relatórios</h3>
+      <p class="text_cols">
+        Geração de relatórios estatísticos geral dos casos de Covid no estado de
+        SP
+      </p>
     </td>
 
     <td class="frame center">
-    
-      <a href="${pageContext.request.contextPath}/leitos">
-	      <img class="img_cols" src="https://i.imgur.com/8Q579oC.png" alt="" />
-	
-	      <h3 class="text_cols">Vagas</h3>
-	      <p class="text_cols">
-	        Gerencia (lista, edita, exibe ou cadastra) disponí­veis conforme a
-	        necessidade dos pacientes
-	      </p>
-      </a>
+      <img class="img_cols" src="Images/vagas.png" alt="" />
+
+      <h3 class="text_cols">Vagas</h3>
+      <p class="text_cols">
+        Gerencia (lista, edita, exibe ou cadastra) disponíveis conforme a
+        necessidade dos pacientes
+      </p>
     </td>
 
-    <td class="frame center">
-      <a href="${pageContext.request.contextPath}/prontuarios">
-      
-	      <img class="img_cols" src="https://i.imgur.com/vFHg0Zc.png" alt="" />
-	
-	      <h3 class="text_cols">Prontuários</h3>
-	      <p class="text_cols">Gerencia (lista, edita, exibe e cadastra) prontuário de um paciente</p>
-	      
-      </a>
+    <td class="frame">
+      <img class="img_cols" src="Images/prontuario.png" alt="" />
+
+      <h3 class="text_cols">Prontuários</h3>
+      <p class="text_cols">Gerencia (lista, edita, exibe e cadastra) prontuário de um paciente</p>
+
     </td>
   </table>
 </div>
 </body>
 
 </html>   
+   
+   
+   
    
    
    
