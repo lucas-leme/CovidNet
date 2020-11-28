@@ -13,7 +13,11 @@
         <a href="${pageContext.request.contextPath}/leitos/list_hospitais">Hospitais</a>
         
         <c:forEach var="cidade" items="${cidades}">
-           <c:out value="${cidade}" />
+               <tr>
+                    <td>
+                    	<a href="${pageContext.request.contextPath}/leitos/list_hospitais?cidade=<c:out value="${cidade}"/>"><c:out value="${cidade}"/></a>              	
+                    </td>
+                </tr>
         </c:forEach>
     </div>	
     
