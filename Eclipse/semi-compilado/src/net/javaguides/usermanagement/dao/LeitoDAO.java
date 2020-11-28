@@ -23,13 +23,13 @@ public class LeitoDAO {
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos2" + 
+	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos" + 
 			"  (ocupa, medico_id, enfermeiro_id, paciente_id, hospital_id) VALUES " + " (?, ?, ?, ?);";
 
 	private static final String SELECT_ALL_LEITOS =
 			"select l.id id, m.nome medico, e.nome enfermeiro, p.nome paciente\n"
 			+ "from\n"
-			+ "	leitos2 l\n"
+			+ "	leitos l\n"
 			+ "	inner join (	\n"
 			+ "		select f.nome, m.id \n"
 			+ "		from medicos m\n"
@@ -199,5 +199,4 @@ public class LeitoDAO {
 			}
 		}
 	}
-
 }
