@@ -12,9 +12,11 @@
     <div align="center">
 		Hospitais pedidos :
 	  
-        <c:forEach var="hospital" items="${hospitais}">
-               <c:out value="${hospital}"/>
-        </c:forEach>
+        <c:if test="${hospitais != null}">       
+	        <c:forEach var="hospital" items="${hospitais}">
+	               <c:out value="${hospital}"/>
+	        </c:forEach>
+        </c:if>
     </div>	
     
 </body>
