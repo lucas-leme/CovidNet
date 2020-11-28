@@ -40,7 +40,7 @@
 <div class="center">
 	<p>Sera que a gora vai?</p>
   
-  <img src="https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2020/06/14/863689/20200614172344185476a.jpg" />
+  <!--img src="https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2020/06/14/863689/20200614172344185476a.jpg" /-->
 </div>
 
 <div class="center" style="width: 50%; margin: 0 auto; max-width: 500px">
