@@ -10,7 +10,11 @@
 <body>
 
     <div align="center">
-        Aqui estao os hospitais pedidos:
+		Hospitais pedidos
+	  
+        <c:forEach var="hospital" items="${hospitais}">
+               <c:out value="${hospital}"/>
+        </c:forEach>
     </div>	
     
 </body>

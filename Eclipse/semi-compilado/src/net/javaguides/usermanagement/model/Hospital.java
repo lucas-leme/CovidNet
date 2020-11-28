@@ -5,7 +5,7 @@ import java.util.List;
 public class Hospital {
 
 	private List<Leito> listLeitos;
-	private String nome;
+	protected String nome;
 	
 	public Hospital(String nome)
 	{

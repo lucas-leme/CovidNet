@@ -3,6 +3,8 @@ package net.javaguides.usermanagement.dao;
 import java.util.Arrays;
 import java.util.List;
 
+import net.javaguides.usermanagement.model.Hospital;
+
 public class HospitalDAO {
 
 	public List<String> selectCidades() {
@@ -11,4 +13,11 @@ public class HospitalDAO {
 		return ad_hoc;
 	}
 
+	public List<Hospital> selectHospitais(String cidade) {
+		// TODO Auto-generated method stub
+		Hospital aux = new Hospital("Sao Luis");
+		List<Hospital> hospitais = Arrays.asList(new Hospital[] {aux});
+		
+		return hospitais;
+	}
 }
