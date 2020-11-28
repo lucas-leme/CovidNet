@@ -104,4 +104,14 @@ public class HospitalDAO {
 			}
 		}
 	}
+
+	public List<String> selectCidades() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getID(String cidade) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

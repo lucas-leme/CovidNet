@@ -108,7 +108,7 @@ public class LeitoServlet extends HttpServlet {
 		
 		//List<Leito> listLeito = leitoDAO.selectAllLeitos();
 		String cidade = request.getParameter("cidade").toString();
-		List<Hospital> hospitais = hospitalDAO.selectHospitais(cidade);
+		List<Hospital> hospitais = hospitalDAO.selectHospitais(hospitalDAO.getID(cidade));
 		request.setAttribute("hospitais", hospitais);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-hospitais.jsp");
