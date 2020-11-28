@@ -124,7 +124,7 @@ public class ProntuarioServlet extends HttpServlet {
 		String data_exame = request.getParameter("data_exame"); 
 		String resultado_exame = request.getParameter("resultado_exame");
 		
-		Prontuario newProntuario = new Prontuario(cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame);
+		Prontuario newProntuario = new Prontuario(0, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame, false, false, false, false, false, false, 0, 0, 0);
 		prontuarioDAO.insertProntuario(newProntuario);
 		response.sendRedirect(root + "/prontuarios");
 	}
