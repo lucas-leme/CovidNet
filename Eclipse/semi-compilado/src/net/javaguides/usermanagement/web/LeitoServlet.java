@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.LeitoDAO;
 import net.javaguides.usermanagement.model.Leito;
 
@@ -21,10 +22,12 @@ import net.javaguides.usermanagement.model.Leito;
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LeitoDAO leitoDAO;
+	private HospitalDAO hospitalDAO;
 	private static final String root = "/semi-compilado";
 	
 	public void init() {
 		leitoDAO = new LeitoDAO();
+		hospitalDAO = new HospitalDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -88,8 +91,8 @@ public class LeitoServlet extends HttpServlet {
 	
 	private void mostrarFiltros(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		List<Leito> listLeito = leitoDAO.selectAllLeitos();
-		request.setAttribute("listLeito", listLeito);
+		List<String> cidades = hospitalDAO.selectCidades();
+		request.setAttribute("cidades", cidades);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-filtros.jsp");
 

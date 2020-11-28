@@ -1,12 +1,13 @@
 package net.javaguides.usermanagement.dao;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class HospitalDAO {
 
 	public List<String> selectCidades() {
 		// TODO Auto-generated method stub
-		List<String> ad_hoc;
+		List<String> ad_hoc = Arrays.asList(new String[]{"Sao Paulo", "Diadema", "Santo Andre"});
 		return ad_hoc;
 	}
 
