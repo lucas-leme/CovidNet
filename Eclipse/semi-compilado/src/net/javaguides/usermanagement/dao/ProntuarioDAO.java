@@ -81,7 +81,7 @@ public class ProntuarioDAO {
 			+ "		hospital_id,"
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
-			+ "	WHERE hospital_id = ?";
+			+ "	WHERE hospital_id = ? AND ativo = 1";
 	
 	private static final String UPDATE_PRONTUARIO =
 			"UPDATE prontuarios SET"
@@ -102,6 +102,11 @@ public class ProntuarioDAO {
 			+ "		hospital_id = ?,"
 			+ "		hospital_destino_id = ?,"
 			+ "		paciente_id = ?"
+			+ "	WHERE id = ?";
+	
+	private static final String CLOSE_PRONTUARIO =
+			"UPDATE prontuarios SET"
+			+ "		ativo = 0"
 			+ "	WHERE id = ?";
 	
 	protected Connection getConnection() {
@@ -281,6 +286,19 @@ public class ProntuarioDAO {
 			statement.setInt(16, prontuario.getHospitalDestinoId());
 			statement.setInt(17, prontuario.getPacienteId());
 			statement.setInt(18, prontuario.getId());
+			
+			rowUpdated = statement.executeUpdate() > 0;
+		}
+		return rowUpdated;
+	}
+	
+	public boolean closeProntuario(Prontuario prontuario) throws SQLException {
+		boolean rowUpdated;
+			
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(CLOSE_PRONTUARIO);) {
+			
+			statement.setInt(1, prontuario.getId());
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
