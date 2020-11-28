@@ -11,20 +11,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.LeitoDAO;
+import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Leito;
 
 
 @WebServlet(
-  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", "/leitos/insert"}
+  urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", 
+		  "/leitos/insert", "/leitos/list_hospitais", "/leitos/list_leitos"}
   )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LeitoDAO leitoDAO;
+	private HospitalDAO hospitalDAO;
 	private static final String root = "/semi-compilado";
 	
 	public void init() {
 		leitoDAO = new LeitoDAO();
+		hospitalDAO = new HospitalDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,8 +60,14 @@ public class LeitoServlet extends HttpServlet {
 				//System.out.println("\nPedindo GET update");
 				updateLeito(request, response);
 				break;
-			default:
+			case "/leitos/list_hospitais":
+				mostrarHospitais(request, response);
+				break;
+			case "/leitos/list_leitos":
 				listLeito(request, response);
+				break;
+			default:
+				mostrarFiltros(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -79,6 +90,29 @@ public class LeitoServlet extends HttpServlet {
 
 		
 		//response.sendRedirect("..");
+		dispatcher.forward(request, response);
+	}
+	
+	private void mostrarFiltros(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		List<String> cidades = hospitalDAO.selectCidades();
+		request.setAttribute("cidades", cidades);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-filtros.jsp");
+
+		dispatcher.forward(request, response);
+	}
+	
+	private void mostrarHospitais(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		//List<Leito> listLeito = leitoDAO.selectAllLeitos();
+		String cidade = request.getParameter("cidade").toString();
+		List<Hospital> hospitais = hospitalDAO.selectHospitais(cidade);
+		request.setAttribute("hospitais", hospitais);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-hospitais.jsp");
+
 		dispatcher.forward(request, response);
 	}
 

@@ -40,6 +40,7 @@
 <div class="center">
   
   <img src="https://i.imgur.com/gX1oink.png" />
+
 </div>
 
 <div class="center" style="width: 50%; margin: 0 auto; max-width: 500px">

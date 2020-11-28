@@ -64,6 +64,12 @@
                 	<input type="text" name="paciente" size="15"
                 			value="<c:out value='${leito.paciente}' />"
                 	/>
+                	<select id="cars" name="cars">
+					  <option value="volvo">Volvo</option>
+					  <option value="saab">Saab</option>
+					  <option value="fiat">Fiat</option>
+					  <option value="audi">Audi</option>
+					</select>
                 </td>
             </tr>
             <tr>
