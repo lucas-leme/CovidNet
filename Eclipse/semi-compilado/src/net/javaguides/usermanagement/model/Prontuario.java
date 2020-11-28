@@ -109,6 +109,11 @@ public class Prontuario {
 		this.paciente_id = paciente_id;
 	}
 	
+	public Prontuario(int id2, String cpf, String nome, String data_de_nascimento, String data_de_entrada,
+			String nome_exame, String descricao_exame, String data_exame, String resultado_exame) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
