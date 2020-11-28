@@ -60,14 +60,26 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/update":
 					updateProntuario(request, response);
 					break;
-				default:
+					
+				case "prontuarios/list":
 					System.out.println("\nDEFAULT");
 					listProntuarios(request, response);
 					break;
+				
+				default:
+					showMainPage(request, response);
+
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
 		}
+	}
+	
+	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-home.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void listProntuarios(HttpServletRequest request, HttpServletResponse response)
