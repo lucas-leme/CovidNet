@@ -22,7 +22,8 @@ import net.javaguides.usermanagement.model.Prontuario;
  */
 
 @WebServlet(
-urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert"}
+urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
+				"/pacientes", "/pacientes/new"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -60,6 +61,9 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/update":
 					updateProntuario(request, response);
 					break;
+				case "/pacientes/new":
+					showPacienteForm(request, response);
+					break;
 				default:
 					System.out.println("\nDEFAULT");
 					listProntuarios(request, response);
@@ -77,6 +81,14 @@ public class ProntuarioServlet extends HttpServlet {
 		List<Prontuario> listProntuarios = null;//prontuarioDAO.selectAllProntuarios();
 		request.setAttribute("listProntuarios", listProntuarios);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void showPacienteForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("Paciente form");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -120,17 +132,27 @@ public class ProntuarioServlet extends HttpServlet {
 	private void updateProntuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		System.out.println("updating prontuario");
+		int id;
+		String cpf, nome, data_de_nascimento, data_de_entrada; 
+		String nome_exame, descricao_exame, data_exame, resultado_exame; 
 		
-		int id = Integer.parseInt(request.getParameter("id"));
-		String cpf = request.getParameter("cpf");
-		String nome = request.getParameter("nome");
-		String data_de_nascimento = request.getParameter("data_de_nascimento");  
-		String data_de_entrada = request.getParameter("data_de_entrada"); 
-		String nome_exame = request.getParameter("nome_exame"); 
-		String descricao_exame = request.getParameter("descricao_exame"); 
-		String data_exame = request.getParameter("data_exame"); 
-		String resultado_exame = request.getParameter("resultado_exame"); 
+		if(request.getParameter("add_paciente") != null) {
+			System.out.println("Adicionando paciente");
+			
+			id = Integer.parseInt(request.getParameter("id"));
+			cpf = request.getParameter("cpf");
+			nome = request.getParameter("nome");
+			data_de_nascimento = request.getParameter("data_de_nascimento");  
+			data_de_entrada = request.getParameter("data_de_entrada"); 
+			nome_exame = request.getParameter("nome_exame"); 
+			descricao_exame = request.getParameter("descricao_exame"); 
+			data_exame = request.getParameter("data_exame"); 
+			resultado_exame = request.getParameter("resultado_exame"); 
+		}else {
+		}
+
 		Prontuario book = new Prontuario(id, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame);
+		
 		prontuarioDAO.updateProntuario(book);
 		response.sendRedirect(root + "/prontuarios");
 	}

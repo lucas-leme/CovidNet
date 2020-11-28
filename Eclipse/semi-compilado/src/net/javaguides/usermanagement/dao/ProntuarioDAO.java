@@ -142,6 +142,7 @@ public class ProntuarioDAO {
 			preparedStatement.setBoolean(11, prontuario.getDiabetes());
 			preparedStatement.setBoolean(12, prontuario.getObesidade());
 			preparedStatement.setBoolean(13, prontuario.getAtivo());
+			
 			preparedStatement.setInt(14, prontuario.getHospitalId());
 			preparedStatement.setInt(15, prontuario.getHospitalDestinoId());
 			preparedStatement.setInt(16, prontuario.getPacienteId());

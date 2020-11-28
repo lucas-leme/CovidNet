@@ -28,7 +28,7 @@
 	<center>
 		<h1>Prontuarios Management</h1>
         <h2>
-        	<a href="${pageContext.request.contextPath}/prontuarios/new">Adicionar prontuario</a>
+        	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar paciente</a>
         	&nbsp;&nbsp;&nbsp;
         	<a href="${pageContext.request.contextPath}">Página inicial</a>
         	
