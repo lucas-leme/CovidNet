@@ -14,9 +14,6 @@ public class Paciente {
 	protected String data_de_nascimento;
 	protected String endereco;
 	
-	public Paciente() {
-	}
-	
 	public Paciente(String cpf, String nome, String data_de_nascimento, String endereco) {
 		super();
 		this.cpf = cpf;
