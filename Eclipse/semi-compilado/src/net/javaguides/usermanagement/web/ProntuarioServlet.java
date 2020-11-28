@@ -22,7 +22,7 @@ import net.javaguides.usermanagement.model.Prontuario;
  */
 
 @WebServlet(
-urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert", "/prontuarios/new_paciente"}
+urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert", "/prontuarios/new_paciente", "/prontuarios/exame"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -63,6 +63,9 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/update":
 					updateProntuario(request, response);
 					break;
+				case "/prontuarios/exame":
+					newExame(request, response);
+					break;
 					
 				case "prontuarios/list":
 					System.out.println("\nDEFAULT");
@@ -82,6 +85,13 @@ public class ProntuarioServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-home.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void newExame(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/form-exame.jsp");
 		dispatcher.forward(request, response);
 	}
 	
