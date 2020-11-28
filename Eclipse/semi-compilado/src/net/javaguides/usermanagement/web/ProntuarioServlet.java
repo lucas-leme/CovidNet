@@ -22,7 +22,7 @@ import net.javaguides.usermanagement.model.Prontuario;
  */
 
 @WebServlet(
-urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert"}
+urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert", "/prontuarios/new_paciente", "/prontuarios/exame"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -51,6 +51,9 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/new":
 					showNewForm(request, response);
 					break;
+				case "/prontuarios/new_paciente":
+					showNewPacienteForm(request, response);
+					break;
 				case "/prontuarios/insert":
 					insertProntuario(request, response);
 					break;
@@ -60,14 +63,43 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/update":
 					updateProntuario(request, response);
 					break;
-				default:
+				case "/prontuarios/exame":
+					newExame(request, response);
+					break;
+					
+				case "prontuarios/list":
 					System.out.println("\nDEFAULT");
 					listProntuarios(request, response);
 					break;
+				
+				default:
+					showMainPage(request, response);
+
 			}
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
 		}
+	}
+	
+	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-home.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void newExame(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/form-exame.jsp");
+		dispatcher.forward(request, response);
+	}
+	
+	private void showNewPacienteForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/form-paciente.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void listProntuarios(HttpServletRequest request, HttpServletResponse response)
