@@ -104,6 +104,7 @@ public class ProntuarioServlet extends HttpServlet {
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("New form");
+		System.out.println("id do paciente existe? : " + request.getParameter("id_paciente"));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 		dispatcher.forward(request, response);
@@ -116,12 +117,13 @@ public class ProntuarioServlet extends HttpServlet {
 		//int id = Integer.parseInt(request.getParameter("id"));
 		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf("111.111.111-11");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
+		
 		request.setAttribute("prontuario", existingProntuario);
 		dispatcher.forward(request, response);
 	}
 
 	private void insertPaciente(HttpServletRequest request, HttpServletResponse response)
-				throws SQLException, IOException {
+				throws SQLException, IOException, ServletException {
 			System.out.println("inserting prontuario");
 			
 			String cpf = request.getParameter("cpf");
@@ -136,8 +138,12 @@ public class ProntuarioServlet extends HttpServlet {
 
 			int id_paciente = 1; // MUDAR
 			request.setAttribute("id_paciente", id_paciente);	
-			System.out.println("redirecting to " + root + "/prontuarios");
-			response.sendRedirect(root + "/prontuarios");
+			System.out.println("Novo jsp: prontuario");
+			//System.out.println("redirecting to " + root + "/prontuarios/new");
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
+			dispatcher.forward(request, response);
+			//response.sendRedirect(root + "/prontuarios/new");
 		}
 
 	private void insertProntuario(HttpServletRequest request, HttpServletResponse response) 
@@ -155,6 +161,8 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		Prontuario newProntuario = new Prontuario(0, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame, false, false, false, false, false, false, 0, 0, 0);
 		prontuarioDAO.insertProntuario(newProntuario);
+		
+		System.out.println("insertPorntuario : redirecting to :" + root + "/prontuarios");
 		response.sendRedirect(root + "/prontuarios");
 	}
 
