@@ -45,11 +45,12 @@ public class Hospital {
 	}
 	
 	public Hospital(
-			String nome,
+			int id_hospital, String nome,
 			int leitos_disponiveis
 		) {
 		super();
-		
+	
+		this.id = id_hospital;
 		this.nome = nome;
 		this.leitos_disponiveis = leitos_disponiveis;
 	}

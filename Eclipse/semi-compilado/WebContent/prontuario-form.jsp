@@ -12,6 +12,16 @@
         	<a href="${pageContext.request.contextPath}/prontuarios">VOLTAR</a>
         	
         </h2>
+        
+				        
+        <c:if test="${id_paciente != null}">
+              	ID do paciente anterior: <input type="text" name="id_paciente" size="45"
+              			value="<c:out value='${id_paciente}' />"
+              		/>
+        </c:if>
+        <c:if test="${id_paciente == null}">
+			<div>Sem id de paciente</div>
+        </c:if>
 	</center>
     <div align="center">
 		<c:if test="${prontuario != null}">
@@ -103,30 +113,21 @@
 	            
 			    <tr>
 			        <th>Hospital: </th>
-			        <c:if test="${hospitais != null}">
-						<div>Hospitais disponiveis</div>
-						
-						<table>
-				            <c:forEach var="hospital" items="${hospitais}">
-				                <tr>
-				                    <td><c:out value="${hospital.nome}" /></td>
-				                    <td><c:out value="${hospital}" /></td>
-				                </tr>
-				            </c:forEach>
-				        </table>
-			        </c:if>
-			        <c:if test="${hospitais == null}">
-						<div>Hospitais nao disponiveis</div>
-			        </c:if>
-			        
-			        <c:if test="${id_paciente != null}">
-	                	<input type="text" name="id_paciente" size="45"
-	                			value="<c:out value='${id_paciente}' />"
-	                		/>
-			        </c:if>
-			        <c:if test="${id_paciente == null}">
-						<div>Sem id de paciente</div>
-			        </c:if>
+				        <c:if test="${hospitais != null}">
+							<div>Hospitais disponiveis</div>
+							
+					<td>
+							<select id="opcoes_hospitais" name="opcoes_hospitais">
+					            <c:forEach var="hospital" items="${hospitais}">
+					                <option value="<c:out value="${hospital.id}"/>"><c:out value="${hospital.nome}" /></option>
+					                <!-- option><c:out value="${hospital}" /></option-->
+					            </c:forEach>
+					        </select>
+				        </c:if>
+				        <c:if test="${hospitais == null}">
+							<div>Hospitais nao disponiveis</div>
+				        </c:if>
+				    </td>
 	            </tr>
 	            <tr>
 	            	<td colspan="2" align="center">
