@@ -91,7 +91,7 @@ public class ProntuarioServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		System.out.println("Listing prontuarios");
 		
-		List<Prontuario> listProntuarios = null;//prontuarioDAO.selectAllProntuarios();
+		List<Prontuario> listProntuarios = prontuarioDAO.selectAllProntuarios();
 		request.setAttribute("listProntuarios", listProntuarios);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);

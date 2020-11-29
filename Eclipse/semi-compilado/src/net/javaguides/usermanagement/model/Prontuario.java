@@ -27,6 +27,16 @@ public class Prontuario {
 	protected int hospital_destino_id;
 	protected int paciente_id;
 	
+	// Nao necessariamente fazem sentido, mas aqui estao
+	protected String cpf;
+	protected String nome;
+	protected String data_de_nascimento;
+	protected String data_de_entrada;
+	protected String nome_do_exame;
+	protected String data_exame;
+	protected String resultado_exame;
+	protected String descricao_exame;
+	
 	public Prontuario(
 			String data,
 			String estado_do_paciente,
@@ -113,6 +123,20 @@ public class Prontuario {
 			String descricao_exame, String data_exame, String resultado_exame) {
 		// TODO Auto-generated constructor stub
 		System.out.println("Construtor");
+	}
+
+	public Prontuario(int id, String cpf, String nome, String data_de_nascimento, String data_de_entrada,
+			String nome_do_exame, String data_exame, String resultado_exame, String descricao_exame) {
+
+		this.id = id;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.data_de_nascimento = data_de_nascimento;
+		this.data_de_entrada = data_de_entrada;
+		this.nome_do_exame = nome_do_exame;
+		this.data_exame = data_exame;
+		this.resultado_exame = resultado_exame;
+		this.descricao_exame = descricao_exame;
 	}
 
 	public int getId() {
@@ -222,5 +246,48 @@ public class Prontuario {
 	}
 	public void setPacienteId(int paciente_id) {
 		this.paciente_id = paciente_id;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public String getData_de_nascimento() {
+		return data_de_nascimento;
+	}
+	public String getData_de_entrada() {
+		return data_de_entrada;
+	}
+
+	public String getNome_do_exame() {
+		return nome_do_exame;
+	}
+	public String getData_exame() {
+		return data_exame;
+	}
+	public String getResultado_exame() {
+		return resultado_exame;
+	}
+	public String getDescricao_exame() {
+		return resultado_exame;
+	}
+	
+	public void setCpf() {
+	}
+	public void setNome() {
+	}
+	public void setData_de_nacimento() {
+	}
+	public void setData_de_entrada() {
+	}
+	public void setDome_do_exame() {
+	}
+	public void setData_exame() {
+	}
+	public void setResultado_exame() {
+	}
+	public void setDescricao_exame() {
 	}
 }

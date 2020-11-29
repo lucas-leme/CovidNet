@@ -52,14 +52,14 @@
             <c:forEach var="prontuario" items="${listProntuarios}">
                 <tr>
                 	<td><c:out value="${prontuario.id}" /></td>
-                    <td><c:out value="${prontuario.cpf}" /></td>
+                    <td>cpf</td>
                     <td><c:out value="${prontuario.nome}" /></td>
-                    <td><c:out value="${prontuario.dataDeNascimento}" /></td>
-                    <td><c:out value="${prontuario.dataDeEntrada}" /></td>
-                    <td><c:out value="${prontuario.nomeDoExame}" /></td>
-                    <td><c:out value="${prontuario.descricaoExame}" /></td>
-                    <td><c:out value="${prontuario.dataExame}" /></td>
-                    <td><c:out value="${prontuario.resultadoExame}" /></td>
+                    <td><c:out value="${prontuario.data_de_nascimento}" /></td>
+                    <td><c:out value="${prontuario.data_de_entrada}" /></td>
+                    <td><c:out value="${prontuario.nome_do_exame}" /></td>
+                    <td><c:out value="${prontuario.descricao_exame}" /></td>
+                    <td><c:out value="${prontuario.data_exame}" /></td>
+                    <td><c:out value="${prontuario.resultado_exame}" /></td>
                     <td>
                     	<a href="${pageContext.request.contextPath}/prontuarios/edit?id=<c:out value='${prontuario.id}' />">Editar</a>                   	
                     </td>
