@@ -142,7 +142,7 @@ public class ProntuarioServlet extends HttpServlet {
 			System.out.println("id do paciente adicionado: " + id_paciente);
 			
 			System.out.println("selecionando hospital cujo id e 1");
-			List<Hospital> hospitais = hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
+			List<Hospital> hospitais = hospitalDAO.selectAllHospitais();//hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
 
 			//int id_paciente = 1; // MUDAR
 			request.setAttribute("id_paciente", id_paciente);	

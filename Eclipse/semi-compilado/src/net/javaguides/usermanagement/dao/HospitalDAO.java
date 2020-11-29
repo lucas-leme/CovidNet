@@ -26,6 +26,15 @@ public class HospitalDAO {
 			+ "    JOIN leitos l"
 			+ "    ON h.id = l.hospital_id"
 			+ " WHERE h.municipio_id = ? AND l.ocupado = 0"
+			+ " GROUP BY h.nome";	
+	
+	private static final String SELECT_ALL_HOPITAIS = 
+			"SELECT h.nome, COUNT(*) as 'leitos_disponiveis'"
+			+ " FROM"
+			+ "    hospitais h"
+			+ "    JOIN leitos l"
+			+ "    ON h.id = l.hospital_id"
+			+ " WHERE l.ocupado = 0"
 			+ " GROUP BY h.nome";
 	
 	protected Connection getConnection() {
@@ -63,6 +72,31 @@ public class HospitalDAO {
 		}
 		
 		return municipios;
+	}
+	
+	public List<Hospital> selectAllHospitais() {
+		List<Hospital> hospitais = new ArrayList<>();
+		
+		try (Connection connection = getConnection();
+
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_HOPITAIS);) {
+			
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+	
+			while (rs.next()) {
+				
+				String nome = rs.getString("nome");
+				int leitos_disponiveis = rs.getInt("leitos_disponiveis");
+				System.out.println("Leitos disponiveis de " + nome + " : " + leitos_disponiveis);
+				hospitais.add(new Hospital(nome, leitos_disponiveis));
+			}
+		
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+
+		return hospitais;		
 	}
 	
 	public List<Hospital> selectHospitais(int municipio_id) {

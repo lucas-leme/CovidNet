@@ -105,6 +105,15 @@
 			        <th>Hospital: </th>
 			        <c:if test="${hospitais != null}">
 						<div>Hospitais disponiveis</div>
+						
+						<table>
+				            <c:forEach var="hospital" items="${hospitais}">
+				                <tr>
+				                    <td><c:out value="${hospital.nome}" /></td>
+				                    <td><c:out value="${hospital}" /></td>
+				                </tr>
+				            </c:forEach>
+				        </table>
 			        </c:if>
 			        <c:if test="${hospitais == null}">
 						<div>Hospitais nao disponiveis</div>
