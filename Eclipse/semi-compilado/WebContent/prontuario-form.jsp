@@ -48,24 +48,21 @@
 	                <th>CPF: </th>
 	                <td>
 	                	<input type="text" name="cpf" size="45"
-	                			value="<c:out value='${prontuario.cpf}' />"
-	                		/>
+	                			value="<c:out value='${cpf}' />" disabled/>
 	                </td>
 	            </tr>           
 	            <tr>
 	                <th>Nome: </th>
 	                <td>
 	                	<input type="text" name="nome" size="45"
-	                			value="<c:out value='${prontuario.nome}' />"
-	                		/>
+	                			value="<c:out value='${nome}' />" disabled/>
 	                </td>
 	            </tr>
 	            <tr>
 	                <th>Data de Nascimento: </th>
 	                <td>
 	                	<input type="text" name="data_de_nascimento" size="45"
-	                			value="<c:out value='${prontuario.dataDeNascimento}' />"
-	                		/>
+	                			value="<c:out value='${data_de_nascimento}' />" disabled/>
 	                </td>
 	            </tr>
 	            <tr>

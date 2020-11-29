@@ -91,9 +91,9 @@ public class HospitalDAO {
 				
 				String nome = rs.getString("nome");
 				int qtde_leitos = rs.getInt("qtde_leitos");
-				System.out.println("Leitos disponiveis de " + nome + " : " + qtde_leitos);
+				//System.out.println("Leitos disponiveis de " + nome + " : " + qtde_leitos);
 
-	            System.out.println("id do hospital " + nome + " : " + id_hospital);
+	            //System.out.println("id do hospital " + nome + " : " + id_hospital);
 				
 				hospitais.add(new Hospital(id_hospital, nome, qtde_leitos));
 			}

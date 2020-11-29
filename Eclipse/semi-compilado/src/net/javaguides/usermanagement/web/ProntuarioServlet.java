@@ -146,7 +146,10 @@ public class ProntuarioServlet extends HttpServlet {
 
 			//int id_paciente = 1; // MUDAR
 			request.setAttribute("id_paciente", id_paciente);	
-			request.setAttribute("hospitais", hospitais);
+			request.setAttribute("hospitais", hospitais);	
+			request.setAttribute("cpf", cpf);	
+			request.setAttribute("nome", nome);	
+			request.setAttribute("data_de_nascimento", data_de_nascimento);
 			
 			System.out.println("Novo jsp: prontuario");
 			//System.out.println("redirecting to " + root + "/prontuarios/new");
@@ -158,7 +161,7 @@ public class ProntuarioServlet extends HttpServlet {
 
 	private void insertProntuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		System.out.println("inseting prontuario");
+		System.out.println("\n\n\ninseting prontuario");
 		
 		String cpf = request.getParameter("cpf");
 		String nome = request.getParameter("nome");
