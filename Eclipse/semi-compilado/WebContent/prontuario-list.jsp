@@ -52,7 +52,7 @@
             <c:forEach var="prontuario" items="${listProntuarios}">
                 <tr>
                 	<td><c:out value="${prontuario.id}" /></td>
-                    <td>cpf</td>
+                    <td><c:out value="${prontuario.cpf}" /></td>
                     <td><c:out value="${prontuario.nome}" /></td>
                     <td><c:out value="${prontuario.data_de_nascimento}" /></td>
                     <td><c:out value="${prontuario.data_de_entrada}" /></td>
