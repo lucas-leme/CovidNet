@@ -138,11 +138,12 @@ public class ProntuarioServlet extends HttpServlet {
 			System.out.println("cpf: " + cpf + "; nome: " + nome + "; nascimento: " + data_de_nascimento + "; endereco: " + endereco);
 			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
-			pacienteDAO.insertPaciente(newPaciente);
+			int id_paciente = pacienteDAO.insertPaciente(newPaciente);
 			
+			System.out.println("selecionando hospital cujo id e 1");
 			List<Hospital> hospitais = hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
 
-			int id_paciente = 1; // MUDAR
+			//int id_paciente = 1; // MUDAR
 			request.setAttribute("id_paciente", id_paciente);	
 			request.setAttribute("hospitais", hospitais);
 			
@@ -167,10 +168,18 @@ public class ProntuarioServlet extends HttpServlet {
 		String data_exame = request.getParameter("data_exame"); 
 		String resultado_exame = request.getParameter("resultado_exame");
 		
-		Prontuario newProntuario = new Prontuario(0, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame, false, false, false, false, false, false, 0, 0, 0);
-		prontuarioDAO.insertProntuario(newProntuario);
+		System.out.println("id_paciente : " + request.getParameter("id_paciente"));
+		int id_paciente = 1;//Integer.parseInt(request.getParameter("id_paciente"));
 		
-		System.out.println("insertPorntuario : redirecting to :" + root + "/prontuarios");
+		Prontuario newProntuario = new Prontuario(0, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame, false, false, false, false, false, false, 0, 0, 0);
+		//Hospital hospitalEscolhido = new Hospital(resultado_exame, resultado_exame, resultado_exame, resultado_exame, 0);
+		int id_hospital = 1;//Integer.parseInt(request.getParameter("id_hospital"));
+		
+		System.out.println("idpaciente = " + id_paciente + "; idhospital = " + id_hospital);
+		
+		prontuarioDAO.insertProntuario(newProntuario, id_hospital, id_paciente);
+		
+		//System.out.println("insertPorntuario : redirecting to :" + root + "/prontuarios");
 		response.sendRedirect(root + "/prontuarios");
 	}
 

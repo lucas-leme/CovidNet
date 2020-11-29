@@ -21,12 +21,12 @@ public class HospitalDAO {
 	
 	private static final String SELECT_HOPITAIS_BY_MUNICIPIO_ID = 
 			"SELECT h.nome, COUNT(*) as 'leitos_disponiveis'"
-			+ "FROM"
+			+ " FROM"
 			+ "    hospitais h"
 			+ "    JOIN leitos l"
 			+ "    ON h.id = l.hospital_id"
-			+ "WHERE h.municipio_id = ? AND l.ocupado = 0"
-			+ "GROUP BY h.nome";
+			+ " WHERE h.municipio_id = ? AND l.ocupado = 0"
+			+ " GROUP BY h.nome";
 	
 	protected Connection getConnection() {
 		Connection connection = null;
@@ -72,15 +72,18 @@ public class HospitalDAO {
 		try (Connection connection = getConnection();
 
 		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_HOPITAIS_BY_MUNICIPIO_ID);) {
-		System.out.println(preparedStatement);
-		ResultSet rs = preparedStatement.executeQuery();
-
-		while (rs.next()) {
 			
-			String nome = rs.getString("nome");
-			int leitos_disponiveis = rs.getInt("leitos_disponiveis");
-			hospitais.add(new Hospital(nome, leitos_disponiveis));
-		}
+			preparedStatement.setString(1, Integer.toString(municipio_id));
+			
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+	
+			while (rs.next()) {
+				
+				String nome = rs.getString("nome");
+				int leitos_disponiveis = rs.getInt("leitos_disponiveis");
+				hospitais.add(new Hospital(nome, leitos_disponiveis));
+			}
 		
 		} catch (SQLException e) {
 			printSQLException(e);

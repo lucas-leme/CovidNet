@@ -124,7 +124,7 @@ public class ProntuarioDAO {
 		return connection;
 	}
 	
-	public void insertProntuario(Prontuario prontuario) throws SQLException {
+	public void insertProntuario(Prontuario prontuario, int id_hospital, int id_paciente) throws SQLException {
 
 		System.out.println("PRONTUARIO DAO: inserting prontuario");
 		System.out.println(INSERT_PRONTUARIO);
@@ -145,9 +145,11 @@ public class ProntuarioDAO {
 			preparedStatement.setBoolean(12, prontuario.getObesidade());
 			preparedStatement.setBoolean(13, prontuario.getAtivo());
 			
-			preparedStatement.setInt(14, prontuario.getHospitalId());
-			preparedStatement.setInt(15, prontuario.getHospitalDestinoId());
-			preparedStatement.setInt(16, prontuario.getPacienteId());
+			preparedStatement.setInt(14, 1);//hospital de origem
+			preparedStatement.setInt(15, id_hospital);//prontuario.getHospitalDestinoId());
+			preparedStatement.setInt(16, id_paciente);//prontuario.getPacienteId());
+			
+			System.out.println("Prontuario pra ser iserido = " + preparedStatement);
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {

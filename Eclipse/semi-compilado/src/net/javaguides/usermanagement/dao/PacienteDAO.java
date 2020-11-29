@@ -36,7 +36,7 @@ public class PacienteDAO {
 		return connection;
 	}
 	
-	public void insertPaciente(Paciente paciente) throws SQLException {
+	public int insertPaciente(Paciente paciente) throws SQLException {
 		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_SQL)) {
@@ -49,6 +49,9 @@ public class PacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+		
+		System.out.println("retornando ID do paciente adicionado");
+		return 1; // MUDAR PARA ID DO PACIENTE QUANDO E CRIADO
 	}
 	
 	public Paciente selectPacienteByCpf(String cpf) {
