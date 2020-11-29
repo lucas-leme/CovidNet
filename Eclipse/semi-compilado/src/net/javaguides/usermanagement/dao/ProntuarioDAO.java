@@ -125,8 +125,10 @@ public class ProntuarioDAO {
 	}
 	
 	public void insertProntuario(Prontuario prontuario) throws SQLException {
-		
+
+		System.out.println("PRONTUARIO DAO: inserting prontuario");
 		System.out.println(INSERT_PRONTUARIO);
+		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRONTUARIO)) {
 			preparedStatement.setString(1, prontuario.getEstadoDoPaciente());

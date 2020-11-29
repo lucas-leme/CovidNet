@@ -18,7 +18,7 @@
 			<form action="${pageContext.request.contextPath}/prontuarios/update" method="post">
         </c:if>
         <c:if test="${prontuario == null}">
-			<form action="${pageContext.request.contextPath}/prontuarios" method="post">
+			<form action="${pageContext.request.contextPath}/prontuarios/insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
@@ -99,6 +99,16 @@
                 			value="<c:out value='${prontuario.resultadoExame}' />"
                 		/>
                 </td>
+            </tr>
+            
+		    <tr>
+		        <th>Hospital: </th>
+		        <c:if test="${hospitais != null}">
+					<div>Hospitais disponiveis</div>
+		        </c:if>
+		        <c:if test="${hospitais == null}">
+					<div>Hospitais nao disponiveis</div>
+		        </c:if>
             </tr>
             <tr>
             	<td colspan="2" align="center">

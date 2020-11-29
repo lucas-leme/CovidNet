@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.dao.ProntuarioDAO;
+import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Paciente;
 import net.javaguides.usermanagement.model.Prontuario;
 
@@ -31,11 +33,13 @@ public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProntuarioDAO prontuarioDAO;
 	private PacienteDAO pacienteDAO;
+	private HospitalDAO hospitalDAO;
 	private static final String root = "/semi-compilado";
 
 	public void init() {
 		prontuarioDAO = new ProntuarioDAO();
 		pacienteDAO = new PacienteDAO();
+		hospitalDAO = new HospitalDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -103,7 +107,7 @@ public class ProntuarioServlet extends HttpServlet {
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("New form");
+		System.out.println("New form prontuario");
 		System.out.println("id do paciente existe? : " + request.getParameter("id_paciente"));
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
@@ -112,7 +116,7 @@ public class ProntuarioServlet extends HttpServlet {
 
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
-		System.out.println("editing form");
+		System.out.println("editing form prontuario");
 		
 		//int id = Integer.parseInt(request.getParameter("id"));
 		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf("111.111.111-11");
@@ -124,7 +128,7 @@ public class ProntuarioServlet extends HttpServlet {
 
 	private void insertPaciente(HttpServletRequest request, HttpServletResponse response)
 				throws SQLException, IOException, ServletException {
-			System.out.println("inserting prontuario");
+			System.out.println("inserting paciente");
 			
 			String cpf = request.getParameter("cpf");
 			String nome = request.getParameter("nome");
@@ -135,9 +139,13 @@ public class ProntuarioServlet extends HttpServlet {
 			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
 			pacienteDAO.insertPaciente(newPaciente);
+			
+			List<Hospital> hospitais = hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
 
 			int id_paciente = 1; // MUDAR
 			request.setAttribute("id_paciente", id_paciente);	
+			request.setAttribute("hospitais", hospitais);
+			
 			System.out.println("Novo jsp: prontuario");
 			//System.out.println("redirecting to " + root + "/prontuarios/new");
 			

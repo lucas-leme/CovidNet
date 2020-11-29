@@ -61,7 +61,7 @@
             <tr>
                 <th>Endereço: </th>
                 <td>
-                	<input type="text" name="nome_exame" size="45"
+                	<input type="text" name="endereco" size="45"
                 			value="<c:out value='${paciente.endereco}' />"
                 		/>
                 </td>
