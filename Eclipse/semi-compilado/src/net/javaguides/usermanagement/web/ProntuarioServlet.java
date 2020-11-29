@@ -139,6 +139,7 @@ public class ProntuarioServlet extends HttpServlet {
 			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
 			int id_paciente = pacienteDAO.insertPaciente(newPaciente);
+			System.out.println("id do paciente adicionado: " + id_paciente);
 			
 			System.out.println("selecionando hospital cujo id e 1");
 			List<Hospital> hospitais = hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
@@ -169,7 +170,7 @@ public class ProntuarioServlet extends HttpServlet {
 		String resultado_exame = request.getParameter("resultado_exame");
 		
 		System.out.println("id_paciente : " + request.getParameter("id_paciente"));
-		int id_paciente = 1;//Integer.parseInt(request.getParameter("id_paciente"));
+		int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
 		
 		Prontuario newProntuario = new Prontuario(0, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame, false, false, false, false, false, false, 0, 0, 0);
 		//Hospital hospitalEscolhido = new Hospital(resultado_exame, resultado_exame, resultado_exame, resultado_exame, 0);

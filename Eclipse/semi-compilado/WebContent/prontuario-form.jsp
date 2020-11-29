@@ -109,6 +109,15 @@
 			        <c:if test="${hospitais == null}">
 						<div>Hospitais nao disponiveis</div>
 			        </c:if>
+			        
+			        <c:if test="${id_paciente != null}">
+	                	<input type="text" name="id_paciente" size="45"
+	                			value="<c:out value='${id_paciente}' />"
+	                		/>
+			        </c:if>
+			        <c:if test="${id_paciente == null}">
+						<div>Sem id de paciente</div>
+			        </c:if>
 	            </tr>
 	            <tr>
 	            	<td colspan="2" align="center">
