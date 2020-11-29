@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.dao.ProntuarioDAO;
+import net.javaguides.usermanagement.model.Paciente;
 import net.javaguides.usermanagement.model.Prontuario;
 
 /**
@@ -23,15 +25,17 @@ import net.javaguides.usermanagement.model.Prontuario;
 
 @WebServlet(
 urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
-				"/pacientes", "/pacientes/new"}
+				"/pacientes", "/pacientes/new", "/pacientes/insert"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProntuarioDAO prontuarioDAO;
+	private PacienteDAO pacienteDAO;
 	private static final String root = "/semi-compilado";
 
 	public void init() {
 		prontuarioDAO = new ProntuarioDAO();
+		pacienteDAO = new PacienteDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -61,8 +65,13 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/update":
 					updateProntuario(request, response);
 					break;
+					
 				case "/pacientes/new":
 					showPacienteForm(request, response);
+					break;
+				case "/pacientes/insert":
+					System.out.println("inserting");
+					insertPaciente(request, response);
 					break;
 				default:
 					System.out.println("\nDEFAULT");
@@ -73,7 +82,7 @@ public class ProntuarioServlet extends HttpServlet {
 			throw new ServletException(ex);
 		}
 	}
-
+	
 	private void listProntuarios(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		System.out.println("Listing prontuarios");
@@ -110,6 +119,23 @@ public class ProntuarioServlet extends HttpServlet {
 		request.setAttribute("prontuario", existingProntuario);
 		dispatcher.forward(request, response);
 	}
+
+	private void insertPaciente(HttpServletRequest request, HttpServletResponse response)
+				throws SQLException, IOException {
+			System.out.println("inserting prontuario");
+			
+			String cpf = request.getParameter("cpf");
+			String nome = request.getParameter("nome");
+			String data_de_nascimento = request.getParameter("data_de_nascimento");  
+			String endereco = request.getParameter("endereco");
+			
+			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
+			pacienteDAO.insertPaciente(newPaciente);
+
+			int id_paciente = 1; // MUDAR
+			request.setAttribute("id_paciente", id_paciente);			
+			response.sendRedirect(root + "/prontuarios");
+		}
 
 	private void insertProntuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {

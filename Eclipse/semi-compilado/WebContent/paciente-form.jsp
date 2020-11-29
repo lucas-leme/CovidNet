@@ -3,22 +3,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Lista de Prontuários</title>
+	<title>Cadastrar paciente</title>
 </head>
 <body>
 	<center>
-		<h1>Gerenciamento de Prontuários</h1>
+		<h1>Cadastro de paciente</h1>
         <h2>
         	<a href="${pageContext.request.contextPath}/prontuarios">VOLTAR</a>
         	
         </h2>
 	</center>
     <div align="center">
-		<c:if test="${prontuario != null}">
-			<form action="${pageContext.request.contextPath}/prontuarios/update" method="post">
+		<c:if test="${paciente != null}">
+			<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
         </c:if>
-        <c:if test="${prontuario == null}">
-			<form action="${pageContext.request.contextPath}/prontuarios/insert" method="post">
+        <c:if test="${paciente == null}">
+			<form action="${pageContext.request.contextPath}/pacientes/new" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
