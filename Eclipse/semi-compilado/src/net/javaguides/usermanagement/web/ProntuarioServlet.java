@@ -129,11 +129,14 @@ public class ProntuarioServlet extends HttpServlet {
 			String data_de_nascimento = request.getParameter("data_de_nascimento");  
 			String endereco = request.getParameter("endereco");
 			
+			System.out.println("cpf: " + cpf + "; nome: " + nome + "; nascimento: " + data_de_nascimento + "; endereco: " + endereco);
+			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
 			pacienteDAO.insertPaciente(newPaciente);
 
 			int id_paciente = 1; // MUDAR
-			request.setAttribute("id_paciente", id_paciente);			
+			request.setAttribute("id_paciente", id_paciente);	
+			System.out.println("redirecting to " + root + "/prontuarios");
 			response.sendRedirect(root + "/prontuarios");
 		}
 

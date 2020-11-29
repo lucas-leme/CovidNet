@@ -18,7 +18,7 @@
 			<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
         </c:if>
         <c:if test="${paciente == null}">
-			<form action="${pageContext.request.contextPath}/pacientes/new" method="post">
+			<form action="${pageContext.request.contextPath}/pacientes/insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
