@@ -134,10 +134,10 @@ public class ProntuarioDAO {
 			preparedStatement.setString(1, prontuario.getEstadoDoPaciente());
 			preparedStatement.setString(2, prontuario.getDiagnostico());
 			preparedStatement.setString(3, prontuario.getTesteCovid());
-			preparedStatement.setString(4, prontuario.getDoencaRespiratoria());
-			preparedStatement.setString(5, prontuario.getBatimentoCardiaco());
-			preparedStatement.setString(6, prontuario.getHipertensao());
-			preparedStatement.setString(7, prontuario.getOximetria());
+			preparedStatement.setBoolean(4, prontuario.getDoencaRespiratoria());
+			preparedStatement.setBoolean(5, prontuario.getBatimentoCardiacoNormal());
+			preparedStatement.setBoolean(6, prontuario.getHipertensao());
+			preparedStatement.setInt(7, prontuario.getOximetria());
 			preparedStatement.setBoolean(8, prontuario.getRadiometriaToraxNormal());
 			preparedStatement.setBoolean(9, prontuario.getTomografiaToraxNormal());
 			preparedStatement.setBoolean(10, prontuario.getVentilacaoMecanica());
@@ -172,10 +172,10 @@ public class ProntuarioDAO {
 				String estado_do_paciente = rs.getString("estado_do_paciente");
 				String diagnostico = rs.getString("diagnostico");
 				String teste_covid = rs.getString("teste_covid");
-				String doenca_respiratoria = rs.getString("doenca_respiratoria");
-				String batimento_cardiaco = rs.getString("batimento_cardiaco");
-				String hipertensao = rs.getString("hipertensao");
-				String oximetria = rs.getString("oximetria");
+				boolean doenca_respiratoria = rs.getBoolean("doenca_respiratoria");
+				boolean batimento_cardiaco_normal = rs.getBoolean("batimento_cardiaco_normal");
+				boolean hipertensao = rs.getBoolean("hipertensao");
+				int oximetria = rs.getInt("oximetria");
 				boolean radiometria_torax_normal = rs.getBoolean("radiometria_torax_normal");
 				boolean tomografia_torax_normal = rs.getBoolean("tomografia_torax_normal");
 				boolean ventilacao_mecanica = rs.getBoolean("ventilacao_mecanica");
@@ -193,7 +193,7 @@ public class ProntuarioDAO {
 					diagnostico,
 					teste_covid,
 					doenca_respiratoria,
-					batimento_cardiaco,
+					batimento_cardiaco_normal,
 					hipertensao,
 					oximetria,
 					radiometria_torax_normal,
@@ -228,10 +228,10 @@ public class ProntuarioDAO {
 				String estado_do_paciente = rs.getString("estado_do_paciente");
 				String diagnostico = rs.getString("diagnostico");
 				String teste_covid = rs.getString("teste_covid");
-				String doenca_respiratoria = rs.getString("doenca_respiratoria");
-				String batimento_cardiaco = rs.getString("batimento_cardiaco");
-				String hipertensao = rs.getString("hipertensao");
-				String oximetria = rs.getString("oximetria");
+				boolean doenca_respiratoria = rs.getBoolean("doenca_respiratoria");
+				boolean batimento_cardiaco_normal = rs.getBoolean("batimento_cardiaco_normal");
+				boolean hipertensao = rs.getBoolean("hipertensao");
+				int oximetria = rs.getInt("oximetria");
 				boolean radiometria_torax_normal = rs.getBoolean("radiometria_torax_normal");
 				boolean tomografia_torax_normal = rs.getBoolean("tomografia_torax_normal");
 				boolean ventilacao_mecanica = rs.getBoolean("ventilacao_mecanica");
@@ -249,7 +249,7 @@ public class ProntuarioDAO {
 					diagnostico,
 					teste_covid,
 					doenca_respiratoria,
-					batimento_cardiaco,
+					batimento_cardiaco_normal,
 					hipertensao,
 					oximetria,
 					radiometria_torax_normal,
@@ -279,10 +279,10 @@ public class ProntuarioDAO {
 			statement.setString(2, prontuario.getEstadoDoPaciente());
 			statement.setString(3, prontuario.getDiagnostico());
 			statement.setString(4, prontuario.getTesteCovid());
-			statement.setString(5, prontuario.getDoencaRespiratoria());
-			statement.setString(6, prontuario.getBatimentoCardiaco());
-			statement.setString(7, prontuario.getHipertensao());
-			statement.setString(8, prontuario.getOximetria());
+			statement.setBoolean(5, prontuario.getDoencaRespiratoria());
+			statement.setBoolean(6, prontuario.getBatimentoCardiacoNormal());
+			statement.setBoolean(7, prontuario.getHipertensao());
+			statement.setInt(8, prontuario.getOximetria());
 			statement.setBoolean(9, prontuario.getRadiometriaToraxNormal());
 			statement.setBoolean(10, prontuario.getTomografiaToraxNormal());
 			statement.setBoolean(11, prontuario.getVentilacaoMecanica());
