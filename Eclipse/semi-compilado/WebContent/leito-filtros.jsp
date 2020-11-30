@@ -15,7 +15,7 @@
         <c:forEach var="cidade" items="${cidades}">
                <tr>
                     <td>
-                    	<a href="${pageContext.request.contextPath}/leitos/list_hospitais?cidade=<c:out value="${cidade}"/>"><c:out value="${cidade}"/></a>              	
+                    	<a href="${pageContext.request.contextPath}/leitos/list_hospitais?cidade=<c:out value="${cidade.id}"/>"><c:out value="${cidade.nome}"/></a>              	
                     </td>
                 </tr>
         </c:forEach>
