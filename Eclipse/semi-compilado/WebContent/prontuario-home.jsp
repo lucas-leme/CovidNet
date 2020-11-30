@@ -26,6 +26,12 @@
     <a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">Relatórios</a>
     <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
     <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
+    
+    <!-- PASSAR ISSO AQUI ALI PRA BAIXO -->
+     	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar paciente</a>
+     	&nbsp;&nbsp;&nbsp;
+     	<a href="${pageContext.request.contextPath}">Página inicial</a>
+        	
   </div>
 </header>
 

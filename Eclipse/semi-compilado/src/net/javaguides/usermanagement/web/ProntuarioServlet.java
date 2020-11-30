@@ -84,11 +84,12 @@ public class ProntuarioServlet extends HttpServlet {
 					break;
 					
 				case "prontuarios/list":
-					System.out.println("\nDEFAULT");
+					System.out.println("LIST PRONTUARIOS");
 					listProntuarios(request, response);
 					break;
 				
 				default:
+					System.out.println("DEFAULT");
 					showMainPage(request, response);
 
 			}
