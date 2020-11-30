@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Prontuario;
 
 public class ProntuarioDAO {
@@ -35,7 +36,17 @@ public class ProntuarioDAO {
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
 			+ ") "
-			+ "VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			+ "VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";	
+	
+	private static final String SELECT_ALL_PRONTUARIOS = 
+			"select pr.id, pa.cpf, pa.nome, pa.data_de_nascimento, pr.`data` data_de_entrada,\n"
+			+ " pr.batimento_cardiaco descricao_exame, pr.doenca_respiratoria nome_do_exame, pr.`data` data_exame, pr.oximetria resultado_exame \n"
+			+ " from pacientes pa, prontuarios pr\n"
+			+ " inner join hospitais h_dest\n"
+			+ " on h_dest.id = pr.hospital_destino_id \n"
+			+ " inner join hospitais h_orig\n"
+			+ " on h_orig.id = pr.hospital_id \n"
+			+ " where pr.paciente_id  = pa.id";
 		
 	private static final String SELECT_PRONTUARIO_BY_PACIENTE_CPF =
 			"SELECT"
@@ -124,9 +135,11 @@ public class ProntuarioDAO {
 		return connection;
 	}
 	
-	public void insertProntuario(Prontuario prontuario) throws SQLException {
-		
+	public void insertProntuario(Prontuario prontuario, int id_hospital, int id_paciente) throws SQLException {
+
+		System.out.println("PRONTUARIO DAO: inserting prontuario");
 		System.out.println(INSERT_PRONTUARIO);
+		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PRONTUARIO)) {
 			preparedStatement.setString(1, prontuario.getEstadoDoPaciente());
@@ -142,14 +155,64 @@ public class ProntuarioDAO {
 			preparedStatement.setBoolean(11, prontuario.getDiabetes());
 			preparedStatement.setBoolean(12, prontuario.getObesidade());
 			preparedStatement.setBoolean(13, prontuario.getAtivo());
-			preparedStatement.setInt(14, prontuario.getHospitalId());
-			preparedStatement.setInt(15, prontuario.getHospitalDestinoId());
-			preparedStatement.setInt(16, prontuario.getPacienteId());
+			
+			preparedStatement.setInt(14, 1);//hospital de origem
+			preparedStatement.setInt(15, id_hospital);//prontuario.getHospitalDestinoId());
+			preparedStatement.setInt(16, id_paciente);//prontuario.getPacienteId());
+			
+			System.out.println("Prontuario pra ser iserido = " + preparedStatement);
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+	}
+	
+	public List<Prontuario> selectAllProntuarios() {
+
+		
+		List<Prontuario> prontuarios = new ArrayList<>();
+		
+		try (Connection connection = getConnection();
+				
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_PRONTUARIOS);) {
+			System.out.println(preparedStatement);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String cpf = rs.getString("cpf");
+				String nome = rs.getString("nome");
+				String data_de_nascimento = rs.getString("data_de_nascimento");
+				String data_de_entrada = rs.getString("data_de_entrada");
+				String nome_do_exame = rs.getString("nome_do_exame");
+				String data_exame = rs.getString("data_exame");
+				String resultado_exame = rs.getString("resultado_exame");
+				String descricao_exame = rs.getString("descricao_exame");
+				
+				
+				System.out.println("Parametros obtidos");
+				
+				prontuarios.add( new Prontuario(
+					id,
+					cpf,
+					nome,
+					data_de_nascimento,
+					data_de_entrada,
+					nome_do_exame,
+					data_exame,
+					resultado_exame,
+					descricao_exame
+				));
+				
+				System.out.println("Adicionao +1 porntuario à lista");
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		
+		return prontuarios;
 	}
 	
 	public Prontuario selectProntuarioByPacienteCpf(String cpf) {

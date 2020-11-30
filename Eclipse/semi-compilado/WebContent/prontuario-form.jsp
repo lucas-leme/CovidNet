@@ -28,17 +28,127 @@
 	<center>
 		<h1>Gerenciamento de Prontuários</h1>
         <h2>
+        	<a href="${pageContext.request.contextPath}/prontuarios">VOLTAR</a>
         	<a href="${pageContext.request.contextPath}/prontuarios/new_paciente">Adicionar Paciente</a>
-        	
         </h2>
 	</center>
     <div align="center">
+
 		<c:if test="${prontuario != null}">
 			<form action="${pageContext.request.contextPath}/prontuarios/update" method="post">
         </c:if>
         <c:if test="${prontuario == null}">
 			<form action="${pageContext.request.contextPath}/prontuarios/insert" method="post">
         </c:if>
+
+          
+	        <table border="1" cellpadding="5">
+	            <caption>
+	            	<h2>
+	            		<c:if test="${prontuario != null}">
+	            			Editar prontuário
+	            		</c:if>
+	            		<c:if test="${prontuario == null}">
+	            			Adicionar prontuário
+	            		</c:if>
+	            	</h2>
+	            </caption>
+	        		<c:if test="${prontuario != null}">
+	        			<input type="hidden" name="id" value="<c:out value='${prontuario.id}' />" />
+	        		</c:if> 
+	        		<tr>
+	                <th>CPF: </th>
+	                <td>
+	                	<input type="text" name="cpf" size="45"
+	                			value="<c:out value='${cpf}' />" disabled/>
+	                </td>
+	            </tr>           
+	            <tr>
+	                <th>Nome: </th>
+	                <td>
+	                	<input type="text" name="nome" size="45"
+	                			value="<c:out value='${nome}' />" disabled/>
+	                </td>
+	            </tr>
+	            <tr>
+	                <th>Data de Nascimento: </th>
+	                <td>
+	                	<input type="text" name="data_de_nascimento" size="45"
+	                			value="<c:out value='${data_de_nascimento}' />" disabled/>
+	                </td>
+	            </tr>
+	            <tr>
+	            <c:if test="${prontuario != null}">
+	        		<th>Data de Entrada: </th>
+	                <td>
+	                	<input type="text" name="data_de_entrada" size="15"
+	                			value="<c:out value='${prontuario.dataDeEntrada}' />"
+	                	/>
+	                </td>
+	        	</c:if>
+	            </tr>
+	            <tr>
+	                <th>Exame: </th>
+	                <td>
+	                	<input type="text" name="nome_exame" size="45"
+	                			value="<c:out value='${prontuario.nomeDoExame}' />"
+	                		/>
+	                </td>
+	            </tr>
+	            <tr>
+	                <th>Descrição: </th>
+	                <td>
+	                	<input type="text" name="descricao_exame" size="45"
+	                			value="<c:out value='${prontuario.descricaoExame}' />"
+	                		/>
+	                </td>
+	            </tr>
+	            <tr>
+	                <th>Data: </th>
+	                <td>
+	                	<input type="text" name="data_exame" size="45"
+	                			value="<c:out value='${prontuario.dataExame}' />"
+	                		/>
+	                </td>
+	            </tr>
+	                     <tr>
+	            <th>Resultado: </th>
+	                <td>
+	                	<input type="text" name="resultado_exame" size="45"
+	                			value="<c:out value='${prontuario.resultadoExame}' />"
+	                		/>
+	                </td>
+	            </tr>
+	            
+			    <tr>
+			        <th>Hospital: </th>
+						<td>
+					    	<c:if test="${hospitais != null}">
+								
+									<select id="opcoes_hospitais" name="opcoes_hospitais">
+							            <c:forEach var="hospital" items="${hospitais}">
+							                <option value="<c:out value="${hospital.id}"/>"><c:out value="${hospital.nome}" /></option>
+							                <!-- option><c:out value="${hospital}" /></option-->
+							            </c:forEach>
+							        </select>
+					        </c:if>
+				    	</td>        	
+				        
+				         
+				        
+			        <c:if test="${id_paciente != null}">
+			        	<input type="hidden" name="id_paciente" size="45"
+			              			value="<c:out value='${id_paciente}'/>"
+			              		/>
+			        </c:if>
+	            </tr>
+	            <tr>
+	            	<td colspan="2" align="center">
+	            		<input type="submit" value="Save" />
+	            	</td>
+	            </tr>
+	        </table>
+
         <table border="1" cellpadding="5">
             <caption>
             	<h2>
@@ -171,6 +281,7 @@
             	</td>
             </tr>
         </table>
+
         </form>
     </div>	
 </body>

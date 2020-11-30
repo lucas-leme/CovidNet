@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +22,17 @@ public class HospitalDAO {
 	
 	private static final String SELECT_HOPITAIS_BY_MUNICIPIO_ID = 
 			"SELECT h.nome, COUNT(*) as 'leitos_disponiveis'"
-			+ "FROM"
+			+ " FROM"
 			+ "    hospitais h"
 			+ "    JOIN leitos l"
 			+ "    ON h.id = l.hospital_id"
-			+ "WHERE h.municipio_id = ? AND l.ocupado = 0"
-			+ "GROUP BY h.nome";
+			+ " WHERE h.municipio_id = ? AND l.ocupado = 0"
+			+ " GROUP BY h.nome";	
 	
+	private static final String SELECT_ALL_HOPITAIS = 
+			"SELECT h.id, h.nome, h.qtde_leitos"
+			+ " FROM"
+			+ "    hospitais h";
 	protected Connection getConnection() {
 		Connection connection = null;
 		try {
@@ -65,6 +70,41 @@ public class HospitalDAO {
 		return municipios;
 	}
 	
+	public List<Hospital> selectAllHospitais() {
+		List<Hospital> hospitais = new ArrayList<>();
+		
+		try (Connection connection = getConnection();
+
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_HOPITAIS);){//, Statement.RETURN_GENERATED_KEYS);) {
+			
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+	
+			while (rs.next()) {
+	            //ResultSet rs2 = preparedStatement.getGeneratedKeys();
+	            
+	            int id_hospital = 123;
+	            //if(rs2.next()) id_hospital = rs2.getInt(1);
+	            
+	            id_hospital = rs.getInt("id");
+	            
+				
+				String nome = rs.getString("nome");
+				int qtde_leitos = rs.getInt("qtde_leitos");
+				//System.out.println("Leitos disponiveis de " + nome + " : " + qtde_leitos);
+
+	            //System.out.println("id do hospital " + nome + " : " + id_hospital);
+				
+				hospitais.add(new Hospital(id_hospital, nome, qtde_leitos));
+			}
+		
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+
+		return hospitais;		
+	}
+	
 	public List<Hospital> selectHospitais(int municipio_id) {
 		
 		List<Hospital> hospitais = new ArrayList<>();
@@ -72,15 +112,18 @@ public class HospitalDAO {
 		try (Connection connection = getConnection();
 
 		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_HOPITAIS_BY_MUNICIPIO_ID);) {
-		System.out.println(preparedStatement);
-		ResultSet rs = preparedStatement.executeQuery();
-
-		while (rs.next()) {
 			
-			String nome = rs.getString("nome");
-			int leitos_disponiveis = rs.getInt("leitos_disponiveis");
-			hospitais.add(new Hospital(nome, leitos_disponiveis));
-		}
+			preparedStatement.setString(1, Integer.toString(municipio_id));
+			
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+	
+			while (rs.next()) {
+				
+				String nome = rs.getString("nome");
+				int leitos_disponiveis = rs.getInt("leitos_disponiveis");
+				hospitais.add(null);//new Hospital(nome, leitos_disponiveis));
+			}
 		
 		} catch (SQLException e) {
 			printSQLException(e);

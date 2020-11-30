@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import net.javaguides.usermanagement.model.Paciente;
 
@@ -36,19 +37,32 @@ public class PacienteDAO {
 		return connection;
 	}
 	
-	public void insertPaciente(Paciente paciente) throws SQLException {
+	public int insertPaciente(Paciente paciente) throws SQLException {
 		
 		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_SQL)) {
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_SQL, Statement.RETURN_GENERATED_KEYS)) {
 			preparedStatement.setString(1, paciente.getCpf());
 			preparedStatement.setString(2, paciente.getNome());
 			preparedStatement.setString(3, paciente.getDataDeNascimento());
 			preparedStatement.setString(4, paciente.getEndereco());
 			
 			preparedStatement.executeUpdate();
+			
+
+            ResultSet rs = preparedStatement.getGeneratedKeys();
+            if(rs.next())
+            {
+                return rs.getInt(1);
+            }
+            
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+
+		
+		System.out.println("ID nao encontrado: erro de sql");
+		return -1; // MUDAR PARA ID DO PACIENTE QUANDO E CRIADO
 	}
 	
 	public Paciente selectPacienteByCpf(String cpf) {
