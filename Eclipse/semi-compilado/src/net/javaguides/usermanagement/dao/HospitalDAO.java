@@ -19,6 +19,8 @@ public class HospitalDAO {
 	
 	private static final String SELECT_ALL_MUNICIPIOS = "SELECT * FROM municipios";
 	
+	private static final String SELECT_ALL_HOSPITAIS = "SELECT * FROM hospitais";
+	
 	private static final String SELECT_HOSPITAIS_BY_MUNICIPIO_ID = 
 			"SELECT h1.id, h2.nome, h1.leitos_disponiveis\n"
 			+ "FROM (SELECT h.id, COUNT(*) as 'leitos_disponiveis'\n"
@@ -66,6 +68,35 @@ public class HospitalDAO {
 		}
 		
 		return municipios;
+	}
+	
+	public List<Hospital> selectAllHospitais() {
+		
+		List<Hospital> hospitais = new ArrayList<>();
+		
+		try (Connection connection = getConnection();
+
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_HOSPITAIS);) {	
+		System.out.println(preparedStatement);
+		ResultSet rs = preparedStatement.executeQuery();
+
+		while (rs.next()) {
+			
+			int id = rs.getInt("id");
+			String nome = rs.getString("nome");
+			String telefone = rs.getString("telefone");
+			String endereco = rs.getString("endereco");
+			String estado = rs.getString("estado");
+			int municipio_id = rs.getInt("municipio_id");
+			
+			hospitais.add(new Hospital(id, nome, telefone, endereco, estado, municipio_id));
+		}
+		
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+
+		return hospitais;
 	}
 	
 	public List<Hospital> selectHospitais(int municipio_id) {
