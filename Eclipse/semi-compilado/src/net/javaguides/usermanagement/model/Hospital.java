@@ -10,6 +10,7 @@ public class Hospital {
 	protected int municipio_id;
 	protected int leitos_disponiveis;
 	
+	
 	public Hospital(
 			String nome,
 			String telefone,
