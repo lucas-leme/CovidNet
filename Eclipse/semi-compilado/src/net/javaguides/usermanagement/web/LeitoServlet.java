@@ -15,6 +15,7 @@ import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.LeitoDAO;
 import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Leito;
+import net.javaguides.usermanagement.model.Municipio;
 
 
 @WebServlet(
@@ -95,7 +96,7 @@ public class LeitoServlet extends HttpServlet {
 	
 	private void mostrarFiltros(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		List<String> cidades = hospitalDAO.selectCidades();
+		List<Municipio> cidades = hospitalDAO.selectAllMunicipios();
 		request.setAttribute("cidades", cidades);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-filtros.jsp");
