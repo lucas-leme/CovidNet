@@ -45,7 +45,8 @@ public class Hospital {
 	}
 	
 	public Hospital(
-			int id_hospital, String nome,
+			int id_hospital,
+			String nome,
 			int leitos_disponiveis
 		) {
 		super();
