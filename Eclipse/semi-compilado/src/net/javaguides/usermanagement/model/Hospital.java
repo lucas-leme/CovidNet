@@ -3,7 +3,7 @@ package net.javaguides.usermanagement.model;
 public class Hospital {
 
 	protected int id;
-	protected String nome;
+	protected String nome;	
 	protected String telefone;
 	protected String endereco;
 	protected String estado;

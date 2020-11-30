@@ -11,12 +11,16 @@
 
     <div align="center">
 		Hospitais pedidos :
-	  
-        <c:if test="${hospitais != null}">       
-	        <c:forEach var="hospital" items="${hospitais}">
-	               <c:out value="${hospital}"/>
-	        </c:forEach>
-        </c:if>
+	  	<table>
+	  		<tr>
+		        <c:if test="${hospitais != null}">       
+			        <c:forEach var="hospital" items="${hospitais}">
+			               <td><c:out value="${hospital.nome}"/></td>
+			               <td><c:out value="${hospital.telefone}"/></td>
+			        </c:forEach>
+		        </c:if>
+		    </tr>
+        </table>
     </div>	
     
 </body>
