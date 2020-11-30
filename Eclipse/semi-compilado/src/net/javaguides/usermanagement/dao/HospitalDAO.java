@@ -20,13 +20,16 @@ public class HospitalDAO {
 	private static final String SELECT_ALL_MUNICIPIOS = "SELECT * FROM municipios";
 	
 	private static final String SELECT_HOSPITAIS_BY_MUNICIPIO_ID = 
-			"SELECT h.id, h.nome, COUNT(*) as 'leitos_disponiveis'"
-			+ "FROM"
-			+ "    hospitais h"
-			+ "    JOIN leitos l"
-			+ "    ON h.id = l.hospital_id"
-			+ "WHERE h.municipio_id = ? AND l.ocupado = 0"
-			+ "GROUP BY h.nome";
+			"SELECT h1.id, h2.nome, h1.leitos_disponiveis\n"
+			+ "FROM (SELECT h.id, COUNT(*) as 'leitos_disponiveis'\n"
+			+ "	FROM\n"
+			+ "	hospitais h\n"
+			+ "	JOIN leitos l\n"
+			+ "	ON h.id = l.hospital_id\n"
+			+ "	WHERE h.municipio_id = ? AND l.ocupado = 0\n"
+			+ "	GROUP BY h.id) as h1\n"
+			+ "	INNER JOIN hospitais as h2\n"
+			+ "	ON h2.id = h1.id";
 	
 	protected Connection getConnection() {
 		Connection connection = null;
@@ -72,7 +75,10 @@ public class HospitalDAO {
 		try (Connection connection = getConnection();
 
 		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_HOSPITAIS_BY_MUNICIPIO_ID);) {
-		System.out.println(preparedStatement);
+		
+		preparedStatement.setInt(1, municipio_id);
+			
+			System.out.println(preparedStatement);
 		ResultSet rs = preparedStatement.executeQuery();
 
 		while (rs.next()) {
