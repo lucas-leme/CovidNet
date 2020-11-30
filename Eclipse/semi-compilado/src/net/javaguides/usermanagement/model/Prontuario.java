@@ -13,10 +13,10 @@ public class Prontuario {
 	protected String estado_do_paciente;
 	protected String diagnostico;
 	protected String teste_covid;
-	protected String doenca_respiratoria;
-	protected String batimento_cardiaco;
-	protected String hipertensao;
-	protected String oximetria;
+	protected boolean doenca_respiratoria;
+	protected boolean batimento_cardiaco_normal;
+	protected boolean hipertensao;
+	protected int oximetria;
 	protected boolean radiometria_torax_normal;
 	protected boolean tomografia_torax_normal;
 	protected boolean ventilacao_mecanica;
@@ -32,10 +32,10 @@ public class Prontuario {
 			String estado_do_paciente,
 			String diagnostico,
 			String teste_covid,
-			String doenca_respiratoria,
-			String batimento_cardiaco,
-			String hipertensao,
-			String oximetria,
+			boolean doenca_respiratoria,
+			boolean batimento_cardiaco_normal,
+			boolean hipertensao,
+			int oximetria,
 			boolean radiometria_torax_normal,
 			boolean tomografia_torax_normal,
 			boolean ventilacao_mecanica,
@@ -53,7 +53,7 @@ public class Prontuario {
 		this.diagnostico = diagnostico;
 		this.teste_covid = teste_covid;
 		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco = batimento_cardiaco;
+		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
 		this.radiometria_torax_normal = radiometria_torax_normal;
@@ -73,10 +73,10 @@ public class Prontuario {
 			String estado_do_paciente,
 			String diagnostico,
 			String teste_covid,
-			String doenca_respiratoria,
-			String batimento_cardiaco,
-			String hipertensao,
-			String oximetria,
+			boolean doenca_respiratoria,
+			boolean batimento_cardiaco_normal,
+			boolean hipertensao,
+			int oximetria,
 			boolean radiometria_torax_normal,
 			boolean tomografia_torax_normal,
 			boolean ventilacao_mecanica,
@@ -95,7 +95,7 @@ public class Prontuario {
 		this.diagnostico = diagnostico;
 		this.teste_covid = teste_covid;
 		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco = batimento_cardiaco;
+		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
 		this.radiometria_torax_normal = radiometria_torax_normal;
@@ -139,28 +139,28 @@ public class Prontuario {
 	public void setTesteCovid(String teste_covid) {
 		this.teste_covid = teste_covid;
 	}
-	public String getDoencaRespiratoria() {
+	public boolean getDoencaRespiratoria() {
 		return this.doenca_respiratoria;
 	}
-	public void setDoencaRespiratoria(String doenca_respiratoria) {
+	public void setDoencaRespiratoria(boolean doenca_respiratoria) {
 		this.doenca_respiratoria = doenca_respiratoria;
 	}
-	public String getBatimentoCardiaco() {
-		return this.batimento_cardiaco;
+	public boolean getBatimentoCardiacoNormal() {
+		return this.batimento_cardiaco_normal;
 	}
-	public void setBatimentoCardiaco(String batimento_cardiaco) {
-		this.batimento_cardiaco = batimento_cardiaco;
+	public void getBatimentoCardiacoNormal(boolean batimento_cardiaco_normal) {
+		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
 	}
-	public String getHipertensao() {
+	public boolean getHipertensao() {
 		return this.hipertensao;
 	}
-	public void setHipertensao(String hipertensao) {
+	public void setHipertensao(boolean hipertensao) {
 		this.hipertensao = hipertensao;
 	}
-	public String getOximetria() {
+	public int getOximetria() {
 		return this.oximetria;
 	}
-	public void setOximetria(String oximetria) {
+	public void setOximetria(int oximetria) {
 		this.oximetria = oximetria;
 	}
 	public boolean getRadiometriaToraxNormal() {
