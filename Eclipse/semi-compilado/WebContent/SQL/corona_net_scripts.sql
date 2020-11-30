@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `prontuarios` (
 CREATE TABLE IF NOT EXISTS `exames` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `nome` VARCHAR(100),
+  `data` DATE,
   `descricao` VARCHAR(100),
   `resultado` VARCHAR(255),
   `prontuario_id` INT NOT NULL
