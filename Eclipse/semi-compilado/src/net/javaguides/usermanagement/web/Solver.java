@@ -30,17 +30,12 @@ public class Solver {
 		
 		for(char dig : subcpf.toCharArray())
 		{
-			//System.out.println(verif + " += " + peso + " * " + Character.getNumericValue(dig));
 			verif += peso * Character.getNumericValue(dig);
 			peso--;
 		}
 		
-		System.out.println("ver antes: " + verif);
-		
 		verif  = 11 - (verif % 11);
 		if(verif >= 10) verif = 0;
-		
-		System.out.println("digito verificador " + pos_dig + "  = " + verif);
 		
 		return Integer.toString(verif);
 	}
@@ -52,22 +47,12 @@ public class Solver {
 	    Matcher matcher = pattern.matcher(cpf);
 	    boolean matchFound = matcher.find();
 	    
-	    if(matchFound) {
-	      System.out.println("Match found");
-	      
+	    if(matchFound) {	      
 	      	String formattedCpf = cpf.replaceAll("[\\.\\-]", "");
-	      	System.out.println("Formatted: " + formattedCpf);
-		    
-		    System.out.println("Results: " + matcher.results() + "\n" + matcher.toString());
-		    
-		    System.out.println("\n\n");
 		    
 		    if(!digitosVerificadoresOk(formattedCpf)) return null;
 		    return formattedCpf;
-	    } else {
-	      System.out.println("Match not found\n\n");
 	    }
-		
 		return null;
 	}
 	
