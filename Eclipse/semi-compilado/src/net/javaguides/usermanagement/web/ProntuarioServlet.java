@@ -219,6 +219,7 @@ public class ProntuarioServlet extends HttpServlet {
 		// FECHAR O PRONTUARIO AQUI
 		//prontuarioDAO.closeProntuario(prontuario)(id_prontuario);
 		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/succes.jsp"); 
 		dispatcher.forward(request, response);
 	}
