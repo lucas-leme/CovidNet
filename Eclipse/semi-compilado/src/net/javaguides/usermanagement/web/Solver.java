@@ -4,6 +4,32 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Solver {
+	
+	// CPF de entrada na forma \d{11}
+	private static boolean digitosVerificadoresOk(String cpf)
+	{
+		String dig1 = cpf.substring(9, 9);
+		String dig2 = cpf.substring(10, 10);
+
+		String parte1 = cpf.substring(0, 9);
+		String parte2 = cpf.substring(0, 10);
+		
+		if(digitoVerificador(1, parte1).equals(dig1) && digitoVerificador(2, parte2).equals(dig2)) return true;			
+		return false;
+	}
+
+	private static String digitoVerificador(int i, String subcpf) {
+		
+		if(i == 1)
+		{
+			
+		}else if(i == 2)
+		{
+			
+		}
+		
+		return null;
+	}
 
 	// Verificar formato de cpf e digito verificador
 	public static String formatCpf(String cpf)
@@ -14,14 +40,19 @@ public class Solver {
 	    
 	    if(matchFound) {
 	      System.out.println("Match found");
+	      
+	      	String formattedCpf = "";
 		    
 		    System.out.println("group matcher: " + matcher.group());
-		    for(int i = 0; i < matcher.groupCount(); i++)
+		    for(int i = 1; i < matcher.groupCount(); i++)
 		    {
 		    	System.out.println("group(" + i + ") : " + matcher.group(i));
+		    	formattedCpf += matcher.group(i);
 		    }
 		    
 		    System.out.println("Results: " + matcher.results() + "\n" + matcher.toString());
+		    
+		    return formattedCpf;
 	    } else {
 	      System.out.println("Match not found");
 	    }
