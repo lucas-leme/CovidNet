@@ -239,16 +239,22 @@ public class ProntuarioServlet extends HttpServlet {
 			String data_de_nascimento = request.getParameter("data_de_nascimento");  
 			String endereco = request.getParameter("endereco");
 			
+			
+			System.out.println("Verificando atributos");
+			System.out.println("iscpfok? : " + Solver.isCpfOk(cpf));		
+			
 			System.out.println("cpf: " + cpf + "; nome: " + nome + "; nascimento: " + data_de_nascimento + "; endereco: " + endereco);
 			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
 			int id_paciente = pacienteDAO.insertPaciente(newPaciente);
 			newPaciente.setId(id_paciente);
 			System.out.println("id do paciente adicionado: " + id_paciente);
-		
+
+
 			System.out.println("selecionando hospital cujo id e 1");
 			List<Hospital> hospitais = hospitalDAO.selectAllHospitais();//hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
-
+		
+			
 			request.setAttribute("id_paciente", id_paciente);	
 			request.setAttribute("hospitais", hospitais);	
 			request.setAttribute("cpf", cpf);	
