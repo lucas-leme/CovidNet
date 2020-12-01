@@ -343,7 +343,8 @@ public class ProntuarioServlet extends HttpServlet {
 		boolean ativo;
 		int hospital_id;
 		int hospital_destino_id;
-		
+
+
 		System.out.println("Adicionando paciente");
 		
 		id = Integer.parseInt(request.getParameter("id"));
@@ -383,8 +384,9 @@ public class ProntuarioServlet extends HttpServlet {
 				hospital_id,
 				hospital_destino_id
 			);
+
 		
-		prontuarioDAO.updateProntuario(book);
+		//prontuarioDAO.updateProntuario(book);
 		response.sendRedirect(root + "/prontuarios");
 	}
 }
