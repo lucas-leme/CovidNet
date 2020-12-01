@@ -84,6 +84,28 @@ public class ProntuarioDAO {
 			+ "FROM prontuarios"
 			+ "WHERE hospital_id = ? AND ativo = 1";
 	
+	private static final String SELECT_PRONTUARIO_BY_ID =
+			"SELECT"
+			+ "		data,"
+			+ "		estado_do_paciente,"
+			+ "		diagnostico,"
+			+ "		teste_covid,"
+			+ "		doenca_respiratoria,"
+			+ "		batimento_cardiaco_normal,"
+			+ "		hipertensao,"
+			+ "		oximetria,"
+			+ "		radiometria_torax_normal,"
+			+ "		tomografia_torax_normal,"
+			+ "		ventilacao_mecanica,"
+			+ "		diabetes,"
+			+ "		obesidade,"
+			+ "		ativo,"
+			+ "		hospital_id,"
+			+ "		hospital_destino_id,"
+			+ "		paciente_id"
+			+ "FROM prontuarios"
+			+ "WHERE id = ?";
+	
 	private static final String UPDATE_PRONTUARIO =
 			"UPDATE prontuarios "
 			+ "SET"
@@ -213,6 +235,61 @@ public class ProntuarioDAO {
 		return prontuario;
 	}
 
+	public Prontuario selectProntuarioById(int id) {
+		Prontuario prontuario = null;
+		
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRONTUARIO_BY_ID);) {
+			preparedStatement.setInt(1, id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				String data = rs.getString("data");
+				String estado_do_paciente = rs.getString("estado_do_paciente");
+				String diagnostico = rs.getString("diagnostico");
+				String teste_covid = rs.getString("teste_covid");
+				boolean doenca_respiratoria = rs.getBoolean("doenca_respiratoria");
+				boolean batimento_cardiaco_normal = rs.getBoolean("batimento_cardiaco_normal");
+				boolean hipertensao = rs.getBoolean("hipertensao");
+				int oximetria = rs.getInt("oximetria");
+				boolean radiometria_torax_normal = rs.getBoolean("radiometria_torax_normal");
+				boolean tomografia_torax_normal = rs.getBoolean("tomografia_torax_normal");
+				boolean ventilacao_mecanica = rs.getBoolean("ventilacao_mecanica");
+				boolean diabetes = rs.getBoolean("diabetes");
+				boolean obesidade = rs.getBoolean("obesidade");
+				boolean ativo = rs.getBoolean("ativo");
+				int hospital_id = rs.getInt("hospital_id");
+				int hospital_destino_id = rs.getInt("hospital_destino_id");
+				int paciente_id = rs.getInt("paciente_id");
+				
+				prontuario = new Prontuario(
+					id,
+					data,
+					estado_do_paciente,
+					diagnostico,
+					teste_covid,
+					doenca_respiratoria,
+					batimento_cardiaco_normal,
+					hipertensao,
+					oximetria,
+					radiometria_torax_normal,
+					tomografia_torax_normal,
+					ventilacao_mecanica,
+					diabetes,
+					obesidade,
+					ativo,
+					hospital_id,
+					hospital_destino_id,
+					paciente_id
+				);
+			}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return prontuario;
+	}
+	
 	public List<Prontuario> selectProntuariosByHospital() {
 
 		List<Prontuario> prontuarios = new ArrayList<>();
