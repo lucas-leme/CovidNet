@@ -241,8 +241,10 @@ public class ProntuarioServlet extends HttpServlet {
 			
 			
 			System.out.println("Verificando atributos");
-			System.out.println("iscpfok? : " + Solver.isCpfOk(cpf));		
-			
+
+			System.out.println("iscpfok? : " + Solver.formatCpf(cpf));			
+
+
 			System.out.println("cpf: " + cpf + "; nome: " + nome + "; nascimento: " + data_de_nascimento + "; endereco: " + endereco);
 			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
