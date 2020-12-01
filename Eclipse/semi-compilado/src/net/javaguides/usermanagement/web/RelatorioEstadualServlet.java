@@ -54,6 +54,7 @@ public class RelatorioEstadualServlet extends HttpServlet {
 			switch (action) {
 	
 			case "/relatorioEstadual/new":
+				System.out.println("Novo relatorio estadual");
 				showNewForm(request, response);
 				break;
 			case "/relatorioEstadual/insert":
@@ -80,6 +81,7 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 	private void listRelatorioEstadual(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
+		
 		List<RelatorioEstadual> listRelatorioEstadual = relatorioEstadualDAO.selectAllRelatorios();
 		request.setAttribute("listRelatorioEstadual", listRelatorioEstadual);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
@@ -88,7 +90,11 @@ public class RelatorioEstadualServlet extends HttpServlet {
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Mostrando form estadual");
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-form.jsp");
+		// NESSE JSP VAI TER QUE TER SELECTS COM AS SOLICITACOES RELEVANTES
+		// DEVE REDIRECIONAR PRA /relatorioEstadual/insert
 		dispatcher.forward(request, response);
 	}
 
@@ -112,11 +118,15 @@ public class RelatorioEstadualServlet extends HttpServlet {
 			throws SQLException, IOException {
 		
 		//int id = Integer.parseInt(request.getParameter("id"));
-		String nomeEstado = request.getParameter("nomeEstado");
-		int numeroMunicipios = Integer.parseInt(request.getParameter("numeroMunicipios"));
-		int numeroHospitais = Integer.parseInt(request.getParameter("numeroHospitais"));
+		//String nomeEstado = request.getParameter("nomeEstado"); -> o estado a gnt ja sabe => SP
+		//int numeroMunicipios = Integer.parseInt(request.getParameter("numeroMunicipios"));
+		//int numeroHospitais = Integer.parseInt(request.getParameter("numeroHospitais"));
+		String dataInicial = request.getParameter("data_inicial");
+		String dataFinal = request.getParameter("data_final");
 		
-		RelatorioEstadual newRelatorio = new RelatorioEstadual(0, nomeEstado, numeroMunicipios, numeroHospitais);
+		
+		
+		RelatorioEstadual newRelatorio = new RelatorioEstadual(dataInicial, dataFinal);
 		relatorioEstadualDAO.insertRelatorio(newRelatorio);
 		response.sendRedirect(root + "/relatorioEstadual");
 	}
