@@ -31,9 +31,7 @@
             		</c:if>
             	</h2>
             </caption>
-        		<c:if test="${paciente != null}">
-        			<input type="hidden" name="id" value="<c:out value='${paciente.id}' />" />
-        		</c:if> 
+        			<input type="hidden" name="id_paciente" value="<c:out value='${paciente.id}' />" />
         		<tr>
                 <th>CPF: </th>
                 <td>
