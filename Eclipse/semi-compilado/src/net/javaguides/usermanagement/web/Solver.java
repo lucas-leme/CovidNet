@@ -90,10 +90,16 @@ public class Solver {
 		System.out.println("CPF OK ? " + formatCpf("123.456789-00"));
 		System.out.println("CPF OK ? " + formatCpf("153."));
 		System.out.println("CPF OK ? " + formatCpf("3546.absa244")); 
+		System.out.println("CPF OK ? " + formatCpf(""));
 		
-		// excplicacao : https://campuscode.com.br/conteudos/o-calculo-do-digito-verificador-do-cpf-e-do-cnpj
+		// explicacao : https://campuscode.com.br/conteudos/o-calculo-do-digito-verificador-do-cpf-e-do-cnpj
 		System.out.println("CPF OK ? " + formatCpf("145.382.206-20"));
 		System.out.println("CPF OK ? " + formatCpf("145382206-20"));
+		
+		// https://www.4devs.com.br/gerador_de_cpf
+		System.out.println("CPF OK ? " + formatCpf("834.205.782-88"));
+		System.out.println("CPF OK ? " + formatCpf("271.520.005-65"));
+		System.out.println("CPF OK ? " + formatCpf("603.462.186-08"));
 	}
 	
 }
