@@ -8,27 +8,41 @@ public class Solver {
 	// CPF de entrada na forma \d{11}
 	private static boolean digitosVerificadoresOk(String cpf)
 	{
-		String dig1 = cpf.substring(9, 9);
-		String dig2 = cpf.substring(10, 10);
+		String dig1 = cpf.substring(9, 10); // so o 10o
+		String dig2 = cpf.substring(10, 11);
 
-		String parte1 = cpf.substring(0, 9);
+		String parte1 = cpf.substring(0, 9); // ate o 9o
 		String parte2 = cpf.substring(0, 10);
 		
 		if(digitoVerificador(1, parte1).equals(dig1) && digitoVerificador(2, parte2).equals(dig2)) return true;			
 		return false;
 	}
 
-	private static String digitoVerificador(int i, String subcpf) {
+	private static String digitoVerificador(int pos_dig, String subcpf) 
+	{
+		int peso = 0;
 		
-		if(i == 1)
+		if(pos_dig == 1) peso = 10;
+		else if(pos_dig == 2) peso = 11;
+		else return null;
+		
+		int verif = 0;
+		
+		for(char dig : subcpf.toCharArray())
 		{
-			
-		}else if(i == 2)
-		{
-			
+			//System.out.println(verif + " += " + peso + " * " + Character.getNumericValue(dig));
+			verif += peso * Character.getNumericValue(dig);
+			peso--;
 		}
 		
-		return null;
+		System.out.println("ver antes: " + verif);
+		
+		verif  = 11 - (verif % 11);
+		if(verif >= 10) verif = 0;
+		
+		System.out.println("digito verificador " + pos_dig + "  = " + verif);
+		
+		return Integer.toString(verif);
 	}
 
 	// Verificar formato de cpf e digito verificador
@@ -41,20 +55,17 @@ public class Solver {
 	    if(matchFound) {
 	      System.out.println("Match found");
 	      
-	      	String formattedCpf = "";
-		    
-		    System.out.println("group matcher: " + matcher.group());
-		    for(int i = 1; i < matcher.groupCount(); i++)
-		    {
-		    	System.out.println("group(" + i + ") : " + matcher.group(i));
-		    	formattedCpf += matcher.group(i);
-		    }
+	      	String formattedCpf = cpf.replaceAll("[\\.\\-]", "");
+	      	System.out.println("Formatted: " + formattedCpf);
 		    
 		    System.out.println("Results: " + matcher.results() + "\n" + matcher.toString());
 		    
+		    System.out.println("\n\n");
+		    
+		    if(!digitosVerificadoresOk(formattedCpf)) return null;
 		    return formattedCpf;
 	    } else {
-	      System.out.println("Match not found");
+	      System.out.println("Match not found\n\n");
 	    }
 		
 		return null;
@@ -78,7 +89,11 @@ public class Solver {
 		System.out.println("CPF OK ? " + formatCpf("083.955.01200"));
 		System.out.println("CPF OK ? " + formatCpf("123.456789-00"));
 		System.out.println("CPF OK ? " + formatCpf("153."));
-		System.out.println("CPF OK ? " + formatCpf("3546.absa244"));
+		System.out.println("CPF OK ? " + formatCpf("3546.absa244")); 
+		
+		// excplicacao : https://campuscode.com.br/conteudos/o-calculo-do-digito-verificador-do-cpf-e-do-cnpj
+		System.out.println("CPF OK ? " + formatCpf("145.382.206-20"));
+		System.out.println("CPF OK ? " + formatCpf("145382206-20"));
 	}
 	
 }
