@@ -12,10 +12,10 @@ CREATE TABLE IF NOT EXISTS `prontuarios` (
   `estado_do_paciente` VARCHAR(255),
   `diagnostico` VARCHAR(100),
   `teste_covid` VARCHAR(100),
-  `doenca_respiratoria` VARCHAR(100),
-  `batimento_cardiaco` VARCHAR(100),
-  `hipertensao` VARCHAR(100),
-  `oximetria` VARCHAR(100),
+  `doenca_respiratoria` BOOLEAN,
+  `batimento_cardiaco_normal` BOOLEAN,
+  `hipertensao` BOOLEAN,
+  `oximetria` INT,
   `radiometria_torax_normal` BOOLEAN,
   `tomografia_torax_normal` BOOLEAN,
   `ventilacao_mecanica` BOOLEAN,
@@ -211,7 +211,7 @@ INSERT INTO prontuarios (
 		diagnostico,
 		teste_covid,
 		doenca_respiratoria,
-		batimento_cardiaco,
+		batimento_cardiaco_normal,
 		hipertensao,
 		oximetria,
 		radiometria_torax_normal,
@@ -225,9 +225,9 @@ INSERT INTO prontuarios (
 		paciente_id
 ) 
 VALUES  
-('bom', 'bom', 'positivo', 'nao', 'ruim', 'nao', 'boa', 1, 1, 1, 1, 1, 1, 1, 2, 1),
-('bom', 'ruim', 'negativo', 'sim', 'bom', 'sim', 'ruim', 1, 1, 1, 1, 1, 1, 3, 4, 2),
-('ruim', 'bom', 'positivo', 'nao', 'bom', 'nao', 'boa', 1, 1, 1, 1, 1, 1, 5, 6, 3),
-('ruim', 'ruim', 'negativo', 'nao', 'ruim', 'nao', 'boa', 1, 1, 1, 1, 1, 7, 8, 2, 4),
-('bom', 'bom', 'positivo', 'sim', 'bom', 'sim', 'ruim', 1, 1, 1, 1, 1, 1, 1, 2, 5),
-('bom', 'ruim', 'negativo', 'nao', 'bom', 'nao', 'boa', 1, 1, 1, 1, 1, 1, 1, 2, 6);
+('bom', 'bom', 'positivo', 0, 0, 0, 50, 1, 1, 1, 1, 1, 1, 1, 2, 1),
+('bom', 'ruim', 'negativo', 1, 0, 1, 90, 1, 1, 1, 1, 1, 1, 3, 4, 2),
+('ruim', 'bom', 'positivo', 1, 1, 1, 100, 1, 1, 1, 1, 1, 1, 5, 6, 3),
+('ruim', 'ruim', 'negativo', 1, 0, 0, 70, 1, 1, 1, 1, 1, 7, 8, 2, 4),
+('bom', 'bom', 'positivo', 1, 0, 1, 120, 1, 1, 1, 1, 1, 1, 1, 2, 5),
+('bom', 'ruim', 'negativo', 0, 1, 0, 100, 1, 1, 1, 1, 1, 1, 1, 2, 6);

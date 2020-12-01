@@ -31,6 +31,11 @@ public class LeitoDAO {
 
 	private static final String SELECT_LEITO_BY_ID = SELECT_ALL_LEITOS + "WHERE l.id = ?";
 	
+	private static final String SELECT_LEITO_DISPONIVEL = 
+			"SELECT * FROM leitos"
+			+ "WHERE hospital_id = ? AND ocupado = 0"
+			+ "LIMIT 1 ";
+
 	private static final String SELECT_LEITO_BY_PACIENTE_ID = SELECT_ALL_LEITOS + "WHERE l.paciente_id = ?";
 	
 	private static final String SELECT_LEITOS_BY_HOSPITAL_ID = SELECT_ALL_LEITOS + "WHERE l.hospital_id = ?";
@@ -184,6 +189,35 @@ public List<Leito> selectLeitosDesocupadosByHospital(int hospital_id) {
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;
+	}
+	
+public int ocupaLeitoAleatorio(int hospital_id, int paciente_id) throws SQLException {
+		
+		Leito leito = null;
+		
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LEITO_DISPONIVEL);) {
+			preparedStatement.setInt(1, hospital_id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			int id = rs.getInt("id");
+			boolean ocupado = rs.getBoolean("ocupado");
+			String paciente = rs.getString("paciente");
+			String hospital = rs.getString("hospital");
+			leito = new Leito(id, ocupado, paciente, hospital);
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(OCUPA_LEITO);) {
+			statement.setInt(1, paciente_id);
+			statement.setInt(2, leito.getId());
+		}
+		
+		return leito.getId();
 	}
 	
 	public boolean desocupaLeito(int leito_id) throws SQLException {
