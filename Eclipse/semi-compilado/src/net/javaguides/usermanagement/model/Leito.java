@@ -7,9 +7,7 @@ public class Leito {
 	protected String medico;
 	protected String paciente;
 	protected String enfermeiro;
-	
-	public Leito() {
-	}
+	protected String hospital;
 	
 	public Leito(String medico, String paciente, String enfermeiro) {
 		super();
@@ -18,6 +16,15 @@ public class Leito {
 		this.paciente = paciente;
 		this.enfermeiro = enfermeiro;
 		this.ocupado = true;
+	}
+	
+	public Leito(int id, boolean ocupado, String paciente, String hospital ) {
+		super();
+		
+		this.id = id;
+		this.ocupado = ocupado;
+		this.paciente = paciente;
+		this.hospital = hospital;	
 	}
 	
 	public Leito(int id, String medico, String paciente, String enfermeiro) {
@@ -30,18 +37,11 @@ public class Leito {
 		this.ocupado = true;
 	}
 
-	/*public Leito(int id, String name, String email, String country) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.country = country;
-	}*/
-
 	public int getId() { return this.id; }
 	public String getMedico() { return this.medico; }
 	public String getPaciente() { return this.paciente; }
 	public String getEnfermeiro() { return this.enfermeiro; }
+	public String getHospital() { return this.hospital; }
 	
 	public void setMedico(String newName) { this.medico = newName; }
 	public void setPaciente(String newName) { this.paciente = newName; }
