@@ -27,13 +27,15 @@ import net.javaguides.usermanagement.model.Prontuario;
 
 @WebServlet(
 urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
-				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame"}
-)
+				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
+				"/pacientes/solicitar_uti"}
+		)
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProntuarioDAO prontuarioDAO;
 	private PacienteDAO pacienteDAO;
 	private HospitalDAO hospitalDAO;
+	private FilaDePacienteDAO filaDePacienteDAO;
 	private static final String root = "/semi-compilado";
 
 	public void init() {
@@ -87,7 +89,10 @@ public class ProntuarioServlet extends HttpServlet {
 					System.out.println("LIST PRONTUARIOS");
 					listProntuarios(request, response);
 					break;
-				
+					
+				case "/pacientes/solicitar_uti":
+					System.out.println("SOlicitando UTI");
+					solicitarUti(request, response);
 				default:
 					System.out.println("DEFAULT");
 					showMainPage(request, response);
@@ -189,7 +194,34 @@ public class ProntuarioServlet extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 			dispatcher.forward(request, response);
 			//response.sendRedirect(root + "/prontuarios/new");
-		}
+		}	
+	
+	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		filaDePacienteDAO.solicitarUti(id_prontuario);
+		
+		System.out.println("DEU BOM");
+		
+		// ADICIONAR succes.jsp, o qual deve ter um botão de volta pra pagina principal / pagina dos leitos
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/succes.jsp"); 
+		dispatcher.forward(request, response);
+	}	
+	
+	private void fecharProntuario(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		String cpf = request.getParameter("cpf");
+		
+		Prontuario prontuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
+		// FECHAR O PRONTUARIO AQUI
+		//prontuarioDAO.closeProntuario(prontuario)(id_prontuario);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/succes.jsp"); 
+		dispatcher.forward(request, response);
+	}
 
 	private void insertProntuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
