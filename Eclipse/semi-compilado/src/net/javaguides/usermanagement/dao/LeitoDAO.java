@@ -11,170 +11,233 @@ import java.util.List;
 import net.javaguides.usermanagement.model.Leito;
 
 /**
- * AbstractDAO.java This DAO class provides CRUD database operations for the
- * table users in the database.
  * 
- * @author Ramesh Fadatare
+ * @author Hugo Martins
  *
  */
+
 public class LeitoDAO {
 	private String jdbcURL = "jdbc:mariadb://server3643.ml:3306/db1?useSSL=false";
-	//private String jdbcURL = "jdbc:mysql://localhost:3306/test?useSSL=false";
 	private String jdbcUsername = "g1";
 	private String jdbcPassword = "1HMUgvW";
 
-	private static final String INSERT_LEITOS_SQL = "INSERT INTO leitos" + 
-			"  (ocupa, medico_id, enfermeiro_id, paciente_id, hospital_id) VALUES " + " (?, ?, ?, ?);";
-
 	private static final String SELECT_ALL_LEITOS =
-			"select l.id id, m.nome medico, e.nome enfermeiro, p.nome paciente\n"
-			+ "from\n"
-			+ "	leitos l\n"
-			+ "	inner join (	\n"
-			+ "		select f.nome, m.id \n"
-			+ "		from medicos m\n"
-			+ "		inner join funcionarios f\n"
-			+ "		on f.id = m.funcionario_id\n"
-			+ "	) as m\n"
-			+ "	on m.id = l.medico_id \n"
-			+ "	inner join (\n"
-			+ "		select f.nome, e.id\n"
-			+ "		from enfermeiros e\n"
-			+ "		inner join funcionarios f\n"
-			+ "		on f.id = e.funcionario_id\n"
-			+ "	) as e\n"
-			+ "	on e.id = l.enfermeiro_id\n"
-			+ "	inner join pacientes p\n"
-			+ "	on p.id = l.paciente_id";
-			//"select id,medico,enfermeiro,paciente from leitos2 where id =?";
+			"SELECT l.id id, l.ocupado, p.nome paciente, h.nome hospital\n"
+			+ "FROM leitos l\n"
+			+ "		INNER JOIN pacientes p\n"
+			+ "		ON p.id = l.paciente_id\n"
+			+ "		INNER JOIN hospitais h\n"
+			+ "		ON h.id = l.hospital_id";
 
-	private static final String SELECT_LEITO_BY_ID = SELECT_ALL_LEITOS + "	where l.id = ?;";
-			
-	private static final String DELETE_LEITOS_SQL = "delete from leitos where id = ?;";
-	private static final String UPDATE_LEITOS_SQL = "update leitos set medico = ?,enfermeiro= ?, paciente =? where id = ?;";
+	private static final String SELECT_LEITO_BY_ID = SELECT_ALL_LEITOS + "WHERE l.id = ?";
+	
+	private static final String SELECT_LEITO_DISPONIVEL = 
+			"SELECT * FROM leitos"
+			+ "WHERE hospital_id = ? AND ocupado = 0"
+			+ "LIMIT 1 ";
 
-	public LeitoDAO() {
-	}
+	private static final String SELECT_LEITO_BY_PACIENTE_ID = SELECT_ALL_LEITOS + "WHERE l.paciente_id = ?";
+	
+	private static final String SELECT_LEITOS_BY_HOSPITAL_ID = SELECT_ALL_LEITOS + "WHERE l.hospital_id = ?";
+	
+	private static final String SELECT_LEITOS_DESOCUPADOS_BY_HOSPITAL_ID = SELECT_ALL_LEITOS + "WHERE l.hospital_id = ? AND l.ocupado = 0";
+	
+	private static final String OCUPA_LEITO = "UPDATE leitos SET ocupado = 1, paciente_id = ?  WHERE id = ?";
+
+	private static final String DESOCUPA_LEITO = "UPDATE leitos SET ocupado = 0, paciente_id = null  WHERE id = ?";
+
+	private static final String DESOCUPA_LEITO_BY_PACIENTE_ID = "UPDATE leitos SET ocupado = 0, paciente_id = null  WHERE paciente_id = ?";
 
 	protected Connection getConnection() {
 		Connection connection = null;
 		
-		System.out.println("getting connection (DAO)");
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			//Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;
 	}
 
-	public void insertLeito(Leito leito) throws SQLException {
+	public Leito selectLeitoById(int leito_id) {
 		
-		System.out.println("inserting in leito (DAO)");
-		System.out.println(INSERT_LEITOS_SQL);
-		// try-with-resource statement will auto close the connection.
-		try (Connection connection = getConnection();
-				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_LEITOS_SQL)) {
-			preparedStatement.setString(1, leito.getMedico());
-			preparedStatement.setString(2, leito.getEnfermeiro());
-			preparedStatement.setString(3, leito.getPaciente());
-			System.out.println(preparedStatement);
-			preparedStatement.executeUpdate();
-		} catch (SQLException e) {
-			printSQLException(e);
-		}
-	}
-
-	public Leito selectLeito(int id) {
-		
-		System.out.println("selecting leito (DAO)");
 		Leito leito = null;
-		// Step 1: Establishing a Connection
+		
 		try (Connection connection = getConnection();
-				// Step 2:Create a statement using connection object
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LEITO_BY_ID);) {
-			preparedStatement.setInt(1, id);
+			preparedStatement.setInt(1, leito_id);
 			System.out.println(preparedStatement);
-			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
 
-			// Step 4: Process the ResultSet object.
-			while (rs.next()) {
-				String medico = rs.getString("medico");
-				String enfermeiro = rs.getString("enfermeiro");
-				String paciente = rs.getString("paciente");
-				leito = new Leito(id, medico, enfermeiro, paciente);
-			}
+			int id = rs.getInt("id");
+			boolean ocupado = rs.getBoolean("ocupado");
+			String paciente = rs.getString("paciente");
+			String hospital = rs.getString("hospital");
+			leito = new Leito(id, ocupado, paciente, hospital);
+
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		return leito;
 	}
-
-	public List<Leito> selectAllLeitos() {
-		
-		System.out.println("\nselecting all leitos (DAO)");
-
-		// using try-with-resources to avoid closing resources (boiler plate code)
-		List<Leito> leitos = new ArrayList<>();
-		// Step 1: Establishing a Connection
-		try (
-			Connection connection = getConnection();
-
-			// Step 2:Create a statement using connection object
-			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_LEITOS);) 
-		{
-				System.out.println(preparedStatement);
-				// Step 3: Execute the query or update query
-				ResultSet rs = preparedStatement.executeQuery();
 	
-				// Step 4: Process the ResultSet object.
-				while (rs.next()) {
-					int id = rs.getInt("id");
-					String medico = rs.getString("medico");
-					String enfermeiro = rs.getString("enfermeiro");
-					String paciente = rs.getString("paciente");
-					leitos.add(new Leito(id, medico, enfermeiro, paciente));
-				}
+	public Leito selectLeitoByPacienteId(int paciente_id) {
+		
+		Leito leito = null;
+		
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LEITO_BY_PACIENTE_ID);) {
+			preparedStatement.setInt(1, paciente_id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			int id = rs.getInt("id");
+			boolean ocupado = rs.getBoolean("ocupado");
+			String paciente = rs.getString("paciente");
+			String hospital = rs.getString("hospital");
+			leito = new Leito(id, ocupado, paciente, hospital);
+
 		} catch (SQLException e) {
-			System.out.println("SQL exception");
 			printSQLException(e);
 		}
-		System.out.println("Leitos pegos: " + leitos.toString());
+		return leito;
+	}
+	
+public List<Leito> selectLeitosByHospital(int hospital_id) {
 		
+		List<Leito> leitos = new ArrayList<>();
+		
+		try (
+			Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LEITOS_BY_HOSPITAL_ID);) {
+				preparedStatement.setInt(1, hospital_id);
+				System.out.println(preparedStatement);
+				ResultSet rs = preparedStatement.executeQuery();
+	
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					boolean ocupado = rs.getBoolean("ocupado");
+					String paciente = rs.getString("paciente");
+					String hospital = rs.getString("hospital");
+					leitos.add(new Leito(id, ocupado, paciente, hospital));
+				}
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
 		return leitos;
 	}
 
-	public boolean deleteLeito(int id) throws SQLException {
+public List<Leito> selectLeitosDesocupadosByHospital(int hospital_id) {
+	
+	List<Leito> leitos = new ArrayList<>();
+	
+	try (
+		Connection connection = getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LEITOS_DESOCUPADOS_BY_HOSPITAL_ID);) {
+			preparedStatement.setInt(1, hospital_id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				boolean ocupado = rs.getBoolean("ocupado");
+				String paciente = rs.getString("paciente");
+				String hospital = rs.getString("hospital");
+				leitos.add(new Leito(id, ocupado, paciente, hospital));
+			}
+	} catch (SQLException e) {
+		printSQLException(e);
+	}
+	return leitos;
+}
+
+	public List<Leito> selectAllLeitos() {
 		
-		System.out.println("deleting leito (DAO)");
+		List<Leito> leitos = new ArrayList<>();
 		
-		boolean rowDeleted;
-		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(DELETE_LEITOS_SQL);) {
-			statement.setInt(1, id);
-			rowDeleted = statement.executeUpdate() > 0;
+		try (
+			Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_LEITOS);) 
+		{
+				System.out.println(preparedStatement);
+				ResultSet rs = preparedStatement.executeQuery();
+	
+				while (rs.next()) {
+					int id = rs.getInt("id");
+					boolean ocupado = rs.getBoolean("ocupado");
+					String paciente = rs.getString("paciente");
+					String hospital = rs.getString("hospital");
+					leitos.add(new Leito(id, ocupado, paciente, hospital));
+				}
+		} catch (SQLException e) {
+			printSQLException(e);
 		}
-		return rowDeleted;
+		return leitos;
 	}
 
-	public boolean updateLeito(Leito leito) throws SQLException {
-		
-		System.out.println("updating leito (DAO)");
+	public boolean ocupaLeito(int leito_id, int paciente_id) throws SQLException {
 		
 		boolean rowUpdated;
 		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_LEITOS_SQL);) {
-			statement.setString(1, leito.getMedico());
-			statement.setString(2, leito.getEnfermeiro());
-			statement.setString(3, leito.getPaciente());
-			statement.setInt(4, leito.getId());
+				PreparedStatement statement = connection.prepareStatement(OCUPA_LEITO);) {
+			statement.setInt(1, paciente_id);
+			statement.setInt(2, leito_id);
+
+			rowUpdated = statement.executeUpdate() > 0;
+		}
+		return rowUpdated;
+	}
+	
+public int ocupaLeitoAleatorio(int hospital_id, int paciente_id) throws SQLException {
+		
+		Leito leito = null;
+		
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_LEITO_DISPONIVEL);) {
+			preparedStatement.setInt(1, hospital_id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			int id = rs.getInt("id");
+			boolean ocupado = rs.getBoolean("ocupado");
+			String paciente = rs.getString("paciente");
+			String hospital = rs.getString("hospital");
+			leito = new Leito(id, ocupado, paciente, hospital);
+
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(OCUPA_LEITO);) {
+			statement.setInt(1, paciente_id);
+			statement.setInt(2, leito.getId());
+		}
+		
+		return leito.getId();
+	}
+	
+	public boolean desocupaLeito(int leito_id) throws SQLException {
+		
+		boolean rowUpdated;
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DESOCUPA_LEITO);) {
+			statement.setInt(1, leito_id);
+
+			rowUpdated = statement.executeUpdate() > 0;
+		}
+		return rowUpdated;
+	}
+	
+	public boolean desocupaLeitoByPacienteId(int paciente_id) throws SQLException {
+		
+		boolean rowUpdated;
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DESOCUPA_LEITO_BY_PACIENTE_ID);) {
+			statement.setInt(1, paciente_id);
 
 			rowUpdated = statement.executeUpdate() > 0;
 		}
@@ -182,8 +245,6 @@ public class LeitoDAO {
 	}
 
 	private void printSQLException(SQLException ex) {
-		
-		System.out.println("printing sql exception (DAO)");
 		
 		for (Throwable e : ex) {
 			if (e instanceof SQLException) {

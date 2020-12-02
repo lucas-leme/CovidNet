@@ -19,6 +19,8 @@ public class PacienteDAO {
 	
 	private static final String SELECT_PACIENTE_BY_CPF = "SELECT id, cpf, nome, data_de_nascimento, endereco FROM pacientes WHERE cpf = ?";
 	
+	private static final String SELECT_PACIENTE_BY_ID = "SELECT id, cpf, nome, data_de_nascimento, endereco FROM pacientes WHERE id = ?";
+	
 	private static final String UPDATE_PACIENTE = "UPDATE pacientes SET cpf = ?, nome = ?, data_de_nascimento = ?, endereco = ? WHERE id = ?";		
 	
 	protected Connection getConnection() {
@@ -49,7 +51,6 @@ public class PacienteDAO {
 			
 			preparedStatement.executeUpdate();
 			
-
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if(rs.next())
             {
@@ -59,7 +60,6 @@ public class PacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
-
 		
 		System.out.println("ID nao encontrado: erro de sql");
 		return -1; // MUDAR PARA ID DO PACIENTE QUANDO E CRIADO
@@ -74,15 +74,36 @@ public class PacienteDAO {
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String cpf2 = rs.getString("cpf");
-				String nome = rs.getString("nome");
-				String data_de_nascimento = rs.getString("data_de_nascimento");
-				String endereco = rs.getString("endereco");
+			int id = rs.getInt("id");
+			String cpf2 = rs.getString("cpf");
+			String nome = rs.getString("nome");
+			String data_de_nascimento = rs.getString("data_de_nascimento");
+			String endereco = rs.getString("endereco");
+					
+			paciente = new Paciente(id, cpf2, nome, data_de_nascimento, endereco);
+			
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		return paciente;
+	}
+	
+	public Paciente selectPacienteById(int id) {
+		Paciente paciente = null;
+		
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PACIENTE_BY_ID);) {
+			preparedStatement.setInt(1, id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			String cpf = rs.getString("cpf");
+			String nome = rs.getString("nome");
+			String data_de_nascimento = rs.getString("data_de_nascimento");
+			String endereco = rs.getString("endereco");
 						
-				paciente = new Paciente(id, cpf2, nome, data_de_nascimento, endereco);
-			}
+			paciente = new Paciente(id, cpf, nome, data_de_nascimento, endereco);
+			
 		} catch (SQLException e) {
 			printSQLException(e);
 		}

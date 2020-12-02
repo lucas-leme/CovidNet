@@ -49,7 +49,7 @@
 	<div class="center table_margin">
 	  <table class="table_margin">
 	    <td class="frame">
-	    	<a href="${pageContext.request.contextPath}/prontuarios/new">
+	    	<a href="${pageContext.request.contextPath}/pacientes/new">
 		      <h3 class="text_cols">Novo Prontuário</h3>
 		      <p class="text_cols">
 		        Adicione novas prontuários!
