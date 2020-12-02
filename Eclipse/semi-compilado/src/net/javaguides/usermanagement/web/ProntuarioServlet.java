@@ -136,6 +136,7 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		if(prontuario != null)
 		{
+
 			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
 	
@@ -151,6 +152,7 @@ public class ProntuarioServlet extends HttpServlet {
 	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
+<<<<<<< HEAD
 		System.out.println("prontuario: " + request.getParameter("id_prontuario"));
 		//Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
 		//System.out.println("Fechando o prontuario: " + prontuario);
@@ -180,6 +182,12 @@ public class ProntuarioServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);
+
+		//Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
+		//System.out.println("Fechando o prontuario: " + prontuario);
+
+		//response.sendRedirect(root + "/prontuarios"); // Volta pra tela de pesquisa
+
 	}
 
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
