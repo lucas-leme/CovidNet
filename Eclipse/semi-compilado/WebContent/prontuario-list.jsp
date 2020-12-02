@@ -119,7 +119,19 @@
 		<c:if test="${prontuario.ativo == false}">
 	 		Não
 		</c:if>    
+		<%= request.getAttribute("prontuario") %>
     </h3>
+    
+    <form action="${pageContext.request.contextPath}/prontuarios/close?id=" method="post">
+		<div  class="center">
+		<h2>Buscar prontuário</h2>
+			<div><c:out value='<%= request.getAttribute("prontuario") %>'></c:out></div>
+			<div><c:out value="${cidade.id}"/></div>
+			<input type="hidden" name="id_prontuario" value="${prontuario.id}" />
+	
+			<input type="submit" name="close_prontuario" value="Fechar prontuário" />  
+		</div>
+	</form>
 
     </div>	
 </body>

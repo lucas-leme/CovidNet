@@ -28,7 +28,7 @@ import net.javaguides.usermanagement.model.Prontuario;
 @WebServlet(
 urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
 				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
-				"/prontuarios/search"}
+				"/prontuarios/search", "/prontuarios/close"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -93,6 +93,10 @@ public class ProntuarioServlet extends HttpServlet {
 					System.out.println("SEARCH PRONTUARIO");
 					searchProntuarios(request, response);
 					break;
+					
+				case "/prontuarios/close":
+					closeProntuario(request, response);
+					break;
 				
 				default:
 					System.out.println("DEFAULT");
@@ -114,7 +118,7 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		if(prontuario != null)
 		{
-			System.out.println(prontuario.getId());
+			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);	
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
@@ -128,8 +132,13 @@ public class ProntuarioServlet extends HttpServlet {
 	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
-		System.out.println("Fechando o prontuario: " + prontuario);
+		System.out.println("prontuario: " + request.getParameter("id_prontuario"));
+		//Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
+		//System.out.println("Fechando o prontuario: " + prontuario);
+		
+		int id = Integer.parseInt(request.getParameter("id_prontuario"));
+		
+		prontuarioDAO.closeProntuario(id);
 
 		response.sendRedirect(root + "/prontuarios"); // Volta pra tela de pesquisa
 	}

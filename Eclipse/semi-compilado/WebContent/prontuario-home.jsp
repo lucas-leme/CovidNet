@@ -41,7 +41,7 @@
   <img  src="https://i.imgur.com/xEVDzdk.png" alt="" />
   
   <p>
-    CoronaViewer é uma plataorma de informação sobre os casos de COVID19 no
+    CoronaViewer é uma plataforma de informação sobre os casos de COVID19 no
     estado de São Paulo
   </p>
 </div>

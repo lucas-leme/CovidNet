@@ -110,6 +110,7 @@ public class LeitoServlet extends HttpServlet {
 			cidade = "";
 		}
 			
+		System.out.println("Cidade (mostrarHospitais) : " + cidade);
 		List<Hospital> hospitais = hospitalDAO.selectHospitais(Integer.parseInt(cidade));//.selectHospitais(cidade);
 
 		request.setAttribute("hospitais", hospitais);
