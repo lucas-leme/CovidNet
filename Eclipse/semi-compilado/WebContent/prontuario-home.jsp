@@ -46,37 +46,24 @@
   </p>
 </div>
 
-	<div class="center table_margin">
-	  <table class="table_margin">
-	    <td class="frame">
+	<div class="center">
+
 	    	<a href="${pageContext.request.contextPath}/pacientes/new">
-		      <h3 class="text_cols">Novo Prontuário</h3>
-		      <p class="text_cols">
+		      <h3>Novo Prontuário</h3>
+		      <p>
 		        Adicione novas prontuários!
 		      </p>
 		    </a>
-	    </td>
-	
-	    <td class="frame center">
-	    
-	      <a href="${pageContext.request.contextPath}/leitos">
-		
-		      <h3 class="text_cols">Edição de Prontuários</h3>
-		      <p class="text_cols">
-		       	Edite com facilidade os prontuários de pacientes.
-		      </p>
-	      </a>
-	    </td>
-	
-	    <td class="frame">
-	      <a href="${pageContext.request.contextPath}/prontuarios">
-		      <h3 class="text_cols">Finalizar Prontuários</h3>
-		      <p class="text_cols">Finalize prontuários!</p>
-		      
-	      </a>
-	    </td>
-	  </table>
 	</div>
+	
+	<form action="${pageContext.request.contextPath}/prontuarios/list" method="post">
+		<div  class="center">
+		<h2>Buscar prontuário</h2>
+			<label>CPF: </label>
+			<input type="text" name="cpf"/>
+			<input type="submit" name="search_prontuario" value="Buscar" />  
+		</div>
+	</form>
 
 </body>
 
