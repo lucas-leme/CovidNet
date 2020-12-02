@@ -58,7 +58,7 @@ public class ProntuarioDAO {
 			+ "		pro.paciente_id"
 			+ "	FROM prontuarios pro"
 			+ "	INNER JOIN pacientes pac ON pac.id = pro.paciente_id"
-			+ "	WHERE pac.cpf = ?";
+			+ "	WHERE pac.cpf = ? AND pro.ativo = 1";
 	
 	private static final String SELECT_PRONTUARIOS_BY_HOSPITAL =
 			"SELECT"
