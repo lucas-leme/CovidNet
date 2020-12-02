@@ -32,10 +32,9 @@ public class ProntuarioDAO {
 			+ "		obesidade,"
 			+ "		ativo,"
 			+ "		hospital_id,"
-			+ "		hospital_destino_id,"
 			+ "		paciente_id"
 			+ ") "
-			+ "VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";	
+			+ "VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";	
 		
 	private static final String SELECT_PRONTUARIO_BY_PACIENTE_CPF =
 			"SELECT"
@@ -168,8 +167,7 @@ public class ProntuarioDAO {
 			preparedStatement.setBoolean(13, prontuario.getAtivo());
 			
 			preparedStatement.setInt(14, prontuario.getHospitalId()); //hospital de origem
-			preparedStatement.setInt(15, prontuario.getHospitalDestinoId());
-			preparedStatement.setInt(16, prontuario.getPacienteId());
+			preparedStatement.setInt(15, prontuario.getPacienteId());
 			
 			System.out.println("Prontuario pra ser inserido = " + preparedStatement);
 			
@@ -228,6 +226,8 @@ public class ProntuarioDAO {
 					hospital_destino_id,
 					paciente_id
 				);
+				System.out.println("OXIMETRIA");
+				System.out.println(prontuario.getOximetria());
 			}
 		} catch (SQLException e) {
 			printSQLException(e);

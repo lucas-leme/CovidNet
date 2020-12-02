@@ -56,7 +56,7 @@
 		    </a>
 	</div>
 	
-	<form action="${pageContext.request.contextPath}/prontuarios/list" method="post">
+	<form action="${pageContext.request.contextPath}/prontuarios/search" method="post">
 		<div  class="center">
 		<h2>Buscar prontuário</h2>
 			<label>CPF: </label>

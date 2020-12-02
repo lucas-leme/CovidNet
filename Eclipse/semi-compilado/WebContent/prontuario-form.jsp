@@ -61,8 +61,8 @@
         		<tr>
                 <th>Estado do paciente: </th>
                 <td>
-                	<input type="text" name="estado_do_paciente" size="45"
-                			value="<c:out value='${prontuario.estado_do_paciente}' />"
+                	<input type="text" name="estado_paciente" size="45"
+                			value="<c:out value='${prontuario.estado_paciente}' />"
                 		/>
                 </td>
             </tr>

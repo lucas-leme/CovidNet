@@ -25,47 +25,102 @@
 	    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
 	  </div>
 	</header>
-	<center>
-		<h1>Prontuarios Management</h1>
-        <h2>
-        	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar paciente</a>
-        	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}">Página inicial</a>
-        	
-        </h2>
-	</center>
+	
+	<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+	
     <div align="center">
-        <table border="1" cellpadding="5">
-            <caption><h2>Lista de prontuarios</h2></caption>
-            <tr>
-            	<th>ID</th>
-                <th>CPF</th>
-                <th>Nome</th>
-                <th>Data de Nascimento</th>
-                <th>Data de Entrada</th>
-                <th>Exame</th>
-                <th>Descrição</th>
-                <th>Data</th>
-                <th>Resultado</th>
-                <th>Ação</th>
-            </tr>
-            <c:forEach var="prontuario" items="${listProntuarios}">
-                <tr>
-                	<td><c:out value="${prontuario.id}" /></td>
-                    <td><c:out value="${prontuario.cpf}" /></td>
-                    <td><c:out value="${prontuario.nome}" /></td>
-                    <td><c:out value="${prontuario.data_de_nascimento}" /></td>
-                    <td><c:out value="${prontuario.data_de_entrada}" /></td>
-                    <td><c:out value="${prontuario.nome_do_exame}" /></td>
-                    <td><c:out value="${prontuario.descricao_exame}" /></td>
-                    <td><c:out value="${prontuario.data_exame}" /></td>
-                    <td><c:out value="${prontuario.resultado_exame}" /></td>
-                    <td>
-                    	<a href="${pageContext.request.contextPath}/prontuarios/edit?id=<c:out value='${prontuario.id}' />">Editar</a>                   	
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+    
+    <h1>Dados do Prontuário</h1>
+    <h3>ID: ${prontuario.id}</h3>
+    <h3>CPF: <%= request.getAttribute("cpf") %></h3>
+    <h3>Data: ${prontuario.data}</h3>
+    <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
+    <h3>Diagnostico: ${prontuario.diagnostico}</h3>
+    <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
+    <h3>Oximetria: ${prontuario.oximetria}</h3>
+    
+    <h1>Questionário</h1>
+    
+    <h3>Tem doença respiratória? 
+	    <c:if test="${prontuario.doencaRespiratoria == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.doencaRespiratoria == false}">
+	 		Não
+		</c:if>
+    </h3>
+    <h3>Batimento cardiaco normal? 
+ 		<c:if test="${prontuario.batimentoCardiacoNormal == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.batimentoCardiacoNormal == false}">
+	 		Não
+		</c:if>
+    
+    </h3>
+    <h3>Tem hipertensão?  
+    	<c:if test="${prontuario.hipertensao == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.hipertensao == false}">
+	 		Não
+		</c:if>
+    </h3>
+    
+    <h3>Tem radiomentria de torax normal?  
+    	<c:if test="${prontuario.radiometriaToraxNormal == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.radiometriaToraxNormal == false}">
+	 		Não
+		</c:if>    
+    </h3>
+    
+    <h3>Tem tomografia de torax normal?
+    	<c:if test="${prontuario.tomografiaToraxNormal == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.tomografiaToraxNormal == false}">
+	 		Não
+		</c:if>
+    </h3>
+    
+    <h3>Precisa de ventilação mecânica? 
+    	<c:if test="${prontuario.ventilacaoMecanica == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.ventilacaoMecanica == false}">
+	 		Não
+		</c:if>
+    </h3>
+    
+    <h3>Tem diabetes? 
+     	<c:if test="${prontuario.diabetes == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.diabetes == false}">
+	 		Não
+		</c:if>   
+    </h3>
+    
+    <h3>É obeso? 
+     	<c:if test="${prontuario.obesidade == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.obesidade == false}">
+	 		Não
+		</c:if>      
+    </h3>
+    
+    <h3>É ativo fisicamente? 
+      	<c:if test="${prontuario.ativo == true}">
+			Sim
+		</c:if>
+		<c:if test="${prontuario.ativo == false}">
+	 		Não
+		</c:if>    
+    </h3>
+
     </div>	
 </body>
 </html>
