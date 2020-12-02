@@ -27,7 +27,8 @@ import net.javaguides.usermanagement.model.Prontuario;
 
 @WebServlet(
 urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
-				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame"}
+				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
+				"/prontuarios/search"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -87,6 +88,11 @@ public class ProntuarioServlet extends HttpServlet {
 					System.out.println("LIST PRONTUARIOS");
 					listProntuarios(request, response);
 					break;
+					
+				case "/prontuarios/search":
+					System.out.println("SEARCH PRONTUARIO");
+					searchProntuarios(request, response);
+					break;
 				
 				default:
 					System.out.println("DEFAULT");
@@ -98,6 +104,20 @@ public class ProntuarioServlet extends HttpServlet {
 		}
 	}
 	
+	private void searchProntuarios(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+
+		String cpf = request.getParameter("cpf");
+		request.setAttribute("cpf", cpf);
+		
+		Prontuario prontuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
+		System.out.println(prontuario.getId());
+		request.setAttribute("prontuario", prontuario);	
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+		dispatcher.forward(request, response);
+	}	
+
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
@@ -223,15 +243,13 @@ public class ProntuarioServlet extends HttpServlet {
 		boolean ativo = true;
 		boolean radiometria_torax_normal = checkBool(request.getParameter("radiometria_torax_normal"));
 		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
-		int hospital_destino_id = -1; // TODO
 		int paciente_id = Integer.parseInt(request.getParameter("id_paciente"));
 				
 
 
 		Prontuario newProntuario = new Prontuario(data, estado_do_paciente, diagnostico, teste_covid, 
 				doenca_respiratoria, batimento_cardiaco_normal, hipertensao, oximetria,  radiometria_torax_normal,
-				tomografia_torax_normal, ventilacao_mecanica, diabetes, obesidade, ativo, hospital_id, hospital_destino_id,
-				paciente_id);
+				tomografia_torax_normal, ventilacao_mecanica, diabetes, obesidade, ativo, hospital_id, paciente_id);
 		
 		prontuarioDAO.insertProntuario(newProntuario, hospital_id, paciente_id);
 		
