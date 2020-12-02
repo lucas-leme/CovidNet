@@ -393,13 +393,13 @@ public class ProntuarioDAO {
 		return rowUpdated;
 	}
 	
-	public boolean closeProntuario(Prontuario prontuario) throws SQLException {
+	public boolean closeProntuario(int id) throws SQLException {
 		boolean rowUpdated;
 			
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(CLOSE_PRONTUARIO);) {
 			
-			statement.setInt(1, prontuario.getId());
+			statement.setInt(1, id);
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
