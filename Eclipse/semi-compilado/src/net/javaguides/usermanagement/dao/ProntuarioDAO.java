@@ -123,8 +123,7 @@ public class ProntuarioDAO {
 			+ "		obesidade = ?,"
 			+ "		ativo = ?,"
 			+ "		hospital_id = ?,"
-			+ "		hospital_destino_id = ?,"
-			+ "		paciente_id = ?"
+			+ "		hospital_destino_id = ?"
 			+ "	WHERE id = ?";
 	
 	private static final String UPDATE_HOSPITAL_DE_DESTINO =
@@ -373,8 +372,7 @@ public class ProntuarioDAO {
 			statement.setBoolean(14, prontuario.getAtivo());
 			statement.setInt(15, prontuario.getHospitalId());
 			statement.setInt(16, prontuario.getHospitalDestinoId());
-			statement.setInt(17, prontuario.getPacienteId());
-			statement.setInt(18, prontuario.getId());
+			statement.setInt(17, prontuario.getId());
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
