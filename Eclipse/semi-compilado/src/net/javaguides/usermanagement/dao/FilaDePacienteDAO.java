@@ -33,6 +33,7 @@ public class FilaDePacienteDAO {
 	private static final String INSERT_PACIENTE_NA_FILA =
 			"INSERT INTO fila_de_pacientes (ordem, prioridade, paciente_id)" 
 			+ " VALUES (?, ?, ?)";
+
 	
 	private static final String UPDATE_ORDEM_DE_PACIENTE_NA_FILA = "UPDATE fila_de_pacientes SET ordem = ? WHERE id = ?";		
 	

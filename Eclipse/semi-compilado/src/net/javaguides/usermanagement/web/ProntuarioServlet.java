@@ -119,7 +119,7 @@ public class ProntuarioServlet extends HttpServlet {
 		if(prontuario != null)
 		{
 			System.out.println("id do prontuario: " + prontuario.getId());
-			request.setAttribute("prontuario", prontuario);	
+			request.setAttribute("prontuario", prontuario);
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 			dispatcher.forward(request, response);
