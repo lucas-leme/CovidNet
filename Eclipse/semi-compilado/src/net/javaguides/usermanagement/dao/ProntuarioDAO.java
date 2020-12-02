@@ -128,6 +128,11 @@ public class ProntuarioDAO {
 			+ "		paciente_id = ?"
 			+ "	WHERE id = ?";
 	
+	private static final String UPDATE_HOSPITAL_DE_DESTINO =
+			"UPDATE prontuarios "
+			+ "SET hospital_destino_id = ?"
+			+ "	WHERE id = ?";
+	
 	private static final String CLOSE_PRONTUARIO =
 			"UPDATE prontuarios "
 			+ "	SET	ativo = 0"
@@ -371,6 +376,20 @@ public class ProntuarioDAO {
 			statement.setInt(17, prontuario.getPacienteId());
 			statement.setInt(18, prontuario.getId());
 			
+			rowUpdated = statement.executeUpdate() > 0;
+		}
+		return rowUpdated;
+	}
+	
+	public boolean updateHospitalDeDestino(int hospital_de_destino_id, int paciente_id) throws SQLException {
+		boolean rowUpdated;
+			
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_HOSPITAL_DE_DESTINO);) {
+			
+			statement.setInt(1, hospital_de_destino_id);
+			statement.setInt(2, paciente_id);
+		
 			rowUpdated = statement.executeUpdate() > 0;
 		}
 		return rowUpdated;
