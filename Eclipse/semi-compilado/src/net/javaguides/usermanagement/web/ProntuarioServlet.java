@@ -111,12 +111,28 @@ public class ProntuarioServlet extends HttpServlet {
 		request.setAttribute("cpf", cpf);
 		
 		Prontuario prontuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
-		System.out.println(prontuario.getId());
-		request.setAttribute("prontuario", prontuario);	
+		
+		if(prontuario != null)
+		{
+			System.out.println(prontuario.getId());
+			request.setAttribute("prontuario", prontuario);	
+	
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+			dispatcher.forward(request, response);
+		}else
+		{
+			// ERRO - nao achou esse cpf
+		}
+	}
+	
+	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
+		System.out.println("Fechando o prontuario: " + prontuario);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
-		dispatcher.forward(request, response);
-	}	
+		response.sendRedirect(root + "/prontuarios"); // Volta pra tela de pesquisa
+	}
 
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {

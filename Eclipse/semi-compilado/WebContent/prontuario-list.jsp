@@ -31,7 +31,7 @@
     <div align="center">
     
     <h1>Dados do Prontuário</h1>
-    <h3>ID: ${prontuario.id}</h3>
+    <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
     <h3>CPF: <%= request.getAttribute("cpf") %></h3>
     <h3>Data: ${prontuario.data}</h3>
     <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
