@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.FilaDePacienteDAO;
 import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.dao.ProntuarioDAO;
@@ -26,15 +27,16 @@ import net.javaguides.usermanagement.model.Prontuario;
  */
 
 @WebServlet(
-urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
+urlPatterns = { "/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
 				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
-				"/prontuarios/search", "/prontuarios/close"}
+				"/prontuarios/search", "/prontuarios/close", "/prontuarios/solicitar_uti" }
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProntuarioDAO prontuarioDAO;
 	private PacienteDAO pacienteDAO;
 	private HospitalDAO hospitalDAO;
+	private FilaDePacienteDAO filaDAO;
 	private static final String root = "/semi-compilado";
 
 	public void init() {
@@ -97,6 +99,10 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/prontuarios/close":
 					closeProntuario(request, response);
 					break;
+					
+				case "/prontuarios/solicitar_uti":
+					solicitarUti(request, response);
+					break;
 				
 				default:
 					System.out.println("DEFAULT");
@@ -121,7 +127,7 @@ public class ProntuarioServlet extends HttpServlet {
 			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
 	
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
 		}else
 		{
@@ -136,11 +142,23 @@ public class ProntuarioServlet extends HttpServlet {
 		//Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
 		//System.out.println("Fechando o prontuario: " + prontuario);
 		
-		int id = Integer.parseInt(request.getParameter("id_prontuario"));
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
 		
-		prontuarioDAO.closeProntuario(id);
+		prontuarioDAO.closeProntuario(id_prontuario);
 
 		response.sendRedirect(root + "/prontuarios"); // Volta pra tela de pesquisa
+	}
+	
+	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
+		
+		prontuarioDAO.closeProntuario(id_prontuario);
+		filaDAO.solicitaUti(id_prontuario);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
