@@ -26,8 +26,7 @@
 	    <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
 	    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
 	  </div>
-	</header>
-
+  </header>
 
 	<c:if test="${prontuario == null}">
 		<h1>Prontuario nao encontrado</h1>
@@ -170,5 +169,6 @@
 		  </table>
     	</div>	
     </c:if>
+
 </body>
 </html>

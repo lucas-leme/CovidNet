@@ -134,13 +134,21 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		Prontuario prontuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
 
-			//System.out.println("id do prontuario: " + prontuario.getId());
+		Paciente paciente = null;
+		
+
+		if(prontuario != null)
+		{
+			paciente = pacienteDAO.selectPacienteById(prontuario.getPacienteId());
+			
+			System.out.println("id do paciente: " + prontuario.getPacienteId());
+			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
 			//request.setAttribute("paciente", paciente);
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
-
+		}
 	}
 	
 	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
@@ -238,8 +246,9 @@ public class ProntuarioServlet extends HttpServlet {
 		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
 		request.setAttribute("hospitais", hospitais);
 		request.setAttribute("prontuario", existingProntuario);
+
 		//request.setAttribute("id_prontuario", existingProntuario.getId());	
-		
+
 		
 		int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
 		System.out.println("id_paciente(edit Prontuario form): " + id_paciente);

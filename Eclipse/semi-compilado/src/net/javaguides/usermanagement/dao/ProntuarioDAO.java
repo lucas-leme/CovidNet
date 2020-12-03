@@ -375,17 +375,19 @@ public class ProntuarioDAO {
 			statement.setInt(14, prontuario.getHospitalId());
 			//statement.setInt(15, prontuario.getHospitalDestinoId());
 			statement.setInt(15, prontuario.getId());
-			
+
+			System.out.println(statement);
+
 			System.out.println(statement);
 			
 			rowUpdated = statement.executeUpdate() > 0;
-			
+
 			System.out.println("data: "+ prontuario.getData());
 			System.out.println("obesidae: " + prontuario.getObesidade());
 			System.out.println("execute update: " + statement.executeUpdate());
 			System.out.println("id: " + prontuario.getId());
 			System.out.println("rowUPdated??" + rowUpdated);
-		
+
 		return rowUpdated;
 	}
 	
