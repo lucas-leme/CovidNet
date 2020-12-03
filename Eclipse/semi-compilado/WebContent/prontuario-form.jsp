@@ -157,11 +157,6 @@
                 <td align="center">
                  	<select id="radiometria_torax_normal" name="radiometria_torax_normal">
 					    <c:if test="${prontuario == null || prontuario.radiometriaToraxNormal == true}">
-<<<<<<< HEAD
-
-=======
->>>>>>> Continua nao funcionando update de funcionario
-							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
 						</c:if>
@@ -178,11 +173,6 @@
                 <td align="center">
                  	<select id="tomografia_torax_normal" name="tomografia_torax_normal">
 					    <c:if test="${prontuario == null || prontuario.tomografiaToraxNormal == true}">
-<<<<<<< HEAD
-
-=======
->>>>>>> Continua nao funcionando update de funcionario
-							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
 						</c:if>
@@ -198,12 +188,7 @@
                 <th>Ventilação Mecânica: </th>
                 <td align="center">
                  	<select id="ventilacao_mecanica" name="ventilacao_mecanica">
-   					    <c:if test="${prontuario == null || prontuario.ventilacaoMecanica == true}">
-<<<<<<< HEAD
-
-=======
->>>>>>> Continua nao funcionando update de funcionario
-							
+   					    <c:if test="${prontuario == null || prontuario.ventilacaoMecanica == true}">							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
 						</c:if>
@@ -252,14 +237,7 @@
             <tr>
             	<td colspan="2" align="center">
 					<input type="hidden" name="id_paciente" value="<%= request.getAttribute("id_paciente") %>" />
-<<<<<<< HEAD
-<<<<<<< HEAD
 					<input type="hidden" name="id_prontuario" value="<%= request.getAttribute("id_prontuario") %>" />
-=======
->>>>>>> Continua nao funcionando update de funcionario
-=======
-					<input type="hidden" name="id_prontuario" value="<%= request.getAttribute("id_prontuario") %>" />
->>>>>>> Prontuario update ok
             		<input type="submit" value="Save" />
             	</td>
             </tr>
