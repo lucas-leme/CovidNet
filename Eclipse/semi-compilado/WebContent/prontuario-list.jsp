@@ -75,7 +75,7 @@
     
    	<form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
 		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
-		<input type="submit" name="search_prontuario" value="Editar" />  
+		<input type="submit" name="search_prontuario" value="Editar" /> 
 	</form>
     
     <h1>Questionário</h1>

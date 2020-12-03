@@ -106,8 +106,11 @@
             </tr>
             <tr>
                 <th>Batimento Cardiaco: </th>
-                <td>
-                	<input type="text" name="batimento_cardiaco_normal" size="45" value="<c:out value='${prontuario.batimentoCardiacoNormal}' />" />
+                <td align="center">
+                	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
+                		<option value="Sim">Sim</option>
+                		<option value="Não">Não</option>
+                	</select>
                 </td>
             </tr>
             <tr>
@@ -123,7 +126,7 @@
                 <th>Oximetria: </th>
                 <td align="center">
                 <input type="text" name="oximetria" size="45"
-                			value="<c:out value='${prontuario.doencaRespiratoria}' />"
+                			value="<c:out value='${prontuario.oximetria}' />"
                 		/>   
                 </td>
             </tr>
