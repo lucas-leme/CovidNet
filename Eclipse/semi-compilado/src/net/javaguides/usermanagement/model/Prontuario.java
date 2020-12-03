@@ -188,7 +188,7 @@ public class Prontuario {
 			String data,
 			String estadoDoPaciente,
 			String diagnostico,
-			String TesteCovid,
+			String testeCovid,
 			boolean doencaRespiratoria,
 			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
@@ -208,7 +208,7 @@ public class Prontuario {
 		this.data = data;
 		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.testeCovid = TesteCovid;
+		this.testeCovid = testeCovid;
 		this.doencaRespiratoria = doencaRespiratoria;
 		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
@@ -259,6 +259,44 @@ public class Prontuario {
 		this.pacienteId = pacienteId;
 	}
 	
+	public Prontuario(
+			int id,
+			String data,
+			String estadoDoPaciente,
+			String diagnostico,
+			String testeCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
+			boolean hipertensao,
+			int oximetria,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
+			boolean diabetes,
+			boolean obesidade,
+			boolean ativo,
+			int hospitalId
+		) {
+		super();
+		
+		this.id = id;
+		this.data = data;
+		this.estadoDoPaciente = estadoDoPaciente;
+		this.diagnostico = diagnostico;
+		this.testeCovid = testeCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
+		this.hipertensao = hipertensao;
+		this.oximetria = oximetria;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
+		this.diabetes = diabetes;
+		this.obesidade = obesidade;
+		this.ativo = ativo;
+		this.hospitalId = hospitalId;
+	}
+
 	public int getId() {
 		return id;
 	}

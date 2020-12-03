@@ -108,7 +108,6 @@ public class ProntuarioDAO {
 	private static final String UPDATE_PRONTUARIO =
 			"UPDATE prontuarios "
 			+ "SET"
-			+ "		data = ?,"
 			+ "		estado_do_paciente = ?,"
 			+ "		diagnostico = ?,"
 			+ "		teste_covid = ?,"
@@ -122,14 +121,13 @@ public class ProntuarioDAO {
 			+ "		diabetes = ?,"
 			+ "		obesidade = ?,"
 			+ "		ativo = ?,"
-			+ "		hospital_id = ?,"
-			+ "		hospital_destino_id = ?"
-			+ "	WHERE id = ?";
+			+ "		hospital_id = ?"
+			+ "	WHERE id = ? AND ativo = 1";
 	
 	private static final String UPDATE_HOSPITAL_DE_DESTINO =
 			"UPDATE prontuarios "
 			+ "SET hospital_destino_id = ?"
-			+ "	WHERE id = ?";
+			+ "	WHERE id = ? AND ativo = 1";
 	
 	private static final String CLOSE_PRONTUARIO =
 			"UPDATE prontuarios "
@@ -357,32 +355,37 @@ public class ProntuarioDAO {
 	public boolean updateProntuario(Prontuario prontuario) throws SQLException {
 		boolean rowUpdated;
 			
-		try (Connection connection = getConnection();
-				PreparedStatement statement = connection.prepareStatement(UPDATE_PRONTUARIO);) {
+		Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_PRONTUARIO);
 			
-			statement.setString(1, prontuario.getData());
-			statement.setString(2, prontuario.getEstadoDoPaciente());
-			statement.setString(3, prontuario.getDiagnostico());
-			statement.setString(4, prontuario.getTesteCovid());
-			statement.setBoolean(5, prontuario.getDoencaRespiratoria());
-			statement.setBoolean(6, prontuario.getBatimentoCardiacoNormal());
-			statement.setBoolean(7, prontuario.getHipertensao());
-			statement.setInt(8, prontuario.getOximetria());
-			statement.setBoolean(9, prontuario.getRadiometriaToraxNormal());
-			statement.setBoolean(10, prontuario.getTomografiaToraxNormal());
-			statement.setBoolean(11, prontuario.getVentilacaoMecanica());
-			statement.setBoolean(12, prontuario.getDiabetes());
-			statement.setBoolean(13, prontuario.getObesidade());
-			statement.setBoolean(14, prontuario.getAtivo());
-			statement.setInt(15, prontuario.getHospitalId());
-			statement.setInt(16, prontuario.getHospitalDestinoId());
-			statement.setInt(17, prontuario.getId());
+				
+			statement.setString(1, prontuario.getEstadoDoPaciente());
+			statement.setString(2, prontuario.getDiagnostico());
+			statement.setString(3, prontuario.getTesteCovid());
+			statement.setBoolean(4, prontuario.getDoencaRespiratoria());
+			statement.setBoolean(5, prontuario.getBatimentoCardiacoNormal());
+			statement.setBoolean(6, prontuario.getHipertensao());
+			statement.setInt(7, prontuario.getOximetria());
+			statement.setBoolean(8, prontuario.getRadiometriaToraxNormal());
+			statement.setBoolean(9, prontuario.getTomografiaToraxNormal());
+			statement.setBoolean(10, prontuario.getVentilacaoMecanica());
+			statement.setBoolean(11, prontuario.getDiabetes());
+			statement.setBoolean(12, prontuario.getObesidade());
+			statement.setBoolean(13, prontuario.getAtivo());
+			statement.setInt(14, prontuario.getHospitalId());
+			//statement.setInt(15, prontuario.getHospitalDestinoId());
+			statement.setInt(15, prontuario.getId());
+			
+			System.out.println(statement);
 			
 			rowUpdated = statement.executeUpdate() > 0;
 			
 			System.out.println("data: "+ prontuario.getData());
+			System.out.println("obesidae: " + prontuario.getObesidade());
+			System.out.println("execute update: " + statement.executeUpdate());
+			System.out.println("id: " + prontuario.getId());
 			System.out.println("rowUPdated??" + rowUpdated);
-		}
+		
 		return rowUpdated;
 	}
 	
