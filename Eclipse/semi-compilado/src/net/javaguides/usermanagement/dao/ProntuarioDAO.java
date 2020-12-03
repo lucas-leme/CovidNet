@@ -375,7 +375,9 @@ public class ProntuarioDAO {
 			statement.setInt(14, prontuario.getHospitalId());
 			//statement.setInt(15, prontuario.getHospitalDestinoId());
 			statement.setInt(15, prontuario.getId());
-			
+
+			System.out.println(statement);
+
 			System.out.println(statement);
 			
 			rowUpdated = statement.executeUpdate() > 0;

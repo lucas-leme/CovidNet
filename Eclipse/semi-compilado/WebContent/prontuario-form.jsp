@@ -99,10 +99,6 @@
 		
                 	<select id="doenca_respiratoria" name="doenca_respiratoria">
 					    <c:if test="${prontuario == null || prontuario.doencaRespiratoria == true}">
-<<<<<<< HEAD
-
-=======
->>>>>>> Continua nao funcionando update de funcionario
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -119,12 +115,7 @@
                 <th>Batimento Cardiaco: </th>
                 <td align="center">
                 	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
-					    <c:if test="${prontuario == null || prontuario.batimentoCardiacoNormal == true}">
-<<<<<<< HEAD
-
-=======
->>>>>>> Continua nao funcionando update de funcionario
-							
+					    <c:if test="${prontuario == null || prontuario.batimentoCardiacoNormal == true}">							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
 						</c:if>
@@ -262,9 +253,13 @@
             	<td colspan="2" align="center">
 					<input type="hidden" name="id_paciente" value="<%= request.getAttribute("id_paciente") %>" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<input type="hidden" name="id_prontuario" value="<%= request.getAttribute("id_prontuario") %>" />
 =======
 >>>>>>> Continua nao funcionando update de funcionario
+=======
+					<input type="hidden" name="id_prontuario" value="<%= request.getAttribute("id_prontuario") %>" />
+>>>>>>> Prontuario update ok
             		<input type="submit" value="Save" />
             	</td>
             </tr>
