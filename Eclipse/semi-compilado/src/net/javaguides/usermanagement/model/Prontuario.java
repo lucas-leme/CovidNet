@@ -25,6 +25,8 @@ public class Prontuario {
 	protected boolean ativo;
 	protected int hospitalId;
 	protected int hospitalDestinoId;
+	protected int hospital_id;
+	protected int hospital_destino_id;
 	protected int pacienteId;
 	
 	public Prontuario(
