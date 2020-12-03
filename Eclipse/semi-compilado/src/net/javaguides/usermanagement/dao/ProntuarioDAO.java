@@ -80,8 +80,8 @@ public class ProntuarioDAO {
 			+ "		hospital_id,"
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
-			+ "FROM prontuarios"
-			+ "WHERE hospital_id = ? AND ativo = 1";
+			+ " FROM prontuarios"
+			+ " WHERE hospital_id = ? AND ativo = 1";
 	
 	private static final String SELECT_PRONTUARIO_BY_ID =
 			"SELECT"
@@ -102,8 +102,8 @@ public class ProntuarioDAO {
 			+ "		hospital_id,"
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
-			+ "FROM prontuarios"
-			+ "WHERE id = ?";
+			+ " FROM prontuarios"
+			+ " WHERE id = ?";
 	
 	private static final String UPDATE_PRONTUARIO =
 			"UPDATE prontuarios "
