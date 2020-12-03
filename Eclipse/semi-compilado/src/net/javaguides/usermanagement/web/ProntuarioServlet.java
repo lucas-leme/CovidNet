@@ -152,9 +152,9 @@ public class ProntuarioServlet extends HttpServlet {
 	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
 		
-		prontuarioDAO.closeProntuario(id_prontuario);
+		//prontuarioDAO.closeProntuario(id_prontuario);
 		filaDAO.solicitaUti(id_prontuario);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
