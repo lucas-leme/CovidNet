@@ -92,7 +92,7 @@
                 <th>Teste de COVID-19: </th>
                 <td>
                    <input type="text" name="teste_covid" size="45"
-                			value="<c:out value='${prontuario.doenca_respiratoria}' />"
+                			value="<c:out value='${prontuario.teste_covid}' />"
                 		/>      		
                 </td>
             </tr>
@@ -109,8 +109,8 @@
             <tr>
                 <th>Batimento Cardiaco: </th>
                 <td>
-                	<input type="text" name="batimento_cardiaco" size="45"
-                			value="<c:out value='${prontuario.batimento_cardiaco}' />"
+                	<input type="text" name="batimento_cardiaco_normal" size="45"
+                			value="<c:out value='${prontuario.batimento_cardiaco_normal}' />"
                 		/>
                 </td>
             </tr>
