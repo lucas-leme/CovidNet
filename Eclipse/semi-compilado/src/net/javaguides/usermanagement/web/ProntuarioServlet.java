@@ -134,13 +134,20 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		Prontuario prontuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
 
-			//System.out.println("id do prontuario: " + prontuario.getId());
+		Paciente paciente = null;
+		
+
+		if(prontuario != null)
+		{
+			pacienteDAO.selectPacienteById(prontuario.getPacienteId());
+			
+			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
-			//request.setAttribute("paciente", paciente);
+			request.setAttribute("paciente", paciente);
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
-
+		}
 	}
 	
 	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
