@@ -241,6 +241,8 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println("editing form prontuario");
 		
 		String cpf = request.getParameter("cpf");
+		System.out.println("cpf pego: " + cpf);
+		
 		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 		
@@ -248,6 +250,11 @@ public class ProntuarioServlet extends HttpServlet {
 		request.setAttribute("hospitais", hospitais);
 		
 		request.setAttribute("prontuario", existingProntuario);
+		
+		int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
+		System.out.println("id_paciente(edit Prontuario form): " + id_paciente);
+		request.setAttribute("id_paciente", id_paciente);
+		
 		dispatcher.forward(request, response);
 	}
 	
@@ -255,6 +262,9 @@ public class ProntuarioServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		
 		String cpf = request.getParameter("cpf");
+		System.out.println("cpf pego: " + cpf);
+		
+		
 		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
 		
