@@ -156,8 +156,9 @@ public class ProntuarioServlet extends HttpServlet {
 		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
 		System.out.println("id_prontuario: " + id_prontuario);
 		
+		
 		//prontuarioDAO.closeProntuario(id_prontuario);
-		filaDAO.solicitaUti(id_prontuario);
+		filaDAO.solicitaUti(11);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);
