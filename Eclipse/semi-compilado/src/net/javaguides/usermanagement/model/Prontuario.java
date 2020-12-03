@@ -10,252 +10,252 @@ package net.javaguides.usermanagement.model;
 public class Prontuario {
 	protected int id;
 	protected String data;
-	protected String estado_do_paciente;
+	protected String estadoDoPaciente;
 	protected String diagnostico;
-	protected String teste_covid;
-	protected boolean doenca_respiratoria;
-	protected boolean batimento_cardiaco_normal;
+	protected String testeCovid;
+	protected boolean doencaRespiratoria;
+	protected boolean batimentoCardiacoNormal;
 	protected boolean hipertensao;
 	protected int oximetria;
-	protected boolean radiometria_torax_normal;
-	protected boolean tomografia_torax_normal;
-	protected boolean ventilacao_mecanica;
+	protected boolean radiometriaToraxNormal;
+	protected boolean tomografiaToraxNormal;
+	protected boolean ventilacaoMecanica;
 	protected boolean diabetes;
 	protected boolean obesidade;
 	protected boolean ativo;
-	protected int hospital_id;
-	protected int hospital_destino_id;
+	protected int hospitalId;
+	protected int hospitalDestinoId;
 	protected int pacienteId;
 	
 	public Prontuario(
 			String data,
-			String estado_do_paciente,
+			String estadoDoPaciente,
 			String diagnostico,
-			String teste_covid,
-			boolean doenca_respiratoria,
-			boolean batimento_cardiaco_normal,
+			String TesteCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
 			int oximetria,
-			boolean radiometria_torax_normal,
-			boolean tomografia_torax_normal,
-			boolean ventilacao_mecanica,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
 			boolean diabetes,
 			boolean obesidade,
 			boolean ativo,
-			int hospital_id,
-			int hospital_destino_id,
+			int hospitalId,
+			int hospitalDestinoId,
 			int pacienteId
 		) {
 		super();
 		
 		this.data = data;
-		this.estado_do_paciente = estado_do_paciente;
+		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.teste_covid = teste_covid;
-		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+		this.testeCovid = TesteCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
-		this.radiometria_torax_normal = radiometria_torax_normal;
-		this.tomografia_torax_normal = tomografia_torax_normal;
-		this.ventilacao_mecanica = ventilacao_mecanica;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
 		this.diabetes = diabetes;
 		this.obesidade = obesidade;
 		this.ativo = ativo;
-		this.hospital_id = hospital_id;
-		this.hospital_destino_id = hospital_destino_id;
+		this.hospitalId = hospitalId;
+		this.hospitalDestinoId = hospitalDestinoId;
 		this.pacienteId = pacienteId;
 	}
 	
 	public Prontuario(
 			String data,
-			String estado_do_paciente,
+			String estadoDoPaciente,
 			String diagnostico,
-			String teste_covid,
-			boolean doenca_respiratoria,
-			boolean batimento_cardiaco_normal,
+			String TesteCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
 			int oximetria,
-			boolean radiometria_torax_normal,
-			boolean tomografia_torax_normal,
-			boolean ventilacao_mecanica,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
 			boolean diabetes,
 			boolean obesidade,
 			boolean ativo,
-			int hospital_id
+			int hospitalId
 		) {
 		super();
 		
 		this.data = data;
-		this.estado_do_paciente = estado_do_paciente;
+		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.teste_covid = teste_covid;
-		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+		this.testeCovid = TesteCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
-		this.radiometria_torax_normal = radiometria_torax_normal;
-		this.tomografia_torax_normal = tomografia_torax_normal;
-		this.ventilacao_mecanica = ventilacao_mecanica;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
 		this.diabetes = diabetes;
 		this.obesidade = obesidade;
 		this.ativo = ativo;
-		this.hospital_id = hospital_id;
+		this.hospitalId = hospitalId;
 	}
 	
 	public Prontuario(
 			String data,
-			String estado_do_paciente,
+			String estadoDoPaciente,
 			String diagnostico,
-			String teste_covid,
-			boolean doenca_respiratoria,
-			boolean batimento_cardiaco_normal,
+			String TesteCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
 			int oximetria,
-			boolean radiometria_torax_normal,
-			boolean tomografia_torax_normal,
-			boolean ventilacao_mecanica,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
 			boolean diabetes,
 			boolean obesidade,
 			boolean ativo,
-			int hospital_id,
+			int hospitalId,
 			int pacienteId
 		) {
 		super();
 		
 		this.data = data;
-		this.estado_do_paciente = estado_do_paciente;
+		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.teste_covid = teste_covid;
-		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+		this.testeCovid = TesteCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
-		this.radiometria_torax_normal = radiometria_torax_normal;
-		this.tomografia_torax_normal = tomografia_torax_normal;
-		this.ventilacao_mecanica = ventilacao_mecanica;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
 		this.diabetes = diabetes;
 		this.obesidade = obesidade;
 		this.ativo = ativo;
-		this.hospital_id = hospital_id;
-		this.pacienteId = pacienteId;
-	}
-	
-	public Prontuario(
-			int id,
-			String data,
-			String estado_do_paciente,
-			String diagnostico,
-			String teste_covid,
-			boolean doenca_respiratoria,
-			boolean batimento_cardiaco_normal,
-			boolean hipertensao,
-			int oximetria,
-			boolean radiometria_torax_normal,
-			boolean tomografia_torax_normal,
-			boolean ventilacao_mecanica,
-			boolean diabetes,
-			boolean obesidade,
-			boolean ativo,
-			int hospital_id,
-			int hospital_destino_id,
-			int pacienteId
-		) {
-		super();
-		
-		this.id = id;
-		this.data = data;
-		this.estado_do_paciente = estado_do_paciente;
-		this.diagnostico = diagnostico;
-		this.teste_covid = teste_covid;
-		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
-		this.hipertensao = hipertensao;
-		this.oximetria = oximetria;
-		this.radiometria_torax_normal = radiometria_torax_normal;
-		this.tomografia_torax_normal = tomografia_torax_normal;
-		this.ventilacao_mecanica = ventilacao_mecanica;
-		this.diabetes = diabetes;
-		this.obesidade = obesidade;
-		this.ativo = ativo;
-		this.hospital_id = hospital_id;
-		this.hospital_destino_id = hospital_destino_id;
+		this.hospitalId = hospitalId;
 		this.pacienteId = pacienteId;
 	}
 	
 	public Prontuario(
 			int id,
 			String data,
-			String estado_do_paciente,
+			String estadoDoPaciente,
 			String diagnostico,
-			String teste_covid,
-			boolean doenca_respiratoria,
-			boolean batimento_cardiaco_normal,
+			String TesteCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
 			int oximetria,
-			boolean radiometria_torax_normal,
-			boolean tomografia_torax_normal,
-			boolean ventilacao_mecanica,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
 			boolean diabetes,
 			boolean obesidade,
 			boolean ativo,
-			int hospital_id,
-			int hospital_destino_id
+			int hospitalId,
+			int hospitalDestinoId,
+			int pacienteId
 		) {
 		super();
 		
 		this.id = id;
 		this.data = data;
-		this.estado_do_paciente = estado_do_paciente;
+		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.teste_covid = teste_covid;
-		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+		this.testeCovid = TesteCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
-		this.radiometria_torax_normal = radiometria_torax_normal;
-		this.tomografia_torax_normal = tomografia_torax_normal;
-		this.ventilacao_mecanica = ventilacao_mecanica;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
 		this.diabetes = diabetes;
 		this.obesidade = obesidade;
 		this.ativo = ativo;
-		this.hospital_id = hospital_id;
-		this.hospital_destino_id = hospital_destino_id;
+		this.hospitalId = hospitalId;
+		this.hospitalDestinoId = hospitalDestinoId;
+		this.pacienteId = pacienteId;
 	}
 	
 	public Prontuario(
-			String estado_do_paciente,
+			int id,
+			String data,
+			String estadoDoPaciente,
 			String diagnostico,
-			String teste_covid,
-			boolean doenca_respiratoria,
-			boolean batimento_cardiaco_normal,
+			String TesteCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
 			int oximetria,
-			boolean radiometria_torax_normal,
-			boolean tomografia_torax_normal,
-			boolean ventilacao_mecanica,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
 			boolean diabetes,
 			boolean obesidade,
 			boolean ativo,
-			int hospital_id,
+			int hospitalId,
+			int hospitalDestinoId
+		) {
+		super();
+		
+		this.id = id;
+		this.data = data;
+		this.estadoDoPaciente = estadoDoPaciente;
+		this.diagnostico = diagnostico;
+		this.testeCovid = TesteCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
+		this.hipertensao = hipertensao;
+		this.oximetria = oximetria;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
+		this.diabetes = diabetes;
+		this.obesidade = obesidade;
+		this.ativo = ativo;
+		this.hospitalId = hospitalId;
+		this.hospitalDestinoId = hospitalDestinoId;
+	}
+	
+	public Prontuario(
+			String estadoDoPaciente,
+			String diagnostico,
+			String TesteCovid,
+			boolean doencaRespiratoria,
+			boolean batimentoCardiacoNormal,
+			boolean hipertensao,
+			int oximetria,
+			boolean radiometriaToraxNormal,
+			boolean tomografiaToraxNormal,
+			boolean ventilacaoMecanica,
+			boolean diabetes,
+			boolean obesidade,
+			boolean ativo,
+			int hospitalId,
 			int pacienteId
 		) {
 		super();
 		
-		this.estado_do_paciente = estado_do_paciente;
+		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.teste_covid = teste_covid;
-		this.doenca_respiratoria = doenca_respiratoria;
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+		this.testeCovid = TesteCovid;
+		this.doencaRespiratoria = doencaRespiratoria;
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
 		this.oximetria = oximetria;
-		this.radiometria_torax_normal = radiometria_torax_normal;
-		this.tomografia_torax_normal = tomografia_torax_normal;
-		this.ventilacao_mecanica = ventilacao_mecanica;
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
+		this.ventilacaoMecanica = ventilacaoMecanica;
 		this.diabetes = diabetes;
 		this.obesidade = obesidade;
 		this.ativo = ativo;
-		this.hospital_id = hospital_id;
+		this.hospitalId = hospitalId;
 		this.pacienteId = pacienteId;
 	}
 	
@@ -272,10 +272,10 @@ public class Prontuario {
 		this.data = data;
 	}
 	public String getEstadoDoPaciente() {
-		return this.estado_do_paciente;
+		return this.estadoDoPaciente;
 	}
-	public void setEstadoDoPaciente(String estado_do_paciente) {
-		this.estado_do_paciente = estado_do_paciente;
+	public void setEstadoDoPaciente(String estadoDoPaciente) {
+		this.estadoDoPaciente = estadoDoPaciente;
 	}
 	public String getDiagnostico() {
 		return this.diagnostico;
@@ -284,22 +284,22 @@ public class Prontuario {
 		this.diagnostico = diagnostico;
 	}
 	public String getTesteCovid() {
-		return this.teste_covid;
+		return this.testeCovid;
 	}
-	public void setTesteCovid(String teste_covid) {
-		this.teste_covid = teste_covid;
+	public void setTesteCovid(String TesteCovid) {
+		this.testeCovid = TesteCovid;
 	}
 	public boolean getDoencaRespiratoria() {
-		return this.doenca_respiratoria;
+		return this.doencaRespiratoria;
 	}
-	public void setDoencaRespiratoria(boolean doenca_respiratoria) {
-		this.doenca_respiratoria = doenca_respiratoria;
+	public void setDoencaRespiratoria(boolean doencaRespiratoria) {
+		this.doencaRespiratoria = doencaRespiratoria;
 	}
 	public boolean getBatimentoCardiacoNormal() {
-		return this.batimento_cardiaco_normal;
+		return this.batimentoCardiacoNormal;
 	}
-	public void getBatimentoCardiacoNormal(boolean batimento_cardiaco_normal) {
-		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+	public void getBatimentoCardiacoNormal(boolean batimentoCardiacoNormal) {
+		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 	}
 	public boolean getHipertensao() {
 		return this.hipertensao;
@@ -314,22 +314,22 @@ public class Prontuario {
 		this.oximetria = oximetria;
 	}
 	public boolean getRadiometriaToraxNormal() {
-		return this.radiometria_torax_normal;
+		return this.radiometriaToraxNormal;
 	}
-	public void setRadiometriaToraxNormal(boolean radiometria_torax_normal) {
-		this.radiometria_torax_normal = radiometria_torax_normal;
+	public void setRadiometriaToraxNormal(boolean radiometriaToraxNormal) {
+		this.radiometriaToraxNormal = radiometriaToraxNormal;
 	}
 	public boolean getTomografiaToraxNormal() {
-		return this.tomografia_torax_normal;
+		return this.tomografiaToraxNormal;
 	}
-	public void setTomografiaToraxNormal(boolean tomografia_torax_normal) {
-		this.tomografia_torax_normal = tomografia_torax_normal;
+	public void setTomografiaToraxNormal(boolean tomografiaToraxNormal) {
+		this.tomografiaToraxNormal = tomografiaToraxNormal;
 	}
 	public boolean getVentilacaoMecanica() {
-		return this.ventilacao_mecanica;
+		return this.ventilacaoMecanica;
 	}
-	public void setVentilacaoMecanica(boolean ventilacao_mecanica) {
-		this.ventilacao_mecanica = ventilacao_mecanica;
+	public void setVentilacaoMecanica(boolean ventilacaoMecanica) {
+		this.ventilacaoMecanica = ventilacaoMecanica;
 	}
 	public boolean getDiabetes() {
 		return this.diabetes;
@@ -338,7 +338,7 @@ public class Prontuario {
 		this.diabetes = diabetes;
 	}
 	public boolean getObesidade() {
-		return this.diabetes;
+		return this.obesidade;
 	}
 	public void setObesidade(boolean obesidade) {
 		this.obesidade = obesidade;
@@ -350,16 +350,16 @@ public class Prontuario {
 		this.ativo = ativo;
 	}
 	public int getHospitalId() {
-		return hospital_id;
+		return hospitalId;
 	}
-	public void setHospitalId(int hospital_id) {
-		this.hospital_id = hospital_id;
+	public void setHospitalId(int hospitalId) {
+		this.hospitalId = hospitalId;
 	}
 	public int getHospitalDestinoId() {
-		return hospital_destino_id;
+		return hospitalDestinoId;
 	}
-	public void setHospitalDestinoId(int hospital_destino_id) {
-		this.hospital_destino_id = hospital_destino_id;
+	public void setHospitalDestinoId(int hospitalDestinoId) {
+		this.hospitalDestinoId = hospitalDestinoId;
 	}
 	public int getPacienteId() {
 		return pacienteId;

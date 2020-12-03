@@ -99,8 +99,16 @@
                 <td align="center">
 		
                 	<select id="doenca_respiratoria" name="doenca_respiratoria">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.doencaRespiratoria == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.doencaRespiratoria == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -108,8 +116,16 @@
                 <th>Batimento Cardiaco: </th>
                 <td align="center">
                 	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.batimentoCardiacoNormal == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.batimentoCardiacoNormal == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -117,8 +133,16 @@
                 <th>Hipertensão: </th>
                 <td align="center">
                  <select id="hipertensao" name="hipertensao">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.hipertensao == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.hipertensao == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -134,8 +158,16 @@
                 <th>Radiometria Torax Normal: </th>
                 <td align="center">
                  	<select id="radiometria_torax_normal" name="radiometria_torax_normal">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.radiometriaToraxNormal == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.radiometriaToraxNormal == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -143,8 +175,16 @@
                 <th>Tomografia Torax Normal: </th>
                 <td align="center">
                  	<select id="tomografia_torax_normal" name="tomografia_torax_normal">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.tomografiaToraxNormal == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.tomografiaToraxNormal == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -152,8 +192,16 @@
                 <th>Ventilação Mecânica: </th>
                 <td align="center">
                  	<select id="ventilacao_mecanica" name="ventilacao_mecanica">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+   					    <c:if test="${prontuario.ventilacaoMecanica == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.ventilacaoMecanica == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -161,8 +209,16 @@
                 <th>Diabetes: </th>
                 <td align="center">
                  	<select id="diabetes" name="diabetes">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.diabetes == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.diabetes == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
@@ -170,8 +226,16 @@
                 <th>Obesidade: </th>
                 <td align="center">
                  	<select id="obesidade" name="obesidade">
-                		<option value="Sim">Sim</option>
-                		<option value="Não">Não</option>
+					    <c:if test="${prontuario.obesidade == true}">
+							
+	                		<option value="Sim">Sim</option>
+	                		<option value="Não">Não</option>
+						</c:if>
+						<c:if test="${prontuario.obesidade == false}">
+					 		
+	                		<option value="Não">Não</option>
+	                		<option value="Sim">Sim</option>
+						</c:if>
                 	</select>
                 </td>
             </tr>
