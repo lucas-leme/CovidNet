@@ -249,10 +249,16 @@ public class ProntuarioServlet extends HttpServlet {
 		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
 		request.setAttribute("hospitais", hospitais);
 		request.setAttribute("prontuario", existingProntuario);
+		//request.setAttribute("id_prontuario", existingProntuario.getId());	
+		
 		
 		int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
 		System.out.println("id_paciente(edit Prontuario form): " + id_paciente);
 		request.setAttribute("id_paciente", id_paciente);
+		
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		System.out.println("id_prontuario(edit Prontuario form): " + id_prontuario);
+		request.setAttribute("id_prontuario", id_prontuario);
 		
 		dispatcher.forward(request, response);
 	}
@@ -365,6 +371,8 @@ public class ProntuarioServlet extends HttpServlet {
 		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
 		int paciente_id = Integer.parseInt(request.getParameter("id_paciente"));
 		
+		System.out.println("paciente_id: " + paciente_id);
+		
 		System.out.println("\n\nVENTILACAO MECANICA" + ventilacao_mecanica);
 	
 		Prontuario newProntuario = new Prontuario(
@@ -413,6 +421,8 @@ public class ProntuarioServlet extends HttpServlet {
 //		}else {
 //			
 //		}
+		int paciente_id = Integer.parseInt(request.getParameter("id_paciente"));
+		int prontuario_id = Integer.parseInt(request.getParameter("id_prontuario"));
 		
 		String data = request.getParameter("data");
 		String estado_do_paciente = request.getParameter("estado_paciente");
@@ -429,8 +439,11 @@ public class ProntuarioServlet extends HttpServlet {
 		boolean ativo = true;
 		boolean radiometria_torax_normal = checkBool(request.getParameter("radiometria_torax_normal"));
 		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
+		
+		System.out.println("paciente_id (UPDATE): "+ paciente_id);
+		System.out.println("id do prontuario: " + prontuario_id);
 
-		Prontuario book = new Prontuario(data, estado_do_paciente, diagnostico, teste_covid, 
+		Prontuario book = new Prontuario(prontuario_id, data, estado_do_paciente, diagnostico, teste_covid, 
 				doenca_respiratoria, batimento_cardiaco_normal, hipertensao, oximetria,  radiometria_torax_normal,
 				tomografia_torax_normal, ventilacao_mecanica, diabetes, obesidade, ativo, hospital_id);
 		
