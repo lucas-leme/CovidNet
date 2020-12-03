@@ -379,13 +379,13 @@ public class ProntuarioDAO {
 			System.out.println(statement);
 			
 			rowUpdated = statement.executeUpdate() > 0;
-			
+
 			System.out.println("data: "+ prontuario.getData());
 			System.out.println("obesidae: " + prontuario.getObesidade());
 			System.out.println("execute update: " + statement.executeUpdate());
 			System.out.println("id: " + prontuario.getId());
 			System.out.println("rowUPdated??" + rowUpdated);
-		
+
 		return rowUpdated;
 	}
 	
