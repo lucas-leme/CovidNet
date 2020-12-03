@@ -13,6 +13,7 @@ public class FilaDePaciente {
 	protected int ordem;
 	protected int prioridade;
 	protected int paciente_id;
+	protected String nome;
 	
 	public FilaDePaciente(int id) {
 		super();
@@ -40,6 +41,16 @@ public class FilaDePaciente {
 	}
 	
 	
+	public FilaDePaciente(int id, String data, int ordem, int prioridade, String nome) {
+		super();
+
+		this.id = id;
+		this.data = data;
+		this.ordem = ordem;
+		this.prioridade = prioridade;
+		this.nome = nome;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -70,4 +81,7 @@ public class FilaDePaciente {
 	public void setPacienteId(int paciente_id) {
 		this.paciente_id = paciente_id;
 	}
+	
+	public String getNome() { return this.nome; }
+	public void setNome(String nome) { this.nome = nome; }
 }
