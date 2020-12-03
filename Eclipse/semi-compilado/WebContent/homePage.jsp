@@ -69,7 +69,7 @@
 
     <td class="frame center">
     
-      <a href="${pageContext.request.contextPath}/leitos">
+      <a href="${pageContext.request.contextPath}/leitos/home">
 	      <img class="img_cols" src="https://i.imgur.com/8Q579oC.png" alt="" />
 	
 	      <h3 class="text_cols">Vagas</h3>
