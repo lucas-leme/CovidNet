@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!-- DOCTYPE html-->
 <html>
-<head>
-	<title>Filtro de leitos</title>
-	<style><%@include file="/WEB-INF/css/main.css"%></style>
-	<style><%@include file="/WEB-INF/css/util.css"%></style>
-		  <meta http-equiv="Content-Language" content="pt-br" 
-  	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
-	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
-</head>
-<body>
 
+<head>
+  <title>CoronaViewer</title>
+  <meta http-equiv="Content-Language" content="pt-br" 
+  	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
+	<style><%@include file="/WEB-INF/css/homeProntuario.css"%></style>
+</head>
+
+</body>
 <header>
   <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="20.5" cy="20.5" r="20.5" fill="#458FF6" />
@@ -26,29 +26,57 @@
     <a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">Relatórios</a>
     <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
     <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
+    
+    <!-- PASSAR ISSO AQUI ALI PRA BAIXO -->
+     	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar paciente</a>
+     	&nbsp;&nbsp;&nbsp;
+     	<a href="${pageContext.request.contextPath}">Página inicial</a>
+        	
   </div>
 </header>
 
-    <div align="center">
-        <a href="${pageContext.request.contextPath}/leitos/list_hospitais">
-        <h1>Cidades</h1>
-        </a>
-        
-        <br/>
-        
-        <c:forEach var="cidade" items="${cidades}">
-               <tr>
-                    <td>
-                    	<a href="${pageContext.request.contextPath}/leitos/list_hospitais?cidade=<c:out value="${cidade.id}"/>">
-                    		<h3>
-                    			<c:out value="${cidade.nome}"/>
-                    		</h3>
-                    		<br/>
-                    	</a>              	
-                    </td>
-                </tr>
-        </c:forEach>
-    </div>	
-    
+<div class="center">
+  <h1>Vagas</h1>
+  
+  <img src="https://i.imgur.com/8Q579oC.png" alt="" />
+  
+  <p>
+    CoronaViewer é uma plataforma de informação sobre os casos de COVID19 no
+    estado de São Paulo
+  </p>
+</div>
+
+	<div class="center">
+
+	    	<a href="${pageContext.request.contextPath}/leitos">
+		      <h3>UTI</h3>
+		      <p>
+		        Selecione pacientes baseados em nosso critérios!
+		      </p>
+		    </a>
+	</div>
+
 </body>
-</html>
+
+</html>   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   

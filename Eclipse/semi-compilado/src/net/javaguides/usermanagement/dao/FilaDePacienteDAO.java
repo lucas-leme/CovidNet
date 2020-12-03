@@ -188,6 +188,7 @@ public class FilaDePacienteDAO {
 		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRIMEIRO_DA_FILA);) {
+			System.out.println("Selecting first paciente");
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 

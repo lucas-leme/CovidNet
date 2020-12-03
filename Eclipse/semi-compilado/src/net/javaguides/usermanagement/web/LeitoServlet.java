@@ -20,7 +20,7 @@ import net.javaguides.usermanagement.model.Municipio;
 
 @WebServlet(
   urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", 
-		  "/leitos/insert", "/leitos/list_hospitais", "/leitos/list_leitos"}
+		  "/leitos/insert", "/leitos/list_hospitais", "/leitos/list_leitos", "/leitos/home"}
   )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -46,6 +46,9 @@ public class LeitoServlet extends HttpServlet {
 			switch (action) {
 			case "/leitos/new":
 				showNewForm(request, response);
+				break;
+			case "/leitos/home":
+				showHome(request, response);
 				break;
 			case "/leitos/edit":
 				showEditForm(request, response);
@@ -127,6 +130,13 @@ public class LeitoServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-form.jsp");
 
 		//response.sendRedirect("../");
+		dispatcher.forward(request, response);
+	}
+	
+	private void showHome(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-home.jsp");
 		dispatcher.forward(request, response);
 	}
 
