@@ -25,7 +25,7 @@ public class Prontuario {
 	protected boolean ativo;
 	protected int hospital_id;
 	protected int hospital_destino_id;
-	protected int paciente_id;
+	protected int pacienteId;
 	
 	public Prontuario(
 			String data,
@@ -44,7 +44,7 @@ public class Prontuario {
 			boolean ativo,
 			int hospital_id,
 			int hospital_destino_id,
-			int paciente_id
+			int pacienteId
 		) {
 		super();
 		
@@ -64,7 +64,7 @@ public class Prontuario {
 		this.ativo = ativo;
 		this.hospital_id = hospital_id;
 		this.hospital_destino_id = hospital_destino_id;
-		this.paciente_id = paciente_id;
+		this.pacienteId = pacienteId;
 	}
 	
 	public Prontuario(
@@ -119,7 +119,7 @@ public class Prontuario {
 			boolean obesidade,
 			boolean ativo,
 			int hospital_id,
-			int paciente_id
+			int pacienteId
 		) {
 		super();
 		
@@ -138,7 +138,7 @@ public class Prontuario {
 		this.obesidade = obesidade;
 		this.ativo = ativo;
 		this.hospital_id = hospital_id;
-		this.paciente_id = paciente_id;
+		this.pacienteId = pacienteId;
 	}
 	
 	public Prontuario(
@@ -159,7 +159,7 @@ public class Prontuario {
 			boolean ativo,
 			int hospital_id,
 			int hospital_destino_id,
-			int paciente_id
+			int pacienteId
 		) {
 		super();
 		
@@ -180,7 +180,7 @@ public class Prontuario {
 		this.ativo = ativo;
 		this.hospital_id = hospital_id;
 		this.hospital_destino_id = hospital_destino_id;
-		this.paciente_id = paciente_id;
+		this.pacienteId = pacienteId;
 	}
 	
 	public Prontuario(
@@ -238,7 +238,7 @@ public class Prontuario {
 			boolean obesidade,
 			boolean ativo,
 			int hospital_id,
-			int paciente_id
+			int pacienteId
 		) {
 		super();
 		
@@ -256,7 +256,7 @@ public class Prontuario {
 		this.obesidade = obesidade;
 		this.ativo = ativo;
 		this.hospital_id = hospital_id;
-		this.paciente_id = paciente_id;
+		this.pacienteId = pacienteId;
 	}
 	
 	public int getId() {
@@ -362,9 +362,9 @@ public class Prontuario {
 		this.hospital_destino_id = hospital_destino_id;
 	}
 	public int getPacienteId() {
-		return paciente_id;
+		return pacienteId;
 	}
-	public void setPacienteId(int paciente_id) {
-		this.paciente_id = paciente_id;
+	public void setPacienteId(int pacienteId) {
+		this.pacienteId = pacienteId;
 	}
 }
