@@ -25,15 +25,14 @@ public class Prontuario {
 	protected boolean ativo;
 	protected int hospitalId;
 	protected int hospitalDestinoId;
-	protected int hospital_id;
-	protected int hospital_destino_id;
+
 	protected int pacienteId;
 	
 	public Prontuario(
 			String data,
 			String estadoDoPaciente,
 			String diagnostico,
-			String TesteCovid,
+			String testeCovid,
 			boolean doencaRespiratoria,
 			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
@@ -53,7 +52,7 @@ public class Prontuario {
 		this.data = data;
 		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.testeCovid = TesteCovid;
+		this.testeCovid = testeCovid;
 		this.doencaRespiratoria = doencaRespiratoria;
 		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;
@@ -228,7 +227,7 @@ public class Prontuario {
 	public Prontuario(
 			String estadoDoPaciente,
 			String diagnostico,
-			String TesteCovid,
+			String testeCovid,
 			boolean doencaRespiratoria,
 			boolean batimentoCardiacoNormal,
 			boolean hipertensao,
@@ -246,7 +245,7 @@ public class Prontuario {
 		
 		this.estadoDoPaciente = estadoDoPaciente;
 		this.diagnostico = diagnostico;
-		this.testeCovid = TesteCovid;
+		this.testeCovid = testeCovid;
 		this.doencaRespiratoria = doencaRespiratoria;
 		this.batimentoCardiacoNormal = batimentoCardiacoNormal;
 		this.hipertensao = hipertensao;

@@ -25,13 +25,13 @@
     <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
   </div>
 </header>
-	<center>
+	<div class="center">
 		<h1>Gerenciamento de Prontuários</h1>
         <h2>
         	<a href="${pageContext.request.contextPath}/prontuarios">VOLTAR</a>
         	<a href="${pageContext.request.contextPath}/prontuarios/new_paciente">Adicionar Paciente</a>
         </h2>
-	</center>
+	</div>
     <div align="center">
 
 		<c:if test="${prontuario != null}">
@@ -41,7 +41,7 @@
 			<form action="${pageContext.request.contextPath}/prontuarios/insert" method="post">
         </c:if>
 
-
+		<form>
         <table border="1" cellpadding="5">
             <caption>
             	<h2>
@@ -100,6 +100,7 @@
 		
                 	<select id="doenca_respiratoria" name="doenca_respiratoria">
 					    <c:if test="${prontuario == null || prontuario.doencaRespiratoria == true}">
+
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -117,6 +118,7 @@
                 <td align="center">
                 	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
 					    <c:if test="${prontuario == null || prontuario.batimentoCardiacoNormal == true}">
+
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -159,6 +161,7 @@
                 <td align="center">
                  	<select id="radiometria_torax_normal" name="radiometria_torax_normal">
 					    <c:if test="${prontuario == null || prontuario.radiometriaToraxNormal == true}">
+
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -176,6 +179,7 @@
                 <td align="center">
                  	<select id="tomografia_torax_normal" name="tomografia_torax_normal">
 					    <c:if test="${prontuario == null || prontuario.tomografiaToraxNormal == true}">
+
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -193,6 +197,7 @@
                 <td align="center">
                  	<select id="ventilacao_mecanica" name="ventilacao_mecanica">
    					    <c:if test="${prontuario == null || prontuario.ventilacaoMecanica == true}">
+
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -209,8 +214,9 @@
                 <th>Diabetes: </th>
                 <td align="center">
                  	<select id="diabetes" name="diabetes">
+
 					    <c:if test="${prontuario == null || prontuario.diabetes == true}">
-							
+
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
 						</c:if>
