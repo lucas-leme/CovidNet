@@ -139,8 +139,9 @@ public class ProntuarioServlet extends HttpServlet {
 
 		if(prontuario != null)
 		{
-			pacienteDAO.selectPacienteById(prontuario.getPacienteId());
+			paciente = pacienteDAO.selectPacienteById(prontuario.getPacienteId());
 			
+			System.out.println("id do paciente: " + prontuario.getPacienteId());
 			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
 			request.setAttribute("paciente", paciente);
