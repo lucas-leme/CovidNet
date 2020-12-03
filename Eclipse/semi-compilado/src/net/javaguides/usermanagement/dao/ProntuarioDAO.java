@@ -230,8 +230,7 @@ public class ProntuarioDAO {
 					hospital_destino_id,
 					paciente_id
 				);
-				System.out.println("OXIMETRIA");
-				System.out.println(prontuario.getOximetria());
+
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
