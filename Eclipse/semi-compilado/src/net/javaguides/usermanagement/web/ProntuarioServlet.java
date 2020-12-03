@@ -248,7 +248,6 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
 		request.setAttribute("hospitais", hospitais);
-		
 		request.setAttribute("prontuario", existingProntuario);
 		
 		int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
