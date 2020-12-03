@@ -3,12 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Lista de leitos</title>
+	<title>Prontuarios</title>
 	  <meta http-equiv="Content-Language" content="pt-br" 
   	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
 	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
-	<style><%@include file="/WEB-INF/css/main.css"%></style>
-	<style><%@include file="/WEB-INF/css/util.css"%></style>
 </head>
 <body>
 	<header>
@@ -27,42 +25,10 @@
 	    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
 	  </div>
 	</header>
-	<center>
-		<h1>Gerenciamento de leitos</h1>
-        <h2>
-        	<a href="${pageContext.request.contextPath}/leitos/new">Adicionar leito</a>
-        	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/leitos">Listar leitos</a>
-        	
-        </h2>
-	</center>
+	
+	<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+	
     <div align="center">
-        <h2>Lista de leitos</h2>
-            <div align="center">
-        <h2>Fila de pacientess</h2>
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>Ordem</th>
-                <th>Data</th>
-                <th>Prioridade</th>
-                <th>Nome do paciente</th>
-                <th>Acoes</th>
-            </tr>
-            
-            <c:forEach var="elemento_fila" items="${fila_pacientes}">
-                <tr>
-                    <td><c:out value="${elemento_fila.ordem}" /></td>
-                    <td><c:out value="${elemento_fila.data}" /></td>
-                    <td><c:out value="${elemento_fila.prioridade}" /></td>
-                    <td><c:out value="${elemento_fila.nome}" /></td>
-                    <td>
-                    	<a href="${pageContext.request.contextPath}/leitos/edit?id=<c:out value='${elemento_fila.id}' />">Editar</a>
-                    	<!--&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<!--a href="delete?id=<c:out value='${leito.id}' />">Deletar</a-->                    	
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
     
     <h1>Dados do Prontuário</h1>
     <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
@@ -73,7 +39,7 @@
     <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
     <h3>Oximetria: ${prontuario.oximetria}</h3>
     
-   	<form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
+    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
 		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 		<input type="submit" name="search_prontuario" value="Editar" /> 
 	</form>
@@ -158,14 +124,32 @@
 		<c:if test="${prontuario.ativo == false}">
 	 		Não
 		</c:if>    
+		<%= request.getAttribute("prontuario") %>
     </h3>
-
-
-   	<form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
+    
+     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
 		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 		<input type="submit" name="search_prontuario" value="Editar" />  
 	</form>
+    
+    <form action="${pageContext.request.contextPath}/prontuarios/close" method="post">
+		<div  class="center">
+			<!--div><c:out value='%= request.getAttribute("prontuario") %>'></c:out></div>
+			<div><c:out value="${cidade.id}"/></div-->
+			<input type="text" name="id_prontuario" value="${prontuario.id}"/>
 	
+			<input type="submit" name="close_prontuario" value="Fechar prontuário" />
+		</div>
+	</form>    
+	
+    <form action="${pageContext.request.contextPath}/prontuarios/solicitar_uti" method="post">
+		<div  class="center">
+			<input type="text" name="id_prontuario2" value="${prontuario.id}"/>
+	 
+			<input type="submit" name="solicitar_uti" value="Solicitar UTI" />  
+		</div>
+	</form>
+
     </div>	
 </body>
 </html>

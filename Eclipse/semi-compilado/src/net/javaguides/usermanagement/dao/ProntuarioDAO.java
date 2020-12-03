@@ -58,7 +58,7 @@ public class ProntuarioDAO {
 			+ "		pro.paciente_id"
 			+ "	FROM prontuarios pro"
 			+ "	INNER JOIN pacientes pac ON pac.id = pro.paciente_id"
-			+ "	WHERE pac.cpf = ?";
+			+ "	WHERE pac.cpf = ? AND pro.ativo = 1";
 	
 	private static final String SELECT_PRONTUARIOS_BY_HOSPITAL =
 			"SELECT"
@@ -80,8 +80,8 @@ public class ProntuarioDAO {
 			+ "		hospital_id,"
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
-			+ "FROM prontuarios"
-			+ "WHERE hospital_id = ? AND ativo = 1";
+			+ " FROM prontuarios"
+			+ " WHERE hospital_id = ? AND ativo = 1";
 	
 	private static final String SELECT_PRONTUARIO_BY_ID =
 			"SELECT"
@@ -102,8 +102,8 @@ public class ProntuarioDAO {
 			+ "		hospital_id,"
 			+ "		hospital_destino_id,"
 			+ "		paciente_id"
-			+ "FROM prontuarios"
-			+ "WHERE id = ?";
+			+ " FROM prontuarios"
+			+ " WHERE id = ?";
 	
 	private static final String UPDATE_PRONTUARIO =
 			"UPDATE prontuarios "
@@ -123,8 +123,7 @@ public class ProntuarioDAO {
 			+ "		obesidade = ?,"
 			+ "		ativo = ?,"
 			+ "		hospital_id = ?,"
-			+ "		hospital_destino_id = ?,"
-			+ "		paciente_id = ?"
+			+ "		hospital_destino_id = ?"
 			+ "	WHERE id = ?";
 	
 	private static final String UPDATE_HOSPITAL_DE_DESTINO =
@@ -231,8 +230,7 @@ public class ProntuarioDAO {
 					hospital_destino_id,
 					paciente_id
 				);
-				System.out.println("OXIMETRIA");
-				System.out.println(prontuario.getOximetria());
+
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -373,8 +371,7 @@ public class ProntuarioDAO {
 			statement.setBoolean(14, prontuario.getAtivo());
 			statement.setInt(15, prontuario.getHospitalId());
 			statement.setInt(16, prontuario.getHospitalDestinoId());
-			statement.setInt(17, prontuario.getPacienteId());
-			statement.setInt(18, prontuario.getId());
+			statement.setInt(17, prontuario.getId());
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}
@@ -395,13 +392,13 @@ public class ProntuarioDAO {
 		return rowUpdated;
 	}
 	
-	public boolean closeProntuario(Prontuario prontuario) throws SQLException {
+	public boolean closeProntuario(int id) throws SQLException {
 		boolean rowUpdated;
 			
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(CLOSE_PRONTUARIO);) {
 			
-			statement.setInt(1, prontuario.getId());
+			statement.setInt(1, id);
 			
 			rowUpdated = statement.executeUpdate() > 0;
 		}

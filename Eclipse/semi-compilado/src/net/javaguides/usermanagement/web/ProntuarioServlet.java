@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.FilaDePacienteDAO;
 import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.dao.ProntuarioDAO;
+import net.javaguides.usermanagement.model.FilaDePaciente;
 import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Paciente;
 import net.javaguides.usermanagement.model.Prontuario;
@@ -26,21 +28,24 @@ import net.javaguides.usermanagement.model.Prontuario;
  */
 
 @WebServlet(
-urlPatterns = {"/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
+urlPatterns = { "/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
 				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
-				"/prontuarios/search"}
+				"/prontuarios/search", "/prontuarios/close", "/prontuarios/solicitar_uti", "/pacientes/edit", "/pacientes/update" }
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ProntuarioDAO prontuarioDAO;
 	private PacienteDAO pacienteDAO;
 	private HospitalDAO hospitalDAO;
+	private FilaDePacienteDAO filaDAO;
 	private static final String root = "/semi-compilado";
 
 	public void init() {
 		prontuarioDAO = new ProntuarioDAO();
 		pacienteDAO = new PacienteDAO();
 		hospitalDAO = new HospitalDAO();
+		
+		filaDAO = new FilaDePacienteDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -68,9 +73,10 @@ public class ProntuarioServlet extends HttpServlet {
 					insertProntuario(request, response);
 					break;
 				case "/prontuarios/edit":
-					showEditForm(request, response);
+					showEditProntuarioForm(request, response);
 					break;
 				case "/prontuarios/update":
+					System.out.println("Updating");
 					updateProntuario(request, response);
 					break;					
 				case "/pacientes/new":
@@ -84,6 +90,10 @@ public class ProntuarioServlet extends HttpServlet {
 					newExame(request, response);
 					break;
 					
+				case "/pacientes/edit":
+					showEditPacienteForm(request, response);
+					break;
+					
 				case "prontuarios/list":
 					System.out.println("LIST PRONTUARIOS");
 					listProntuarios(request, response);
@@ -93,7 +103,19 @@ public class ProntuarioServlet extends HttpServlet {
 					System.out.println("SEARCH PRONTUARIO");
 					searchProntuarios(request, response);
 					break;
+					
+				case "/prontuarios/close":
+					closeProntuario(request, response);
+					break;
+					
+				case "/prontuarios/solicitar_uti":
+					solicitarUti(request, response);
+					break;
 				
+				case "/pacientes/update":
+					System.out.println("UPDATE PACIENTE");
+					updatePaciente(request, response);
+					break;
 				default:
 					System.out.println("DEFAULT");
 					showMainPage(request, response);
@@ -114,13 +136,17 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		if(prontuario != null)
 		{
-			System.out.println(prontuario.getId());
-			request.setAttribute("prontuario", prontuario);	
+
+			System.out.println("id do prontuario: " + prontuario.getId());
+			request.setAttribute("prontuario", prontuario);
 	
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
 		}else
 		{
+			System.out.println("nao achou o cpf");
+
+      
 			// ERRO - nao achou esse cpf
 		}
 	}
@@ -128,10 +154,36 @@ public class ProntuarioServlet extends HttpServlet {
 	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
-		System.out.println("Fechando o prontuario: " + prontuario);
+		System.out.println("prontuario: " + request.getParameter("id_prontuario"));
+		//Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
+		//System.out.println("Fechando o prontuario: " + prontuario);
+		
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		request.setAttribute("id_prontuario", id_prontuario);
+		
+		prontuarioDAO.closeProntuario(id_prontuario);
 
 		response.sendRedirect(root + "/prontuarios"); // Volta pra tela de pesquisa
+	}
+	
+	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
+		System.out.println("id_prontuario: " + id_prontuario);
+		
+		
+		filaDAO.solicitaUti(id_prontuario);
+		List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
+		request.setAttribute("fila_pacientes", fila);
+//=======
+//		System.out.println(cpf);
+//		request.setAttribute("prontuario", prontuario);	
+//>>>>>>> f534cb4... Add edit paciente
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+		dispatcher.forward(request, response);
+
 	}
 
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
@@ -182,15 +234,29 @@ public class ProntuarioServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+	private void showEditProntuarioForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		System.out.println("editing form prontuario");
 		
-		//int id = Integer.parseInt(request.getParameter("id"));
-		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf("111.111.111-11");
+		String cpf = request.getParameter("cpf");
+		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 		
+		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
+		request.setAttribute("hospitais", hospitais);
+		
 		request.setAttribute("prontuario", existingProntuario);
+		dispatcher.forward(request, response);
+	}
+	
+	private void showEditPacienteForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		String cpf = request.getParameter("cpf");
+		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
+		
+		request.setAttribute("paciente", existingPaciente);
 		dispatcher.forward(request, response);
 	}
 
@@ -203,17 +269,24 @@ public class ProntuarioServlet extends HttpServlet {
 			String data_de_nascimento = request.getParameter("data_de_nascimento");  
 			String endereco = request.getParameter("endereco");
 			
+			
+			System.out.println("Verificando atributos");
+
+			System.out.println("iscpfok? : " + Solver.formatCpf(cpf));			
+
+
 			System.out.println("cpf: " + cpf + "; nome: " + nome + "; nascimento: " + data_de_nascimento + "; endereco: " + endereco);
 			
 			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
 			int id_paciente = pacienteDAO.insertPaciente(newPaciente);
 			newPaciente.setId(id_paciente);
 			System.out.println("id do paciente adicionado: " + id_paciente);
-		
-			
+
+
 			System.out.println("selecionando hospital cujo id e 1");
 			List<Hospital> hospitais = hospitalDAO.selectAllHospitais();//hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
-
+		
+			
 			request.setAttribute("id_paciente", id_paciente);	
 			request.setAttribute("hospitais", hospitais);	
 			request.setAttribute("cpf", cpf);	
@@ -228,9 +301,29 @@ public class ProntuarioServlet extends HttpServlet {
 			//response.sendRedirect(root + "/prontuarios/new");
 		}
 	
-	private boolean checkBool (String choosenAtribute) {
+	private void updatePaciente(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		System.out.println("inserting paciente");
 		
-		if (choosenAtribute == "Sim") {
+		int id = Integer.parseInt(request.getParameter("id_paciente"));
+		String cpf = request.getParameter("cpf");
+		String nome = request.getParameter("nome");
+		String data_de_nascimento = request.getParameter("data_de_nascimento");  
+		String endereco = request.getParameter("endereco");
+		
+		Paciente newPaciente = new Paciente(id, cpf, nome, data_de_nascimento, endereco);
+		
+		System.out.println("IDDDDDDDDDDDDD");
+		System.out.println(id);
+		
+		pacienteDAO.updatePaciente(newPaciente);
+
+		response.sendRedirect(root + "/prontuarios");
+	}
+	
+	private boolean checkBool (String chosenAttribute) {
+		
+		if (chosenAttribute.equals("Sim")) {
 			return true;
 		} else {
 			return false;
@@ -243,6 +336,72 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println("Params");
 		System.out.println(request.getAttribute("id_paciente"));
 		System.out.println(request.getParameter("id_paciente"));
+		
+		//String data = request.getParameter("data");
+		String estado_do_paciente = request.getParameter("estado_paciente");
+		String diagnostico = request.getParameter("diagnostico");
+		String teste_covid = request.getParameter("teste_covid");
+		boolean doenca_respiratoria = checkBool(request.getParameter("doenca_respiratoria"));
+		boolean batimento_cardiaco_normal = checkBool(request.getParameter("batimento_cardiaco_normal"));
+		boolean hipertensao = checkBool(request.getParameter("batimento_cardiaco_normal"));
+		int oximetria = Integer.parseInt(request.getParameter("oximetria"));
+		boolean tomografia_torax_normal = checkBool(request.getParameter("tomografia_torax_normal"));
+		boolean ventilacao_mecanica = checkBool(request.getParameter("ventilacao_mecanica"));
+		boolean diabetes = checkBool(request.getParameter("diabetes"));
+		boolean obesidade = checkBool(request.getParameter("obesidade"));
+		boolean ativo = true;
+		boolean radiometria_torax_normal = checkBool(request.getParameter("radiometria_torax_normal"));
+		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
+		int paciente_id = Integer.parseInt(request.getParameter("id_paciente"));
+		
+		System.out.println("\n\nVENTILACAO MECANICA" + ventilacao_mecanica);
+	
+		Prontuario newProntuario = new Prontuario(
+				estado_do_paciente,
+				diagnostico,
+				teste_covid,
+				doenca_respiratoria,
+				batimento_cardiaco_normal,
+				hipertensao,
+				oximetria,
+				radiometria_torax_normal,
+				tomografia_torax_normal,
+				ventilacao_mecanica,
+				diabetes,
+				obesidade,
+				ativo,
+				hospital_id,
+				paciente_id
+			);
+		
+		prontuarioDAO.insertProntuario(newProntuario, hospital_id, paciente_id);
+		
+		response.sendRedirect(root + "/prontuarios");
+	}
+
+	private void updateProntuario(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		System.out.println("updating prontuario");
+
+//		int id;
+//		String cpf, nome, data_de_nascimento, data_de_entrada; 
+//		String nome_exame, descricao_exame, data_exame, resultado_exame; 
+//		
+//		if(request.getParameter("add_paciente") != null) {
+//			System.out.println("Adicionando paciente");
+//			
+//			id = Integer.parseInt(request.getParameter("id"));
+//			cpf = request.getParameter("cpf");
+//			nome = request.getParameter("nome");
+//			data_de_nascimento = request.getParameter("data_de_nascimento");  
+//			data_de_entrada = request.getParameter("data_de_entrada"); 
+//			nome_exame = request.getParameter("nome_exame"); 
+//			descricao_exame = request.getParameter("descricao_exame"); 
+//			data_exame = request.getParameter("data_exame"); 
+//			resultado_exame = request.getParameter("resultado_exame"); 
+//		}else {
+//			
+//		}
 		
 		String data = request.getParameter("data");
 		String estado_do_paciente = request.getParameter("estado_paciente");
@@ -259,43 +418,10 @@ public class ProntuarioServlet extends HttpServlet {
 		boolean ativo = true;
 		boolean radiometria_torax_normal = checkBool(request.getParameter("radiometria_torax_normal"));
 		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
-		int paciente_id = Integer.parseInt(request.getParameter("id_paciente"));
-				
 
-
-		Prontuario newProntuario = new Prontuario(data, estado_do_paciente, diagnostico, teste_covid, 
+		Prontuario book = new Prontuario(data, estado_do_paciente, diagnostico, teste_covid, 
 				doenca_respiratoria, batimento_cardiaco_normal, hipertensao, oximetria,  radiometria_torax_normal,
-				tomografia_torax_normal, ventilacao_mecanica, diabetes, obesidade, ativo, hospital_id, paciente_id);
-		
-		prontuarioDAO.insertProntuario(newProntuario, hospital_id, paciente_id);
-		
-		//System.out.println("insertPorntuario : redirecting to :" + root + "/prontuarios");
-		response.sendRedirect(root + "/prontuarios");
-	}
-
-	private void updateProntuario(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		System.out.println("updating prontuario");
-		int id;
-		String cpf, nome, data_de_nascimento, data_de_entrada; 
-		String nome_exame, descricao_exame, data_exame, resultado_exame; 
-		
-		if(request.getParameter("add_paciente") != null) {
-			System.out.println("Adicionando paciente");
-			
-			id = Integer.parseInt(request.getParameter("id"));
-			cpf = request.getParameter("cpf");
-			nome = request.getParameter("nome");
-			data_de_nascimento = request.getParameter("data_de_nascimento");  
-			data_de_entrada = request.getParameter("data_de_entrada"); 
-			nome_exame = request.getParameter("nome_exame"); 
-			descricao_exame = request.getParameter("descricao_exame"); 
-			data_exame = request.getParameter("data_exame"); 
-			resultado_exame = request.getParameter("resultado_exame"); 
-		}else {
-		}
-
-		Prontuario book = new Prontuario(id, cpf, nome ,data_de_nascimento, data_de_entrada, nome_exame, descricao_exame, data_exame, resultado_exame);
+				tomografia_torax_normal, ventilacao_mecanica, diabetes, obesidade, ativo, hospital_id);
 		
 		prontuarioDAO.updateProntuario(book);
 		response.sendRedirect(root + "/prontuarios");

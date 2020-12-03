@@ -47,12 +47,6 @@ public class LeitoServlet extends HttpServlet {
 			case "/leitos/new":
 				showNewForm(request, response);
 				break;
-			case "/leitos/insert":
-				insertLeito(request, response);
-				break;
-			case "/leitos/delete":
-				deleteLeito(request, response);
-				break;
 			case "/leitos/edit":
 				showEditForm(request, response);
 				break;
@@ -116,6 +110,7 @@ public class LeitoServlet extends HttpServlet {
 			cidade = "";
 		}
 			
+		System.out.println("Cidade (mostrarHospitais) : " + cidade);
 		List<Hospital> hospitais = hospitalDAO.selectHospitais(Integer.parseInt(cidade));//.selectHospitais(cidade);
 
 		request.setAttribute("hospitais", hospitais);
@@ -138,7 +133,7 @@ public class LeitoServlet extends HttpServlet {
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Leito existingLeito = leitoDAO.selectLeito(id);
+		Leito existingLeito = leitoDAO.selectLeitoById(id);
 		
 		System.out.println("Procurando o JSP do leito (Servlet:showeditform)");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-form.jsp");
@@ -147,16 +142,6 @@ public class LeitoServlet extends HttpServlet {
 		//response.sendRedirect("..");
 		dispatcher.forward(request, response);
 
-	}
-
-	private void insertLeito(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		String medico = request.getParameter("medico");
-		String enfermeiro = request.getParameter("enfermeiro");
-		String paciente = request.getParameter("paciente");
-		Leito newLeito = new Leito(medico, enfermeiro, paciente);
-		leitoDAO.insertLeito(newLeito);
-		response.sendRedirect(root + "/leitos"); //list");
 	}
 
 	private void updateLeito(HttpServletRequest request, HttpServletResponse response) 
@@ -181,8 +166,8 @@ public class LeitoServlet extends HttpServlet {
 		
 		//System.out.println("AGora liberou / salvou");
 
-		Leito book = new Leito(id, medico, enfermeiro, paciente);
-		leitoDAO.updateLeito(book);
+		//Leito book = new Leito(id, medico, enfermeiro, paciente);
+		//leitoDAO.updateLeito(book);
 		
 		//System.out.println("Redirecionando para a lista");
 		response.sendRedirect(root + "/leitos");
@@ -191,13 +176,4 @@ public class LeitoServlet extends HttpServlet {
 		//response.sendRedirect("..");
 		//dispatcher.forward(request, response);
 	}
-
-	private void deleteLeito(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		leitoDAO.deleteLeito(id);
-		response.sendRedirect("..");//list");
-
-	}
-
 }

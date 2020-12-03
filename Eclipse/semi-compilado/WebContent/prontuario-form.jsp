@@ -62,7 +62,7 @@
                 <th>Estado do paciente: </th>
                 <td>
                 	<input type="text" name="estado_paciente" size="45"
-                			value="<c:out value='${prontuario.estado_paciente}' />"
+                			value="<c:out value='${prontuario.estadoDoPaciente}' />"
                 		/>
                 </td>
             </tr>
@@ -91,9 +91,7 @@
             <tr>
                 <th>Teste de COVID-19: </th>
                 <td>
-                   <input type="text" name="teste_covid" size="45"
-                			value="<c:out value='${prontuario.doenca_respiratoria}' />"
-                		/>      		
+                   <input type="text" name="teste_covid" size="45" value="<c:out value='${prontuario.testeCovid}' />"/>      		
                 </td>
             </tr>
             <tr>
@@ -108,10 +106,11 @@
             </tr>
             <tr>
                 <th>Batimento Cardiaco: </th>
-                <td>
-                	<input type="text" name="batimento_cardiaco" size="45"
-                			value="<c:out value='${prontuario.batimento_cardiaco}' />"
-                		/>
+                <td align="center">
+                	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
+                		<option value="Sim">Sim</option>
+                		<option value="Não">Não</option>
+                	</select>
                 </td>
             </tr>
             <tr>
@@ -127,7 +126,7 @@
                 <th>Oximetria: </th>
                 <td align="center">
                 <input type="text" name="oximetria" size="45"
-                			value="<c:out value='${prontuario.doenca_respiratoria}' />"
+                			value="<c:out value='${prontuario.oximetria}' />"
                 		/>   
                 </td>
             </tr>
@@ -174,14 +173,6 @@
                 		<option value="Sim">Sim</option>
                 		<option value="Não">Não</option>
                 	</select>
-                </td>
-            </tr>
-            <tr>
-                <th>Data: </th>
-                <td align="center">
-                	<input type="text" name="data" size="45"
-                			value="<c:out value='${prontuario.data}' />"
-                		/>
                 </td>
             </tr>
             <tr>

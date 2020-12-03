@@ -22,7 +22,11 @@ public class FilaDePacienteDAO {
 	private String jdbcPassword = "1HMUgvW";
 	
 	private static final String SELECT_ALL_PACIENTES_NA_FILA = 
-			"SELECT id, ordem, data, prioridade, paciente_id FROM fila_de_pacientes ORDER BY ordem ASC";
+			"SELECT f.id, f.ordem, f.data, f.prioridade, p.nome "
+			+ " FROM fila_de_pacientes f"
+			+ " INNER JOIN pacientes p"
+			+ " ON f.paciente_id = p.id"
+			+ " ORDER BY ordem ASC";
 	
 	private static final String SELECT_PACIENTES_POR_PRIORIDADE =
 			"SELECT id FROM fila_de_pacientes WHERE prioridade > ? ORDER BY ordem ASC";
@@ -31,8 +35,9 @@ public class FilaDePacienteDAO {
 			"SELECT * FROM fila_de_pacientes WHERE ordem = 1";
 
 	private static final String INSERT_PACIENTE_NA_FILA =
-			"INSERT INTO leitos (ordem, prioridade, paciente_id)" 
-			+ "VALUES (?, ?, ?)";
+			"INSERT INTO fila_de_pacientes (ordem, prioridade, paciente_id)" 
+			+ " VALUES (?, ?, ?)";
+
 	
 	private static final String UPDATE_ORDEM_DE_PACIENTE_NA_FILA = "UPDATE fila_de_pacientes SET ordem = ? WHERE id = ?";		
 	
@@ -56,21 +61,25 @@ public class FilaDePacienteDAO {
 	
 	public void solicitaUti(int prontuario_id) throws SQLException {
 		
+		//System.out.println("toaqui0");
+		
 		int prioridade;
 		int quantidade_pacientes_antes = 0;
-		List<FilaDePaciente> fila_de_pacientes = new ArrayList<>();;
+		List<FilaDePaciente> fila_de_pacientes = new ArrayList<>();
+		
+		//System.out.println("toaqui1");
 		
 		Prontuario prontuario = prontuarioDAO.selectProntuarioById(prontuario_id);
-		
+
 		if (prontuario.getVentilacaoMecanica()) {
 			prioridade = 1;
 		} else if (prontuario.getOximetria() < 94) {
 			prioridade = 2;
 		} else if (!prontuario.getTomografiaToraxNormal()) {
 			prioridade = 3;
-		} else if (prontuario.getTesteCovid() == "Positivo - swab" && prontuario.getDoencaRespiratoria()) {
+		} else if (prontuario.getTesteCovid().equals("Positivo - swab") && prontuario.getDoencaRespiratoria()) {
 			prioridade = 4;
-		} else if (prontuario.getTesteCovid() == "Positivo - swab" && !prontuario.getRadiometriaToraxNormal()) {
+		} else if (prontuario.getTesteCovid().equals("Positivo - swab") && !prontuario.getRadiometriaToraxNormal()) {
 			prioridade = 5;
 		} else if (!prontuario.getBatimentoCardiacoNormal() && (prontuario.getDiabetes() || prontuario.getObesidade() || prontuario.getHipertensao())) {
 			prioridade = 6;
@@ -78,34 +87,47 @@ public class FilaDePacienteDAO {
 			prioridade = 7;
 		}
 		
+		//System.out.println("toaqui2");
+		
 		// seleciona pacientes com prioridade menor que a do paciente atual
 		try (Connection connection = getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PACIENTES_POR_PRIORIDADE);) {
 			preparedStatement.setInt(1, prioridade);
-			System.out.println(preparedStatement);
+			//System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
-				int id = rs.getInt("id");				
+				int id = rs.getInt("id");
+				//System.out.println("id do paciente na fila: " + id);
 				fila_de_pacientes.add(new FilaDePaciente(id));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		
+		//System.out.println("toaqui3");
+		
 		// conta quantidade de pacientes com prioridade maior que a do pacinte atual
+
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(COUNT_PACIENTES_NA_FILA);) {
 				preparedStatement.setInt(1, prioridade);
-				System.out.println(preparedStatement);
+				//System.out.println(preparedStatement);
+				//System.out.println("prioridade do paciente " + prioridade);
 				ResultSet rs = preparedStatement.executeQuery();
 			
+				rs.first();
+				
 				quantidade_pacientes_antes = rs.getInt("quantidade_pacientes_antes");
+				//System.out.println("quantidade_pacientes_antes: " + quantidade_pacientes_antes);
+
 
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+
 		
+		//System.out.println("toaqui4");
 		// insere paciente atual na fila
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_NA_FILA)) {
@@ -117,13 +139,17 @@ public class FilaDePacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+
 		
+		//System.out.println("toaqui5");
 		// atualiza ordem dos pacientes com prioridade menor que a do paciente atual
 		try (Connection connection = getConnection();
 			PreparedStatement statement = connection.prepareStatement(UPDATE_ORDEM_DE_PACIENTE_NA_FILA);) {
 				
-			for (int i = 0; i > fila_de_pacientes.size(); i++) {
+			for (int i = 0; i < fila_de_pacientes.size(); i++) {
 				statement.setInt(1, quantidade_pacientes_antes + i + 2);
+				//System.out.println("paciente atualizado: " + fila_de_pacientes.get(i).getId());
+				//System.out.println("ordem: " + quantidade_pacientes_antes + i + 2);
 				statement.setInt(2, fila_de_pacientes.get(i).getId());
 			
 				statement.executeUpdate();
@@ -138,7 +164,7 @@ public class FilaDePacienteDAO {
 		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_PACIENTES_NA_FILA);) {
-			System.out.println(preparedStatement);
+			//System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 
 			while (rs.next()) {
@@ -146,9 +172,9 @@ public class FilaDePacienteDAO {
 				String data = rs.getString("data");
 				int ordem = rs.getInt("ordem");
 				int prioridade = rs.getInt("prioridade");
-				int paciente_id = rs.getInt("paciente_id");
+				String nome = rs.getString("nome");
 									
-				fila_de_pacientes.add(new FilaDePaciente(id, data, ordem, prioridade, paciente_id));
+				fila_de_pacientes.add(new FilaDePaciente(id, data, ordem, prioridade, nome));
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
@@ -165,15 +191,16 @@ public class FilaDePacienteDAO {
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String data = rs.getString("data");
-				int ordem = rs.getInt("ordem");
-				int prioridade = rs.getInt("prioridade");
-				int paciente_id = rs.getInt("paciente_id");
-						
-				primeiro_da_fila = new FilaDePaciente(id, data, ordem, prioridade, paciente_id);
-			}
+			rs.first();
+			
+			int id = rs.getInt("id");
+			String data = rs.getString("data");
+			int ordem = rs.getInt("ordem");
+			int prioridade = rs.getInt("prioridade");
+			int paciente_id = rs.getInt("paciente_id");
+					
+			primeiro_da_fila = new FilaDePaciente(id, data, ordem, prioridade, paciente_id);
+			
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
