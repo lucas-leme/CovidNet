@@ -65,6 +65,26 @@ public class PacienteDAO {
 		return -1; // MUDAR PARA ID DO PACIENTE QUANDO E CRIADO
 	}
 	
+	public void updatePaciente(Paciente paciente) throws SQLException {
+		
+		try (Connection connection = getConnection();
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_PACIENTE, Statement.RETURN_GENERATED_KEYS)) {
+			preparedStatement.setString(1, paciente.getCpf());
+			preparedStatement.setString(2, paciente.getNome());
+			preparedStatement.setString(3, paciente.getDataDeNascimento());
+			preparedStatement.setString(4, paciente.getEndereco());
+			preparedStatement.setInt(5, paciente.getId());
+			
+			System.out.println(preparedStatement);
+			
+			preparedStatement.executeUpdate();
+            
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+	}
+	
 	public Paciente selectPacienteByCpf(String cpf) {
 		Paciente paciente = null;
 		

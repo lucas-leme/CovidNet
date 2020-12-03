@@ -30,7 +30,7 @@ import net.javaguides.usermanagement.model.Prontuario;
 @WebServlet(
 urlPatterns = { "/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
 				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
-				"/prontuarios/search", "/prontuarios/close", "/prontuarios/solicitar_uti" }
+				"/prontuarios/search", "/prontuarios/close", "/prontuarios/solicitar_uti", "/pacientes/edit", "/pacientes/update" }
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -90,6 +90,10 @@ public class ProntuarioServlet extends HttpServlet {
 					newExame(request, response);
 					break;
 					
+				case "/pacientes/edit":
+					showEditPacienteForm(request, response);
+					break;
+					
 				case "prontuarios/list":
 					System.out.println("LIST PRONTUARIOS");
 					listProntuarios(request, response);
@@ -108,6 +112,10 @@ public class ProntuarioServlet extends HttpServlet {
 					solicitarUti(request, response);
 					break;
 				
+				case "/pacientes/update":
+					System.out.println("UPDATE PACIENTE");
+					updatePaciente(request, response);
+					break;
 				default:
 					System.out.println("DEFAULT");
 					showMainPage(request, response);
@@ -165,6 +173,10 @@ public class ProntuarioServlet extends HttpServlet {
 		filaDAO.solicitaUti(id_prontuario);
 		List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
 		request.setAttribute("fila_pacientes", fila);
+//=======
+//		System.out.println(cpf);
+//		request.setAttribute("prontuario", prontuario);	
+//>>>>>>> f534cb4... Add edit paciente
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);
@@ -229,6 +241,17 @@ public class ProntuarioServlet extends HttpServlet {
 		request.setAttribute("prontuario", existingProntuario);
 		dispatcher.forward(request, response);
 	}
+	
+	private void showEditPacienteForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		String cpf = request.getParameter("cpf");
+		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
+		
+		request.setAttribute("paciente", existingPaciente);
+		dispatcher.forward(request, response);
+	}
 
 	private void insertPaciente(HttpServletRequest request, HttpServletResponse response)
 				throws SQLException, IOException, ServletException {
@@ -271,8 +294,27 @@ public class ProntuarioServlet extends HttpServlet {
 			//response.sendRedirect(root + "/prontuarios/new");
 		}
 	
-	private boolean checkBool (String chosenAttribute) {
+	private void updatePaciente(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, IOException, ServletException {
+		System.out.println("inserting paciente");
 		
+		int id = Integer.parseInt(request.getParameter("id_paciente"));
+		String cpf = request.getParameter("cpf");
+		String nome = request.getParameter("nome");
+		String data_de_nascimento = request.getParameter("data_de_nascimento");  
+		String endereco = request.getParameter("endereco");
+		
+		Paciente newPaciente = new Paciente(id, cpf, nome, data_de_nascimento, endereco);
+		
+		System.out.println("IDDDDDDDDDDDDD");
+		System.out.println(id);
+		
+		pacienteDAO.updatePaciente(newPaciente);
+
+		response.sendRedirect(root + "/prontuarios");
+	}
+	
+	private boolean checkBool (String chosenAttribute) {
 		
 		if (chosenAttribute.equals("Sim")) {
 			return true;
