@@ -210,6 +210,11 @@ public class ProntuarioDAO {
 				int hospital_destino_id = rs.getInt("hospital_destino_id");
 				int paciente_id = rs.getInt("paciente_id");
 				
+				System.out.println("PARAMTROS PRONTUARIO:");
+				System.out.println(id + data + estado_do_paciente + diagnostico + teste_covid + doenca_respiratoria + batimento_cardiaco_normal + 
+						hipertensao + oximetria + radiometria_torax_normal + tomografia_torax_normal + ventilacao_mecanica + diabetes + obesidade);
+				
+				
 				prontuario = new Prontuario(
 					id,
 					data,

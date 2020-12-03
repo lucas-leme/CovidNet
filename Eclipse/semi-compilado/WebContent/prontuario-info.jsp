@@ -122,7 +122,7 @@
 			    </h3>
 			    
 			    <h3>É obeso? 
-			     	<c:if test="${prontuario.obesidade == true}">
+			     	<c:if test="${prontuario.obesidade == true }">
 						Sim
 					</c:if>
 					<c:if test="${prontuario.obesidade == false}">
