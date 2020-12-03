@@ -280,7 +280,7 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println(request.getAttribute("id_paciente"));
 		System.out.println(request.getParameter("id_paciente"));
 		
-		String data = request.getParameter("data");
+		//String data = request.getParameter("data");
 		String estado_do_paciente = request.getParameter("estado_paciente");
 		String diagnostico = request.getParameter("diagnostico");
 		String teste_covid = request.getParameter("teste_covid");
@@ -300,7 +300,6 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println("\n\nVENTILACAO MECANICA" + ventilacao_mecanica);
 	
 		Prontuario newProntuario = new Prontuario(
-				data,
 				estado_do_paciente,
 				diagnostico,
 				teste_covid,
