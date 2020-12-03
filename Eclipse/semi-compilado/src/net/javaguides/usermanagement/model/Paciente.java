@@ -11,14 +11,14 @@ public class Paciente {
 	protected int id;
 	protected String cpf;
 	protected String nome;
-	protected String data_de_nascimento;
+	protected String dataDeNascimento;
 	protected String endereco;
 	
 	public Paciente(String cpf, String nome, String data_de_nascimento, String endereco) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
-		this.data_de_nascimento = data_de_nascimento;
+		this.dataDeNascimento = data_de_nascimento;
 		this.endereco = endereco;
 	}
 	
@@ -27,7 +27,7 @@ public class Paciente {
 		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
-		this.data_de_nascimento = data_de_nascimento;
+		this.dataDeNascimento = data_de_nascimento;
 		this.endereco = endereco;
 	}
 	
@@ -50,10 +50,10 @@ public class Paciente {
 		this.nome = nome;
 	}
 	public String getDataDeNascimento() {
-		return data_de_nascimento;
+		return dataDeNascimento;
 	}
 	public void setDataDeNascimento(String data_de_nascimento) {
-		this.data_de_nascimento = data_de_nascimento;
+		this.dataDeNascimento = data_de_nascimento;
 	}
 	public String getEndereco() {
 		return endereco;
