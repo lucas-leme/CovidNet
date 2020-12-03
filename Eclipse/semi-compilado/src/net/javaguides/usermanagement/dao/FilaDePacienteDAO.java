@@ -173,15 +173,16 @@ public class FilaDePacienteDAO {
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 
-			while (rs.next()) {
-				int id = rs.getInt("id");
-				String data = rs.getString("data");
-				int ordem = rs.getInt("ordem");
-				int prioridade = rs.getInt("prioridade");
-				int paciente_id = rs.getInt("paciente_id");
-						
-				primeiro_da_fila = new FilaDePaciente(id, data, ordem, prioridade, paciente_id);
-			}
+			rs.first();
+			
+			int id = rs.getInt("id");
+			String data = rs.getString("data");
+			int ordem = rs.getInt("ordem");
+			int prioridade = rs.getInt("prioridade");
+			int paciente_id = rs.getInt("paciente_id");
+					
+			primeiro_da_fila = new FilaDePaciente(id, data, ordem, prioridade, paciente_id);
+			
 		} catch (SQLException e) {
 			printSQLException(e);
 		}

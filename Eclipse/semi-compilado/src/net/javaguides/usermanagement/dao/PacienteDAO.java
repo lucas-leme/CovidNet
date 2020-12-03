@@ -73,6 +73,8 @@ public class PacienteDAO {
 			preparedStatement.setString(1, cpf);
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
+			
+			rs.first();
 
 			int id = rs.getInt("id");
 			String cpf2 = rs.getString("cpf");
@@ -96,6 +98,8 @@ public class PacienteDAO {
 			preparedStatement.setInt(1, id);
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
+			
+			rs.first();
 
 			String cpf = rs.getString("cpf");
 			String nome = rs.getString("nome");
