@@ -15,6 +15,7 @@ import net.javaguides.usermanagement.dao.FilaDePacienteDAO;
 import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.dao.ProntuarioDAO;
+import net.javaguides.usermanagement.model.FilaDePaciente;
 import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Paciente;
 import net.javaguides.usermanagement.model.Prontuario;
@@ -43,6 +44,8 @@ public class ProntuarioServlet extends HttpServlet {
 		prontuarioDAO = new ProntuarioDAO();
 		pacienteDAO = new PacienteDAO();
 		hospitalDAO = new HospitalDAO();
+		
+		filaDAO = new FilaDePacienteDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -131,6 +134,7 @@ public class ProntuarioServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}else
 		{
+			System.out.println("nao achou o cpf");
 			// ERRO - nao achou esse cpf
 		}
 	}
@@ -157,8 +161,9 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println("id_prontuario: " + id_prontuario);
 		
 		
-		//prontuarioDAO.closeProntuario(id_prontuario);
-		filaDAO.solicitaUti(11);
+		filaDAO.solicitaUti(id_prontuario);
+		List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
+		request.setAttribute("fila_pacientes", fila);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);
