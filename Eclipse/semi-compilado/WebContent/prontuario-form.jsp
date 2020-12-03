@@ -177,14 +177,6 @@
                 </td>
             </tr>
             <tr>
-                <th>Data: </th>
-                <td align="center">
-                	<input type="text" name="data" size="45"
-                			value="<c:out value='${prontuario.data}' />"
-                		/>
-                </td>
-            </tr>
-            <tr>
             	<td colspan="2" align="center">
             		<input type="submit" value="Save" />
             	</td>

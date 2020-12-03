@@ -187,6 +187,42 @@ public class Prontuario {
 		this.hospital_destino_id = hospital_destino_id;
 	}
 	
+	public Prontuario(
+			String estado_do_paciente,
+			String diagnostico,
+			String teste_covid,
+			boolean doenca_respiratoria,
+			boolean batimento_cardiaco_normal,
+			boolean hipertensao,
+			int oximetria,
+			boolean radiometria_torax_normal,
+			boolean tomografia_torax_normal,
+			boolean ventilacao_mecanica,
+			boolean diabetes,
+			boolean obesidade,
+			boolean ativo,
+			int hospital_id,
+			int paciente_id
+		) {
+		super();
+		
+		this.estado_do_paciente = estado_do_paciente;
+		this.diagnostico = diagnostico;
+		this.teste_covid = teste_covid;
+		this.doenca_respiratoria = doenca_respiratoria;
+		this.batimento_cardiaco_normal = batimento_cardiaco_normal;
+		this.hipertensao = hipertensao;
+		this.oximetria = oximetria;
+		this.radiometria_torax_normal = radiometria_torax_normal;
+		this.tomografia_torax_normal = tomografia_torax_normal;
+		this.ventilacao_mecanica = ventilacao_mecanica;
+		this.diabetes = diabetes;
+		this.obesidade = obesidade;
+		this.ativo = ativo;
+		this.hospital_id = hospital_id;
+		this.paciente_id = paciente_id;
+	}
+	
 	public int getId() {
 		return id;
 	}
