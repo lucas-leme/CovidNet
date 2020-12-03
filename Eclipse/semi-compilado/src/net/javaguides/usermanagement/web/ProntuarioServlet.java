@@ -76,6 +76,7 @@ public class ProntuarioServlet extends HttpServlet {
 					showEditForm(request, response);
 					break;
 				case "/prontuarios/update":
+					System.out.println("Updating");
 					updateProntuario(request, response);
 					break;					
 				case "/pacientes/new":
@@ -262,9 +263,10 @@ public class ProntuarioServlet extends HttpServlet {
 			//response.sendRedirect(root + "/prontuarios/new");
 		}
 	
-	private boolean checkBool (String choosenAtribute) {
+	private boolean checkBool (String chosenAttribute) {
 		
-		if (choosenAtribute == "Sim") {
+		
+		if (chosenAttribute.equals("Sim")) {
 			return true;
 		} else {
 			return false;
@@ -294,6 +296,8 @@ public class ProntuarioServlet extends HttpServlet {
 		boolean radiometria_torax_normal = checkBool(request.getParameter("radiometria_torax_normal"));
 		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
 		int paciente_id = Integer.parseInt(request.getParameter("id_paciente"));
+		
+		System.out.println("\n\nVENTILACAO MECANICA" + ventilacao_mecanica);
 	
 		Prontuario newProntuario = new Prontuario(
 				data,
