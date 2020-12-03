@@ -379,6 +379,8 @@ public class ProntuarioDAO {
 			statement.setInt(17, prontuario.getId());
 			
 			rowUpdated = statement.executeUpdate() > 0;
+			
+			System.out.println("data: "+ prontuario.getData());
 			System.out.println("rowUPdated??" + rowUpdated);
 		}
 		return rowUpdated;

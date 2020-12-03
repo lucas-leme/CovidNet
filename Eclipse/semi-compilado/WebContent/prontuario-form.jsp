@@ -55,7 +55,6 @@
             </caption>
         		<c:if test="${prontuario != null}">
         			<input type="hidden" name="id" value="<c:out value='${prontuario.id}' />" />
-					<input type="hidden" name="id_paciente" value="<%= request.getAttribute("id_paciente") %>" />
         		</c:if>
         		<%= request.getAttribute("id_paciente") %>
         		<tr>
@@ -99,7 +98,7 @@
                 <td align="center">
 		
                 	<select id="doenca_respiratoria" name="doenca_respiratoria">
-					    <c:if test="${prontuario.doencaRespiratoria == true}">
+					    <c:if test="${prontuario == null || prontuario.doencaRespiratoria == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -116,7 +115,7 @@
                 <th>Batimento Cardiaco: </th>
                 <td align="center">
                 	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
-					    <c:if test="${prontuario.batimentoCardiacoNormal == true}">
+					    <c:if test="${prontuario == null || prontuario.batimentoCardiacoNormal == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -133,7 +132,7 @@
                 <th>Hipertensão: </th>
                 <td align="center">
                  <select id="hipertensao" name="hipertensao">
-					    <c:if test="${prontuario.hipertensao == true}">
+					    <c:if test="${prontuario == null || prontuario.hipertensao == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -158,7 +157,7 @@
                 <th>Radiometria Torax Normal: </th>
                 <td align="center">
                  	<select id="radiometria_torax_normal" name="radiometria_torax_normal">
-					    <c:if test="${prontuario.radiometriaToraxNormal == true}">
+					    <c:if test="${prontuario == null || prontuario.radiometriaToraxNormal == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -175,7 +174,7 @@
                 <th>Tomografia Torax Normal: </th>
                 <td align="center">
                  	<select id="tomografia_torax_normal" name="tomografia_torax_normal">
-					    <c:if test="${prontuario.tomografiaToraxNormal == true}">
+					    <c:if test="${prontuario == null || prontuario.tomografiaToraxNormal == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -192,7 +191,7 @@
                 <th>Ventilação Mecânica: </th>
                 <td align="center">
                  	<select id="ventilacao_mecanica" name="ventilacao_mecanica">
-   					    <c:if test="${prontuario.ventilacaoMecanica == true}">
+   					    <c:if test="${prontuario == null || prontuario.ventilacaoMecanica == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -209,7 +208,7 @@
                 <th>Diabetes: </th>
                 <td align="center">
                  	<select id="diabetes" name="diabetes">
-					    <c:if test="${prontuario.diabetes == true}">
+					    <c:if test="${prontuario == null || prontuario.diabetes == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -226,7 +225,7 @@
                 <th>Obesidade: </th>
                 <td align="center">
                  	<select id="obesidade" name="obesidade">
-					    <c:if test="${prontuario.obesidade == true}">
+					    <c:if test="${prontuario == null || prontuario.obesidade == true}">
 							
 	                		<option value="Sim">Sim</option>
 	                		<option value="Não">Não</option>
@@ -241,6 +240,7 @@
             </tr>
             <tr>
             	<td colspan="2" align="center">
+					<input type="hidden" name="id_paciente" value="<%= request.getAttribute("id_paciente") %>" />
             		<input type="submit" value="Save" />
             	</td>
             </tr>
