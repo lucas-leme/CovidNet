@@ -55,6 +55,7 @@
             </caption>
         		<c:if test="${prontuario != null}">
         			<input type="hidden" name="id" value="<c:out value='${prontuario.id}' />" />
+					<input type="hidden" name="id_paciente" value="<%= request.getAttribute("id_paciente") %>" />
         		</c:if>
         		<%= request.getAttribute("id_paciente") %>
         		<tr>

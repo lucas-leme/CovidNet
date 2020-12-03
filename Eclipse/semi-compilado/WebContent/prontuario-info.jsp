@@ -132,6 +132,7 @@
 			    
 			     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
 					<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+					<input type="hidden" name="id_paciente" value="${paciente.id}" />
 					<input type="submit" name="search_prontuario" value="Editar" />  
 				</form>
 			    
