@@ -160,6 +160,12 @@
 		</c:if>    
     </h3>
 
+
+   	<form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
+		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+		<input type="submit" name="search_prontuario" value="Editar" />  
+	</form>
+	
     </div>	
 </body>
 </html>

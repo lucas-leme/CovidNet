@@ -73,7 +73,7 @@ public class ProntuarioServlet extends HttpServlet {
 					insertProntuario(request, response);
 					break;
 				case "/prontuarios/edit":
-					showEditForm(request, response);
+					showEditProntuarioForm(request, response);
 					break;
 				case "/prontuarios/update":
 					System.out.println("Updating");
@@ -230,13 +230,16 @@ public class ProntuarioServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+	private void showEditProntuarioForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		System.out.println("editing form prontuario");
 		
-		//int id = Integer.parseInt(request.getParameter("id"));
-		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf("111.111.111-11");
+		String cpf = request.getParameter("cpf");
+		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
+		
+		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
+		request.setAttribute("hospitais", hospitais);
 		
 		request.setAttribute("prontuario", existingProntuario);
 		dispatcher.forward(request, response);
@@ -375,68 +378,48 @@ public class ProntuarioServlet extends HttpServlet {
 	private void updateProntuario(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
 		System.out.println("updating prontuario");
-	
-		int id;
-		String data;
-		String estado_do_paciente;
-		String diagnostico;
-		String teste_covid;
-		boolean doenca_respiratoria;
-		boolean batimento_cardiaco_normal;
-		boolean hipertensao;
-		int oximetria;
-		boolean radiometria_torax_normal;
-		boolean tomografia_torax_normal;
-		boolean ventilacao_mecanica;
-		boolean diabetes;
-		boolean obesidade;
-		boolean ativo;
-		int hospital_id;
-		int hospital_destino_id;
 
+//		int id;
+//		String cpf, nome, data_de_nascimento, data_de_entrada; 
+//		String nome_exame, descricao_exame, data_exame, resultado_exame; 
+//		
+//		if(request.getParameter("add_paciente") != null) {
+//			System.out.println("Adicionando paciente");
+//			
+//			id = Integer.parseInt(request.getParameter("id"));
+//			cpf = request.getParameter("cpf");
+//			nome = request.getParameter("nome");
+//			data_de_nascimento = request.getParameter("data_de_nascimento");  
+//			data_de_entrada = request.getParameter("data_de_entrada"); 
+//			nome_exame = request.getParameter("nome_exame"); 
+//			descricao_exame = request.getParameter("descricao_exame"); 
+//			data_exame = request.getParameter("data_exame"); 
+//			resultado_exame = request.getParameter("resultado_exame"); 
+//		}else {
+//			
+//		}
+		
+		String data = request.getParameter("data");
+		String estado_do_paciente = request.getParameter("estado_paciente");
+		String diagnostico = request.getParameter("diagnostico");
+		String teste_covid = request.getParameter("teste_covid");
+		boolean doenca_respiratoria = checkBool(request.getParameter("doenca_respiratoria"));
+		boolean batimento_cardiaco_normal = checkBool(request.getParameter("batimento_cardiaco_normal"));
+		boolean hipertensao = checkBool(request.getParameter("batimento_cardiaco_normal"));
+		int oximetria = Integer.parseInt(request.getParameter("oximetria"));
+		boolean tomografia_torax_normal = checkBool(request.getParameter("tomografia_torax_normal"));
+		boolean ventilacao_mecanica = checkBool(request.getParameter("ventilacao_mecanica"));
+		boolean diabetes = checkBool(request.getParameter("diabetes"));
+		boolean obesidade = checkBool(request.getParameter("obesidade"));
+		boolean ativo = true;
+		boolean radiometria_torax_normal = checkBool(request.getParameter("radiometria_torax_normal"));
+		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
 
-		System.out.println("Adicionando paciente");
+		Prontuario book = new Prontuario(data, estado_do_paciente, diagnostico, teste_covid, 
+				doenca_respiratoria, batimento_cardiaco_normal, hipertensao, oximetria,  radiometria_torax_normal,
+				tomografia_torax_normal, ventilacao_mecanica, diabetes, obesidade, ativo, hospital_id);
 		
-		id = Integer.parseInt(request.getParameter("id"));
-		data = request.getParameter("data");
-		estado_do_paciente = request.getParameter("estado_do_paciente");
-		diagnostico = request.getParameter("diagnostico");
-		teste_covid = request.getParameter("teste_covid");
-		doenca_respiratoria = Boolean.parseBoolean(request.getParameter("doenca_respiratoria"));
-		batimento_cardiaco_normal = Boolean.parseBoolean(request.getParameter("batimento_cardiaco_normal"));
-		hipertensao = Boolean.parseBoolean(request.getParameter("hipertensao"));
-		oximetria = Integer.parseInt(request.getParameter("oximetria"));
-		radiometria_torax_normal = Boolean.parseBoolean(request.getParameter("radiometria_torax_normal"));
-		tomografia_torax_normal = Boolean.parseBoolean(request.getParameter("tomografia_torax_normal"));
-		ventilacao_mecanica = Boolean.parseBoolean(request.getParameter("ventilacao_mecanica"));
-		diabetes = Boolean.parseBoolean(request.getParameter("diabetes"));
-		obesidade = Boolean.parseBoolean(request.getParameter("obesidade"));
-		ativo = Boolean.parseBoolean(request.getParameter("ativo"));
-		hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
-		hospital_destino_id = Integer.parseInt(request.getParameter("hospital_destino_id"));
-		
-		Prontuario book = new Prontuario(
-				id,
-				data,
-				estado_do_paciente,
-				diagnostico,
-				teste_covid,
-				doenca_respiratoria,
-				batimento_cardiaco_normal,
-				hipertensao,
-				oximetria,
-				radiometria_torax_normal,
-				tomografia_torax_normal,
-				ventilacao_mecanica,
-				diabetes,
-				obesidade,
-				ativo,
-				hospital_id,
-				hospital_destino_id
-			);
-
-		
-		//prontuarioDAO.updateProntuario(book);
+		prontuarioDAO.updateProntuario(book);
 		response.sendRedirect(root + "/prontuarios");
 	}
 }
