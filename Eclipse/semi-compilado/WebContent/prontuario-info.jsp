@@ -44,15 +44,16 @@
 			    <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
 			    <h3>Diagnostico: ${prontuario.diagnostico}</h3>
 			    <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
-			    <h3>Oximetria: ${prontuario.oximetria}</h3>
+			    <h3>Oximetria: ${prontuario.oximetria}</h3>  
+			      
+			    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
+					<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+					<input type="submit" name="search_prontuario" value="Editar" /> 
+				</form>
 			</td>
 		</tr>
 	</table>
-    
-    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
-		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
-		<input type="submit" name="search_prontuario" value="Editar" /> 
-	</form>
+
     
     <table>
     	<tr><th><h1>Questionário</h1></th></tr>
@@ -129,16 +130,6 @@
 					</c:if>      
 			    </h3>
 			    
-			    <h3>É ativo fisicamente? 
-			      	<c:if test="${prontuario.ativo == true}">
-						Sim
-					</c:if>
-					<c:if test="${prontuario.ativo == false}">
-				 		Não
-					</c:if>    
-					<%= request.getAttribute("prontuario") %>
-			    </h3>
-			    
 			     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
 					<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 					<input type="submit" name="search_prontuario" value="Editar" />  
@@ -148,7 +139,7 @@
 					<div  class="center">
 						<!--div><c:out value='%= request.getAttribute("prontuario") %>'></c:out></div>
 						<div><c:out value="${cidade.id}"/></div-->
-						<input type="text" name="id_prontuario" value="${prontuario.id}"/>
+						<input type="hidden" name="id_prontuario" value="${prontuario.id}"/>
 				
 						<input type="submit" name="close_prontuario" value="Fechar prontuário" />
 					</div>
@@ -156,7 +147,7 @@
 				
 			    <form action="${pageContext.request.contextPath}/prontuarios/solicitar_uti" method="post">
 					<div  class="center">
-						<input type="text" name="id_prontuario2" value="${prontuario.id}"/>
+						<input type="hidden" name="id_prontuario2" value="${prontuario.id}"/>
 				 
 						<input type="submit" name="solicitar_uti" value="Solicitar UTI" />  
 					</div>
