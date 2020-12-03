@@ -57,6 +57,8 @@ public class FilaDePacienteDAO {
 	
 	public void solicitaUti(int prontuario_id) throws SQLException {
 		
+		System.out.println("toaqui0");
+		
 		int prioridade;
 		int quantidade_pacientes_antes = 0;
 		List<FilaDePaciente> fila_de_pacientes = new ArrayList<>();
