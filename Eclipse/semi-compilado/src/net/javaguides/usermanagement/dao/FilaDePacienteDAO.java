@@ -59,7 +59,9 @@ public class FilaDePacienteDAO {
 		
 		int prioridade;
 		int quantidade_pacientes_antes = 0;
-		List<FilaDePaciente> fila_de_pacientes = new ArrayList<>();;
+		List<FilaDePaciente> fila_de_pacientes = new ArrayList<>();
+		
+		System.out.println("toaqui1");
 		
 		Prontuario prontuario = prontuarioDAO.selectProntuarioById(prontuario_id);
 
@@ -79,6 +81,8 @@ public class FilaDePacienteDAO {
 			prioridade = 7;
 		}
 		
+		System.out.println("toaqui2");
+		
 		// seleciona pacientes com prioridade menor que a do paciente atual
 		try (Connection connection = getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PACIENTES_POR_PRIORIDADE);) {
@@ -95,7 +99,10 @@ public class FilaDePacienteDAO {
 			printSQLException(e);
 		}
 		
-		// conta quantidade de pacientes com prioridade maior que a do paciente atual
+		System.out.println("toaqui3");
+		
+		// conta quantidade de pacientes com prioridade maior que a do pacinte atual
+
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(COUNT_PACIENTES_NA_FILA);) {
 				preparedStatement.setInt(1, prioridade);
@@ -112,7 +119,9 @@ public class FilaDePacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+
 		
+		System.out.println("toaqui4");
 		// insere paciente atual na fila
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PACIENTE_NA_FILA)) {
@@ -124,7 +133,9 @@ public class FilaDePacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+
 		
+		System.out.println("toaqui5");
 		// atualiza ordem dos pacientes com prioridade menor que a do paciente atual
 		try (Connection connection = getConnection();
 			PreparedStatement statement = connection.prepareStatement(UPDATE_ORDEM_DE_PACIENTE_NA_FILA);) {
