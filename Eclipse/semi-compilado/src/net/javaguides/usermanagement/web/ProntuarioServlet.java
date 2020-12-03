@@ -145,6 +145,8 @@ public class ProntuarioServlet extends HttpServlet {
 		}else
 		{
 			System.out.println("nao achou o cpf");
+
+      
 			// ERRO - nao achou esse cpf
 		}
 	}
@@ -152,7 +154,6 @@ public class ProntuarioServlet extends HttpServlet {
 	private void closeProntuario(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-<<<<<<< HEAD
 		System.out.println("prontuario: " + request.getParameter("id_prontuario"));
 		//Prontuario prontuario = (Prontuario) request.getAttribute("prontuario");
 		//System.out.println("Fechando o prontuario: " + prontuario);
