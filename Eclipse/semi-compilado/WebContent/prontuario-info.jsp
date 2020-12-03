@@ -126,7 +126,7 @@
 		<div  class="center">
 			<!--div><c:out value='%= request.getAttribute("prontuario") %>'></c:out></div>
 			<div><c:out value="${cidade.id}"/></div-->
-			<input type="hidden" name="id_prontuario2" value="${prontuario.id}"/>
+			<input type="text" name="id_prontuario" value="${prontuario.id}"/>
 	
 			<input type="submit" name="close_prontuario" value="Fechar prontuário" />
 		</div>
@@ -134,7 +134,7 @@
 	
     <form action="${pageContext.request.contextPath}/prontuarios/solicitar_uti" method="post">
 		<div  class="center">
-			<input type="hidden" name="id_prontuario" value="${prontuario.id}"/>
+			<input type="text" name="id_prontuario2" value="${prontuario.id}"/>
 	 
 			<input type="submit" name="solicitar_uti" value="Solicitar UTI" />  
 		</div>

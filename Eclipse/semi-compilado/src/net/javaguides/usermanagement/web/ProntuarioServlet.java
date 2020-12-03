@@ -143,6 +143,7 @@ public class ProntuarioServlet extends HttpServlet {
 		//System.out.println("Fechando o prontuario: " + prontuario);
 		
 		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		request.setAttribute("id_prontuario", id_prontuario);
 		
 		prontuarioDAO.closeProntuario(id_prontuario);
 
@@ -152,7 +153,8 @@ public class ProntuarioServlet extends HttpServlet {
 	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
+		System.out.println("id_prontuario: " + id_prontuario);
 		
 		//prontuarioDAO.closeProntuario(id_prontuario);
 		filaDAO.solicitaUti(id_prontuario);
