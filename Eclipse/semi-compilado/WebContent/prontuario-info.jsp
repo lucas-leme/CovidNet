@@ -39,6 +39,11 @@
     <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
     <h3>Oximetria: ${prontuario.oximetria}</h3>
     
+    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
+		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+		<input type="submit" name="search_prontuario" value="Editar" /> 
+	</form>
+    
     <h1>Questionário</h1>
     
     <h3>Tem doença respiratória? 
@@ -121,6 +126,11 @@
 		</c:if>    
 		<%= request.getAttribute("prontuario") %>
     </h3>
+    
+     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
+		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+		<input type="submit" name="search_prontuario" value="Editar" />  
+	</form>
     
     <form action="${pageContext.request.contextPath}/prontuarios/close" method="post">
 		<div  class="center">
