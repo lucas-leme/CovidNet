@@ -44,6 +44,7 @@
 		<input type="submit" name="search_prontuario" value="Editar" /> 
 	</form>
     
+    
     <h1>Questionário</h1>
     
     <h3>Tem doença respiratória? 
