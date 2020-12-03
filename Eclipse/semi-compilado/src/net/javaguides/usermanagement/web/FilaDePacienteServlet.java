@@ -78,12 +78,12 @@ public class FilaDePacienteServlet extends HttpServlet {
 	
 	private void pegaPrimeiro(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
-		Paciente paciente = filaDePacienteDAO.selectPrimeiroPacienteDaFila();
+
+
+		filaDePacienteDAO.selectPrimeiroPacienteDaFila();
 		
-		request.setAttribute("pegaPrimeiro", paciente);
+		response.sendRedirect(root);
 			
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/fila_de_pacientes.jsp");
-		dispatcher.forward(request, response);
 	}
 	
 }
