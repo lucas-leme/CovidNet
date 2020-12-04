@@ -114,6 +114,15 @@ public class LeitoServlet extends HttpServlet {
 		Paciente primeiroPaciente = filaDePacienteDao.selectPrimeiroPacienteDaFila();
 		request.setAttribute("paciente", primeiroPaciente);
 		
+		System.out.println("PRIMEIRO PACIENTE " + primeiroPaciente.getId());
+		
+		int hospital_id = pacienteDAO.selectHospitalDeDestinoId(primeiroPaciente.getId());
+		Hospital hospital = hospitalDAO.selectHospitalById(hospital_id);
+		
+		System.out.println("hospital nome " +  hospital.getNome());
+		request.setAttribute("hospital", hospital);
+		
+		
 		List<Municipio> cidades = hospitalDAO.selectAllMunicipios();
 		request.setAttribute("cidades", cidades);
 		

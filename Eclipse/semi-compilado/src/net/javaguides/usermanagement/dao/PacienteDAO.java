@@ -23,7 +23,7 @@ public class PacienteDAO {
 	
 	private static final String UPDATE_PACIENTE = "UPDATE pacientes SET cpf = ?, nome = ?, data_de_nascimento = ?, endereco = ? WHERE id = ?";	
 	
-	private static final String SELECT_HOSPITAL_DE_DESTINO_PACIENTE = "SELECT pr.hospital_destino_id FROM prontuarios pr \n"
+	private static final String SELECT_HOSPITAL_DE_DESTINO_PACIENTE = "SELECT pr.hospital_id FROM prontuarios pr \n"
 			+ "INNER JOIN pacientes pa ON pa.id = pr.paciente_id WHERE pa.id = ?";
 
 	protected Connection getConnection() {
@@ -144,12 +144,19 @@ public class PacienteDAO {
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_HOSPITAL_DE_DESTINO_PACIENTE);) {
 			preparedStatement.setInt(1, paciente_id);
+			
+			System.out.println("HOSPITAL ORIGEM");
 			System.out.println(preparedStatement);
 			ResultSet rs = preparedStatement.executeQuery();
 			
+			System.out.println("EXECUTOU");
+			
 			rs.first();
+			
+			System.out.println("NO GET");
 
-			hospital_destino_id = rs.getInt("hospital_destino_id");
+			hospital_destino_id = rs.getInt("hospital_id");
+			System.out.println(hospital_destino_id);
 					
 		} catch (SQLException e) {
 			printSQLException(e);
