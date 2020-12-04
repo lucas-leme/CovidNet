@@ -28,8 +28,23 @@
 </header>
 
 	<h1>Relatorios aqui</h1>
-	<a href="${pageContext.request.contextPath}/relatorioEstadual">Estadual</a>
-	<a href="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</a>
-	<a href="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</a>
+	
+	<c:if test="${prontuario != null}">
+		<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
+			<select id="hospital_id" name="hospital_id">
+				<option id="estadual" value="${pageContext.request.contextPath}/relatorioEstadual">Estadual</option>
+				<option id="hospitalar" value="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</option>
+				<option id="municipal" value="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</option>
+	        </select>
+	        
+	        <b>Data de inicio:</b>
+	        <input type="date" name="data_inicio">
+	        
+	        <b>Data de fim:</b>
+	        <input type="date" name="data_fim">
+	        
+	        <input type="submit" value="Gerar relatório">
+		</form>
+    </c:if>
 </body>
 </html>
