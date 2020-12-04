@@ -35,104 +35,118 @@
 	<c:if test="${prontuario != null}">
 		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 		
-	    <div align="center">
-		<h1>Prontuario nao encontrado</h1>
-	    
-		    <h1>Dados do Prontuário</h1>
-		    <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
-		    <h3>CPF: <%= request.getAttribute("cpf") %></h3>
-		    <h3>Data: ${prontuario.data}</h3>
-		    <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
-		    <h3>Diagnostico: ${prontuario.diagnostico}</h3>
-		    <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
-		    <h3>Oximetria: ${prontuario.oximetria}</h3>
+		<table>
+	    	<div align="center">
+				<tr>
+					<th>
+						<h1>Prontuario nao encontrado</h1>
+					</th>
+				</tr>
 		    
-		    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
-				<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
-				<input type="hidden" name="id_pontuario2" value="<%= request.getAttribute("id_prontuario2") %>" />
-				<input type="hidden" name="id_paciente2" value="<%= request.getAttribute("id_paciente") %>" />
-				<input type="submit" name="search_prontuario" value="Exibir dados do paciente" /> 
-			</form>
+		    	<tr>
+		    		<td>
+					    <h1>Dados do Prontuário</h1>
+					    <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
+					    <h3>CPF: <%= request.getAttribute("cpf") %></h3>
+					    <h3>Data: ${prontuario.data}</h3>
+					    <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
+					    <h3>Diagnostico: ${prontuario.diagnostico}</h3>
+					    <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
+					    <h3>Oximetria: ${prontuario.oximetria}</h3>
+					    
+					    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
+							<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+							<input type="hidden" name="id_pontuario2" value="<%= request.getAttribute("id_prontuario2") %>" />
+							<input type="hidden" name="id_paciente2" value="<%= request.getAttribute("id_paciente") %>" />
+							<input type="submit" name="search_prontuario" value="Exibir dados do paciente" /> 
+						</form>
+					</td>
+				</tr>
 		    
-		    <h1>Questionário</h1>
-		    
-		    <h3>Tem doença respiratória? 
-			    <c:if test="${prontuario.doencaRespiratoria == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.doencaRespiratoria == false}">
-			 		Não
-				</c:if>
-		    </h3>
-		    <h3>Batimento cardiaco normal? 
-		 		<c:if test="${prontuario.batimentoCardiacoNormal == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.batimentoCardiacoNormal == false}">
-			 		Não
-				</c:if>
-		    
-		    </h3>
-		    <h3>Tem hipertensão?  
-		    	<c:if test="${prontuario.hipertensao == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.hipertensao == false}">
-			 		Não
-				</c:if>
-		    </h3>
-		    
-		    <h3>Tem radiomentria de torax normal?  
-		    	<c:if test="${prontuario.radiometriaToraxNormal == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.radiometriaToraxNormal == false}">
-			 		Não
-				</c:if>    
-		    </h3>
-		    
-		    <h3>Tem tomografia de torax normal?
-		    	<c:if test="${prontuario.tomografiaToraxNormal == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.tomografiaToraxNormal == false}">
-			 		Não
-				</c:if>
-		    </h3>
-		    
-		    <h3>Precisa de ventilação mecânica? 
-		    	<c:if test="${prontuario.ventilacaoMecanica == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.ventilacaoMecanica == false}">
-			 		Não
-				</c:if>
-		    </h3>
-		    
-		    <h3>Tem diabetes? 
-		     	<c:if test="${prontuario.diabetes == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.diabetes == false}">
-			 		Não
-				</c:if>   
-		    </h3>
-		    
-		    <h3>É obeso? 
-		     	<c:if test="${prontuario.obesidade == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.obesidade == false}">
-			 		Não
-				</c:if>      
-		    </h3>
-		    
-		     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
-				<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
-				<input type="hidden" name="id_pontuario" value="${prontuario.id}" />
-				<input type="hidden" name="id_paciente" value="${paciente.id}" />
-				<input type="submit" name="search_prontuario" value="Editar" />  
-			</form>
+		    	<tr>
+		    		<td>
+					    <h1>Questionário</h1>
+					    
+					    <h3>Tem doença respiratória? 
+						    <c:if test="${prontuario.doencaRespiratoria == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.doencaRespiratoria == false}">
+						 		Não
+							</c:if>
+					    </h3>
+					    <h3>Batimento cardiaco normal? 
+					 		<c:if test="${prontuario.batimentoCardiacoNormal == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.batimentoCardiacoNormal == false}">
+						 		Não
+							</c:if>
+					    
+					    </h3>
+					    <h3>Tem hipertensão?  
+					    	<c:if test="${prontuario.hipertensao == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.hipertensao == false}">
+						 		Não
+							</c:if>
+					    </h3>
+					    
+					    <h3>Tem radiomentria de torax normal?  
+					    	<c:if test="${prontuario.radiometriaToraxNormal == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.radiometriaToraxNormal == false}">
+						 		Não
+							</c:if>    
+					    </h3>
+					    
+					    <h3>Tem tomografia de torax normal?
+					    	<c:if test="${prontuario.tomografiaToraxNormal == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.tomografiaToraxNormal == false}">
+						 		Não
+							</c:if>
+					    </h3>
+					    
+					    <h3>Precisa de ventilação mecânica? 
+					    	<c:if test="${prontuario.ventilacaoMecanica == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.ventilacaoMecanica == false}">
+						 		Não
+							</c:if>
+					    </h3>
+					    
+					    <h3>Tem diabetes? 
+					     	<c:if test="${prontuario.diabetes == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.diabetes == false}">
+						 		Não
+							</c:if>   
+					    </h3>
+					    
+					    <h3>É obeso? 
+					     	<c:if test="${prontuario.obesidade == true}">
+								Sim
+							</c:if>
+							<c:if test="${prontuario.obesidade == false}">
+						 		Não
+							</c:if>      
+					    </h3>
+					    
+					     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
+							<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+							<input type="hidden" name="id_pontuario" value="${prontuario.id}" />
+							<input type="hidden" name="id_paciente" value="${paciente.id}" />
+							<input type="submit" name="search_prontuario" value="Editar" />  
+						</form>
+					</td>
+				</tr>			
+			</table>
 		    
 		    <form action="${pageContext.request.contextPath}/prontuarios/close" method="post">
 				<div  class="center">
