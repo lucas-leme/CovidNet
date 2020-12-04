@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+ .form-correct{
+ 	background-color : #fff;
+ 	color: #000;
+ }
+ 
+ .form-incorrect{
+ 	background-color : #ff0000; 
+ 	color: #ffffff;
+ }

@@ -9,6 +9,7 @@
   <meta http-equiv="Content-Language" content="pt-br" 
   	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
 	<style><%@include file="/WEB-INF/css/homeProntuario.css"%></style>
+	<style><%@include file="/WEB-INF/css/formsStyle.css"%></style>
 </head>
 
 </body>
@@ -61,7 +62,9 @@
 		<div  class="center">
 		<h2>Buscar prontuário</h2>
 			<label>CPF: </label>
-			<input type="text" name="cpf"/>
+			<input type="text" name="cpf" 
+				class="${incorrectCPF == null ? 'form-correct' : 'form-incorrect'}"/>
+				
 			<input type="submit" name="search_prontuario" value="Buscar" />  
 		</div>
 	</form>
