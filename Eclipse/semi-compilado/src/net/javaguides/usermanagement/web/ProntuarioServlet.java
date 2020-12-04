@@ -170,16 +170,18 @@ public class ProntuarioServlet extends HttpServlet {
 	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
-		System.out.println("id_prontuario: " + id_prontuario);
-		
-		
-		filaDAO.solicitaUti(id_prontuario);
-		List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
-		request.setAttribute("fila_pacientes", fila);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/fila-list.jsp");
-		dispatcher.forward(request, response);
+		try {
+			int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
+			System.out.println("id_prontuario: " + id_prontuario);
+			
+			filaDAO.solicitaUti(id_prontuario);
+		}catch(NumberFormatException nfe) {
+			List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
+			request.setAttribute("fila_pacientes", fila);
+	
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/fila-list.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
