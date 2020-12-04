@@ -170,7 +170,7 @@ public class ProntuarioServlet extends HttpServlet {
 	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
 		System.out.println("id_prontuario: " + id_prontuario);
 		
 		
@@ -356,7 +356,7 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println(request.getAttribute("id_paciente"));
 		System.out.println(request.getParameter("id_paciente"));
 		
-		String cpf = request.getParameter("cpf");
+		/*String cpf = request.getParameter("cpf");
 		String cpfFormatado = Solver.formatCpf(cpf);
 		System.out.println("CPF como veio: " + cpf);
 		System.out.println("CPF FORMATADO: " + cpfFormatado);
@@ -370,7 +370,7 @@ public class ProntuarioServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 			
 			return;
-		}
+		}*/
 		
 		//String data = request.getParameter("data");
 		String estado_do_paciente = request.getParameter("estado_paciente");
