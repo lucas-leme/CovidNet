@@ -7,6 +7,7 @@
 	  <meta http-equiv="Content-Language" content="pt-br" 
   	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
 	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
+	<style><%@include file="/WEB-INF/css/formsStyle.css"%></style>
 </head>
 <header>
   <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,9 +53,9 @@
         		<tr>
                 <th>CPF: </th>
                 <td>
-                	<input type="text" name="cpf" size="45"
-                			value="<c:out value='${prontuario.cpf}' />"
-                		/>
+					<input type="text" name="cpf" 
+						class="${incorrectCPF == null ? 'form-correct' : 'form-incorrect'}"
+						value="TESTE"/>
                 </td>
             </tr>           
             <tr>

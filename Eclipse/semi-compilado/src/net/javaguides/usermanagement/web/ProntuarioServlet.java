@@ -85,6 +85,7 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/pacientes/insert":
 					System.out.println("inserting");
 					insertPaciente(request, response);
+					System.out.println("fim do inserting");
 					break;
 				case "/prontuarios/exame":
 					newExame(request, response);
@@ -206,7 +207,10 @@ public class ProntuarioServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("Paciente form");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
+		String cpf = request.getParameter("cpf");
+		System.out.println("cpf pego(showpacienteform): " + cpf);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/form-paciente.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -214,7 +218,7 @@ public class ProntuarioServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		
 		String cpf = request.getParameter("cpf");
-		System.out.println("cpf pego: " + cpf);
+		System.out.println("cpf pego(showeditpacienteform): " + cpf);
 		
 		
 		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
@@ -278,28 +282,42 @@ public class ProntuarioServlet extends HttpServlet {
 
 			System.out.println("cpf: " + cpf + "; nome: " + nome + "; nascimento: " + data_de_nascimento + "; endereco: " + endereco);
 			
-			Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
-			int id_paciente = pacienteDAO.insertPaciente(newPaciente);
-			newPaciente.setId(id_paciente);
-			System.out.println("id do paciente adicionado: " + id_paciente);
-
-
-			System.out.println("selecionando hospital cujo id e 1");
-			List<Hospital> hospitais = hospitalDAO.selectAllHospitais();//hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
-		
+			String cpfFormatado = Solver.formatCpf(cpf);
 			
-			request.setAttribute("id_paciente", id_paciente);	
-			request.setAttribute("hospitais", hospitais);	
 			request.setAttribute("cpf", cpf);	
 			request.setAttribute("nome", nome);	
 			request.setAttribute("data_de_nascimento", data_de_nascimento);
 			
-			System.out.println("Novo jsp: prontuario");
-			//System.out.println("redirecting to " + root + "/prontuarios/new");
+			if(cpfFormatado != null)
+			{
+				Paciente newPaciente = new Paciente(cpf, nome, data_de_nascimento, endereco);
+				int id_paciente = pacienteDAO.insertPaciente(newPaciente);
+				newPaciente.setId(id_paciente);
+				System.out.println("id do paciente adicionado: " + id_paciente);
+	
+	
+				System.out.println("selecionando hospital cujo id e 1");
+				List<Hospital> hospitais = hospitalDAO.selectAllHospitais();//hospitalDAO.selectHospitais(1); // MUDAR PRA VARIOS IDS
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
-			dispatcher.forward(request, response);
-			//response.sendRedirect(root + "/prontuarios/new");
+				
+				request.setAttribute("id_paciente", id_paciente);	
+				request.setAttribute("hospitais", hospitais);	
+
+				
+				System.out.println("Novo jsp: prontuario");
+				//System.out.println("redirecting to " + root + "/prontuarios/new");
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
+				dispatcher.forward(request, response);
+				//response.sendRedirect(root + "/prontuarios/new");
+			}else
+			{
+				System.out.println("\n\n\nCPF INVALIDOOOO\n\n\n");
+				request.setAttribute("incorrectCPF", true);
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/form-paciente.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 	
 	private void updatePaciente(HttpServletRequest request, HttpServletResponse response)
