@@ -48,6 +48,8 @@
 					    <h1>Dados do Prontuário</h1>
 					    <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
 					    <h3>CPF: <%= request.getAttribute("cpf") %></h3>
+					    <h3>Nome: ${paciente.nome}</h3>
+					    <h3>Data de nascimento: ${paciente.dataDeNascimento}</h3>
 					    <h3>Data: ${prontuario.data}</h3>
 					    <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
 					    <h3>Diagnostico: ${prontuario.diagnostico}</h3>
