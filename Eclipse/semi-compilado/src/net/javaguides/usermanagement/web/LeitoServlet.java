@@ -11,26 +11,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.javaguides.usermanagement.dao.FilaDePacienteDAO;
 import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.LeitoDAO;
+import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Leito;
 import net.javaguides.usermanagement.model.Municipio;
+import net.javaguides.usermanagement.model.Paciente;
 
 
 @WebServlet(
   urlPatterns = {"/leitos","/leitos/edit","/leitos/update/*", "/leitos/new", 
-		  "/leitos/insert", "/leitos/list_hospitais", "/leitos/list_leitos", "/leitos/home"}
+		  "/leitos/insert", "/leitos/list_hospitais", "/leitos/list_leitos", "/leitos/home",
+		  "/leitos/alocar", "/leitos/alocar/primeiro"}
   )
 public class LeitoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private LeitoDAO leitoDAO;
 	private HospitalDAO hospitalDAO;
+	private PacienteDAO pacienteDAO;
+	private FilaDePacienteDAO filaDePacienteDao;
 	private static final String root = "/semi-compilado";
 	
 	public void init() {
 		leitoDAO = new LeitoDAO();
 		hospitalDAO = new HospitalDAO();
+		filaDePacienteDao = new FilaDePacienteDAO();
+		pacienteDAO = new PacienteDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -64,8 +72,16 @@ public class LeitoServlet extends HttpServlet {
 			case "/leitos/list_leitos":
 				listLeito(request, response);
 				break;
+			case "/leitos/alocar/primeiro":
+				System.out.println("Alocando primeiro paciente");
+				insertFirstProntuario(request, response);
+				break;
+			case "/leitos/alocar":
+				System.out.println("ALOCANDO");
+				allocatePaciente(request, response);
+				break;
 			default:
-				mostrarFiltros(request, response);
+				showHome(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -91,13 +107,17 @@ public class LeitoServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
-	private void mostrarFiltros(HttpServletRequest request, HttpServletResponse response)
+	private void insertFirstProntuario(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
+		System.out.println("Inserindo Primeiro Paciente");
+		
+		Paciente primeiroPaciente = filaDePacienteDao.selectPrimeiroPacienteDaFila();
+		request.setAttribute("paciente", primeiroPaciente);
+		
 		List<Municipio> cidades = hospitalDAO.selectAllMunicipios();
 		request.setAttribute("cidades", cidades);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-filtros.jsp");
-
 		dispatcher.forward(request, response);
 	}
 	
@@ -105,18 +125,19 @@ public class LeitoServlet extends HttpServlet {
 			throws SQLException, IOException, ServletException {
 		
 		//List<Leito> listLeito = leitoDAO.selectAllLeitos();
-		String cidade;
 		
-		try {
-			cidade = request.getParameter("cidade").toString();
-		}catch(NullPointerException np) {
-			cidade = "";
-		}
-			
+		String cidade = request.getParameter("cidade").toString();
+		int paciente_id = Integer.parseInt(request.getParameter("paciente_id"));
+		
+		System.out.println(cidade + paciente_id);
+
 		System.out.println("Cidade (mostrarHospitais) : " + cidade);
 		List<Hospital> hospitais = hospitalDAO.selectHospitais(Integer.parseInt(cidade));//.selectHospitais(cidade);
 
 		request.setAttribute("hospitais", hospitais);
+		
+		Paciente paciente = pacienteDAO.selectPacienteById(paciente_id);
+		request.setAttribute("paciente", paciente);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-hospitais.jsp");
 
@@ -151,6 +172,19 @@ public class LeitoServlet extends HttpServlet {
 		
 		//response.sendRedirect("..");
 		dispatcher.forward(request, response);
+
+	}
+	
+	private void allocatePaciente(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+
+		int hospital_id = Integer.parseInt(request.getParameter("hospital_id"));
+		int paciente_id = Integer.parseInt(request.getParameter("paciente_id"));
+		
+		filaDePacienteDao.alocaPrimeiroPacienteDaFila(paciente_id , hospital_id);
+		leitoDAO.ocupaLeitoAleatorio(hospital_id, paciente_id);
+		
+		response.sendRedirect(root);
 
 	}
 

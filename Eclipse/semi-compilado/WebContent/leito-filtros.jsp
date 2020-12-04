@@ -30,8 +30,22 @@
 </header>
 
     <div align="center">
-        <a href="${pageContext.request.contextPath}/leitos/list_hospitais">
-        <h1>Cidades</h1>
+
+		<h1>Paciente a ser alocado</h1>
+		
+		<h3>
+			Nome: <c:out value="${paciente.nome}"/>
+		</h3>
+		<h3>
+			CPF: <c:out value="${paciente.cpf}"/>
+		</h3>
+		<h3>
+			Endereço: <c:out value="${paciente.endereco}"/>
+		</h3>
+		
+		<br/>
+        
+        <h1>Cidades Disponiveis</h1>
         </a>
         
         <br/>
@@ -39,7 +53,7 @@
         <c:forEach var="cidade" items="${cidades}">
                <tr>
                     <td>
-                    	<a href="${pageContext.request.contextPath}/leitos/list_hospitais?cidade=<c:out value="${cidade.id}"/>">
+                    	<a href="${pageContext.request.contextPath}/leitos/list_hospitais?cidade=<c:out value="${cidade.id}"/>&paciente_id=<c:out value="${paciente.id}"/>">
                     		<h3>
                     			<c:out value="${cidade.nome}"/>
                     		</h3>
