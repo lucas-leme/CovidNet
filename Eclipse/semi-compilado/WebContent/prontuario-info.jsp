@@ -56,6 +56,10 @@
 					    <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
 					    <h3>Oximetria: ${prontuario.oximetria}</h3>
 					    
+					    <c:if test="${prontuario.hospitalDestinoId != 0}">
+					    	<h3>Hospital Destino: ${hospital.nome}</h3>
+					    </c:if>
+					    
 					    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
 							<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 							<input type="hidden" name="id_pontuario2" value="<%= request.getAttribute("id_prontuario2") %>" />
@@ -139,6 +143,7 @@
 						 		Não
 							</c:if>      
 					    </h3>
+					    
 					    
 					     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
 							<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />

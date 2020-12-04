@@ -47,7 +47,7 @@ public class FilaDePacienteDAO {
 			+ "	WHERE prioridade <= ?";
 	
 	private static final String REMOVE_PACIENTES_DA_FILA = 
-			"DELETE FROM fila_de_pacientes WHERE id = ?";
+			"DELETE FROM fila_de_pacientes WHERE paciente_id = ?";
 	
 	protected Connection getConnection() {
 		Connection connection = null;

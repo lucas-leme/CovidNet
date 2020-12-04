@@ -33,6 +33,8 @@ public class HospitalDAO {
 			+ "	INNER JOIN hospitais as h2\n"
 			+ "	ON h2.id = h1.id";
 	
+	private static final String SELECT_HOSPITAL_BY_ID = "SELECT * FROM hospitais WHERE hospital_id = ?";
+	
 	protected Connection getConnection() {
 		Connection connection = null;
 		try {
@@ -97,6 +99,36 @@ public class HospitalDAO {
 		}
 
 		return hospitais;
+	}
+	
+	public Hospital selectHospitalById(int hospital_id) {
+		
+		Hospital hospital = null;
+		
+		try (Connection connection = getConnection();
+
+		PreparedStatement preparedStatement = connection.prepareStatement(SELECT_HOSPITAL_BY_ID );) {
+		
+		preparedStatement.setInt(1, hospital_id);
+			
+			System.out.println(preparedStatement);
+		ResultSet rs = preparedStatement.executeQuery();
+			
+		rs.first();
+		
+		int id = rs.getInt("id");
+		String nome = rs.getString("nome");
+		String telefone = rs.getString("telefone");
+		String endereco = rs.getString("endereco");
+		String estado = rs.getString("estado");
+		int municipio_id = rs.getInt("municipio_id");
+		hospital = new Hospital(id, nome, telefone, endereco, estado, municipio_id);
+		
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+
+		return hospital;
 	}
 	
 	public List<Hospital> selectHospitais(int municipio_id) {
