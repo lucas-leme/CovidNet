@@ -167,7 +167,6 @@ public class FilaDePacienteDAO {
 	public Paciente selectPrimeiroPacienteDaFila() {
 		
 		FilaDePaciente primeiro_da_fila = null;
-		int primeiro_id = 0;
 		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_PRIMEIRO_DA_FILA);) {
@@ -177,27 +176,35 @@ public class FilaDePacienteDAO {
 
 			rs.first();
 			
-			primeiro_id = rs.getInt("id");
+			int id = rs.getInt("id");
 			String data = rs.getString("data");
 			int ordem = rs.getInt("ordem");
 			int prioridade = rs.getInt("prioridade");
 			int paciente_id = rs.getInt("paciente_id");
 					
-			primeiro_da_fila = new FilaDePaciente(primeiro_id, data, ordem, prioridade, paciente_id);
+			primeiro_da_fila = new FilaDePaciente(id, data, ordem, prioridade, paciente_id);
 			
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
 		
+		return pacienteDAO.selectPacienteById(primeiro_da_fila.getPacienteId());
+	}
+	
+	public void alocaPrimeiroPacienteDaFila(int primeiro_da_fila_id, int hospital_de_destino_id) throws SQLException {
+		
 		// remove da fila o primeiro paciente
 		try (Connection connection = getConnection();
 				PreparedStatement statement = connection.prepareStatement(REMOVE_PACIENTES_DA_FILA);) {
-			statement.setInt(1, primeiro_id);
+			statement.setInt(1, primeiro_da_fila_id);
 			System.out.println(statement);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+		
+		// atualiza hospital de destino
+		prontuarioDAO.updateHospitalDeDestino(hospital_de_destino_id, primeiro_da_fila_id);
 		
 		List<FilaDePaciente> fila_de_pacientes = this.selectAllPacientesNaFila();
 		
@@ -212,9 +219,7 @@ public class FilaDePacienteDAO {
 			}
 		} catch (SQLException e) {
 			printSQLException(e);
-		}
-		
-		return pacienteDAO.selectPacienteById(primeiro_da_fila.getPacienteId());
+		}	
 	}
 
 	private void printSQLException(SQLException ex) {
