@@ -127,7 +127,7 @@ public class ProntuarioDAO {
 	private static final String UPDATE_HOSPITAL_DE_DESTINO =
 			"UPDATE prontuarios "
 			+ "SET hospital_destino_id = ?"
-			+ "	WHERE id = ? AND ativo = 1";
+			+ "	WHERE id = ?";
 	
 	private static final String CLOSE_PRONTUARIO =
 			"UPDATE prontuarios "
