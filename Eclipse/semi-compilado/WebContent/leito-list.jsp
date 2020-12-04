@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-	<title>Lista de leitos</title>
+	<title>Prontuarios</title>
 	  <meta http-equiv="Content-Language" content="pt-br" 
   	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
 	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
@@ -27,39 +27,136 @@
 	    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
 	  </div>
 	</header>
-	<center>
-		<h1>Gerenciamento de leitos</h1>
-        <h2>
-        	<a href="${pageContext.request.contextPath}/leitos/new">Adicionar leito</a>
-        	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/leitos">Listar leitos</a>
-        	
-        </h2>
-	</center>
+	
+	<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+	
     <div align="center">
-        <h2>Lista de leitos</h2>
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>ID</th>
-                <th>Medico</th>
-                <th>Enfermeiro</th>
-                <th>Paciente</th>
-                <th>Acoes</th>
-            </tr>
-            <c:forEach var="leito" items="${listLeito}">
-                <tr>
-                    <td><c:out value="${leito.id}" /></td>
-                    <td><c:out value="${leito.medico}" /></td>
-                    <td><c:out value="${leito.enfermeiro}" /></td>
-                    <td><c:out value="${leito.paciente}" /></td>
-                    <td>
-                    	<a href="${pageContext.request.contextPath}/leitos/edit?id=<c:out value='${leito.id}' />">Editar</a>
-                    	<!--&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<!--a href="delete?id=<c:out value='${leito.id}' />">Deletar</a-->                    	
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+    
+    <table>
+	    <tr><th><h1>Dados do Prontuário</h1></th></tr>
+	    <tr>
+		    <td>
+			    <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
+			    <h3>Nome do paciente: ${paciente.nome}</h3>
+			    <h3>Data de nascimento: ${paciente.dataDeNascimento}</h3>
+			    <h3>CPF: <%= request.getAttribute("cpf") %></h3>
+			    <h3>Data: ${prontuario.data}</h3>
+			    <h3> Estado do Paciente: ${prontuario.estadoDoPaciente}</h3>
+			    <h3>Diagnostico: ${prontuario.diagnostico}</h3>
+			    <h3>Teste de Covid: ${prontuario.testeCovid}</h3>
+			    <h3>Oximetria: ${prontuario.oximetria}</h3>  
+			      
+			    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
+					<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+					<input type="submit" name="search_prontuario" value="Editar" /> 
+				</form>
+			</td>
+		</tr>
+	</table>
+    
+    <table>
+    	<tr><th><h1>Questionário</h1></th></tr>
+    	<tr>
+    		<td>
+			    <h3>Tem doença respiratória? 
+				    <c:if test="${prontuario.doencaRespiratoria == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.doencaRespiratoria == false}">
+				 		Não
+					</c:if>
+			    </h3>
+			    <h3>Batimento cardiaco normal? 
+			 		<c:if test="${prontuario.batimentoCardiacoNormal == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.batimentoCardiacoNormal == false}">
+				 		Não
+					</c:if>
+			    
+			    </h3>
+			    <h3>Tem hipertensão?  
+			    	<c:if test="${prontuario.hipertensao == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.hipertensao == false}">
+				 		Não
+					</c:if>
+			    </h3>
+			    
+			    <h3>Tem radiomentria de torax normal?  
+			    	<c:if test="${prontuario.radiometriaToraxNormal == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.radiometriaToraxNormal == false}">
+				 		Não
+					</c:if>    
+			    </h3>
+			    
+			    <h3>Tem tomografia de torax normal?
+			    	<c:if test="${prontuario.tomografiaToraxNormal == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.tomografiaToraxNormal == false}">
+				 		Não
+					</c:if>
+			    </h3>
+			    
+			    <h3>Precisa de ventilação mecânica? 
+			    	<c:if test="${prontuario.ventilacaoMecanica == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.ventilacaoMecanica == false}">
+				 		Não
+					</c:if>
+			    </h3>
+			    
+			    <h3>Tem diabetes? 
+			     	<c:if test="${prontuario.diabetes == true}">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.diabetes == false}">
+				 		Não
+					</c:if>   
+			    </h3>
+			    
+			    <h3>É obeso? 
+			     	<c:if test="${prontuario.obesidade == true }">
+						Sim
+					</c:if>
+					<c:if test="${prontuario.obesidade == false}">
+				 		Não
+					</c:if>      
+			    </h3>
+			    
+			     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
+					<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+					<input type="hidden" name="id_paciente" value="${paciente.id}" />
+					<input type="hidden" name="id_prontuario" value="${prontuario.id}"/>
+					<input type="submit" name="search_prontuario" value="Editar" />  
+				</form>
+			    
+			    <form action="${pageContext.request.contextPath}/prontuarios/close" method="post">
+					<div  class="center">
+						<!--div><c:out value='%= request.getAttribute("prontuario") %>'></c:out></div>
+						<div><c:out value="${cidade.id}"/></div-->
+						<input type="hidden" name="id_prontuario" value="${prontuario.id}"/>
+				
+						<input type="submit" name="close_prontuario" value="Fechar prontuário" />
+					</div>
+				</form>    
+				
+			    <form action="${pageContext.request.contextPath}/prontuarios/solicitar_uti" method="post">
+					<div  class="center">
+						<input type="hidden" name="id_prontuario2" value="${prontuario.id}"/>
+				 
+						<input type="submit" name="solicitar_uti" value="Solicitar UTI" />  
+					</div>
+				</form>
+			</td>
+		</tr>
+	
+	</table>
     </div>	
 </body>
 </html>
