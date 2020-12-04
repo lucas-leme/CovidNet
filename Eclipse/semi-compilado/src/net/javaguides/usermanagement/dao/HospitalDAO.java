@@ -33,7 +33,7 @@ public class HospitalDAO {
 			+ "	INNER JOIN hospitais as h2\n"
 			+ "	ON h2.id = h1.id";
 	
-	private static final String SELECT_HOSPITAL_BY_ID = "SELECT * FROM hospitais WHERE hospital_id = ?";
+	private static final String SELECT_HOSPITAL_BY_ID = "SELECT * FROM hospitais WHERE id = ?";
 	
 	protected Connection getConnection() {
 		Connection connection = null;
