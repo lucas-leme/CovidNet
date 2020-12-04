@@ -238,7 +238,7 @@
             	<td colspan="2" align="center">
 					<input type="hidden" name="id_paciente" value="<%= request.getAttribute("id_paciente") %>" />
 					<input type="hidden" name="id_prontuario" value="<%= request.getAttribute("id_prontuario") %>" />
-            		<input type="submit" value="Save" />
+            		<input type="submit" value="Salvar prontuário" />
             	</td>
             </tr>
         </table>
