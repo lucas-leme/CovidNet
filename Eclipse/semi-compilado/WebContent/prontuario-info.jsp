@@ -49,6 +49,8 @@
 		    
 		    <form action="${pageContext.request.contextPath}/pacientes/edit" method="post">
 				<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+				<input type="hidden" name="id_pontuario2" value="<%= request.getAttribute("id_prontuario2") %>" />
+				<input type="hidden" name="id_paciente2" value="<%= request.getAttribute("id_paciente") %>" />
 				<input type="submit" name="search_prontuario" value="Editar" /> 
 			</form>
 		    
@@ -137,6 +139,8 @@
 		    
 		     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
 				<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
+				<input type="text" name="id_pontuario" value="${prontuario.id}" />
+				<input type="text" name="id_paciente" value="${paciente.id}" />
 				<input type="submit" name="search_prontuario" value="Editar" />  
 			</form>
 		    
