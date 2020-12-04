@@ -144,7 +144,7 @@ public class ProntuarioServlet extends HttpServlet {
 			System.out.println("id do paciente: " + prontuario.getPacienteId());
 			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
-			request.setAttribute("paciente", paciente);
+			//request.setAttribute("paciente", paciente);
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
