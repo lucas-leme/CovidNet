@@ -127,7 +127,7 @@ public class ProntuarioDAO {
 	private static final String UPDATE_HOSPITAL_DE_DESTINO =
 			"UPDATE prontuarios "
 			+ "SET hospital_destino_id = ?"
-			+ "	WHERE id = ?";
+			+ "	WHERE paciente_id = ?";
 	
 	private static final String CLOSE_PRONTUARIO =
 			"UPDATE prontuarios "
@@ -207,6 +207,8 @@ public class ProntuarioDAO {
 				int hospital_id = rs.getInt("hospital_id");
 				int hospital_destino_id = rs.getInt("hospital_destino_id");
 				int paciente_id = rs.getInt("paciente_id");
+				
+				System.out.println("HOSPITAL DESTINO " + hospital_destino_id);
 				
 				System.out.println("PARAMTROS PRONTUARIO:");
 				System.out.println(id + data + estado_do_paciente + diagnostico + teste_covid + doenca_respiratoria + batimento_cardiaco_normal + 
