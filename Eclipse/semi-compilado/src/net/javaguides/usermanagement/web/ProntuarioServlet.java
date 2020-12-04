@@ -209,6 +209,20 @@ public class ProntuarioServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	private void showEditPacienteForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		String cpf = request.getParameter("cpf");
+		System.out.println("cpf pego: " + cpf);
+		
+		
+		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
+		
+		request.setAttribute("paciente", existingPaciente);
+		dispatcher.forward(request, response);
+	}
 
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -244,20 +258,6 @@ public class ProntuarioServlet extends HttpServlet {
 		request.setAttribute("id_prontuario", id_prontuario);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
-		dispatcher.forward(request, response);
-	}
-	
-	private void showEditPacienteForm(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, ServletException, IOException {
-		
-		String cpf = request.getParameter("cpf");
-		System.out.println("cpf pego: " + cpf);
-		
-		
-		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
-		
-		request.setAttribute("paciente", existingPaciente);
 		dispatcher.forward(request, response);
 	}
 
