@@ -26,6 +26,7 @@
     <a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">Relatórios</a>
     <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
     <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
+    <!-- a href="${pageContext.request.contextPath}/prontuarios/solicitar_uti">Lista de espera</a-->
     
     <!-- PASSAR ISSO AQUI ALI PRA BAIXO -->
      	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar paciente</a>

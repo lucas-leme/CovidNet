@@ -169,7 +169,7 @@ public class ProntuarioServlet extends HttpServlet {
 	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
+		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
 		System.out.println("id_prontuario: " + id_prontuario);
 		
 		
