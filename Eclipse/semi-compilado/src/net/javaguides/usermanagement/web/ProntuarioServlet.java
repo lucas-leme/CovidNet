@@ -342,7 +342,7 @@ public class ProntuarioServlet extends HttpServlet {
 	
 	private boolean checkBool (String chosenAttribute) {
 		
-		if (chosenAttribute.equals("Sim")) {
+		if (chosenAttribute != null && chosenAttribute.equals("Sim")) {
 			return true;
 		} else {
 			return false;
@@ -350,11 +350,27 @@ public class ProntuarioServlet extends HttpServlet {
 	}
 
 	private void insertProntuario(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
+			throws SQLException, IOException, ServletException {
 		System.out.println("\n\n\ninseting prontuario");
 		System.out.println("Params");
 		System.out.println(request.getAttribute("id_paciente"));
 		System.out.println(request.getParameter("id_paciente"));
+		
+		String cpf = request.getParameter("cpf");
+		String cpfFormatado = Solver.formatCpf(cpf);
+		System.out.println("CPF como veio: " + cpf);
+		System.out.println("CPF FORMATADO: " + cpfFormatado);
+		
+		if(cpfFormatado == null)
+		{
+			System.out.println("\n\n\nCPF INVALIDOOOO2222\n\n\n");
+			request.setAttribute("incorrectCPF", true);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/form-paciente.jsp");
+			dispatcher.forward(request, response);
+			
+			return;
+		}
 		
 		//String data = request.getParameter("data");
 		String estado_do_paciente = request.getParameter("estado_paciente");

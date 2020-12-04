@@ -55,7 +55,7 @@
                 <td>
 					<input type="text" name="cpf" 
 						class="${incorrectCPF == null ? 'form-correct' : 'form-incorrect'}"
-						value="TESTE"/>
+						value="${incorrectCPF == null ? '' : cpf}"/>
                 </td>
             </tr>           
             <tr>
@@ -71,14 +71,6 @@
                 <td>
                 	<input type="text" name="data_de_nascimento" size="45"
                 			value="<c:out value='${prontuario.dataDeNascimento}' />"
-                		/>
-                </td>
-            </tr>
-            <tr>
-                <th>CPF: </th>
-                <td>
-                	<input type="text" name="cpf" size="45"
-                			value="<c:out value='${prontuario.cpf}' />"
                 		/>
                 </td>
             </tr>
