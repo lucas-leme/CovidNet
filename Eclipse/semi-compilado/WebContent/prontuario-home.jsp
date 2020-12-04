@@ -63,7 +63,9 @@
 		<h2>Buscar prontuário</h2>
 			<label>CPF: </label>
 			<input type="text" name="cpf" 
-				class="${incorrectCPF == null ? 'form-correct' : 'form-incorrect'}"/>
+				class="${incorrectCPF == null ? 'form-correct' : 'form-incorrect'}"
+				value="${incorrectCPF == null ? '' : cpf}"/>
+			
 				
 			<input type="submit" name="search_prontuario" value="Buscar" />  
 		</div>

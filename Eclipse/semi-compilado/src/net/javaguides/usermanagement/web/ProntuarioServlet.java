@@ -143,6 +143,11 @@ public class ProntuarioServlet extends HttpServlet {
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
+		}else {
+			request.setAttribute("incorrectCPF", true);
+			request.setAttribute("cpf", cpf);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-home.jsp");
+			dispatcher.forward(request, response);
 		}
 	}
 	
