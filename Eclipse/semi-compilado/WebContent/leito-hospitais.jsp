@@ -37,12 +37,16 @@
         <c:if test="${hospitais != null}">   
             <table>
             <th align="center">Nome</th>
+            <th align="center">Vagas</th>
             <th>Ação</th>
 	        <c:forEach var="hospital" items="${hospitais}">
 	        <tr>	
 	               <td><c:out value="${hospital.nome}"/></td>
+	               <td><c:out value="${hospital.leitosDisponiveis}"/></td>
 	               <td>
-	               		<form action="${pageContext.request.contextPath}/fila_de_pacientes/pega_primeiro" method="post">	
+	               		<form action="${pageContext.request.contextPath}/leitos/alocar" method="post">
+	               			<input type="hidden" name="hospital_id" value="${hospital.id}" />
+	               			<input type="hidden" name="paciente_id" value="${paciente.id}" />	
 	               			<input type="submit" name="search_prontuario" value="Solicitar vaga de UTI" />
 	               		 </form>  
 	               </td>

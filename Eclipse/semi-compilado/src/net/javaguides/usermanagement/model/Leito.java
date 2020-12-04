@@ -8,6 +8,17 @@ public class Leito {
 	protected String paciente;
 	protected String enfermeiro;
 	protected String hospital;
+	protected int hospitalId;
+	protected int pacienteId;
+	
+	public Leito(int id, boolean ocupado, int pacienteId, int hospitalId) {
+		super();
+		
+		this.id = id;
+		this.hospitalId = hospitalId;
+		this.pacienteId = pacienteId;
+		this.ocupado = ocupado;
+	}
 	
 	public Leito(String medico, String paciente, String enfermeiro) {
 		super();
@@ -38,11 +49,16 @@ public class Leito {
 	}
 
 	public int getId() { return this.id; }
+	public int getHospitalId() { return this.hospitalId; }
+	public int getPacienteId() { return this.pacienteId; }
 	public String getMedico() { return this.medico; }
 	public String getPaciente() { return this.paciente; }
 	public String getEnfermeiro() { return this.enfermeiro; }
 	public String getHospital() { return this.hospital; }
 	
+	
+	public void setHospitalId(int hospitalId) { this.hospitalId = hospitalId; }
+	public void setPacienteId(int pacienteId) { this.pacienteId = pacienteId; }
 	public void setMedico(String newName) { this.medico = newName; }
 	public void setPaciente(String newName) { this.paciente = newName; }
 	public void setEnfermeiro(String newName) { this.enfermeiro = newName; }

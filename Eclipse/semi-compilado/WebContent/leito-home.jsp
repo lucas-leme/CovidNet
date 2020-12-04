@@ -48,7 +48,7 @@
 
 	<div class="center">
 
-	    	<a href="${pageContext.request.contextPath}/leitos">
+	    	<a href="${pageContext.request.contextPath}/leitos/alocar/primeiro">
 		      <h3>UTI</h3>
 		      <p>
 		        Selecione pacientes baseados em nosso critérios!
