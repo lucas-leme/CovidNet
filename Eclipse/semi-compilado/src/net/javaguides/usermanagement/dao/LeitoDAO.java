@@ -27,7 +27,7 @@ public class LeitoDAO {
 			+ "		INNER JOIN pacientes p\n"
 			+ "		ON p.id = l.paciente_id\n"
 			+ "		INNER JOIN hospitais h\n"
-			+ "		ON h.id = l.hospital_id";
+			+ "		ON h.id = l.hospital_id\n";
 
 	private static final String SELECT_LEITO_BY_ID = SELECT_ALL_LEITOS + "WHERE l.id = ?";
 	
