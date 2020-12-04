@@ -46,15 +46,29 @@
   </p>
 </div>
 
-	<div class="center">
-
-	    	<a href="${pageContext.request.contextPath}/leitos/alocar/primeiro">
-		      <h3>UTI</h3>
-		      <p>
-		        Selecione pacientes baseados em nosso critérios!
-		      </p>
-		    </a>
-	</div>
+	<table class="table_margin">
+		<tr>
+	    	<td class="frame center">
+		    	<a href="${pageContext.request.contextPath}/leitos/alocar/primeiro">
+			      <h3>UTI</h3>
+			      <p>
+			        Selecione pacientes baseados em nosso critérios!
+			      </p>
+			    </a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td class="frame center">
+				<a href="${pageContext.request.contextPath}/prontuarios/solicitar_uti">
+					<h3>Lista de UTIs</h3>
+					<p>
+						Veja aqui a lista de espera para as UTIs
+					</p>
+				</a>
+			</td>
+		</tr>
+	</table>
 
 </body>
 
