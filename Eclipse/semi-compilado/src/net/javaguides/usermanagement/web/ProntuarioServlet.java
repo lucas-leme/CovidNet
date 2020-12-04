@@ -93,12 +93,7 @@ public class ProntuarioServlet extends HttpServlet {
 				case "/pacientes/edit":
 					showEditPacienteForm(request, response);
 					break;
-					
-				case "prontuarios/list":
-					System.out.println("LIST PRONTUARIOS");
-					listProntuarios(request, response);
-					break;
-					
+
 				case "/prontuarios/search":
 					System.out.println("SEARCH PRONTUARIO");
 					searchProntuarios(request, response);
@@ -176,12 +171,8 @@ public class ProntuarioServlet extends HttpServlet {
 		filaDAO.solicitaUti(id_prontuario);
 		List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
 		request.setAttribute("fila_pacientes", fila);
-//=======
-//		System.out.println(cpf);
-//		request.setAttribute("prontuario", prontuario);	
-//>>>>>>> f534cb4... Add edit paciente
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/fila-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -211,16 +202,6 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println("Paciente form");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
-		dispatcher.forward(request, response);
-	}
-
-	private void listProntuarios(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
-		System.out.println("Listing prontuarios");
-		
-		List<Prontuario> listProntuarios = null;//prontuarioDAO.selectAllProntuarios();
-		request.setAttribute("listProntuarios", listProntuarios);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-list.jsp");
 		dispatcher.forward(request, response);
 	}
 
