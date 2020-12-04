@@ -27,6 +27,7 @@
 	    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
 	  </div>
 	</header>
+	
 	<c:if test="${prontuario == null}">
 		<h1>Prontuario nao encontrado</h1>
 		<a href="${pageContext.request.contextPath}/prontuarios">Voltar para pesquisa</a>
