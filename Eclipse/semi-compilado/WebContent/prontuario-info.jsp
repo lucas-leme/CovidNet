@@ -51,7 +51,7 @@
 				<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 				<input type="hidden" name="id_pontuario2" value="<%= request.getAttribute("id_prontuario2") %>" />
 				<input type="hidden" name="id_paciente2" value="<%= request.getAttribute("id_paciente") %>" />
-				<input type="submit" name="search_prontuario" value="Editar" /> 
+				<input type="submit" name="search_prontuario" value="Exibir dados do paciente" /> 
 			</form>
 		    
 		    <h1>Questionário</h1>
@@ -127,20 +127,10 @@
 				</c:if>      
 		    </h3>
 		    
-		    <h3>É ativo fisicamente? 
-		      	<c:if test="${prontuario.ativo == true}">
-					Sim
-				</c:if>
-				<c:if test="${prontuario.ativo == false}">
-			 		Não
-				</c:if>    
-				<%= request.getAttribute("prontuario") %>
-		    </h3>
-		    
 		     <form action="${pageContext.request.contextPath}/prontuarios/edit" method="post">
 				<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
-				<input type="text" name="id_pontuario" value="${prontuario.id}" />
-				<input type="text" name="id_paciente" value="${paciente.id}" />
+				<input type="hidden" name="id_pontuario" value="${prontuario.id}" />
+				<input type="hidden" name="id_paciente" value="${paciente.id}" />
 				<input type="submit" name="search_prontuario" value="Editar" />  
 			</form>
 		    
@@ -148,7 +138,7 @@
 				<div  class="center">
 					<!--div><c:out value='%= request.getAttribute("prontuario") %>'></c:out></div>
 					<div><c:out value="${cidade.id}"/></div-->
-					<input type="text" name="id_prontuario" value="${prontuario.id}"/>
+					<input type="hidden" name="id_prontuario" value="${prontuario.id}"/>
 			
 					<input type="submit" name="close_prontuario" value="Fechar prontuário" />
 				</div>
@@ -156,7 +146,7 @@
 			
 		    <form action="${pageContext.request.contextPath}/prontuarios/solicitar_uti" method="post">
 				<div  class="center">
-					<input type="text" name="id_prontuario2" value="${prontuario.id}"/>
+					<input type="hidden" name="id_prontuario2" value="${prontuario.id}"/>
 			 
 					<input type="submit" name="solicitar_uti" value="Solicitar UTI" />  
 				</div>
