@@ -43,6 +43,9 @@
 			Endereço: <c:out value="${paciente.endereco}"/>
 		</h3>
 		
+		<h3>Hospital de Origem: ${hospital.nome}</h3>
+
+		
 		<br/>
         
         <h1>Cidades Disponiveis</h1>
