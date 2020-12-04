@@ -144,7 +144,7 @@ public class ProntuarioServlet extends HttpServlet {
 			System.out.println("id do paciente: " + prontuario.getPacienteId());
 			System.out.println("id do prontuario: " + prontuario.getId());
 			request.setAttribute("prontuario", prontuario);
-			//request.setAttribute("paciente", paciente);
+			request.setAttribute("paciente", paciente);
 	
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-info.jsp");
 			dispatcher.forward(request, response);
@@ -241,7 +241,6 @@ public class ProntuarioServlet extends HttpServlet {
 		System.out.println("cpf pego: " + cpf);
 		
 		Prontuario existingProntuario = prontuarioDAO.selectProntuarioByPacienteCpf(cpf);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 		
 		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
 		request.setAttribute("hospitais", hospitais);
@@ -250,14 +249,15 @@ public class ProntuarioServlet extends HttpServlet {
 		//request.setAttribute("id_prontuario", existingProntuario.getId());	
 
 		
-		int id_paciente = Integer.parseInt(request.getParameter("id_paciente"));
+		int id_paciente = existingProntuario.getPacienteId();//(int)request.getAttribute("id_paciente");
 		System.out.println("id_paciente(edit Prontuario form): " + id_paciente);
 		request.setAttribute("id_paciente", id_paciente);
 		
-		int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario"));
+		int id_prontuario = existingProntuario.getId();//Integer.parseInt(request.getParameter("id_prontuario"));
 		System.out.println("id_prontuario(edit Prontuario form): " + id_prontuario);
 		request.setAttribute("id_prontuario", id_prontuario);
-		
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/prontuario-form.jsp");
 		dispatcher.forward(request, response);
 	}
 	
