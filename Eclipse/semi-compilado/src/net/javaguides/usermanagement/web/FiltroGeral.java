@@ -38,9 +38,9 @@ public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
 	private LoginDAO loginDAO;
-	private String teste = "";
-	//private ProntuarioDAO prontuarioDAO;
-	
+	//private String teste = "";
+	private User user;
+
 	private ServletContext context;
 	
 	public FiltroGeral()
@@ -48,7 +48,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 		super();
 		loginDAO = new LoginDAO();
 		
-		teste = "Hora atual: " + LocalDateTime.now().toString();
+		user = null;
 	}
 
 	@Override
@@ -58,9 +58,6 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    HttpServletResponse resp = (HttpServletResponse) servRes;
 	    
 	    req.setCharacterEncoding("UTF-8");
-	    
-	    System.out.println("\n" + teste + "\n");
-	    
 	   
 	    String path = req.getRequestURI().substring(req.getContextPath().length());
 	    String easyNext = path.substring(1);
@@ -73,7 +70,15 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    
 	    System.out.println("requisição a \"" + path);
 	    
-	    if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
+
+	    
+	    System.out.println("\nuser: " + user + "\n");
+	    /*if(user == null)
+	    {
+	    	resp.sendRedirect(req.getContextPath() + "/login");
+	    	return;
+	    }
+	    else*/ if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
 	    else if (path.equals("/")) showMainPage(req, resp);
 	    else req.getRequestDispatcher(path).forward(req, resp); 
     }
