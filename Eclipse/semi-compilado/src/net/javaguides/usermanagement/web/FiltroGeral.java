@@ -4,6 +4,8 @@ import java.io.IOException;
 //import java.sql.SQLException;
 //import java.util.List;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,9 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/*import net.javaguides.usermanagement.dao.ProntuarioDAO;
-import net.javaguides.usermanagement.model.Leito;
-import net.javaguides.usermanagement.model.Prontuario;*/
+import net.javaguides.usermanagement.dao.LoginDAO;
 
 /**
  * prontuarioServlet.java
@@ -36,18 +36,18 @@ import net.javaguides.usermanagement.model.Prontuario;*/
 public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
+	private LoginDAO loginDAO;
+	private String teste = "";
 	//private ProntuarioDAO prontuarioDAO;
 	
 	private ServletContext context;
 	
-	
-	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
-			throws IOException, ServletException {
-
-		System.out.println("Showing main page");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
-		dispatcher.forward(request, response);
+	public FiltroGeral()
+	{
+		super();
+		loginDAO = new LoginDAO();
 		
+		teste = "Hora atual: " + LocalDateTime.now().toString();
 	}
 
 	@Override
@@ -58,14 +58,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    
 	    req.setCharacterEncoding("UTF-8");
 	    
-	    //String segredinho = WebUtils.extrairSegredoCodificado(req);
-	    //Usuario logadoComo = tokenSeguroDAO.logado(segredinho);
-	    //req.setAttribute("usuario", logadoComo);
-	    //if (logadoComo != null) logadoComo.acessou();
-	    
-	    //req.setAttribute("forum", this.forum);
-	    //req.setAttribute("tokens", this.tokenSeguroDAO);
-	    //req.setAttribute("usuarios", this.usuarioDAO);
+	    System.out.println("\n" + teste + "\n");
 	    
 	   
 	    String path = req.getRequestURI().substring(req.getContextPath().length());
@@ -78,19 +71,20 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    System.out.println("FILTRANDO");
 	    
 	    System.out.println("requisição a \"" + path);
-	    if (path.equals("")) {
-	      resp.sendRedirect(req.getContextPath() + "/");
-	    } else if (path.equals("/")) {
-	      showMainPage(req, resp);
-	    } /*else if (path.startsWith(PaginaJSP.parent)) {
-	      // servir JSP...
-	      chain.doFilter(req, resp);
-	    }*/ else {
-	      // passar adiante (e.g. servlet controlador, ou arquivo estático)
-	      req.getRequestDispatcher(path).forward(req, resp); 
-	    }
+	    
+	    if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
+	    else if (path.equals("/")) showMainPage(req, resp);
+	    else req.getRequestDispatcher(path).forward(req, resp); 
     }
+	
+	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
 
+		System.out.println("Showing main page");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
+		dispatcher.forward(request, response);
+		
+	}
 
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
