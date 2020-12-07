@@ -39,20 +39,14 @@ public class MainPageServlet extends HttpServlet
 		//String action = request.getServletPath();
 		request.setCharacterEncoding("UTF-8");
 
-		try {
+		System.out.println("MAIN PAGE SERVLET, AQUI E PROIBIDO");
+		
+		/*try {
 			showMainPage(request, response);
 		} catch (SQLException ex) {
 			throw new ServletException(ex);
-		}
+		}*/
 	}
-	
-	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
 
-		System.out.println("Showing main page");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("homePage.jsp");
-		dispatcher.forward(request, response);
-		
-	}
 	
 }

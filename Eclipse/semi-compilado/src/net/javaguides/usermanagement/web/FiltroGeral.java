@@ -32,7 +32,7 @@ import net.javaguides.usermanagement.model.Prontuario;*/
  * @email Hugo Martins
  */
 
-@WebFilter("/semi-compilado/*")
+@WebFilter("/*")
 public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
@@ -41,102 +41,56 @@ public class FiltroGeral extends HttpServlet implements Filter
 	private ServletContext context;
 	
 	
-	/*public void init() 
-	{
-		//prontuarioDAO = new ProntuarioDAO();
-		System.out.println("init(void) (filtrogeral)");
-	}*/
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
-			throws SQLException, IOException, ServletException {
+			throws IOException, ServletException {
 
-		System.out.println("Showing main page (filtrogeral)");
+		System.out.println("Showing main page");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
 		dispatcher.forward(request, response);
 		
 	}
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException 
-	{
-		//String action = request.getServletPath();
-		request.setCharacterEncoding("UTF-8");
-
-		String action = request.getServletPath();
-		System.out.println("acao: " + action);
-		try {
-			switch (action) {
-				case "/leitos":
-					System.out.println("leitos no get do filtro geral");
-					break;
-				default:
-					System.out.println("showing main page (filtro geral)");
-					showMainPage(request, response);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 
 	@Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws ServletException, IOException {
-        HttpServletRequest request = (HttpServletRequest) req;
-        String requestURI = request.getRequestURI();
-        
-        System.out.println("doFilter(filtrogeral): requestURI: " + requestURI);
+    public void doFilter(ServletRequest servReq, ServletResponse servRes, FilterChain chain) throws ServletException, IOException {
 
-        if (requestURI.startsWith("/leitos")) {
-            //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
-            //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
-        	System.out.println("filtrando o /leitos");
-            req.getRequestDispatcher("/leito").forward(req, res);
-        }
-        else if (requestURI.startsWith("/prontuarios")) {
-            //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
-            //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
-        	System.out.println("filtrando o /prontuarios");
-            req.getRequestDispatcher("/prontuarios").forward(req, res);
-        }
-        else if (requestURI.startsWith("/relatorios")) {
-            //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
-            //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
-        	System.out.println("filtrando o /relatorios");
-            req.getRequestDispatcher("/relatorios").forward(req, res);
-   
-        }
-        else if (requestURI.startsWith("/semi-compilado")) {
-            //String toReplace = requestURI.substring(requestURI.indexOf("/Dir_My_App"), requestURI.lastIndexOf("/") + 1);
-            //String newURI = requestURI.replace(toReplace, "?Contact_Id=");
-        	System.out.println("filtrando o projeto todo\n\n\n\n\n");
-            req.getRequestDispatcher("/").forward(req, res);
-   
-        } else {
-            chain.doFilter(req, res);
-        }
+	    HttpServletRequest req = (HttpServletRequest) servReq;
+	    HttpServletResponse resp = (HttpServletResponse) servRes;
+	    
+	    req.setCharacterEncoding("UTF-8");
+	    
+	    //String segredinho = WebUtils.extrairSegredoCodificado(req);
+	    //Usuario logadoComo = tokenSeguroDAO.logado(segredinho);
+	    //req.setAttribute("usuario", logadoComo);
+	    //if (logadoComo != null) logadoComo.acessou();
+	    
+	    //req.setAttribute("forum", this.forum);
+	    //req.setAttribute("tokens", this.tokenSeguroDAO);
+	    //req.setAttribute("usuarios", this.usuarioDAO);
+	    
+	   
+	    String path = req.getRequestURI().substring(req.getContextPath().length());
+	    String easyNext = path.substring(1);
+	    String qs = req.getQueryString();
+	    if (qs != null && qs.length() > 0) easyNext += "?" + qs;
+	    req.setAttribute("easyNext", easyNext);
+	    req.setAttribute("fullPath", path);
+	    
+	    System.out.println("FILTRANDO");
+	    
+	    System.out.println("requisição a \"" + path);
+	    if (path.equals("")) {
+	      resp.sendRedirect(req.getContextPath() + "/");
+	    } else if (path.equals("/")) {
+	      showMainPage(req, resp);
+	    } /*else if (path.startsWith(PaginaJSP.parent)) {
+	      // servir JSP...
+	      chain.doFilter(req, resp);
+	    }*/ else {
+	      // passar adiante (e.g. servlet controlador, ou arquivo estático)
+	      req.getRequestDispatcher(path).forward(req, resp); 
+	    }
     }
-	/*public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		System.out.println("doing filter (filtrogeral)");		
-		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
-		
-		String uri = req.getRequestURI();
-		System.out.println("uri = " + uri);
-		//this.context.log("Requested Resource::"+uri);
-		
-		HttpSession session = req.getSession(false);
-		
-		if(session == null && !(uri.endsWith("html") || uri.endsWith("LoginServlet"))){
-			//this.context.log("Unauthorized access request");
-			res.sendRedirect("login.html");
-		}else{
-			// pass the request along the filter chain
-			chain.doFilter(request, response);
-		}
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
-	}*/
+
 
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
