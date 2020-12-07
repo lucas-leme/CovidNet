@@ -38,6 +38,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
 	private LoginDAO loginDAO;
+	
 	//private String teste = "";
 	private User user;
 
@@ -69,9 +70,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    System.out.println("FILTRANDO");
 	    
 	    System.out.println("requisição a \"" + path);
-	    
 
-	    
 	    System.out.println("\nuser: " + user + "\n");
 	    /*if(user == null)
 	    {
