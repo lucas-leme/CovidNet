@@ -38,7 +38,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
 	private LoginDAO loginDAO;
-	
+
 	//private String teste = "";
 	private User user;
 
