@@ -143,7 +143,7 @@ public class FilaDePacienteDAO {
 		}
 		
 		//atualiza tabela de historico
-		relatorioDAO.insertPedido(prontuario.getHospitalDestinoId());
+		relatorioDAO.insertPedido(prontuario.getHospitalId());
 	}
 	
 	public List<FilaDePaciente> selectAllPacientesNaFila() {

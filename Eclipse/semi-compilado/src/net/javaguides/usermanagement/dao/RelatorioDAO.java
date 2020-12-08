@@ -6,12 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import net.javaguides.usermanagement.model.RelatorioVagas;
-import net.javaguides.usermanagement.model.Paciente;
 import net.javaguides.usermanagement.model.RelatorioUti;
 
 /**
@@ -102,12 +102,19 @@ public class RelatorioDAO {
 	
 	public void insertPedido(int hospital_origem_id) throws SQLException {
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		String today2 = formatter.format(today);
+		
 		try (Connection connection = getConnection();
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PEDIDO)) {
-			preparedStatement.setString(1, (new Date()).toString());
+			preparedStatement.setString(1, today2);
 			preparedStatement.setInt(2, hospital_origem_id);
 	
+			System.out.println(preparedStatement);
+			System.out.println(today2);
+			System.out.println(hospital_origem_id);
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -117,12 +124,17 @@ public class RelatorioDAO {
 	
 	public void insertAlocacao(int hospital_destino_id) throws SQLException {
 		
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		String today2 = formatter.format(today);
+		
 		try (Connection connection = getConnection();
 			
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ALOCACAO)) {
-			preparedStatement.setString(1, (new Date()).toString());
+			preparedStatement.setString(1, today2);
 			preparedStatement.setInt(2, hospital_destino_id);
 	
+			System.out.println(preparedStatement);
 			preparedStatement.executeUpdate();
 			
 		} catch (SQLException e) {
