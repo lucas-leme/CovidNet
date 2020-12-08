@@ -135,6 +135,8 @@ table {
   width: 100%;
   margin: 0 auto;
   position: relative;
+ 
+  border: 10px;
 }
 table * {
   position: relative;
@@ -153,10 +155,10 @@ table tbody tr:last-child {
   border: 0;
 }
 table td, table th {
-  text-align: left;
+  text-align: center;
 }
 table td.l, table th.l {
-  text-align: right;
+  text-align: center;
 }
 table td.c, table th.c {
   text-align: center;
@@ -207,17 +209,17 @@ tbody tr:hover {
 
 .column4 {
   width: 110px;
-  text-align: right;
+  text-align: center;
 }
 
 .column5 {
   width: 170px;
-  text-align: right;
+  text-align: center;
 }
 
 .column6 {
   width: 222px;
-  text-align: right;
+  text-align: center;
   padding-right: 62px;
 }
 
@@ -276,7 +278,7 @@ tbody tr:hover {
   .column4,
   .column5,
   .column6 {
-    text-align: left;
+    text-align: center;
   }
 
   .column4,

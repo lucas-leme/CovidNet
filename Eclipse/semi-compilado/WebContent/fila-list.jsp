@@ -27,26 +27,20 @@
 	    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
 	  </div>
 	</header>
+	<br>
+	<br>
 	<center>
-		<h1>Gerenciamento de leitos</h1>
-        <h2>
-        	<a href="${pageContext.request.contextPath}/leitos/new">Adicionar leito</a>
-        	&nbsp;&nbsp;&nbsp;
-        	<a href="${pageContext.request.contextPath}/leitos">Listar leitos</a>
-        	
-        </h2>
+		<h1>Lista de prioridade para alocamento em UTIs</h1>
 	</center>
-    <div align="center">
-        <h2>Lista de leitos</h2>
-            <div align="center">
-        <h2>Fila de pacientess</h2>
-        <table border="1" cellpadding="5">
+	<br>
+	<br>
+    <div class="center">
+        <table>
             <tr>
                 <th>Ordem</th>
                 <th>Data</th>
                 <th>Prioridade</th>
                 <th>Nome do paciente</th>
-                <th>Acoes</th>
             </tr>
             
             <c:forEach var="elemento_fila" items="${fila_pacientes}">
@@ -55,11 +49,6 @@
                     <td><c:out value="${elemento_fila.data}" /></td>
                     <td><c:out value="${elemento_fila.prioridade}" /></td>
                     <td><c:out value="${elemento_fila.nome}" /></td>
-                    <td>
-                    	<a href="${pageContext.request.contextPath}/leitos/edit?id=<c:out value='${elemento_fila.id}' />">Editar</a>
-                    	<!--&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<!--a href="delete?id=<c:out value='${leito.id}' />">Deletar</a-->                    	
-                    </td>
                 </tr>
             </c:forEach>
         </table>
