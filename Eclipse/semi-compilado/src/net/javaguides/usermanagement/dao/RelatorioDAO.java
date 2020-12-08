@@ -5,10 +5,13 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import net.javaguides.usermanagement.model.RelatorioVagas;
+import net.javaguides.usermanagement.model.Paciente;
 import net.javaguides.usermanagement.model.RelatorioUti;
 
 /**
@@ -39,6 +42,16 @@ public class RelatorioDAO {
 			"SELECT hv.data, SUM(hv.vagas_ocupadas) as vagas_ocupadas, SUM(hv.vagas_totais) as vagas_totais FROM historico_vagas hv\n"
 			+ "WHERE data >= ? AND data <= ?\n"
 			+ "GROUP BY hv.data";
+	
+	private static final String INSERT_PEDIDO = 
+			"INSERT INTO historico_uti (data_pedido, hospital_origem_id)\n"
+			+ "VALUES \n"
+			+ "(?, ?)";
+	
+	private static final String INSERT_ALOCACAO = 
+			"INSERT INTO historico_uti (data_alocacao, hospital_destino_id)\n"
+			+ "VALUES \n"
+			+ "(?, ?)";
 	
 	private static final String RELATORIO_UTI_ALOCACOES_POR_HOSPITAL = 
 			"SELECT data_alocacao, COUNT(data_alocacao) as alocacoes FROM historico_uti\n"
@@ -85,6 +98,36 @@ public class RelatorioDAO {
 			e.printStackTrace();
 		}
 		return connection;
+	}
+	
+	public void insertPedido(int hospital_origem_id) throws SQLException {
+		
+		try (Connection connection = getConnection();
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PEDIDO)) {
+			preparedStatement.setString(1, (new Date()).toString());
+			preparedStatement.setInt(2, hospital_origem_id);
+	
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+	}
+	
+	public void insertAlocacao(int hospital_destino_id) throws SQLException {
+		
+		try (Connection connection = getConnection();
+			
+			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_ALOCACAO)) {
+			preparedStatement.setString(1, (new Date()).toString());
+			preparedStatement.setInt(2, hospital_destino_id);
+	
+			preparedStatement.executeUpdate();
+			
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
 	}
 
 	public List<RelatorioVagas> RelatorioVagasHospital(String data_inicio, String data_fim, int hospital_id) {
