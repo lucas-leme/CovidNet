@@ -23,7 +23,7 @@
   <a href="${pageContext.request.contextPath}">CoronaViewer</a>
   <div class="right">
     <a href="${pageContext.request.contextPath}">Tela Inicial</a>
-    <a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">Relatórios</a>
+    <a href="${pageContext.request.contextPath}/relatorios">Relatórios</a>
     <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
     <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
   </div>

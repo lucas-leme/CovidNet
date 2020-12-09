@@ -69,7 +69,7 @@ public class RelatorioServlet extends HttpServlet
 				updateRelatorio(request, response);
 				break;
 			default:
-				listRelatorio(request, response);
+				mainPageRelas(request, response);
 				break;
 			}
 		} catch (SQLException ex) {
@@ -78,12 +78,10 @@ public class RelatorioServlet extends HttpServlet
 		}
 	}
 
-	private void listRelatorio(HttpServletRequest request, HttpServletResponse response)
+	private void mainPageRelas(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
-		//List<Relatorio> listRelatorio = relatorioDAO.selectAllRelatorios();
-		//request.setAttribute("listRelatorioEstadual", listRelatorioEstadual);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorios-main-page.jsp");
 		dispatcher.forward(request, response);
 	}
 
