@@ -87,33 +87,20 @@ CREATE TABLE IF NOT EXISTS `fila_de_pacientes` (
   `paciente_id` INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `relatorios` (
+CREATE TABLE IF NOT EXISTS `historico_vagas` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `data` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `tipo` VARCHAR(100) NOT NULL,
-  `num_casos` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `vagas_ocupadas` INT NOT NULL,
+  `vagas_totais` INT NOT NULL,
   `hospital_id` INT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `municipais` (
+CREATE TABLE IF NOT EXISTS `historico_uti` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nome_municipio` VARCHAR(255) NOT NULL,
-  `num_hospitais` INT NOT NULL,
-  `relatorio_id` INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS `hospitalares` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nome_hospital` VARCHAR(255) NOT NULL,
-  `relatorio_id` INT NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS `estaduais` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `nome_estado` VARCHAR(255) NOT NULL,
-  `num_hospitais` INT NOT NULL,
-  `num_municipios` INT NOT NULL,
-  `relatorio_id` INT NOT NULL
+  `data_pedido` DATE,
+  `hospital_origem_id` INT,
+  `data_alocacao` DATE,
+  `hospital_destino_id` INT
 );
 
 ALTER TABLE `prontuarios` ADD FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id`);
@@ -142,13 +129,11 @@ ALTER TABLE `leitos` ADD FOREIGN KEY (`enfermeiro_id`) REFERENCES `enfermeiros` 
 
 ALTER TABLE `fila_de_pacientes` ADD FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id`);
 
-ALTER TABLE `relatorios` ADD FOREIGN KEY (`hospital_id`) REFERENCES `hospitais` (`id`);
+ALTER TABLE `historico_vagas` ADD FOREIGN KEY (`hospital_id`) REFERENCES `hospitais` (`id`);
 
-ALTER TABLE `municipais` ADD FOREIGN KEY (`relatorio_id`) REFERENCES `relatorios` (`id`);
+ALTER TABLE `historico_uti` ADD FOREIGN KEY (`hospital_origem_id`) REFERENCES `hospitais` (`id`);
 
-ALTER TABLE `hospitalares` ADD FOREIGN KEY (`relatorio_id`) REFERENCES `relatorios` (`id`);
-
-ALTER TABLE `estaduais` ADD FOREIGN KEY (`relatorio_id`) REFERENCES `relatorios` (`id`);
+ALTER TABLE `historico_uti` ADD FOREIGN KEY (`hospital_destino_id`) REFERENCES `hospitais` (`id`);
 
 INSERT INTO `municipios` (`id`, `nome`)
 VALUES 

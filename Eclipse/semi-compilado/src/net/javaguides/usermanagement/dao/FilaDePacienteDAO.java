@@ -16,6 +16,8 @@ public class FilaDePacienteDAO {
 	
 	private ProntuarioDAO prontuarioDAO = new ProntuarioDAO();
 	private PacienteDAO pacienteDAO = new PacienteDAO();
+	private RelatorioDAO relatorioDAO = new RelatorioDAO();
+
 
 	private String jdbcURL = "jdbc:mariadb://server3643.ml:3306/db1?useSSL=false";
 	private String jdbcUsername = "g1";
@@ -139,6 +141,9 @@ public class FilaDePacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}
+		
+		//atualiza tabela de historico
+		relatorioDAO.insertPedido(prontuario.getHospitalId());
 	}
 	
 	public List<FilaDePaciente> selectAllPacientesNaFila() {
@@ -220,6 +225,9 @@ public class FilaDePacienteDAO {
 		} catch (SQLException e) {
 			printSQLException(e);
 		}	
+		
+		//atualiza tabela de historico
+		relatorioDAO.insertAlocacao(hospital_de_destino_id);
 	}
 
 	private void printSQLException(SQLException ex) {
