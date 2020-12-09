@@ -1,6 +1,8 @@
 package net.javaguides.usermanagement.model;
 import java.util.Date;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
 /**
  * User.java
  * This is a model class represents a User entity
@@ -13,6 +15,8 @@ public class Relatorio {
 	protected Date data;
 	protected int id;
 	
+	protected String dataInicio, dataFim;
+	
 	public Relatorio(String tipo, Date data, int id) {
 		super();
 
@@ -21,11 +25,13 @@ public class Relatorio {
 		this.data = data;
 	}
 	
-	public Relatorio(String tipo, Date data) {
+	public Relatorio(String dataInicio, String dataFim) {
 		super();
 
-		this.tipo = tipo;
-		this.data = data;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		
+		data = new Date();
 	}
 
 	public void setId (int id) {
@@ -49,6 +55,22 @@ public class Relatorio {
 	}
 	public void setData(Date data) {
 		this.data = data;
+	}
+
+	public String getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(String dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public String getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(String dataFim) {
+		this.dataFim = dataFim;
 	}
 }
 

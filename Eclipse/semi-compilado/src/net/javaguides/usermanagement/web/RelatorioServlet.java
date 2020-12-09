@@ -11,15 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.javaguides.usermanagement.dao.RelatorioEstadualDAO;
-import net.javaguides.usermanagement.dao.RelatorioHospitalarDAO;
-import net.javaguides.usermanagement.dao.RelatorioMunicipalDAO;
+import net.javaguides.usermanagement.dao.HospitalDAO;
+import net.javaguides.usermanagement.dao.RelatorioDAO;
 import net.javaguides.usermanagement.model.Relatorio;
-//import net.javaguides.usermanagement.dao.RelatorioHospitalarDAO;
-//import net.javaguides.usermanagement.dao.RelatorioMunicipalDAO;
-import net.javaguides.usermanagement.model.RelatorioEstadual;
-import net.javaguides.usermanagement.model.RelatorioHospitalar;
-import net.javaguides.usermanagement.model.RelatorioMunicipal;
 
 /**
  * ControllerServlet.java
@@ -32,18 +26,17 @@ import net.javaguides.usermanagement.model.RelatorioMunicipal;
 		urlPatterns = {"/relatorios","/relatorios/edit","/relatorios/update/*", 
 				"/relatorios/new", "/relatorios/insert", "/relatorios/delete"}
 )
-public class RelatorioServlet extends HttpServlet {
+public class RelatorioServlet extends HttpServlet 
+{
 	private static final long serialVersionUID = 1L;
-	private RelatorioEstadualDAO relatorioEstadualDAO;
-	private RelatorioMunicipalDAO relatorioMunicipalDAO;
-	private RelatorioHospitalarDAO relatorioHospitalarDAO;
+	private RelatorioDAO relatorioDAO;
+	private HospitalDAO hospitalDAO;
 	
 	private static final String root = "/semi-compilado";
 	
 	public void init() {
-		relatorioEstadualDAO = new RelatorioEstadualDAO();
-		relatorioMunicipalDAO = new RelatorioMunicipalDAO();
-		relatorioHospitalarDAO = new RelatorioHospitalarDAO();
+		relatorioDAO = new RelatorioDAO();
+		hospitalDAO = new HospitalDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -88,8 +81,8 @@ public class RelatorioServlet extends HttpServlet {
 	private void listRelatorio(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
 		
-		List<RelatorioEstadual> listRelatorioEstadual = relatorioEstadualDAO.selectAllRelatorios();
-		request.setAttribute("listRelatorioEstadual", listRelatorioEstadual);
+		//List<Relatorio> listRelatorio = relatorioDAO.selectAllRelatorios();
+		//request.setAttribute("listRelatorioEstadual", listRelatorioEstadual);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -115,8 +108,9 @@ public class RelatorioServlet extends HttpServlet {
 			case("/semi-compilado/relatorioHospitalar"):
 				System.out.println("/semi-compilado/relatorioHospitalar");
 				
-				RelatorioHospitalar relHosp = new RelatorioHospitalar(dataInicio, dataFim);
-				relatorioHospitalarDAO.insertRelatorio(relHosp);
+				//Relatorio relHosp = new Relatorio(dataInicio, dataFim);
+				//relatorioDAO.RelatorioUtiAlocacoesPorHospital(data_inicio, data_fim, hospital_destino_id)
+				System.out.println("AINDA NAO DISPONIVEL");
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
@@ -126,8 +120,8 @@ public class RelatorioServlet extends HttpServlet {
 
 				System.out.println("/semi-compilado/relatoriomunicipal");
 				
-				RelatorioMunicipal relMuni = new RelatorioMunicipal(dataInicio, dataFim);
-				relatorioMunicipalDAO.insertRelatorio(relMuni);
+				Relatorio relMuni = new Relatorio(dataInicio, dataFim);
+				//relatorioDAO.
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-municipal-list.jsp");
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
@@ -136,8 +130,8 @@ public class RelatorioServlet extends HttpServlet {
 			case("/semi-compilado/relatorioEstadual"):
 				System.out.println("/semi-compilado/relatorioEstadual");
 				
-				RelatorioEstadual relEstad = new RelatorioEstadual(dataInicio, dataFim);
-				relatorioEstadualDAO.insertRelatorio(relEstad);
+				Relatorio relEstad = new RelatorioEstadual(dataInicio, dataFim);
+				//relatorioDAO.insertRelatorio(relEstad);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
@@ -158,7 +152,7 @@ public class RelatorioServlet extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
-		RelatorioEstadual existingRelatorioEstadual = relatorioEstadualDAO.selectRelatorio(id);
+		Relatorio existingRelatorioEstadual = null;//relatorioEstadualDAO.selectRelatorio(id);
 		
 		System.out.println("Rel (showeditform): ");
 		System.out.println(existingRelatorioEstadual);
@@ -182,8 +176,8 @@ public class RelatorioServlet extends HttpServlet {
 		
 		
 		
-		RelatorioEstadual newRelatorio = new RelatorioEstadual(dataInicial, dataFinal);
-		relatorioEstadualDAO.insertRelatorio(newRelatorio);
+		Relatorio newRelatorio = null;//new RelatorioEstadual(dataInicial, dataFinal);
+		//relatorioEstadualDAO.insertRelatorio(newRelatorio);
 		response.sendRedirect(root + "/relatorioEstadual");
 	}
 
@@ -198,9 +192,9 @@ public class RelatorioServlet extends HttpServlet {
 		System.out.println("\n\nUPDATE RELAS\n\n");
 		System.out.println("ID: " + id);
 
-		RelatorioEstadual book = new RelatorioEstadual(id, nomeEstado, numeroMunicipios, numeroHospitais);
+		Relatorio book = null;//new RelatorioEstadual(id, nomeEstado, numeroMunicipios, numeroHospitais);
 
-		relatorioEstadualDAO.updateRelatorio(book);
+		//relatorioEstadualDAO.updateRelatorio(book);
 		response.sendRedirect(root + "/relatorioEstadual");
 	}
 
@@ -208,7 +202,7 @@ public class RelatorioServlet extends HttpServlet {
 			throws SQLException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		System.out.println("Deleting relatorio estadual");
-		relatorioEstadualDAO.deleteRelatorio(id);
+		//relatorioEstadualDAO.deleteRelatorio(id);
 		response.sendRedirect(root + "/relatorioEstadual");
 
 	}
