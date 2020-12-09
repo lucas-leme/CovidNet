@@ -103,18 +103,25 @@ public class RelatorioServlet extends HttpServlet {
 		request.setAttribute("rdata_fim", dataFim);
 		request.setAttribute("relatorio_id", relatorioId);
 		
+		RequestDispatcher dispatcher = null;
+		
 		switch(relatorioId) {
 			case("/semi-compilado/relatorioHospitalar"):
+				
+				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				break;
 			case("/semi-compilado/relatorioMunicipal"):
+				
+				dispatcher = request.getRequestDispatcher("/relatorio-municipal-list.jsp");
 				break;
 			case("/semi-compilado/relatorioEstadual"):
+				
+				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				break;
 			default:
+				dispatcher = request.getRequestDispatcher("/relatorio-main-page.jsp");
 				break;
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-form.jsp");
 		// NESSE JSP VAI TER QUE TER SELECTS COM AS SOLICITACOES RELEVANTES
 		// DEVE REDIRECIONAR PRA /relatorioEstadual/insert
 		dispatcher.forward(request, response);
