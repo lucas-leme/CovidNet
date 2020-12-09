@@ -120,6 +120,7 @@
 				        let opt = document.createElement('option');
 				        opt.value = inputs[i + 1].value;
 				        opt.innerHTML = inputs[i].value;
+				        opt.name = "which_element";
 				        
 				    	list_inputs.push(opt);	
 				    	select.appendChild(opt);
