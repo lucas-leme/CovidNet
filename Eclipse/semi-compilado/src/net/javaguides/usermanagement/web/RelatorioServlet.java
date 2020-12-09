@@ -113,8 +113,11 @@ public class RelatorioServlet extends HttpServlet
 		RequestDispatcher dispatcher = null;
 		
 		switch(relatorioId) {
-			case("/semi-compilado/relatorioHospitalar"):
+			case("rel_hospitalar"):
 				System.out.println("/semi-compilado/relatorioHospitalar");
+
+				String hospital = request.getParameter("which_element");
+				System.out.println("HOSPITAL: " + hospital);
 				
 				//Relatorio relHosp = new Relatorio(dataInicio, dataFim);
 				//relatorioDAO.RelatorioUtiAlocacoesPorHospital(data_inicio, data_fim, hospital_destino_id)
@@ -124,7 +127,7 @@ public class RelatorioServlet extends HttpServlet
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 			
 				break;
-			case("/semi-compilado/relatorioMunicipal"):
+			case("rel_municipal"):
 
 				System.out.println("/semi-compilado/relatoriomunicipal");
 				
@@ -135,10 +138,10 @@ public class RelatorioServlet extends HttpServlet
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 				
 				break;
-			case("/semi-compilado/relatorioEstadual"):
+			case("rel_estadual"):
 				System.out.println("/semi-compilado/relatorioEstadual");
 				
-				Relatorio relEstad = new RelatorioEstadual(dataInicio, dataFim);
+				Relatorio relEstad = new Relatorio(dataInicio, dataFim);
 				//relatorioDAO.insertRelatorio(relEstad);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");

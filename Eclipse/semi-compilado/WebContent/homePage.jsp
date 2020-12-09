@@ -56,7 +56,7 @@
 <div class="center table_margin">
   <table class="table_margin">
     <td class="frame center">
-    	<a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">
+    	<a href="${pageContext.request.contextPath}/relatorios">
 	      <img class="img_cols" src="https://i.imgur.com/xEVDzdk.png" alt="" />
 	
 	      <h3 class="text_cols">Relatórios</h3>
