@@ -98,7 +98,21 @@ public class RelatorioServlet extends HttpServlet {
 		System.out.println("datainicio: " + dataInicio);
 		System.out.println("datafim " + dataFim);
 		System.out.println("relatorioid: " + relatorioId);
+
+		request.setAttribute("data_inicio", dataInicio);
+		request.setAttribute("rdata_fim", dataFim);
+		request.setAttribute("relatorio_id", relatorioId);
 		
+		switch(relatorioId) {
+			case("/semi-compilado/relatorioHospitalar"):
+				break;
+			case("/semi-compilado/relatorioMunicipal"):
+				break;
+			case("/semi-compilado/relatorioEstadual"):
+				break;
+			default:
+				break;
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorio-estadual-form.jsp");
 		// NESSE JSP VAI TER QUE TER SELECTS COM AS SOLICITACOES RELEVANTES
