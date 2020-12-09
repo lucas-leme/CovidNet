@@ -8,6 +8,7 @@
   <meta http-equiv="Content-Language" content="pt-br" 
   	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
 	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 </head>
 <body>
 <header>
@@ -31,20 +32,41 @@
 	
 	<c:if test="${prontuario != null}">
 		<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
-			<select id="hospital_id" name="hospital_id">
-				<option id="estadual" value="${pageContext.request.contextPath}/relatorioEstadual">Estadual</option>
-				<option id="hospitalar" value="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</option>
-				<option id="municipal" value="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</option>
-	        </select>
 	        
-	        <b>Data de inicio:</b>
-	        <input type="date" name="data_inicio">
-	        
-	        <b>Data de fim:</b>
-	        <input type="date" name="data_fim">
-	        
-	        <input type="submit" value="Gerar relatório">
+	        <table>	        
+	        	<tr>
+	        		<td>
+				        <b>Data de inicio:</b>
+				        <input class="ui-dispatcher" type="date" name="data_inicio">
+	        		</td>
+			    </tr>
+			        
+			    <tr>
+			    	<td>
+				        <b>Data de fim:</b>
+				        <input class="ui-dispatcher"  type="date" name="data_fim">
+			    	</td>
+			    </tr>
+			        
+	        	<tr>
+	        		<td>
+	        			<select id="hospital_id" name="hospital_id">
+							<option id="estadual" value="${pageContext.request.contextPath}/relatorioEstadual">Estadual</option>
+							<option id="hospitalar" value="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</option>
+							<option id="municipal" value="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</option>
+				        </select>
+	        		</td>
+	        	</tr>
+	        	
+			    <tr>
+			    	<td>
+			        	<input type="submit" value="Gerar relatório">
+			    	</td>
+			    </tr>
+		    </table>
 		</form>
     </c:if>
 </body>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 </html>
