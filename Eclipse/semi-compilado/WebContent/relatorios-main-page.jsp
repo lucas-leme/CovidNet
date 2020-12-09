@@ -60,7 +60,7 @@
         	
         	<tr>
         		<td>
-        		'	<div id="hospitais">
+        			<div id="hospitais">
 	       	 			<c:forEach var="hospital" items="${hospitais}">
 	       	 				<div>
 				                <input type="hidden" name="nome" value="${hospital.nome}"/>
@@ -68,18 +68,15 @@
 	       	 				</div>
 			            </c:forEach>
 			        </div>
-			            
-        			<select id="rel_options">
-				        <c:forEach var="hospital" items="${hospitais}">
-			                <option value="${hospital.id}">
-			                	${hospital.nome}
+        			<div id="municipios">
+	       	 			<c:forEach var="municipio" items="${municipios}">
+	       	 				<div>
+				                <input type="hidden" name="nome" value="${municipio.nome}"/>
+				                <input type="hidden" name="id" value="${municipio.id}"/>
+	       	 				</div>
 			            </c:forEach>
-				        <c:forEach var="municipio" items="${municipios}">
-			                <option value="${municipio.id}">
-			                	${municipio.nome}
-			                </option>
-			            </c:forEach>
-		            </select>
+			        </div>
+        			<select id="rel_options"></select>
         		</td>
         	</tr>
         
@@ -103,34 +100,41 @@
 			    let selectBox = obj;
 			    let selected = selectBox.options[selectBox.selectedIndex].value;
 			    let select = document.getElementById("rel_options");
+			    
+			    select.textContent = '';
 
 			    console.log(selected);
 			    
-			    if(selected === 'rel_hospitalar'){
-			    	let hospitais = document.getElementById("hospitais");
+			    if(selected === 'rel_hospitalar' || selected === 'rel_municipal')
+			    {
+			    	let elements;
 			    	
-			    	let divs = hospitais.getElementsByTagName('div');
-			    	let divArray = [];
+			    	if(selected === 'rel_hospitalar') elements = document.getElementById("hospitais");
+			    	else elements = document.getElementById("municipios");
 			    	
-			    	for (var i = 0; i < divs.length; i += 1) {
-			    	  divArray.push(divs[i].innerHTML);
+			    	let inputs = elements.getElementsByTagName('input');
+			    	let list_inputs = [];
+			    	
+			    	for (var i = 0; i < inputs.length; i += 2) {
+				    	
+				        let opt = document.createElement('option');
+				        opt.value = inputs[i + 1].value;
+				        opt.innerHTML = inputs[i].value;
+				        
+				    	list_inputs.push(opt);	
+				    	select.appendChild(opt);
 			    	}
 			    	
-			    	console.log(divArray);
+			    	console.log(list_inputs);
 			    	
-			    	console.log(hospitais);
+			    	//console.log(divArray);
 			    	
-			        let opt = document.createElement('option');
-			        opt.value = "eae";
-			        opt.innerHTML = "hello world";
-			        
-			        select.appendChild(opt);
+			    	//console.log(elements);
 			        
 			        console.log("SELECTED hospitalar");
-			    }			    
-			    if(selected === 'rel_municipal'){
-			        console.log("SELECTED municipal");
-			    }			    
+			        
+			        //select.appendChild(list_inputs);
+			    }		    
 			    if(selected === 'rel_estadual'){
 			        console.log("SELECTED estadual");
 			    }
