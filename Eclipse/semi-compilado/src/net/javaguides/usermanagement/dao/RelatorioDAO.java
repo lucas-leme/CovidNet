@@ -196,7 +196,7 @@ public class RelatorioDAO {
 		return relatorio;
 	}
 	
-	public List<RelatorioVagas> RelatorioVagasTotal(String data_inicio, String data_fim) {
+	public List<RelatorioVagas> RelatorioVagasTotais(String data_inicio, String data_fim) {
 		
 		List<RelatorioVagas> relatorio = new ArrayList<>();
 		

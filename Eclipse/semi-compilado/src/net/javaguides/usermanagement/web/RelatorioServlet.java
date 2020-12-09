@@ -16,6 +16,8 @@ import net.javaguides.usermanagement.dao.RelatorioDAO;
 import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Municipio;
 import net.javaguides.usermanagement.model.Relatorio;
+import net.javaguides.usermanagement.model.RelatorioUti;
+import net.javaguides.usermanagement.model.RelatorioVagas;
 
 /**
  * ControllerServlet.java
@@ -111,38 +113,61 @@ public class RelatorioServlet extends HttpServlet
 		request.setAttribute("relatorio_id", relatorioId);
 		
 		RequestDispatcher dispatcher = null;
+		List<RelatorioUti> alocs = null;			
+		List<RelatorioUti> pedidos = null;
+		List<RelatorioVagas> vagas = null;
 		
 		switch(relatorioId) {
 			case("rel_hospitalar"):
-				System.out.println("/semi-compilado/relatorioHospitalar");
+				System.out.println("hospitalar");
 
-				String hospital = request.getParameter("which_element");
-				System.out.println("HOSPITAL: " + hospital);
+				int idHospital = Integer.parseInt(request.getParameter("which_element"));
+				System.out.println("HOSPITAL: " + idHospital);
 				
 				//Relatorio relHosp = new Relatorio(dataInicio, dataFim);
-				//relatorioDAO.RelatorioUtiAlocacoesPorHospital(data_inicio, data_fim, hospital_destino_id)
-				System.out.println("AINDA NAO DISPONIVEL");
+				
+				alocs = relatorioDAO.RelatorioUtiAlocacoesPorHospital(dataInicio, dataFim, idHospital);				
+				pedidos = relatorioDAO.RelatorioUtiPedidosPorHospital(dataInicio, dataFim, idHospital);
+				vagas = relatorioDAO.RelatorioVagasHospital(dataInicio, dataFim, idHospital);
+
+				request.setAttribute("alocs", alocs);
+				request.setAttribute("pedidos", pedidos);
+				request.setAttribute("vagas", vagas);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 			
 				break;
 			case("rel_municipal"):
+				System.out.println("municipal");
 
-				System.out.println("/semi-compilado/relatoriomunicipal");
+				int idMunicipio = Integer.parseInt(request.getParameter("which_element"));
+				System.out.println("MUNICIPIO: " + idMunicipio);
 				
-				Relatorio relMuni = new Relatorio(dataInicio, dataFim);
-				//relatorioDAO.
+				//Relatorio relHosp = new Relatorio(dataInicio, dataFim);
 				
-				dispatcher = request.getRequestDispatcher("/relatorio-municipal-list.jsp");
+				alocs = relatorioDAO.RelatorioUtiAlocacoesPorMunicipio(dataInicio, dataFim, idMunicipio);				
+				pedidos = relatorioDAO.RelatorioUtiPedidosPorMunicipio(dataInicio, dataFim, idMunicipio);
+				vagas = relatorioDAO.RelatorioVagasMunicipio(dataInicio, dataFim, idMunicipio);
+
+				request.setAttribute("alocs", alocs);
+				request.setAttribute("pedidos", pedidos);
+				request.setAttribute("vagas", vagas);
+				
+				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 				
 				break;
 			case("rel_estadual"):
-				System.out.println("/semi-compilado/relatorioEstadual");
+				System.out.println("estadual");
 				
-				Relatorio relEstad = new Relatorio(dataInicio, dataFim);
-				//relatorioDAO.insertRelatorio(relEstad);
+				alocs = relatorioDAO.RelatorioUtiAlocacoesTotais(dataInicio, dataFim);				
+				pedidos = relatorioDAO.RelatorioUtiPedidosTotais(dataInicio, dataFim);
+				vagas = relatorioDAO.RelatorioVagasTotais(dataInicio, dataFim);
+
+				request.setAttribute("alocs", alocs);
+				request.setAttribute("pedidos", pedidos);
+				request.setAttribute("vagas", vagas);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
 				System.out.println("JSP ESTADUAL APARECEU NA TELA");
