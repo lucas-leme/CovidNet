@@ -62,6 +62,7 @@
 	        	<tr>
 	        		<td>
 	        			<select id="rel_options"></select>
+	        			<!--input id="new_options" type="hidden"-->
 	        		</td>
 	        	</tr>
 	        	
@@ -81,22 +82,25 @@
 			{
 				console.log("Teste");
 				
-			    var selectBox = obj;
-			    var selected = selectBox.options[selectBox.selectedIndex].value;
-			    var textarea = document.getElementById("relatorio_id");
+			    let selectBox = obj;
+			    let selected = selectBox.options[selectBox.selectedIndex].value;
+			    let select = document.getElementById("rel_options");
 
 			    console.log(selected);
 			    
 			    if(selected === 'rel_hospitalar'){
-			        //textarea.style.display = "block";
+			        var opt = document.createElement('option');
+			        opt.value = "eae";
+			        opt.innerHTML = "hello world";
+			        
+			        select.appendChild(opt);
+			        
 			        console.log("SELECTED hospitalar");
 			    }			    
 			    if(selected === 'rel_municipal'){
-			        //textarea.style.display = "block";
 			        console.log("SELECTED municipal");
 			    }			    
 			    if(selected === 'rel_estadual'){
-			        //textarea.style.display = "block";
 			        console.log("SELECTED estadual");
 			    }
 			    else{
