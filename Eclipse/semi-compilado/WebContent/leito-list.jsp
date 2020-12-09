@@ -32,6 +32,9 @@
 	
     <div align="center">
     
+    <br>
+    <br>
+    
     <table>
 	    <tr><th><h1>Dados do Prontuário</h1></th></tr>
 	    <tr>
@@ -53,6 +56,9 @@
 			</td>
 		</tr>
 	</table>
+    
+    <br>
+    <br>
     
     <table>
     	<tr><th><h1>Questionário</h1></th></tr>
@@ -135,6 +141,11 @@
 					<input type="hidden" name="id_prontuario" value="${prontuario.id}"/>
 					<input type="submit" name="search_prontuario" value="Editar" />  
 				</form>
+				
+				<br>
+				<br>
+				<br>
+				<br>
 			    
 			    <form action="${pageContext.request.contextPath}/prontuarios/close" method="post">
 					<div  class="center">
@@ -145,6 +156,9 @@
 						<input type="submit" name="close_prontuario" value="Fechar prontuário" />
 					</div>
 				</form>    
+				
+				<br>
+				<br>
 				
 			    <form action="${pageContext.request.contextPath}/prontuarios/solicitar_uti" method="post">
 					<div  class="center">

@@ -10,6 +10,8 @@ public class RelatorioMunicipal extends Relatorio {
 
 	protected String nomeMunicipio;
 	protected int numeroHospitais;
+
+	protected String dataInicial, dataFinal;
 	
 	public RelatorioMunicipal(String nomeMunicipio, int numeroHospitais) {
 		super("Municipal", new Date(), 0);
@@ -19,6 +21,15 @@ public class RelatorioMunicipal extends Relatorio {
 	}
 
 	
+	public RelatorioMunicipal(String dataInicio, String dataFim) {
+
+		super("Municipal", new Date());
+		
+		this.dataInicial = dataInicio;
+		this.dataFinal = dataFim;
+	}
+
+
 	public void setNomeMunicipio (String nomeMunicipio) {
 		this.nomeMunicipio = nomeMunicipio;
 	}
@@ -35,6 +46,12 @@ public class RelatorioMunicipal extends Relatorio {
 	public int getNumeroHospitais() {
 		return numeroHospitais;
 	}
+	
+	public String getDataInicial() { return this.dataInicial; }
+	public void setDataInicial(String dataInicial) { this.dataInicial = dataInicial; }
+	
+	public String getDataFinal() { return this.dataFinal; }
+	public void setDataFinal(String dataFinal) { this.dataFinal = dataFinal; }
 }
 
 

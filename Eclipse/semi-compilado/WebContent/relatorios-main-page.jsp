@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +9,7 @@
   <meta http-equiv="Content-Language" content="pt-br" 
   	contentType="text/html; charset=UTF-8" pageEncoding="UTF-8">
 	<style><%@include file="/WEB-INF/css/homePage.css"%></style>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 </head>
 <body>
 <header>
@@ -29,22 +31,120 @@
 
 	<h1>Relatorios aqui</h1>
 	
-	<c:if test="${prontuario != null}">
-		<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
-			<select id="hospital_id" name="hospital_id">
-				<option id="estadual" value="${pageContext.request.contextPath}/relatorioEstadual">Estadual</option>
-				<option id="hospitalar" value="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</option>
-				<option id="municipal" value="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</option>
-	        </select>
-	        
-	        <b>Data de inicio:</b>
-	        <input type="date" name="data_inicio">
-	        
-	        <b>Data de fim:</b>
-	        <input type="date" name="data_fim">
-	        
-	        <input type="submit" value="Gerar relatório">
-		</form>
-    </c:if>
+	<form action="${pageContext.request.contextPath}/relatorios/new" method="post">
+        
+        <table>	        
+        	<tr>
+        		<td>
+			        <b>Data de inicio:</b>
+			        <input class="ui-dispatcher" type="date" name="data_inicio">
+        		</td>
+		    </tr>
+		        
+		    <tr>
+		    	<td>
+			        <b>Data de fim:</b>
+			        <input class="ui-dispatcher"  type="date" name="data_fim">
+		    	</td>
+		    </tr>
+		        
+        	<tr>
+        		<td>
+        			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)">
+						<option id="estadual" value="rel_estadual">Estadual</option>
+						<option id="hospitalar" value="rel_hospitalar">Hospitalar</option>
+						<option id="municipal" value="rel_municipal">Municipal</option>
+			        </select>
+        		</td>
+        	</tr>
+        	
+        	<tr>
+        		<td>
+        			<div id="hospitais">
+	       	 			<c:forEach var="hospital" items="${hospitais}">
+	       	 				<div>
+				                <input type="hidden" name="nome" value="${hospital.nome}"/>
+				                <input type="hidden" name="id" value="${hospital.id}"/>
+	       	 				</div>
+			            </c:forEach>
+			        </div>
+        			<div id="municipios">
+	       	 			<c:forEach var="municipio" items="${municipios}">
+	       	 				<div>
+				                <input type="hidden" name="nome" value="${municipio.nome}"/>
+				                <input type="hidden" name="id" value="${municipio.id}"/>
+	       	 				</div>
+			            </c:forEach>
+			        </div>
+        			<select id="rel_options"></select>
+        		</td>
+        	</tr>
+        
+        	
+		    <tr>
+		    	<td>
+		        	<input type="submit" value="Gerar relatório">
+		    	</td>
+		    </tr>
+	    </table>
+	</form>
+   
 </body>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+		<script>
+			function changeOptions(obj)
+			{
+				console.log("Teste");
+				
+			    let selectBox = obj;
+			    let selected = selectBox.options[selectBox.selectedIndex].value;
+			    
+			    let select = document.getElementById("rel_options");
+		    	select.name = "which_element";
+			    
+			    select.textContent = '';
+
+			    console.log(selected);
+			    
+			    if(selected === 'rel_hospitalar' || selected === 'rel_municipal')
+			    {
+			    	let elements;
+			    	
+			    	if(selected === 'rel_hospitalar') elements = document.getElementById("hospitais");
+			    	else elements = document.getElementById("municipios");
+			    	
+			    	let inputs = elements.getElementsByTagName('input');
+			    	let list_inputs = [];
+			    	
+			    	for (var i = 0; i < inputs.length; i += 2) {
+				    	
+				        let opt = document.createElement('option');
+				        opt.value = inputs[i + 1].value;
+				        opt.innerHTML = inputs[i].value;
+				        opt.name = "which_element";
+				        
+				    	list_inputs.push(opt);	
+				    	select.appendChild(opt);
+			    	}
+			    	
+			    	console.log(list_inputs);
+			    	
+			    	//console.log(divArray);
+			    	
+			    	//console.log(elements);
+			        
+			        console.log("SELECTED hospitalar");
+			        
+			        //select.appendChild(list_inputs);
+			    }		    
+			    if(selected === 'rel_estadual'){
+			        console.log("SELECTED estadual");
+			    }
+			    else{
+			        //textarea.style.display = "none";
+			        console.log("OTHER");
+			    }
+			}
+		</script>
 </html>
