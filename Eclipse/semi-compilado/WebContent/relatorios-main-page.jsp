@@ -60,11 +60,19 @@
         	
         	<tr>
         		<td>
+        		'	<div id="hospitais">
+	       	 			<c:forEach var="hospital" items="${hospitais}">
+	       	 				<div>
+				                <input type="hidden" name="nome" value="${hospital.nome}"/>
+				                <input type="hidden" name="id" value="${hospital.id}"/>
+	       	 				</div>
+			            </c:forEach>
+			        </div>
+			            
         			<select id="rel_options">
 				        <c:forEach var="hospital" items="${hospitais}">
 			                <option value="${hospital.id}">
 			                	${hospital.nome}
-			                </option>
 			            </c:forEach>
 				        <c:forEach var="municipio" items="${municipios}">
 			                <option value="${municipio.id}">
@@ -74,6 +82,7 @@
 		            </select>
         		</td>
         	</tr>
+        
         	
 		    <tr>
 		    	<td>
@@ -99,6 +108,15 @@
 			    
 			    if(selected === 'rel_hospitalar'){
 			    	let hospitais = document.getElementById("hospitais");
+			    	
+			    	let divs = hospitais.getElementsByTagName('div');
+			    	let divArray = [];
+			    	
+			    	for (var i = 0; i < divs.length; i += 1) {
+			    	  divArray.push(divs[i].innerHTML);
+			    	}
+			    	
+			    	console.log(divArray);
 			    	
 			    	console.log(hospitais);
 			    	
