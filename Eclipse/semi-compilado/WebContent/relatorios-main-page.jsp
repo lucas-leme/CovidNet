@@ -32,7 +32,7 @@
 	<h1>Relatorios aqui</h1>
 	
 	<c:if test="${prontuario != null}">
-		<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
+		<form action="${pageContext.request.contextPath}/relatorios/new" method="post">
 	        
 	        <table>	        
 	        	<tr>
@@ -51,7 +51,7 @@
 			        
 	        	<tr>
 	        		<td>
-	        			<select id="hospital_id" name="hospital_id">
+	        			<select id="relatorio_id" name="tipo_relatorio">
 							<option id="estadual" value="${pageContext.request.contextPath}/relatorioEstadual">Estadual</option>
 							<option id="hospitalar" value="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</option>
 							<option id="municipal" value="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</option>
