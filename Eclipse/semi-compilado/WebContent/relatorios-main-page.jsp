@@ -99,7 +99,9 @@
 				
 			    let selectBox = obj;
 			    let selected = selectBox.options[selectBox.selectedIndex].value;
+			    
 			    let select = document.getElementById("rel_options");
+		    	select.name = "which_element";
 			    
 			    select.textContent = '';
 
