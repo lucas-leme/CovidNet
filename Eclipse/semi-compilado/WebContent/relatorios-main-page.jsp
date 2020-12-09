@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,49 +31,58 @@
 
 	<h1>Relatorios aqui</h1>
 	
-	<c:if test="${prontuario != null}">
-		<form action="${pageContext.request.contextPath}/relatorios/new" method="post">
-	        
-	        <table>	        
-	        	<tr>
-	        		<td>
-				        <b>Data de inicio:</b>
-				        <input class="ui-dispatcher" type="date" name="data_inicio">
-	        		</td>
-			    </tr>
-			        
-			    <tr>
-			    	<td>
-				        <b>Data de fim:</b>
-				        <input class="ui-dispatcher"  type="date" name="data_fim">
-			    	</td>
-			    </tr>
-			        
-	        	<tr>
-	        		<td>
-	        			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)">
-							<option id="estadual" value="rel_estadual">Estadual</option>
-							<option id="hospitalar" value="rel_hospitalar">Hospitalar</option>
-							<option id="municipal" value="rel_municipal">Municipal</option>
-				        </select>
-	        		</td>
-	        	</tr>
-	        	
-	        	<tr>
-	        		<td>
-	        			<select id="rel_options"></select>
-	        			<!--input id="new_options" type="hidden"-->
-	        		</td>
-	        	</tr>
-	        	
-			    <tr>
-			    	<td>
-			        	<input type="submit" value="Gerar relatório">
-			    	</td>
-			    </tr>
-		    </table>
-		</form>
-    </c:if>
+	<form action="${pageContext.request.contextPath}/relatorios/new" method="post">
+        
+        <table>	        
+        	<tr>
+        		<td>
+			        <b>Data de inicio:</b>
+			        <input class="ui-dispatcher" type="date" name="data_inicio">
+        		</td>
+		    </tr>
+		        
+		    <tr>
+		    	<td>
+			        <b>Data de fim:</b>
+			        <input class="ui-dispatcher"  type="date" name="data_fim">
+		    	</td>
+		    </tr>
+		        
+        	<tr>
+        		<td>
+        			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)">
+						<option id="estadual" value="rel_estadual">Estadual</option>
+						<option id="hospitalar" value="rel_hospitalar">Hospitalar</option>
+						<option id="municipal" value="rel_municipal">Municipal</option>
+			        </select>
+        		</td>
+        	</tr>
+        	
+        	<tr>
+        		<td>
+        			<select id="rel_options">
+				        <c:forEach var="hospital" items="${hospitais}">
+			                <option value="${hospital.id}">
+			                	${hospital.nome}
+			                </option>
+			            </c:forEach>
+				        <c:forEach var="municipio" items="${municipios}">
+			                <option value="${municipio.id}">
+			                	${municipio.nome}
+			                </option>
+			            </c:forEach>
+		            </select>
+        		</td>
+        	</tr>
+        	
+		    <tr>
+		    	<td>
+		        	<input type="submit" value="Gerar relatório">
+		    	</td>
+		    </tr>
+	    </table>
+	</form>
+   
 </body>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -88,7 +98,11 @@
 			    console.log(selected);
 			    
 			    if(selected === 'rel_hospitalar'){
-			        var opt = document.createElement('option');
+			    	let hospitais = document.getElementById("hospitais");
+			    	
+			    	console.log(hospitais);
+			    	
+			        let opt = document.createElement('option');
 			        opt.value = "eae";
 			        opt.innerHTML = "hello world";
 			        

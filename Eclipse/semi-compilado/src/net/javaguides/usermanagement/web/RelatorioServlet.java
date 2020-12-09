@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.RelatorioDAO;
+import net.javaguides.usermanagement.model.Hospital;
+import net.javaguides.usermanagement.model.Municipio;
 import net.javaguides.usermanagement.model.Relatorio;
 
 /**
@@ -80,6 +82,14 @@ public class RelatorioServlet extends HttpServlet
 
 	private void mainPageRelas(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException, ServletException {
+
+		List<Hospital> hospitais = hospitalDAO.selectAllHospitais();
+		List<Municipio> municipios = hospitalDAO.selectAllMunicipios();
+		
+		request.setAttribute("hospitais", hospitais);
+		request.setAttribute("municipios", municipios);
+		
+		System.out.println("mainpage: " + hospitais + municipios);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorios-main-page.jsp");
 		dispatcher.forward(request, response);
