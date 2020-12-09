@@ -12,9 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.javaguides.usermanagement.dao.RelatorioEstadualDAO;
+import net.javaguides.usermanagement.dao.RelatorioHospitalarDAO;
+import net.javaguides.usermanagement.dao.RelatorioMunicipalDAO;
+import net.javaguides.usermanagement.model.Relatorio;
 //import net.javaguides.usermanagement.dao.RelatorioHospitalarDAO;
 //import net.javaguides.usermanagement.dao.RelatorioMunicipalDAO;
 import net.javaguides.usermanagement.model.RelatorioEstadual;
+import net.javaguides.usermanagement.model.RelatorioHospitalar;
+import net.javaguides.usermanagement.model.RelatorioMunicipal;
 
 /**
  * ControllerServlet.java
@@ -30,14 +35,15 @@ import net.javaguides.usermanagement.model.RelatorioEstadual;
 public class RelatorioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private RelatorioEstadualDAO relatorioEstadualDAO;
-//	private RelatorioMunicipalDAO relatorioMunicipalDAO;
-//	private RelatorioHospitalarDAO relatorioHospitalarDAO;
+	private RelatorioMunicipalDAO relatorioMunicipalDAO;
+	private RelatorioHospitalarDAO relatorioHospitalarDAO;
+	
 	private static final String root = "/semi-compilado";
 	
 	public void init() {
 		relatorioEstadualDAO = new RelatorioEstadualDAO();
-//		relatorioMunicipalDAO = new RelatorioMunicipalDAO();
-//		relatorioHospitalarDAO = new RelatorioHospitalarDAO();
+		relatorioMunicipalDAO = new RelatorioMunicipalDAO();
+		relatorioHospitalarDAO = new RelatorioHospitalarDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -89,7 +95,7 @@ public class RelatorioServlet extends HttpServlet {
 	}
 
 	private void createNewRelatorio(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SQLException {
 		System.out.println("Novo relatorio");
 		String dataInicio = request.getParameter("data_inicio");
 		String dataFim = request.getParameter("data_inicio");
@@ -107,23 +113,44 @@ public class RelatorioServlet extends HttpServlet {
 		
 		switch(relatorioId) {
 			case("/semi-compilado/relatorioHospitalar"):
+				System.out.println("/semi-compilado/relatorioHospitalar");
+				
+				RelatorioHospitalar relHosp = new RelatorioHospitalar(dataInicio, dataFim);
+				relatorioHospitalarDAO.insertRelatorio(relHosp);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
+				System.out.println("JSP ESTADUAL APARECEU NA TELA");
+			
 				break;
 			case("/semi-compilado/relatorioMunicipal"):
+
+				System.out.println("/semi-compilado/relatoriomunicipal");
+				
+				RelatorioMunicipal relMuni = new RelatorioMunicipal(dataInicio, dataFim);
+				relatorioMunicipalDAO.insertRelatorio(relMuni);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-municipal-list.jsp");
+				System.out.println("JSP ESTADUAL APARECEU NA TELA");
+				
 				break;
 			case("/semi-compilado/relatorioEstadual"):
+				System.out.println("/semi-compilado/relatorioEstadual");
+				
+				RelatorioEstadual relEstad = new RelatorioEstadual(dataInicio, dataFim);
+				relatorioEstadualDAO.insertRelatorio(relEstad);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
+				System.out.println("JSP ESTADUAL APARECEU NA TELA");
+				
 				break;
 			default:
+				System.out.println("DEFAULT");
 				dispatcher = request.getRequestDispatcher("/relatorio-main-page.jsp");
 				break;
 		}
-		// NESSE JSP VAI TER QUE TER SELECTS COM AS SOLICITACOES RELEVANTES
-		// DEVE REDIRECIONAR PRA /relatorioEstadual/insert
+		
+		System.out.println("DEPOIS DO SWITCH");
+		
 		dispatcher.forward(request, response);
 	}
 

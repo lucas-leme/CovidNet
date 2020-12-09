@@ -21,6 +21,13 @@ public class Relatorio {
 		this.data = data;
 	}
 	
+	public Relatorio(String tipo, Date data) {
+		super();
+
+		this.tipo = tipo;
+		this.data = data;
+	}
+
 	public void setId (int id) {
 		this.id = id;
 	}
