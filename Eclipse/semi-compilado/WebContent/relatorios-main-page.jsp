@@ -51,11 +51,17 @@
 			        
 	        	<tr>
 	        		<td>
-	        			<select id="relatorio_id" name="tipo_relatorio">
-							<option id="estadual" value="${pageContext.request.contextPath}/relatorioEstadual">Estadual</option>
-							<option id="hospitalar" value="${pageContext.request.contextPath}/relatorioHospitalar">Hospitalar</option>
-							<option id="municipal" value="${pageContext.request.contextPath}/relatorioMunicipal">Municipal</option>
+	        			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)">
+							<option id="estadual" value="rel_estadual">Estadual</option>
+							<option id="hospitalar" value="rel_hospitalar">Hospitalar</option>
+							<option id="municipal" value="rel_municipal">Municipal</option>
 				        </select>
+	        		</td>
+	        	</tr>
+	        	
+	        	<tr>
+	        		<td>
+	        			<select id="rel_options"></select>
 	        		</td>
 	        	</tr>
 	        	
@@ -71,6 +77,32 @@
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 		<script>
-			console.log("Teste");
+			function changeOptions(obj)
+			{
+				console.log("Teste");
+				
+			    var selectBox = obj;
+			    var selected = selectBox.options[selectBox.selectedIndex].value;
+			    var textarea = document.getElementById("relatorio_id");
+
+			    console.log(selected);
+			    
+			    if(selected === 'rel_hospitalar'){
+			        //textarea.style.display = "block";
+			        console.log("SELECTED hospitalar");
+			    }			    
+			    if(selected === 'rel_municipal'){
+			        //textarea.style.display = "block";
+			        console.log("SELECTED municipal");
+			    }			    
+			    if(selected === 'rel_estadual'){
+			        //textarea.style.display = "block";
+			        console.log("SELECTED estadual");
+			    }
+			    else{
+			        //textarea.style.display = "none";
+			        console.log("OTHER");
+			    }
+			}
 		</script>
 </html>
