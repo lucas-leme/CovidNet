@@ -367,6 +367,7 @@ public class RelatorioDAO {
 			while (rs.next()) {
 				String data_alocacao = rs.getString("data_alocacao");
 				int alocacoes = rs.getInt("alocacoes");
+				System.out.println(alocacoes);
 				
 				relatorio.add(new RelatorioUti(alocacoes, data_alocacao));
 			}
