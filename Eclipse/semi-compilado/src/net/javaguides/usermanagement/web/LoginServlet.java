@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.javaguides.usermanagement.dao.FilaDePacienteDAO;
 import net.javaguides.usermanagement.dao.HospitalDAO;
 import net.javaguides.usermanagement.dao.LeitoDAO;
+import net.javaguides.usermanagement.dao.LoginDAO;
 import net.javaguides.usermanagement.dao.PacienteDAO;
 import net.javaguides.usermanagement.model.Hospital;
 import net.javaguides.usermanagement.model.Leito;
@@ -22,17 +23,19 @@ import net.javaguides.usermanagement.model.Paciente;
 
 
 @WebServlet(
-  urlPatterns = {"/login", "/login/signin", "/login/signup"}
+  urlPatterns = {"/login/signin", "/login"}
 )
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private LoginDAO loginDAO;
 	
-	//private static final String root = "/semi-compilado";
+	private static final String root = "/semi-compilado";
 	
-	public void init() {
-		
+	public void init() 
+	{
+		loginDAO = new LoginDAO();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -44,33 +47,44 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String action = request.getServletPath();
 		System.out.println("GET LOGIN");
-
 		
-			switch (action) {
-			case "/login":
-				showNewForm(request, response);
-				break;
-			default:
-				showNewForm(request, response);
-				break;
+			switch (action)
+			{
+				case "/login/signin":
+					doSignin(request, response);
+					break;
+				default:
+					showFormSignin(request, response);
+					break;
 			}
 	}
 
-
-	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+	private void showFormSignin(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		System.out.println("FORM DE LOGIN");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+		System.out.println("\nFORM DE SIGNIN");
 		
-		//response.sendRedirect("../");
+		request.setAttribute("validate", true);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request, response);
+	}
+
+	private void doSignin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String email = request.getParameter("email");
+		String psswd = request.getParameter("psswd");
+		
+		System.out.println("\nemail: " + email + "; senha: " + psswd);
+		
+		if(true)
+		{
+			System.out.println("\nFazendo o signin");
+			request.setAttribute("logged", true);
+		}
+		
+		response.sendRedirect(root + "/");
 	}
 	
-	private void showHome(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/leito-home.jsp");
-		dispatcher.forward(request, response);
-	}
 }

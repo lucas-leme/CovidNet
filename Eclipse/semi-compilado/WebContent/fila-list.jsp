@@ -30,7 +30,7 @@
 	<br>
 	<br>
 	<center>
-		<h1>Lista de prioridade para alocamento em UTIs</h1>
+		<h1>Lista de prioridade para alocamento em UTIs aaaaa</h1>
 	</center>
 	<br>
 	<br>

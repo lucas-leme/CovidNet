@@ -40,7 +40,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 	private LoginDAO loginDAO;
 
 	//private String teste = "";
-	private User user;
+	//private User user;
 
 	private ServletContext context;
 	
@@ -49,7 +49,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 		super();
 		loginDAO = new LoginDAO();
 		
-		user = null;
+		//user = null;
 	}
 
 	@Override
@@ -69,15 +69,39 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    
 	    System.out.println("FILTRANDO");
 	    
-	    System.out.println("requisição a \"" + path);
+	    System.out.println("requisição a " + path);
 
-	    System.out.println("\nuser: " + user + "\n");
-	    /*if(user == null)
-	    {
-	    	resp.sendRedirect(req.getContextPath() + "/login");
-	    	return;
+	    //System.out.println("\nuser: " + user + "\n");
+	    boolean logged = false;//, goLogin = true;
+	    boolean validate = false;
+	    
+	    try{
+	    	validate = Boolean.parseBoolean(servReq.getParameter("validate"));//(boolean) servReq.getAttribute("validate");
+	    	System.out.println("validate nao e null: " + validate);
 	    }
-	    else*/ if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
+	    catch(NullPointerException npe)
+	    {
+	    	System.out.println("validate e null");
+	    }
+	    
+	    try{
+	    	logged = (boolean) servReq.getAttribute("logged");
+	    	System.out.println("logged nao e null: " + logged);
+	    }
+	    catch(NullPointerException npe)
+	    {
+	    	System.out.println("logged ainda e null");
+	    }
+	    
+	    System.out.println("\nlogged: " + logged + "; validate: " + validate);
+	    
+	    if(!logged && !validate)
+	    {
+	    	req.getRequestDispatcher("/login").forward(req, resp);
+	    	//resp.sendRedirect(req.getContextPath() + "/login/signin");
+	    	//return;
+	    }
+	    else if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
 	    else if (path.equals("/")) showMainPage(req, resp);
 	    else req.getRequestDispatcher(path).forward(req, resp); 
     }
@@ -88,7 +112,6 @@ public class FiltroGeral extends HttpServlet implements Filter
 		System.out.println("Showing main page");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
 		dispatcher.forward(request, response);
-		
 	}
 
 	@Override
