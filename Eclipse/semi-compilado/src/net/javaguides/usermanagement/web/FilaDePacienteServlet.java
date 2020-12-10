@@ -62,7 +62,7 @@ public class FilaDePacienteServlet extends HttpServlet {
 
 		filaDePacienteDAO.solicitaUti(prontuario_id);
 		
-		response.sendRedirect(root + "/fila_de_pacientes");
+		response.sendRedirect(root);
 	}
 	
 	private void mostraFila(HttpServletRequest request, HttpServletResponse response)

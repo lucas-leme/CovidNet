@@ -2,6 +2,7 @@ package net.javaguides.usermanagement.web;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -96,12 +97,30 @@ public class RelatorioServlet extends HttpServlet
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/relatorios-main-page.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	private List<Float> calculaOcupacao(List<RelatorioVagas> vagas) {
+		
+		List<Float> ocupacaoHistorica =  new ArrayList<>();
+		
+		int nVagas = vagas.size();
+		
+		for (int i = 0; i < nVagas; i++) {
+			RelatorioVagas vaga = vagas.get(i);
+			
+			float ocupacao =  100 * vaga.getVagasOcupadas() / (float) vaga.getVagasTotais();
+			
+			ocupacaoHistorica.add(ocupacao);
+		}
+		
+		return ocupacaoHistorica;
+	}
+
 
 	private void createNewRelatorio(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		System.out.println("Novo relatorio");
 		String dataInicio = request.getParameter("data_inicio");
-		String dataFim = request.getParameter("data_inicio");
+		String dataFim = request.getParameter("data_fim");
 		String relatorioId = request.getParameter("tipo_relatorio");
 
 		System.out.println("datainicio: " + dataInicio);
@@ -116,6 +135,7 @@ public class RelatorioServlet extends HttpServlet
 		List<RelatorioUti> alocs = null;			
 		List<RelatorioUti> pedidos = null;
 		List<RelatorioVagas> vagas = null;
+		List<Float> ocupacao = null;
 		
 		switch(relatorioId) {
 			case("rel_hospitalar"):
@@ -129,13 +149,14 @@ public class RelatorioServlet extends HttpServlet
 				alocs = relatorioDAO.RelatorioUtiAlocacoesPorHospital(dataInicio, dataFim, idHospital);				
 				pedidos = relatorioDAO.RelatorioUtiPedidosPorHospital(dataInicio, dataFim, idHospital);
 				vagas = relatorioDAO.RelatorioVagasHospital(dataInicio, dataFim, idHospital);
-
+				ocupacao = calculaOcupacao(vagas);
+				
 				request.setAttribute("alocs", alocs);
 				request.setAttribute("pedidos", pedidos);
 				request.setAttribute("vagas", vagas);
+				request.setAttribute("ocupacao", ocupacao);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
-				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 			
 				break;
 			case("rel_municipal"):
@@ -149,13 +170,15 @@ public class RelatorioServlet extends HttpServlet
 				alocs = relatorioDAO.RelatorioUtiAlocacoesPorMunicipio(dataInicio, dataFim, idMunicipio);				
 				pedidos = relatorioDAO.RelatorioUtiPedidosPorMunicipio(dataInicio, dataFim, idMunicipio);
 				vagas = relatorioDAO.RelatorioVagasMunicipio(dataInicio, dataFim, idMunicipio);
+				ocupacao = calculaOcupacao(vagas);
 
 				request.setAttribute("alocs", alocs);
 				request.setAttribute("pedidos", pedidos);
 				request.setAttribute("vagas", vagas);
+				request.setAttribute("ocupacao", ocupacao);
+				
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
-				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 				
 				break;
 			case("rel_estadual"):
@@ -164,13 +187,14 @@ public class RelatorioServlet extends HttpServlet
 				alocs = relatorioDAO.RelatorioUtiAlocacoesTotais(dataInicio, dataFim);				
 				pedidos = relatorioDAO.RelatorioUtiPedidosTotais(dataInicio, dataFim);
 				vagas = relatorioDAO.RelatorioVagasTotais(dataInicio, dataFim);
+				ocupacao = calculaOcupacao(vagas);
 
 				request.setAttribute("alocs", alocs);
 				request.setAttribute("pedidos", pedidos);
 				request.setAttribute("vagas", vagas);
+				request.setAttribute("ocupacao", ocupacao);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
-				System.out.println("JSP ESTADUAL APARECEU NA TELA");
 				
 				break;
 			default:

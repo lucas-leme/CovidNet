@@ -28,8 +28,10 @@
     <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
   </div>
 </header>
-
-	<h1>Relatorios aqui</h1>
+<center>
+	<h1>Relatorios</h1>
+	
+	<img src="https://i.imgur.com/xEVDzdk.png" alt="" />
 	
 	<form action="${pageContext.request.contextPath}/relatorios/new" method="post">
         
@@ -50,36 +52,37 @@
 		        
         	<tr>
         		<td>
-        			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)">
-						<option id="estadual" value="rel_estadual">Estadual</option>
+        		<b>Tipo de relatório:</b>
+        			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)" onshow="changeOptions(this)">
+        				<option id="estadual" value="rel_estadual">Estadual</option>		
 						<option id="hospitalar" value="rel_hospitalar">Hospitalar</option>
 						<option id="municipal" value="rel_municipal">Municipal</option>
 			        </select>
         		</td>
         	</tr>
-        	
-        	<tr>
-        		<td>
-        			<div id="hospitais">
-	       	 			<c:forEach var="hospital" items="${hospitais}">
-	       	 				<div>
-				                <input type="hidden" name="nome" value="${hospital.nome}"/>
-				                <input type="hidden" name="id" value="${hospital.id}"/>
-	       	 				</div>
-			            </c:forEach>
-			        </div>
-        			<div id="municipios">
-	       	 			<c:forEach var="municipio" items="${municipios}">
-	       	 				<div>
-				                <input type="hidden" name="nome" value="${municipio.nome}"/>
-				                <input type="hidden" name="id" value="${municipio.id}"/>
-	       	 				</div>
-			            </c:forEach>
-			        </div>
-        			<select id="rel_options"></select>
-        		</td>
-        	</tr>
-        
+         	
+	        	<tr id="extra">
+	        		<td>
+	        		<b></b>
+	        			<div id="hospitais">
+		       	 			<c:forEach var="hospital" items="${hospitais}">
+		       	 				<div>
+					                <input type="hidden" name="nome" value="${hospital.nome}"/>
+					                <input type="hidden" name="id" value="${hospital.id}"/>
+		       	 				</div>
+				            </c:forEach>
+				        </div>
+	        			<div id="municipios">
+		       	 			<c:forEach var="municipio" items="${municipios}">
+		       	 				<div>
+					                <input type="hidden" name="nome" value="${municipio.nome}"/>
+					                <input type="hidden" name="id" value="${municipio.id}"/>
+		       	 				</div>
+				            </c:forEach>
+				        </div>
+	        			<select id="rel_options"></select>
+	        		</td>
+	        	</tr>
         	
 		    <tr>
 		    	<td>
@@ -88,6 +91,8 @@
 		    </tr>
 	    </table>
 	</form>
+	
+</center>
    
 </body>
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -101,6 +106,7 @@
 			    let selected = selectBox.options[selectBox.selectedIndex].value;
 			    
 			    let select = document.getElementById("rel_options");
+			    let conditionalShow = document.getElementById("extra");
 		    	select.name = "which_element";
 			    
 			    select.textContent = '';
@@ -137,14 +143,22 @@
 			        console.log("SELECTED hospitalar");
 			        
 			        //select.appendChild(list_inputs);
-			    }		    
+			        
+			        conditionalShow.display = "block";
+			        $('#extra').show();
+			    }
+
+			    
 			    if(selected === 'rel_estadual'){
 			        console.log("SELECTED estadual");
+			        conditionalShow.display = "none";
+			        $('#extra').hide();
 			    }
 			    else{
 			        //textarea.style.display = "none";
 			        console.log("OTHER");
 			    }
 			}
+
 		</script>
 </html>

@@ -84,7 +84,7 @@ public class RelatorioDAO {
 	
 	private static final String RELATORIO_UTI_PEDIDOS_TOTAIS = 
 			"SELECT data_pedido, COUNT(data_pedido) as pedidos FROM historico_uti hu\n"
-			+ "WHERE data_pedido >=  AND data_pedido <= ?\n"
+			+ "WHERE data_pedido >= ? AND data_pedido <= ?\n"
 			+ "GROUP BY data_pedido ";
 
 	protected Connection getConnection() {
@@ -367,6 +367,7 @@ public class RelatorioDAO {
 			while (rs.next()) {
 				String data_alocacao = rs.getString("data_alocacao");
 				int alocacoes = rs.getInt("alocacoes");
+				System.out.println(alocacoes);
 				
 				relatorio.add(new RelatorioUti(alocacoes, data_alocacao));
 			}
