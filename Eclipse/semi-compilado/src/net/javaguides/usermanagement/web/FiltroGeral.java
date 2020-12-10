@@ -84,14 +84,21 @@ public class FiltroGeral extends HttpServlet implements Filter
 		    try{
 		    	//logged = Boolean.parseBoolean(req.getParameter("logged"));//(boolean) servReq.getAttribute("validate");
 		    	//System.out.println("logged1: " + validate);
-		    	Cookie eBom = new Cookie("TESTAO_DO_FAUSTAO", "corno");
-		    	eBom.setMaxAge(1800); // meia hora
-		    	resp.addCookie(eBom);
 		    	
 		    	Cookie[] cookies = req.getCookies();	
 		    	for(Cookie cookie : cookies)
 		    	{
 		    		System.out.println(cookie.getName() + " : " + cookie.getValue());
+		    		if(cookie.getName().equals("autorizacao"))
+		    		{
+		    			System.out.println("Achamos cookie de autorizacao");
+		    			String value = cookie.getValue();
+		    			if(value != null)
+	    				{
+		    				if(value.equals("medico")) this.logged = true;
+		    				//else this.logged = false;
+	    				}
+		    		}
 		    	}
 		    	
 		    	this.logged = (boolean) req.getAttribute("logged");
@@ -104,6 +111,27 @@ public class FiltroGeral extends HttpServlet implements Filter
 		    }
 	    }
 		    
+	    /*boolean achouCookie = false;
+		
+    	Cookie[] cookies = req.getCookies();	
+    	for(Cookie cookie : cookies)
+    	{
+    		System.out.println(cookie.getName() + " : " + cookie.getValue());
+    		if(cookie.getName().equals("autorizacao"))
+    		{
+    			String value = cookie.getValue();
+    			if(value != null)
+				{
+        			achouCookie = true;
+        			System.out.println("achou o cookieEBom");
+        			
+    				if(value.equals("medico")) this.logged = true;
+    				else this.logged = false;
+				}
+    		}
+	    	
+	    }*/
+	    
 	    System.out.println("\nlogged: " + this.logged);// + "; validate: " + validate);
 	    //if(this.logged) logged = false;
 	    

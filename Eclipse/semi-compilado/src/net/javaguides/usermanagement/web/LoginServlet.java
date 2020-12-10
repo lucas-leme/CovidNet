@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -89,7 +90,11 @@ public class LoginServlet extends HttpServlet {
 			System.out.println("\nFazendo o signin");
 			//logged = true;
 			
-			request.setAttribute("logged", true);
+			//request.setAttribute("logged", true);
+
+	    	Cookie eBom = new Cookie("autorizacao", "medico");
+	    	//eBom.setMaxAge(); // meia hora
+	    	response.addCookie(eBom);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
