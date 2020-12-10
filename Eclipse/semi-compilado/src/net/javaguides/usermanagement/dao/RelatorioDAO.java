@@ -84,7 +84,7 @@ public class RelatorioDAO {
 	
 	private static final String RELATORIO_UTI_PEDIDOS_TOTAIS = 
 			"SELECT data_pedido, COUNT(data_pedido) as pedidos FROM historico_uti hu\n"
-			+ "WHERE data_pedido >=  AND data_pedido <= ?\n"
+			+ "WHERE data_pedido >= ? AND data_pedido <= ?\n"
 			+ "GROUP BY data_pedido ";
 
 	protected Connection getConnection() {

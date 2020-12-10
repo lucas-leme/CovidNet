@@ -17,29 +17,25 @@
         </h3>
 	</center>
     <div align="center">
-        <table border="1" cellpadding="5">
-            <caption><h2>Lista de relatórios estaduais</h2></caption>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Country</th>
-                <th>Actions</th>
-            </tr>
-            <c:forEach var="relatorio" items="${listRelatorioEstadual}">
-                <tr>
-                    <td><c:out value="${relatorio.id}" /></td>
-                    <td><c:out value="${relatorio.nomeEstado}" /></td>
-                    <td><c:out value="${relatorio.numeroMunicipios}" /></td>
-                    <td><c:out value="${relatorio.numeroHospitais}" /></td>
-                    <td>
-                    	<a href="${pageContext.request.contextPath}/relatorioEstadual/edit?id=<c:out value='${relatorio.id}' />">Edit</a>
-                    	&nbsp;&nbsp;&nbsp;&nbsp;
-                    	<a href="${pageContext.request.contextPath}/relatorioEstadual/delete?id=<c:out value='${relatorio.id}' />">Delete</a>                    	
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
+            
+            pedidos
+			<c:forEach var="pedidosItem" items="${pedidos}">
+				<h1>${pedidosItem.data}</h1>
+			</c:forEach>
+            
+            Vagas
+			<c:forEach var="vagasItem" items="${vagas}">
+				<h1>${vagasItem.data}</h1>
+			</c:forEach>
+
+			Alocações
+			<c:forEach var="alocsItem" items="${alocs}">
+				<h1>${alocsItem.data}</h1>
+			</c:forEach>
+
+	    	<c:if test="${alocs == null}">     
+	    		teste       
+	    	</c:if>
     </div>	
 </body>
 </html>

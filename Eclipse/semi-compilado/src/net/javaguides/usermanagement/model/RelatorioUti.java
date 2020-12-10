@@ -8,22 +8,22 @@ package net.javaguides.usermanagement.model;
  */
 
 public class RelatorioUti {
-	protected String data_pedido;
+	protected String dataPedido;
 	protected int pedidos;
-	protected String data_alocacao;
+	protected String dataAlocacao;
 	protected int alocacoes;
 	
-	public RelatorioUti(String data_pedido, int pedidos) {
+	public RelatorioUti(String dataPedido, int pedidos) {
 		super();
 
-		this.data_pedido = data_pedido;
+		this.dataPedido = dataPedido;
 		this.pedidos = pedidos;
 	}
 	
-	public RelatorioUti(int alocacoes, String data_alocacao) {
+	public RelatorioUti(int alocacoes, String dataAlocacao) {
 		super();
 
-		this.data_alocacao = data_alocacao;
+		this.dataAlocacao = dataAlocacao;
 		this.alocacoes = alocacoes;
 	}
 	
@@ -34,10 +34,10 @@ public class RelatorioUti {
 		this.pedidos = pedidos;
 	}
 	public String getDataPedido() {
-		return data_pedido;
+		return dataPedido;
 	}
-	public void setDataPedido(String data_pedido) {
-		this.data_pedido = data_pedido;
+	public void setDataPedido(String dataPedido) {
+		this.dataPedido = dataPedido;
 	}
 	public int getAlocacoes() {
 		return alocacoes;
@@ -46,10 +46,10 @@ public class RelatorioUti {
 		this.alocacoes = alocacoes;
 	}
 	public String getDataAlocacao() {
-		return data_alocacao;
+		return dataAlocacao;
 	}
-	public void setDataAlocacao(String data_alocacao) {
-		this.data_alocacao = data_alocacao;
+	public void setDataAlocacao(String dataAlocacao) {
+		this.dataAlocacao = dataAlocacao;
 	}
 	
 }

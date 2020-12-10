@@ -101,7 +101,7 @@ public class RelatorioServlet extends HttpServlet
 			throws ServletException, IOException, SQLException {
 		System.out.println("Novo relatorio");
 		String dataInicio = request.getParameter("data_inicio");
-		String dataFim = request.getParameter("data_inicio");
+		String dataFim = request.getParameter("data_fim");
 		String relatorioId = request.getParameter("tipo_relatorio");
 
 		System.out.println("datainicio: " + dataInicio);
@@ -170,7 +170,7 @@ public class RelatorioServlet extends HttpServlet
 				request.setAttribute("vagas", vagas);
 				
 				dispatcher = request.getRequestDispatcher("/relatorio-estadual-list.jsp");
-				System.out.println("JSP ESTADUAL APARECEU NA TELA");
+				System.out.println(alocs);
 				
 				break;
 			default:
