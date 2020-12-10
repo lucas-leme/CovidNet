@@ -30,12 +30,14 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private LoginDAO loginDAO;
+	private boolean logged;
 	
 	private static final String root = "/semi-compilado";
 	
 	public void init() 
 	{
 		loginDAO = new LoginDAO();
+		//logged = false;
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -64,10 +66,14 @@ public class LoginServlet extends HttpServlet {
 		
 		System.out.println("\nFORM DE SIGNIN");
 		
-		request.setAttribute("validate", true);
+		//if(!logged) request.setAttribute("validate", true);
+		//request.setAttribute("logged", true);
+		//request.setAttribute("validate", true);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
 		dispatcher.forward(request, response);
+		
+		//System.out.println("Se isso aqui so printar depoisque apertar obotao, tudo certo");
 	}
 
 	private void doSignin(HttpServletRequest request, HttpServletResponse response)
@@ -81,10 +87,14 @@ public class LoginServlet extends HttpServlet {
 		if(true)
 		{
 			System.out.println("\nFazendo o signin");
+			//logged = true;
+			
 			request.setAttribute("logged", true);
 		}
 		
-		response.sendRedirect(root + "/");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
+		dispatcher.forward(request, response);
+		//response.sendRedirect(root + "/");
 	}
 	
 }

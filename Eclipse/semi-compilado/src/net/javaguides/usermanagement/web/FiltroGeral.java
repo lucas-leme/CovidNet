@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,8 @@ public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
 	private LoginDAO loginDAO;
-
+	private boolean logged;
+	
 	//private String teste = "";
 	//private User user;
 
@@ -49,6 +51,9 @@ public class FiltroGeral extends HttpServlet implements Filter
 		super();
 		loginDAO = new LoginDAO();
 		
+		
+		System.out.println("INCIANDO FILTRO");
+		logged = false;
 		//user = null;
 	}
 
@@ -72,32 +77,41 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    System.out.println("requisição a " + path);
 
 	    //System.out.println("\nuser: " + user + "\n");
-	    boolean logged = false;//, goLogin = true;
-	    boolean validate = false;
+	    //boolean logged = false;//, goLogin = true;
+	    //boolean validate = false;
 	    
-	    try{
-	    	validate = Boolean.parseBoolean(servReq.getParameter("validate"));//(boolean) servReq.getAttribute("validate");
-	    	System.out.println("validate nao e null: " + validate);
+	    if(!this.logged) {
+		    try{
+		    	//logged = Boolean.parseBoolean(req.getParameter("logged"));//(boolean) servReq.getAttribute("validate");
+		    	//System.out.println("logged1: " + validate);
+		    	Cookie eBom = new Cookie("TESTAO_DO_FAUSTAO", "corno");
+		    	eBom.setMaxAge(1800); // meia hora
+		    	resp.addCookie(eBom);
+		    	
+		    	Cookie[] cookies = req.getCookies();	
+		    	for(Cookie cookie : cookies)
+		    	{
+		    		System.out.println(cookie.getName() + " : " + cookie.getValue());
+		    	}
+		    	
+		    	this.logged = (boolean) req.getAttribute("logged");
+		    	
+		    	System.out.println("logged2: " + this.logged);
+		    }
+		    catch(NullPointerException npe)
+		    {
+		    	System.out.println("logged ainda e null");
+		    }
 	    }
-	    catch(NullPointerException npe)
-	    {
-	    	System.out.println("validate e null");
-	    }
+		    
+	    System.out.println("\nlogged: " + this.logged);// + "; validate: " + validate);
+	    //if(this.logged) logged = false;
 	    
-	    try{
-	    	logged = (boolean) servReq.getAttribute("logged");
-	    	System.out.println("logged nao e null: " + logged);
-	    }
-	    catch(NullPointerException npe)
-	    {
-	    	System.out.println("logged ainda e null");
-	    }
-	    
-	    System.out.println("\nlogged: " + logged + "; validate: " + validate);
-	    
-	    if(!logged && !validate)
+	    if(!this.logged && !(path.equals("/login/signin")))
 	    {
 	    	req.getRequestDispatcher("/login").forward(req, resp);
+	    	//showFormSignin(request, response);
+	    	
 	    	//resp.sendRedirect(req.getContextPath() + "/login/signin");
 	    	//return;
 	    }
@@ -105,6 +119,41 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    else if (path.equals("/")) showMainPage(req, resp);
 	    else req.getRequestDispatcher(path).forward(req, resp); 
     }
+	
+	/*private void showFormSignin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		System.out.println("\nFORM DE SIGNIN");
+		
+		//if(!logged) request.setAttribute("validate", true);
+		request.setAttribute("logged", true);
+		request.setAttribute("validate", true);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+		dispatcher.forward(request, response);
+		
+		System.out.println("Se isso aqui so printar depoisque apertar obotao, tudo certo");
+	}
+
+	private void doSignin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String email = request.getParameter("email");
+		String psswd = request.getParameter("psswd");
+		
+		System.out.println("\nemail: " + email + "; senha: " + psswd);
+		
+		if(true)
+		{
+			System.out.println("\nFazendo o signin");
+			//logged = true;
+			
+			request.setAttribute("logged", true);
+		}
+		
+		response.sendRedirect("/");
+	}
+	*/
 	
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
