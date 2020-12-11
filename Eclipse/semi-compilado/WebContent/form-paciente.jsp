@@ -30,39 +30,36 @@
 		<h1>Adicionar Paciente</h1>
 	</center>
     <div align="center">
-		<c:if test="${prontuario != null}">
+		<c:if test="${paciente != null}">
 			<form action="${pageContext.request.contextPath}/pacientes/update" method="post">
         </c:if>
-        <c:if test="${prontuario == null}">
+        <c:if test="${paciente == null}">
 			<form action="${pageContext.request.contextPath}/pacientes/insert" method="post">
         </c:if>
         <table border="1" cellpadding="5">
             <caption>
             	<h2>
-            		<c:if test="${prontuario != null}">
-            			Editar prontuário
-            		</c:if>
-            		<c:if test="${prontuario == null}">
-            			Adicionar prontuário
+            		<c:if test="${paciente != null}">
+            			Editando paciente
             		</c:if>
             	</h2>
             </caption>
-        		<c:if test="${prontuario != null}">
-        			<input type="hidden" name="id" value="<c:out value='${prontuario.id}' />" />
+        		<c:if test="${paciente != null}">
+        			<input type="hidden" name="id_paciente" value="<c:out value='${paciente.id}' />" />
         		</c:if> 
         		<tr>
                 <th>CPF: </th>
                 <td>
 					<input type="text" name="cpf" 
 						class="${incorrectCPF == null ? 'form-correct' : 'form-incorrect'}"
-						value="${incorrectCPF == null ? '' : cpf}"/>
+						value="${incorrectCPF == null ? paciente.cpf : ''}"/>
                 </td>
             </tr>           
             <tr>
                 <th>Nome: </th>
                 <td>
                 	<input type="text" name="nome" size="45"
-                			value="<c:out value='${prontuario.nome}' />"
+                			value="<c:out value='${paciente.nome}' />"
                 		/>
                 </td>
             </tr>
@@ -70,7 +67,7 @@
                 <th>Data de Nascimento: </th>
                 <td>
                 	<input type="text" name="data_de_nascimento" size="45"
-                			value="<c:out value='${prontuario.dataDeNascimento}' />"
+                			value="<c:out value='${paciente.dataDeNascimento}' />"
                 		/>
                 </td>
             </tr>
@@ -78,13 +75,13 @@
                 <th>Endereço: </th>
                 <td>
                 	<input type="text" name="endereco" size="45"
-                			value="<c:out value='${prontuario.endereco}' />"
+                			value="<c:out value='${paciente.endereco}' />"
                 		/>
                 </td>
             </tr>
             <tr>
             	<td colspan="2" align="center">
-            		<input type="submit" value="Save" />
+            		<input type="submit" value="${paciente == null ? 'Adicionar Paciente' : 'Editar Paciente'}" />
             	</td>
             </tr>
         </table>

@@ -49,13 +49,15 @@
 			</c:forEach>
 			</table>
 			
+		<br/>
+		<br/>
 			
 		<h1>Ocupação</h1>
 			<table>
             <tr>
             	<th>Data</th>
                 <th>Vagas Ocupadas</th>
-                <th>Taxa de ocupação</th>
+                <th>Ocupação</th>
             </tr>
             
 			<c:forEach varStatus="loop" items="${vagas}">

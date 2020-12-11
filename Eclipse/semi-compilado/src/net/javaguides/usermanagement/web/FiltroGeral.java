@@ -63,7 +63,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    HttpServletRequest req = (HttpServletRequest) servReq;
 	    HttpServletResponse resp = (HttpServletResponse) servRes;
 	    
-	    req.setCharacterEncoding("UTF-8");
+	    req.setCharacterEncoding("UTF-8");   
 	   
 	    String path = req.getRequestURI().substring(req.getContextPath().length());
 	    String easyNext = path.substring(1);

@@ -30,7 +30,8 @@ import net.javaguides.usermanagement.model.Prontuario;
 @WebServlet(
 urlPatterns = { "/prontuarios","/prontuarios/edit","/prontuarios/update/*", "/prontuarios/new", "/prontuarios/insert",
 				"/pacientes", "/pacientes/new", "/pacientes/insert", "/prontuarios/new_paciente", "/prontuarios/exame",
-				"/prontuarios/search", "/prontuarios/close", "/prontuarios/solicitar_uti", "/pacientes/edit", "/pacientes/update" }
+				"/prontuarios/search", "/prontuarios/close", "/prontuarios/solicitar_uti", "/pacientes/edit", "/pacientes/update",
+				"/prontuario/uti_lista"}
 )
 public class ProntuarioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -108,6 +109,10 @@ public class ProntuarioServlet extends HttpServlet {
 					solicitarUti(request, response);
 					break;
 				
+				case "/prontuario/uti_lista":
+					showPacientesList(request, response);
+					break;
+				
 				case "/pacientes/update":
 					System.out.println("UPDATE PACIENTE");
 					updatePaciente(request, response);
@@ -177,18 +182,24 @@ public class ProntuarioServlet extends HttpServlet {
 	private void solicitarUti(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		
-		try {
+
 			int id_prontuario = Integer.parseInt(request.getParameter("id_prontuario2"));
 			System.out.println("id_prontuario: " + id_prontuario);
 			
 			filaDAO.solicitaUti(id_prontuario);
-		}catch(NumberFormatException nfe) {
-			List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
-			request.setAttribute("fila_pacientes", fila);
+			
+			showPacientesList(request, response);
+	}
 	
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/fila-list.jsp");
-			dispatcher.forward(request, response);
-		}
+	private void showPacientesList (HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		
+		List<FilaDePaciente> fila = filaDAO.selectAllPacientesNaFila();
+		request.setAttribute("fila_pacientes", fila);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/fila-list.jsp");
+		dispatcher.forward(request, response);	
+		
 	}
 
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
@@ -231,7 +242,7 @@ public class ProntuarioServlet extends HttpServlet {
 		
 		
 		Paciente existingPaciente = pacienteDAO.selectPacienteByCpf(cpf);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/paciente-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/form-paciente.jsp");
 		
 		request.setAttribute("paciente", existingPaciente);
 		dispatcher.forward(request, response);

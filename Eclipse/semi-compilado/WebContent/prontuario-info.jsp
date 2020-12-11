@@ -36,17 +36,10 @@
 		<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 		
 		<table>
-	    	<div align="center">
-				<tr>
-					<th>
-						<h1>Prontuario nao encontrado</h1>
-					</th>
-				</tr>
-		    
+	    	<div align="center">  
 		    	<tr>
 		    		<td>
 					    <h1>Dados do Prontuário</h1>
-					    <h3 id="id_prontuario">ID: ${prontuario.id}</h3>
 					    <h3>CPF: <%= request.getAttribute("cpf") %></h3>
 					    <h3>Nome: ${paciente.nome}</h3>
 					    <h3>Data de nascimento: ${paciente.dataDeNascimento}</h3>
@@ -64,7 +57,7 @@
 							<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 							<input type="hidden" name="id_pontuario2" value="<%= request.getAttribute("id_prontuario2") %>" />
 							<input type="hidden" name="id_paciente2" value="<%= request.getAttribute("id_paciente") %>" />
-							<input type="submit" name="search_prontuario" value="Exibir dados do paciente" /> 
+							<input type="submit" name="search_prontuario" value="Editar dados do paciente" /> 
 						</form>
 					</td>
 				</tr>
@@ -149,11 +142,14 @@
 							<input type="hidden" name="cpf" value="<%= request.getAttribute("cpf") %>" />
 							<input type="hidden" name="id_pontuario2" value="${prontuario.id}" />
 							<input type="hidden" name="id_paciente2" value="${paciente.id}" />
-							<input type="submit" name="search_prontuario" value="Editar" />  
+							<input type="submit" name="search_prontuario" value="Editar prontuário" />  
 						</form>
 					</td>
 				</tr>			
 			</table>
+			
+			<br/>
+			<br/>
 		    
 		    <form action="${pageContext.request.contextPath}/prontuarios/close" method="post">
 				<div  class="center">
