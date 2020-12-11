@@ -81,7 +81,7 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    //boolean validate = false;
 	    
 	    if(!this.logged) {
-		    try{
+		   
 		    	//logged = Boolean.parseBoolean(req.getParameter("logged"));//(boolean) servReq.getAttribute("validate");
 		    	//System.out.println("logged1: " + validate);
 		    	
@@ -100,37 +100,38 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    				}
 		    		}
 		    	}
-		    	
-		    	this.logged = (boolean) req.getAttribute("logged");
-		    	
-		    	System.out.println("logged2: " + this.logged);
-		    }
-		    catch(NullPointerException npe)
-		    {
-		    	System.out.println("logged ainda e null");
-		    }
 	    }
+		    	
+    	//this.logged = (boolean) req.getAttribute("logged");
+    	
+    	System.out.println("logged2: " + this.logged);
+ 
 		    
-	    /*boolean achouCookie = false;
+	    boolean achouCookie = false;
 		
-    	Cookie[] cookies = req.getCookies();	
-    	for(Cookie cookie : cookies)
-    	{
-    		System.out.println(cookie.getName() + " : " + cookie.getValue());
-    		if(cookie.getName().equals("autorizacao"))
-    		{
-    			String value = cookie.getValue();
-    			if(value != null)
-				{
-        			achouCookie = true;
-        			System.out.println("achou o cookieEBom");
-        			
-    				if(value.equals("medico")) this.logged = true;
-    				else this.logged = false;
-				}
-    		}
-	    	
-	    }*/
+    	/*Cookie[] cookies = req.getCookies();	
+    	System.out.println("COOKIES:{");
+    	if(cookies != null) {
+	    	for(Cookie cookie : cookies)
+	    	{
+	    		System.out.println("\t" + cookie.getName() + " : " + cookie.getValue());
+	    		if(cookie.getName().equals("autorizacao"))
+	    		{
+	    			String value = cookie.getValue();
+	    			if(value != null)
+					{
+	        			achouCookie = true;
+	        			System.out.println("achou o cookieEBom");
+	        			
+	    				if(value.equals("medico")) this.logged = true;
+	    				else this.logged = false;
+					}
+	    		}
+		    	
+		    }
+    	}*/
+    	System.out.println("}\n");
+    
 	    
 	    System.out.println("\nlogged: " + this.logged);// + "; validate: " + validate);
 	    //if(this.logged) logged = false;

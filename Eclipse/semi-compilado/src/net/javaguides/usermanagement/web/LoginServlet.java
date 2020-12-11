@@ -85,7 +85,9 @@ public class LoginServlet extends HttpServlet {
 		
 		System.out.println("\nemail: " + email + "; senha: " + psswd);
 		
-		if(true)
+		String cargo = loginDAO.loginUsuario(email, psswd);
+		
+		if(cargo != null)
 		{
 			System.out.println("\nFazendo o signin");
 			//logged = true;
@@ -95,10 +97,15 @@ public class LoginServlet extends HttpServlet {
 	    	Cookie eBom = new Cookie("autorizacao", "medico");
 	    	//eBom.setMaxAge(); // meia hora
 	    	response.addCookie(eBom);
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
+			dispatcher.forward(request, response);
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
-		dispatcher.forward(request, response);
+		else 
+		{			
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+			dispatcher.forward(request, response);
+		}
 		//response.sendRedirect(root + "/");
 	}
 	
