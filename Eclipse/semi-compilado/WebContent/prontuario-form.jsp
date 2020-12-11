@@ -27,10 +27,6 @@
 </header>
 	<div class="center">
 		<h1>Gerenciamento de Prontuários</h1>
-        <h2>
-        	<a href="${pageContext.request.contextPath}/prontuarios">VOLTAR</a>
-        	<a href="${pageContext.request.contextPath}/prontuarios/new_paciente">Adicionar Paciente</a>
-        </h2>
 	</div>
     <div align="center">
 
@@ -46,17 +42,13 @@
             <caption>
             	<h2>
             		<c:if test="${prontuario != null}">
-            			Editar prontuário
-            		</c:if>
-            		<c:if test="${prontuario == null}">
-            			Adicionar prontuário
+            			Editando prontuário
             		</c:if>
             	</h2>
             </caption>
         		<c:if test="${prontuario != null}">
         			<input type="hidden" name="id" value="<c:out value='${prontuario.id}' />" />
         		</c:if>
-        		<%= request.getAttribute("id_paciente") %>
         		<tr>
                 <th>Estado do paciente: </th>
                 <td>
@@ -94,7 +86,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Doença Respiratória: </th>
+                <th>Tem doença respiratória </th>
                 <td align="center">
 		
                 	<select id="doenca_respiratoria" name="doenca_respiratoria">
@@ -112,7 +104,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Batimento Cardiaco: </th>
+                <th>Batimento cardiaco normal: </th>
                 <td align="center">
                 	<select id="batimento_cardiaco_normal" name="batimento_cardiaco_normal">
 					    <c:if test="${prontuario == null || prontuario.batimentoCardiacoNormal == true}">							
@@ -128,7 +120,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Hipertensão: </th>
+                <th>Tem hipertensão: </th>
                 <td align="center">
                  <select id="hipertensao" name="hipertensao">
 					    <c:if test="${prontuario == null || prontuario.hipertensao == true}">
@@ -145,7 +137,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Oximetria: </th>
+                <th>Oximetria (%): </th>
                 <td align="center">
                 <input type="text" name="oximetria" size="45"
                 			value="<c:out value='${prontuario.oximetria}' />"
@@ -153,7 +145,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Radiometria Torax Normal: </th>
+                <th>Radiometria torax normal: </th>
                 <td align="center">
                  	<select id="radiometria_torax_normal" name="radiometria_torax_normal">
 					    <c:if test="${prontuario == null || prontuario.radiometriaToraxNormal == true}">
@@ -169,7 +161,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Tomografia Torax Normal: </th>
+                <th>Tomografia torax normal: </th>
                 <td align="center">
                  	<select id="tomografia_torax_normal" name="tomografia_torax_normal">
 					    <c:if test="${prontuario == null || prontuario.tomografiaToraxNormal == true}">
@@ -185,7 +177,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Ventilação Mecânica: </th>
+                <th>Precisa de ventilação mecânica: </th>
                 <td align="center">
                  	<select id="ventilacao_mecanica" name="ventilacao_mecanica">
    					    <c:if test="${prontuario == null || prontuario.ventilacaoMecanica == true}">							
@@ -201,7 +193,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Diabetes: </th>
+                <th>Tem diabetes: </th>
                 <td align="center">
                  	<select id="diabetes" name="diabetes">
 					    <c:if test="${prontuario == null || prontuario.diabetes == true}">
@@ -218,7 +210,7 @@
                 </td>
             </tr>
             <tr>
-                <th>Obesidade: </th>
+                <th>Tem obesidade: </th>
                 <td align="center">
                  	<select id="obesidade" name="obesidade">
 					    <c:if test="${prontuario == null || prontuario.obesidade == true}">

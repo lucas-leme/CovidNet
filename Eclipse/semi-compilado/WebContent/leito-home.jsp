@@ -25,13 +25,7 @@
     <a href="${pageContext.request.contextPath}">Tela Inicial</a>
     <a href="${pageContext.request.contextPath}/relatorios-main-page.jsp">Relatórios</a>
     <a href="${pageContext.request.contextPath}/leitos">Vagas</a>
-    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>
-    
-    <!-- PASSAR ISSO AQUI ALI PRA BAIXO -->
-     	<a href="${pageContext.request.contextPath}/pacientes/new">Adicionar paciente</a>
-     	&nbsp;&nbsp;&nbsp;
-     	<a href="${pageContext.request.contextPath}">Página inicial</a>
-        	
+    <a href="${pageContext.request.contextPath}/prontuarios">Prontuários</a>        	
   </div>
 </header>
 
@@ -46,30 +40,23 @@
   </p>
 </div>
 
-	<table class="table_margin">
-		<tr>
-	    	<td class="frame center">
+	    	<div class="frame center">
 		    	<a href="${pageContext.request.contextPath}/leitos/alocar/primeiro">
-			      <h3>UTI</h3>
+			      <h3>Alocar Pacientes</h3>
 			      <p>
 			        Selecione pacientes baseados em nosso critérios!
 			      </p>
 			    </a>
-			</td>
-		</tr>
+			 </div>
 		
-		<tr>
-			<td class="frame center">
-				<a href="${pageContext.request.contextPath}/prontuarios/solicitar_uti">
-					<h3>Lista de UTIs</h3>
+			<div class="frame center">
+				<a href="${pageContext.request.contextPath}/prontuario/uti_lista">
+					<h3>Exibir fila de pacientes</h3>
 					<p>
 						Veja aqui a lista de espera para as UTIs
 					</p>
 				</a>
-			</td>
-		</tr>
-	</table>
-
+			</div>
 </body>
 
 </html>   

@@ -64,6 +64,10 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    HttpServletResponse resp = (HttpServletResponse) servRes;
 	    
 	    req.setCharacterEncoding("UTF-8");
+	    
+	    Cookie c = new Cookie("TESTE", "123");
+	    ((HttpServletResponse) servRes).addCookie(c);
+	    
 	   
 	    String path = req.getRequestURI().substring(req.getContextPath().length());
 	    String easyNext = path.substring(1);
