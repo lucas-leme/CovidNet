@@ -35,35 +35,27 @@
 	
 	<form action="${pageContext.request.contextPath}/relatorios/new" method="post">
         
-        <table>	        
-        	<tr>
-        		<td>
-			        <b>Data de inicio:</b>
+
+			        <h2>Data de inicio</h2>
 			        <input class="ui-dispatcher" type="date" name="data_inicio">
-        		</td>
-		    </tr>
+			        <br/>
+
 		        
-		    <tr>
-		    	<td>
-			        <b>Data de fim:</b>
+
+			        <h2>Data de fim</h2>
 			        <input class="ui-dispatcher"  type="date" name="data_fim">
-		    	</td>
-		    </tr>
-		        
-        	<tr>
-        		<td>
-        		<b>Tipo de relatório:</b>
+			        <br/>
+
+ 
+        		<h2>Tipo de relatório</h2>
         			<select id="relatorio_id" name="tipo_relatorio" onchange="changeOptions(this)" onshow="changeOptions(this)">
         				<option id="estadual" value="rel_estadual">Estadual</option>		
 						<option id="hospitalar" value="rel_hospitalar">Hospitalar</option>
 						<option id="municipal" value="rel_municipal">Municipal</option>
 			        </select>
-        		</td>
-        	</tr>
-         	
-	        	<tr id="extra">
-	        		<td>
-	        		<b></b>
+			     <br/>
+
+	        	<div id="extra">
 	        			<div id="hospitais">
 		       	 			<c:forEach var="hospital" items="${hospitais}">
 		       	 				<div>
@@ -81,15 +73,12 @@
 				            </c:forEach>
 				        </div>
 	        			<select id="rel_options"></select>
-	        		</td>
-	        	</tr>
+	        	</div>
+	        	
+	        	<br/>
+	        	<br/>
         	
-		    <tr>
-		    	<td>
 		        	<input type="submit" value="Gerar relatório">
-		    	</td>
-		    </tr>
-	    </table>
 	</form>
 	
 </center>
