@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLDataException;
 import java.sql.SQLException;
 
 /**
@@ -38,6 +39,7 @@ public class LoginDAO {
 		
 		try (Connection connection = getConnection();
 				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_AND_PSSWD);) {
+			
 			preparedStatement.setString(1, login);
 			preparedStatement.setString(2, senha);
 			System.out.println(preparedStatement);
@@ -48,8 +50,11 @@ public class LoginDAO {
 			cargo = rs.getString("cargo");
 			
 		} catch (SQLException e) {
-			printSQLException(e);
+			//printSQLException(e);
+
+			System.out.println("Nao encontrado email e senha");
 		}
+		
 		return cargo;
 	}
 	

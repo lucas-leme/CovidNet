@@ -14,17 +14,7 @@
         </h1>
 	</center>
     <div align="center">
-		<c:if test="${user != null}">
-	        <c:if test="${user.registered == true}">
-				<form action="${pageContext.request.contextPath}/login/signin" method="post">
-	        </c:if>
-	        <c:if test="${user.registered == false}">
-				<form action="${pageContext.request.contextPath}/login/signup" method="post">
-	        </c:if>
-        </c:if>
-        <c:if test="${user == null}">
-			<form action="${pageContext.request.contextPath}/login/signin" method="post">
-        </c:if>
+		<form action="${pageContext.request.contextPath}/login/signin" method="post">
 	        <table>
 	            <tr>
 	                <th>Email: </th>
@@ -40,8 +30,7 @@
 	            </tr>
 	            <tr>
 	            	<td colspan="2" align="center">
-	            		<input type="submit" name="signin" value="Login" />    
-	            		<input type="submit" name="signup" value="Cadastrar" />          		
+	            		<input type="submit" name="signin" value="Login" />       		
 	            	</td>
 	            </tr>
 	        </table>

@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +39,10 @@ public class FiltroGeral extends HttpServlet implements Filter
 {
 	private static final long serialVersionUID = 1L;
 	private LoginDAO loginDAO;
+	private boolean logged;
+	
 	//private String teste = "";
-	private User user;
+	//private User user;
 
 	private ServletContext context;
 	
@@ -48,7 +51,10 @@ public class FiltroGeral extends HttpServlet implements Filter
 		super();
 		loginDAO = new LoginDAO();
 		
-		user = null;
+		
+		System.out.println("INCIANDO FILTRO");
+		logged = false;
+		//user = null;
 	}
 
 	@Override
@@ -68,20 +74,115 @@ public class FiltroGeral extends HttpServlet implements Filter
 	    
 	    System.out.println("FILTRANDO");
 	    
-	    System.out.println("requisição a \"" + path);
-	    
+	    System.out.println("requisição a " + path);
 
+	    //System.out.println("\nuser: " + user + "\n");
+	    //boolean logged = false;//, goLogin = true;
+	    //boolean validate = false;
 	    
-	    System.out.println("\nuser: " + user + "\n");
-	    /*if(user == null)
-	    {
-	    	resp.sendRedirect(req.getContextPath() + "/login");
-	    	return;
+	    if(!this.logged) {
+		   
+		    	//logged = Boolean.parseBoolean(req.getParameter("logged"));//(boolean) servReq.getAttribute("validate");
+		    	//System.out.println("logged1: " + validate);
+		    	
+		    	Cookie[] cookies = req.getCookies();	
+		    	for(Cookie cookie : cookies)
+		    	{
+		    		System.out.println(cookie.getName() + " : " + cookie.getValue());
+		    		if(cookie.getName().equals("autorizacao"))
+		    		{
+		    			System.out.println("Achamos cookie de autorizacao");
+		    			String value = cookie.getValue();
+		    			if(value != null)
+	    				{
+		    				if(value.equals("medico")) this.logged = true;
+		    				//else this.logged = false;
+	    				}
+		    		}
+		    	}
 	    }
-	    else*/ if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
+		    	
+    	//this.logged = (boolean) req.getAttribute("logged");
+    	
+    	System.out.println("logged2: " + this.logged);
+ 
+		    
+	    boolean achouCookie = false;
+		
+    	/*Cookie[] cookies = req.getCookies();	
+    	System.out.println("COOKIES:{");
+    	if(cookies != null) {
+	    	for(Cookie cookie : cookies)
+	    	{
+	    		System.out.println("\t" + cookie.getName() + " : " + cookie.getValue());
+	    		if(cookie.getName().equals("autorizacao"))
+	    		{
+	    			String value = cookie.getValue();
+	    			if(value != null)
+					{
+	        			achouCookie = true;
+	        			System.out.println("achou o cookieEBom");
+	        			
+	    				if(value.equals("medico")) this.logged = true;
+	    				else this.logged = false;
+					}
+	    		}
+		    	
+		    }
+    	}*/
+    	System.out.println("}\n");
+    
+	    
+	    System.out.println("\nlogged: " + this.logged);// + "; validate: " + validate);
+	    //if(this.logged) logged = false;
+	    
+	    if(!this.logged && !(path.equals("/login/signin")))
+	    {
+	    	req.getRequestDispatcher("/login").forward(req, resp);
+	    	//showFormSignin(request, response);
+	    	
+	    	//resp.sendRedirect(req.getContextPath() + "/login/signin");
+	    	//return;
+	    }
+	    else if (path.equals("")) resp.sendRedirect(req.getContextPath() + "/");
 	    else if (path.equals("/")) showMainPage(req, resp);
 	    else req.getRequestDispatcher(path).forward(req, resp); 
     }
+	
+	/*private void showFormSignin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		System.out.println("\nFORM DE SIGNIN");
+		
+		//if(!logged) request.setAttribute("validate", true);
+		request.setAttribute("logged", true);
+		request.setAttribute("validate", true);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+		dispatcher.forward(request, response);
+		
+		System.out.println("Se isso aqui so printar depoisque apertar obotao, tudo certo");
+	}
+
+	private void doSignin(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String email = request.getParameter("email");
+		String psswd = request.getParameter("psswd");
+		
+		System.out.println("\nemail: " + email + "; senha: " + psswd);
+		
+		if(true)
+		{
+			System.out.println("\nFazendo o signin");
+			//logged = true;
+			
+			request.setAttribute("logged", true);
+		}
+		
+		response.sendRedirect("/");
+	}
+	*/
 	
 	private void showMainPage(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -89,7 +190,6 @@ public class FiltroGeral extends HttpServlet implements Filter
 		System.out.println("Showing main page");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/homePage.jsp");
 		dispatcher.forward(request, response);
-		
 	}
 
 	@Override
