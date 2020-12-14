@@ -86,20 +86,26 @@ public class FiltroGeral extends HttpServlet implements Filter
 		    	//System.out.println("logged1: " + validate);
 		    	
 		    	Cookie[] cookies = req.getCookies();	
-		    	for(Cookie cookie : cookies)
+		    	if(cookies != null)
 		    	{
-		    		System.out.println(cookie.getName() + " : " + cookie.getValue());
-		    		if(cookie.getName().equals("autorizacao"))
-		    		{
-		    			System.out.println("Achamos cookie de autorizacao");
-		    			String value = cookie.getValue();
-		    			if(value != null)
-	    				{
-		    				if(value.equals("medico")) this.logged = true;
-		    				//else this.logged = false;
-	    				}
-		    		}
+			    	for(Cookie cookie : cookies)
+			    	{
+			    		System.out.println(cookie.getName() + " : " + cookie.getValue());
+			    		if(cookie.getName().equals("autorizacao"))
+			    		{
+			    			System.out.println("Achamos cookie de autorizacao");
+			    			String value = cookie.getValue();
+			    			if(value != null)
+		    				{
+			    				if(value.equals("medico")) this.logged = true;
+			    				//else this.logged = false;
+		    				}
+			    		}
+			    	}
 		    	}
+		    	
+		    	// Ignorando os cookies totalmente
+		    	this.logged = true;
 	    }
 		    	
     	//this.logged = (boolean) req.getAttribute("logged");
